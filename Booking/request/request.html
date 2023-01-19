@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+    <title>Request an appointment</title>
+</head>
+
+<body>
+
+
+    <div id="request-form" class="request-form">
+        <h1 class="request-form_title">Appointment Request Form</h1>
+        <div class="separator"></div>
+
+        <div v-if="isSending" class="loading">Sending...</div>
+
+        <form class="form" @submit="onSubmit">
+            <label class="request-form-field">Name</label>
+            <input required name="name" v-model='request.name' placeholder="" type="text" autocomplete="off">
+            <label class="request-form-field">Email</label>
+            <input required name="email" v-model="request.email" placeholder="" type="email" autocomplete="off">
+            <label class="request-form-field">Telephone</label>
+            <input required name="mobile" v-model="request.telephone" placeholder="(+44)" type="text"
+                autocomplete="off">
+            <label class="request-form-field">Reason for Appointment</label>
+            <select required name="service" v-model="request.service" type="service" autocomplete="off">
+                <!--should this read choices from config file? -->
+                <option disabled value="">Please select one</option>
+                <option v-for="service in services" :value="service.text">
+                    {{service.text}}
+                </option>
+            </select>
+            <div>Please select up to 3 slots of {{request.duration}} minutes.</div>
+            <label class="request-form-field">Additional Details</label>
+            <textarea name="message" v-model="request.message" rows="4" placeholder="Message"></textarea>
+            <button class="button">Request an appointment</button>
+            <div>{{request}}</div>
+        </form>
+    </div>
+
+
+    <!-- Our View App goes at the end of the document -->
+    <script>
+        const app = new Vue({
+            el: '#request-form',
+            data() {
+                return {
+                    request: {
+                        name: '',
+                        email: '',
+                        telephone: '',
+                        service: '',
+                        message: '',
+                        duration: '20'
+                    },
+                    services: [
+                        { text: 'GP Consultation', value: '20' },
+                        { text: 'General Health Screens', value: '60' }
+                    ],
+                    isSending: false
+                }
+            },
+            watch: {
+                'request.service': function () {
+                    for (const service of this.services) {
+                        if (service.text == this.request.service) {
+                            this.$set(this.request, 'duration', service.value);
+                        }
+                    }
+                }
+            },
+            methods: {
+                onSubmit() { }
+            }
+        });
+    </script>
+</body>
+
+</html>
