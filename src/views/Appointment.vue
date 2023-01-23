@@ -71,17 +71,11 @@
       <div class="grid grid-cols-1 gap-6">
         <div class="block text-gray-700">Please select up to 3 slots of {{ request.duration }} minutes from the calendar
           below.</div>
-        <label class="block">
-          <span class="text-gray-700">Date</span>
-          <input type="date" class="
-                    mt-0
-                    block
-                    w-full
-                    px-0.5
-                    border-0 border-b-2 border-sky-700
-                    focus:ring-0 focus:border-black
-                  " v-model="request.date" placeholder="YYYY/MM/DD" autocomplete="off">
-        </label>
+
+        <div>
+          <AvailabilityPicker></AvailabilityPicker>
+        </div>
+        
         <div class="inline-flex text-gray-700">For the safety of all our patients and staff we are now screening each
           patient for possible symptoms of
           COVID-19. Please answer all questions to the best of your knowledge so that we can offer you the best care. We
@@ -163,9 +157,12 @@
 
 <script>
 import servicesData from '../assets/config.json';
-
+import AvailabilityPicker from '../components/AvailabilityPicker.vue'
 
 export default {
+  components: {
+    AvailabilityPicker
+  },
   data() {
     return {
       request: {
@@ -182,7 +179,10 @@ export default {
         fever: 'false',
         cough: 'false',
         shortBreath: 'false',
-        respiratoryProblems: 'false'
+        respiratoryProblems: 'false',
+        slotSelect1:'',
+        slotSelect2:'',
+        slotSelect3:''
       },
       services: servicesData.appointmentDropDown,
       isSending: false
@@ -204,7 +204,6 @@ export default {
     }
   }
 }
-
 
 </script>
 
