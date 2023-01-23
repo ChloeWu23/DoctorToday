@@ -1,30 +1,31 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
-
-// var config = require('./data.json');
-const fs = require('fs');
-const data = JSON.parse(
-  fs.readFileSync(`${__dirname}/data.json`)
-);
+const app = express();
 
 
-app.get('/', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Content-Type', 'application/json');
-    res.send(data)
-})
-
-app.use(require('cors'));
-var corsOptions = {
-    origin: "http://localhost:8081/"
-  };
-app.use(cors(corsOptions));
-
+// app.use(require('cors'));
+// var corsOptions = {
+//     // origin: "http://localhost:8081/"
+//     origin: "*"
+//   };
+// app.use(cors(corsOptions));
 
 // app.use(express.json());
+// app.use(express.static(`${__dirname}/public`));
 
-// const app = require('./app');
+// app.use((req, res, next) => {
+//     console.log('Hello from the middleware');
+//     next();
+// })
+
+
+const serviceRouter = require('./routes/serviceRoutes');
+
+app.use('/', serviceRouter);
+app.use('/service', serviceRouter); // serviceRouter.get()
+/*
+app.use('/admin/service') // adminServiceRouter.post()
+*/
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
