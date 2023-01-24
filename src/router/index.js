@@ -3,7 +3,7 @@ import Header from '../views/Header.vue'
 import Home from '../views/Home.vue'
 import Appointment from '../views/Appointment.vue'
 import Services from '../views/Services.vue'
-import TravelGuides from '../views/TravelGuides.vue'
+//import TravelGuides from '../views/TravelGuides.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 
 const routes = [
@@ -20,11 +20,11 @@ const routes = [
       name: 'Services & Prices',
       component: Services
     },
-    {
-      path: 'travelGuides',
-      name: 'TravelGuides',
-      component: TravelGuides
-    },
+    //{
+    //  path: 'travelGuides',
+    //  name: 'TravelGuides',
+    //  component: TravelGuides
+    //},
     {
       path: 'appointment',
       name: 'Appointment',
