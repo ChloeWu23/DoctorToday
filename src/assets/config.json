@@ -1,0 +1,62 @@
+{
+    "appointmentDropDown": [
+        {
+            "name": "GP Consultation",
+            "time": "20"
+        },
+        {
+            "name": "Blood Test",
+            "time": "15"
+        },
+        {
+            "name": "General Health Screening",
+            "time": "60"
+        },
+        {
+            "name": "Vaccine",
+            "time": "15"
+        }
+    ],
+    "priceList": [
+        {
+            "name": "GP Consultation",
+            "children": [
+                {
+                    "name": "General GP consultations",
+                    "path": "#"
+                },
+                {
+                    "name": "Health Promotions",
+                    "path": "#"
+                }
+            ]
+        },
+        {
+            "name": "Antenatal Care",
+            "children": [
+                {
+                    "name": "Private Antenatal Care Package",
+                    "path": "#"
+                }
+            ]
+        },
+        {
+            "name": "General Health Screen",
+            "children": [
+                {
+                    "name": "Private Antenatal Care Package",
+                    "path": "#"
+                }
+            ]
+        },
+        {
+            "name": "Specialist Health Screen",
+            "children": [
+                {
+                    "name": "Blood Test",
+                    "path": "#"
+                }
+            ]
+        }
+    ]
+}
