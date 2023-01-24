@@ -20,7 +20,7 @@ let current_year = date.getFullYear();
 let current_month = date.getMonth() + 1;
 let current_date = date.getDate();
 let day = current_year + "-0" + current_month + "-"+ current_date;
-console.log(current_month);
+
 export default {
     name: 'AvailabilityPicker',
     data: function () {
@@ -34,6 +34,7 @@ export default {
                 selectionDay: "2023-01-07",
                 onTimeRangeSelected: args => {
                     this.calendarConfig.startDate = args.day;
+                    console.log(args.day);
                 }
             },
             calendarConfig: {
@@ -50,26 +51,28 @@ export default {
                 // hide non-openning hours
                 heightSpec: "BusinessHoursNoScroll",
                 timeRangeSelectedHandling: "Enabled",
-
+                
                 onTimeRangeSelected: async (args) => {
                     // select up to three slots
                     selected_slots_count++;
                     if (selected_slots_count <= 3) {
-                    const modal = await DayPilot.Modal.prompt("Create a new appointment choice:", "choice");
-                    const dp = args.control;
-                    dp.clearSelection();
-                    if (modal.canceled) {
-                        return;
-                    }
-                    dp.events.add({
-                        start: args.start,
-                        end: args.end,
-                        id: DayPilot.guid(),
-                        text: modal.result
-                    });
+                        const modal = await DayPilot.Modal.prompt("Create a new appointment choice:", "select");
+                        const dp = args.control;
+                        dp.clearSelection();
+                        if (modal.canceled) {
+                             return;
+                        }
+                        dp.events.add({
+                            start: args.start,
+                            end: args.end,
+                            id: DayPilot.guid(),
+                            text: modal.result
+                        });
                     }
                 },
-                eventDeleteHandling: "Disabled",
+
+                evenClickHandling: "Enabled",
+                eventDeleteHandling: "Enabled",
                 onEventMoved: () => {
                     console.log("Event moved");
                 },
@@ -98,6 +101,7 @@ export default {
         loadEvents() {
 
             // placeholder for an HTTP call
+            /*
             const busy = [
                 {
                     id: 1,
@@ -106,23 +110,10 @@ export default {
                     text: "busy",
                     barColor: "#6aa84f",
                 },
-                {
-                    id: 2,
-                    start: "2023-01-09T13:00:00",
-                    end: "2023-01-09T16:00:00",
-                    text: "busy",
-                    barColor: "#f1c232",
-                },
-                {
-                    id: 3,
-                    start: "2023-01-10T13:30:00",
-                    end: "2023-01-10T16:30:00",
-                    text: "busy",
-                    barColor: "#cc4125",
-                },
 
             ];
             this.events = busy;
+            */
         },
     },
     mounted() {
