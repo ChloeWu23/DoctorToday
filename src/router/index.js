@@ -1,36 +1,42 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Index from '../views/Index.vue'
+import Header from '../views/Header.vue'
 import Home from '../views/Home.vue'
 import Appointment from '../views/Appointment.vue'
 import Services from '../views/Services.vue'
+import TravelGuides from '../views/TravelGuides.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 
 const routes = [
   { // landing page
     path: '/',
-    component: Index,
+    component: Header,
     children: [{
       path: 'home',
       name: 'home',
       component: Home
     },
     {
-      path: 'appointment',
-      name: 'Appointment',
-      component: Appointment
-    },
-    {
       path: 'services',
       name: 'Services & Prices',
       component: Services
+    },
+    {
+      path: 'travelGuides',
+      name: 'TravelGuides',
+      component: TravelGuides
+    },
+    {
+      path: 'appointment',
+      name: 'Appointment',
+      component: Appointment
     }
-    // },
-    // {
-    //   path: ':catchAll(.*)*',
-    //   name: "PageNotFound",
-    //   component: PageNotFound,
-    // }
-  ]
+      // },
+      // {
+      //   path: ':catchAll(.*)*',
+      //   name: "PageNotFound",
+      //   component: PageNotFound,
+      // }
+    ]
   }
 
 ]
