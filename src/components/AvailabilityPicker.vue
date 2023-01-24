@@ -28,8 +28,16 @@ export default {
                 }
             },
             calendarConfig: {
-                viewType: "Week",
+                // display a custom number of consecutive days
+                viewType: "WorkWeek",
+                // days = 3,
                 startDate: "2023-01-01",
+                // openning hours
+                businessBeginsHour: 9,
+                businessEndsHour: 17,
+                
+                // Hide non-openning hours
+                heightSpec: "BusinessHoursNoScroll",
                 timeRangeSelectedHandling: "Enabled",
                 onTimeRangeSelected: async (args) => {
                     const modal = await DayPilot.Modal.prompt("Create a new appointment choice:", "choice");
