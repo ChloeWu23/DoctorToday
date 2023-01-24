@@ -12,6 +12,15 @@
 <script>
 import { DayPilot, DayPilotCalendar, DayPilotNavigator } from '@daypilot/daypilot-lite-vue'
 
+
+let selected_slots_count = 0;
+
+let date = new Date();
+let current_year = date.getFullYear();
+let current_month = date.getMonth() + 1;
+let current_date = date.getDate();
+let day = current_year + "-0" + current_month + "-"+ current_date;
+console.log(current_month);
 export default {
     name: 'AvailabilityPicker',
     data: function () {
@@ -28,18 +37,24 @@ export default {
                 }
             },
             calendarConfig: {
-                // display a custom number of consecutive days
-                viewType: "WorkWeek",
-                // days = 3,
-                startDate: "2023-01-01",
+                // "Days" displays a custom number of consecutive days
+                // "WorkWeek" displays workdays
+                // "Week" displays workdays & weekends
+                viewType: "Days",
+                days: 3,
+                // startDate is set to current date
+                startDate: day,
                 // openning hours
-                businessBeginsHour: 9,
-                businessEndsHour: 17,
-                
-                // Hide non-openning hours
+                businessBeginsHour: 10,
+                businessEndsHour: 18,
+                // hide non-openning hours
                 heightSpec: "BusinessHoursNoScroll",
                 timeRangeSelectedHandling: "Enabled",
+
                 onTimeRangeSelected: async (args) => {
+                    // select up to three slots
+                    selected_slots_count++;
+                    if (selected_slots_count <= 3) {
                     const modal = await DayPilot.Modal.prompt("Create a new appointment choice:", "choice");
                     const dp = args.control;
                     dp.clearSelection();
@@ -52,6 +67,7 @@ export default {
                         id: DayPilot.guid(),
                         text: modal.result
                     });
+                    }
                 },
                 eventDeleteHandling: "Disabled",
                 onEventMoved: () => {
