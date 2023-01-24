@@ -29,12 +29,14 @@ export default {
             datePickerConfig: {
                 showMonths: 1,
                 skipMonths: 1,
-                selectMode: "Week",
+                // "Day" highlights the selected day
+                // "Week" highlights the week of the selected day
+                selectMode: "Day",
                 startDate: "2023-01-01",
                 selectionDay: "2023-01-07",
                 onTimeRangeSelected: args => {
+                    // get selected day from navigator
                     this.calendarConfig.startDate = args.day;
-                    console.log(args.day);
                 }
             },
             calendarConfig: {
@@ -99,7 +101,6 @@ export default {
     },
     methods: {
         loadEvents() {
-
             // placeholder for an HTTP call
             /*
             const busy = [
@@ -142,6 +143,19 @@ export default {
     background-color: #ee4f2e;
     border-radius: 15px;
     color: white;
+}
+
+.navigator_default_select {
+    color: white;
+}
+.navigator_default_select .navigator_default_cell_box {
+    background-color: rgba(0, 0, 255, 0.846);
+    border-radius: 50%;
+}
+
+.navigator_default_todaybox {
+    border: 2px solid rgb(57, 63, 182);
+    border-radius: 50%;
 }
 </style>
 
