@@ -1,5 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
 const app = express();
 
 
@@ -10,8 +16,12 @@ const app = express();
 //   };
 // app.use(cors(corsOptions));
 
-// app.use(express.json());
-// app.use(express.static(`${__dirname}/public`));
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
+
+
+app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
 
 // app.use((req, res, next) => {
 //     console.log('Hello from the middleware');
@@ -20,14 +30,19 @@ const app = express();
 
 
 const serviceRouter = require('./routes/serviceRoutes');
+const adminServiceRouter = require('./routes/adminServiceRoutes');
 
-app.use('/', serviceRouter);
+// app.use('/', serviceRouter);
 app.use('/service', serviceRouter); // serviceRouter.get()
-/*
-app.use('/admin/service') // adminServiceRouter.post()
-*/
+
+app.use('/admin/service', adminServiceRouter) // adminServiceRouter.post()
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`App running on port ${port}...`)
 });
+
+// connect the database
+const db = require("./app/models");
+db.sequelize.sync();
