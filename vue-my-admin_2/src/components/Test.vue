@@ -3,8 +3,15 @@
       <header>
         <h1>My Data</h1>
       </header>
-      <ul v-for="item in User" v-bind:key="item.id">
-        {{ item.id }} : {{ item.productName }}
+      <ul align="center" v-for="item in service" v-bind:key="item.id">
+        <pre>
+          {{ item.serviceName }}
+        
+          {{ item.description_1 }}
+          {{ item.description_2 }}
+          {{ item.description_3 }}
+        </pre>
+        <br />
       </ul>
       <!-- <ul>{{ User[0] }}</ul>
       <ul> \ </ul>
@@ -15,20 +22,22 @@
   </template>
   
   <script>
-import axios from 'axios';
+// import axios from 'axios';
+import DataService from '../dataRoutes/DataService';
 
   export default {
     name: "list-people",
     data() {
       return {
-        User: {},
+        service: {},
       }
     },
     mounted() {
-      axios.get('http://localhost:3000')
+      // axios.get('http://localhost:3000')
+      DataService.get()
       .then( response => {
         console.log(response.data);
-        this.User = response.data;
+        this.service = response.data;
       })
       .catch( err => {
         console.log(err);

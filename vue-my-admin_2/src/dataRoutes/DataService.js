@@ -2,11 +2,11 @@ import http from "../http-common";
 
 class DataService {
     get() {
-        return http.get("/test");
+        return http.get("/service");
     }
 
     creaete(data) {
-        return http.post("/admin", data);
+        return http.post("/admin/service", data);
     }
 }
 
