@@ -15,11 +15,7 @@ import { DayPilot, DayPilotCalendar, DayPilotNavigator } from '@daypilot/daypilo
 
 let selected_slots_count = 0;
 
-let date = new Date();
-let current_year = date.getFullYear();
-let current_month = date.getMonth() + 1;
-let current_date = date.getDate();
-let day = current_year + "-0" + current_month + "-"+ current_date;
+//let lastDate = null;
 
 export default {
     name: 'AvailabilityPicker',
@@ -32,13 +28,37 @@ export default {
                 // "Day" highlights the selected day
                 // "Week" highlights the week of the selected day
                 selectMode: "Day",
-                startDate: "2023-01-01",
-                selectionDay: "2023-01-07",
+                startDate: DayPilot.Date.today(),
+                selectionDay: DayPilot.Date.today(),
                 onTimeRangeSelected: args => {
                     // get selected day from navigator
-                    this.calendarConfig.startDate = args.day;
-                }
+                    if (args.day >= DayPilot.Date.today()) {
+                        this.calendarConfig.startDate = args.day;
+                    }
+                },
+                
+                /*
+                need to block past days
+                onTimeRangeSelect: args => {
+                    if (args.day < DayPilot.Date.today()) {
+                        args.preventDefault();
+                        this.select(lastDate, {dontNotify: true, dontFocus: true});
+                    } else {
+                        lastDate = args.start;
+                    }
+                },
+            
+                onBeforeCellRender: args=> {
+                    console.log(DayPilot.Date.today());
+                    //console.log(args.cell.day);
+                    if (args.cell.day = "2023-01-23T00:00:00") {
+                        args.cell.cssClass = "navigator-disabled-cell";
+                    }
+                },
+                */
+
             },
+
             calendarConfig: {
                 // "Days" displays a custom number of consecutive days
                 // "WorkWeek" displays workdays
@@ -46,7 +66,7 @@ export default {
                 viewType: "Days",
                 days: 3,
                 // startDate is set to current date
-                startDate: day,
+                startDate: DayPilot.Date.today(),
                 // openning hours
                 businessBeginsHour: 10,
                 businessEndsHour: 18,
@@ -149,13 +169,20 @@ export default {
     color: white;
 }
 .navigator_default_select .navigator_default_cell_box {
-    background-color: rgba(0, 0, 255, 0.846);
+    background-color: rgb(3, 105, 161);
     border-radius: 50%;
+    opacity: 1;
 }
 
 .navigator_default_todaybox {
-    border: 2px solid rgb(57, 63, 182);
+    border: 2px solid rgb(3, 105, 161);
     border-radius: 50%;
 }
-</style>
 
+.navigator_default_title, .navigator_default_titleleft, .navigator_default_titleright {
+    background-color: rgb(3, 105, 161);
+    color: white;
+    font-size: 110%;
+}
+
+</style>
