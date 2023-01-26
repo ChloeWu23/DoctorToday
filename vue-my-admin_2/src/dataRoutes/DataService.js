@@ -8,6 +8,10 @@ class DataService {
     creaete(data) {
         return http.post("/admin/service", data);
     }
+
+    // deleteService(data){
+    //     return http.delete("/admin/service",data);
+    // }
 }
 
 export default new DataService();
