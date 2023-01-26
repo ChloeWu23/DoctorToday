@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Header from '../views/Header.vue'
 import Home from '../views/Home.vue'
 import Appointment from '../views/Appointment.vue'
+import NewPatientRegister from '../views/NewPatientRegister.vue'
 import Services from '../views/Services.vue'
 //import TravelGuides from '../views/TravelGuides.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
@@ -11,7 +12,7 @@ const routes = [
     path: '/',
     component: Header,
     children: [{
-      path: 'home',
+      path: '/',
       name: 'home',
       component: Home
     },
@@ -29,6 +30,11 @@ const routes = [
       path: 'appointment',
       name: 'Appointment',
       component: Appointment
+    },
+    {
+      path: 'newPatientRegister',
+      name: 'NewPatientRegister',
+      component: NewPatientRegister
     }
       // },
       // {
