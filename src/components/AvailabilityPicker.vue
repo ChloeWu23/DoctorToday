@@ -96,51 +96,7 @@ export default {
                 
 
             },
-/*
-            calendarConfig: {
-                // "Days" displays a custom number of consecutive days
-                // "WorkWeek" displays workdays
-                // "Week" displays workdays & weekends
-                viewType: "Days",
-                days: 3,
-                // startDate is set to current date
-                startDate: DayPilot.Date.today(),
-                // openning hours
-                businessBeginsHour: 10,
-                businessEndsHour: 18,
-                // hide non-openning hours
-                heightSpec: "BusinessHoursNoScroll",
-                timeRangeSelectedHandling: "Enabled",
-                
-                onTimeRangeSelected: async (args) => {
-                    // select up to three slots
-                    selected_slots_count++;
-                    if (selected_slots_count <= 3) {
-                        const modal = await DayPilot.Modal.prompt("Create a new appointment choice:", "select");
-                        const dp = args.control;
-                        dp.clearSelection();
-                        if (modal.canceled) {
-                             return;
-                        }
-                        dp.events.add({
-                            start: args.start,
-                            end: args.end,
-                            id: DayPilot.guid(),
-                            text: modal.result
-                        });
-                    }
-                },
 
-                evenClickHandling: "Enabled",
-                eventDeleteHandling: "Enabled",
-                onEventMoved: () => {
-                    console.log("Event moved");
-                },
-                onEventResized: () => {
-                    console.log("Event resized");
-                },
-            },
-*/
         duration: 30, // only 10, 15, 20, 30 allowed
         open: 10, // set openning hours
         close: 18,      
@@ -228,6 +184,7 @@ export default {
       this.dateIndex++;
     },
     nextDate(index) {
+        //console.log(new Date());
       return new Date(new Date().getTime() + index * 24 * 60 * 60 * 1000);
     },
     slot(event, value, day) {
@@ -307,6 +264,7 @@ export default {
     },
     mounted() {
         this.loadEvents();
+        //2023-01-26T00:00:00'
 
     //let todaysDate = new Date(new Date().getTime() + 0 * 24 * 60 * 60 * 1000);
         for (let index = 0; index < this.min; index++) {
@@ -317,6 +275,7 @@ export default {
     }
 
     this.initSlotRange();
+    console.log(DayPilot.Date.today());
     //this.blockSlot();
 
     }
