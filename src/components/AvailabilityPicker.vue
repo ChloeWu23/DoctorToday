@@ -8,7 +8,7 @@
         </div>-->
         
 
-        <div class="slot_picker">
+        <div class="slot_picker" :config="slotPickerConfig">
     <div class="vue-time-slot-container">
       <div class="vue-time-slot-table-row-header">
         <span class="vue-time-slot-column-header">Time</span>
@@ -82,39 +82,39 @@ export default {
                 onTimeRangeSelect: args => {
                     if (args.day < DayPilot.Date.today()) {
                         args.preventDefault();
-                        this.select(lastDate, {dontNotify: true, dontFocus: true});
+                        //this.select(lastDate, {dontNotify: true, dontFocus: true});
                     } else {
                         lastDate = args.start;
                     }
                 },
-            
+                */
                 onBeforeCellRender: args=> {
-                    console.log(DayPilot.Date.today());
                     //console.log(args.cell.day);
-                    if (args.cell.day = "2023-01-23T00:00:00") {
+                    if (args.cell.day < DayPilot.Date.today()) {
                         args.cell.cssClass = "navigator-disabled-cell";
                     }
                 },
-                */
+                
                 
 
             },
 
-        duration: 30, // only 10, 15, 20, 30 allowed
-        open: 10, // set openning hours
-        close: 18,      
-        slotRange: [/*
+            
+            duration: 30, // only 10, 15, 20, 30 allowed
+            open: 10, // set openning hours
+            close: 18,      
+            slotRange: [/*
             {
-          label: "13:40 - 14:00",
-          start_time: "13:40:00",
-          end_time: "14:00:00"
-        },*/
-        ],
-      dayIndex: [],
-      todaysDate: this.formatDate(new Date(), "long"),
-      dateIndex: 0,
-      selected_slots: [],
-
+            label: "13:40 - 14:00",
+            start_time: "13:40:00",
+            end_time: "14:00:00"
+            },*/
+            ],
+            dayIndex: [],
+            todaysDate: this.formatDate(new Date(), "long"),
+            dateIndex: 0,
+            selected_slots: [],
+            
 
         }
     },
@@ -327,6 +327,11 @@ export default {
     background-color: rgb(3, 105, 161);
     color: white;
     font-size: 110%;
+}
+.navigator_default_cell.navigator-disabled-cell {
+  background-color: #ddd !important;
+  color: #888;
+  cursor: not-allowed !important;
 }
 
 .vue-time-slot-container {
