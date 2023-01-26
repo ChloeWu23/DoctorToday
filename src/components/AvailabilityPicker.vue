@@ -69,6 +69,7 @@ export default {
                 startDate: DayPilot.Date.today(),
                 selectionDay: DayPilot.Date.today(),
                 onTimeRangeSelected: args => {
+                  this.datePickerConfig.selectionDay = args.day;
                     // get selected day from navigator
                     if (args.day >= DayPilot.Date.today()) {
                         this.calendarConfig.startDate = args.day;
@@ -77,6 +78,7 @@ export default {
                 
                 
                 //need to block past days
+                /*
                 onTimeRangeSelect: args => {
                     if (args.day < DayPilot.Date.today()) {
                         args.preventDefault();
@@ -93,6 +95,7 @@ export default {
                         args.cell.cssClass = "navigator-disabled-cell";
                     }
                 },
+                */
                 
 
             },
@@ -184,13 +187,16 @@ export default {
       this.dateIndex++;
     },
     nextDate(index) {
-        //console.log(new Date());
-      return new Date(new Date().getTime() + index * 24 * 60 * 60 * 1000);
+      let year = this.datePickerConfig.selectionDay.toString().slice(0, 4);
+      let month = this.datePickerConfig.selectionDay.toString().slice(5, 7);
+      let day = this.datePickerConfig.selectionDay.toString().slice(8, 10);
+      let selected_date = new Date();
+      selected_date.setFullYear(year, month, day);
+      return new Date(selected_date.getTime() + index * 24 * 60 * 60 * 1000);
     },
     slot(event, value, day) {
       // select up to three slots
       // unselect a slot by clicking it
-      console.log(event);
       if (event.target.classList[1] != "vue-time-slot-active-cell" && selection_count <=2) {
         selection_count++;
         event.target.classList.toggle("vue-time-slot-active-cell");
