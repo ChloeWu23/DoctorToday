@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Header from '../views/Header.vue'
-import Home from '../views/Home.vue'
+import Home from '../components/Home.vue'
 import Appointment from '../views/Appointment.vue'
 import NewPatientRegister from '../views/NewPatientRegister.vue'
 import Services from '../views/Services.vue'
@@ -35,13 +35,19 @@ const routes = [
       path: 'newPatientRegister',
       name: 'NewPatientRegister',
       component: NewPatientRegister
-    }
-      // },
-      // {
-      //   path: ':catchAll(.*)*',
-      //   name: "PageNotFound",
-      //   component: PageNotFound,
-      // }
+    },
+    // },
+    // {
+    //   path: ':catchAll(.*)*',
+    //   name: "PageNotFound",
+    //   component: PageNotFound,
+    // }
+    // {
+    //   path: 'admin',
+    //   name: 'Admin',
+    //   component: ''
+
+    // }
     ]
   }
 

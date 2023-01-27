@@ -22,7 +22,6 @@
 import NavBar from '../components/NavBar.vue';
 import Logo from '../components/Logo.vue';
 import SearchBox from '../components/SearchBox.vue';
-import Home from '../components/Home.vue';
 import Footer from '../components/Footer.vue'
 
 export default {
