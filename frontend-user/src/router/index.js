@@ -36,18 +36,34 @@ const routes = [
       name: 'NewPatientRegister',
       component: NewPatientRegister
     },
-    // },
-    // {
-    //   path: ':catchAll(.*)*',
-    //   name: "PageNotFound",
-    //   component: PageNotFound,
-    // }
-    // {
-    //   path: 'admin',
-    //   name: 'Admin',
-    //   component: ''
+    {
+      path: "/test",
+      alias: "/test",
+      name: "test",
+      component: () => import("../components/Test")
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      component: () => import("../components/Admin")
+    },
+    {
+      path: "/showServices",
+      name: "showServices",
+      component: () => import("../components/ShowServices")
+    }
+      // },
+      // {
+      //   path: ':catchAll(.*)*',
+      //   name: "PageNotFound",
+      //   component: PageNotFound,
+      // }
+      // {
+      //   path: 'admin',
+      //   name: 'Admin',
+      //   component: ''
 
-    // }
+      // }
     ]
   }
 
