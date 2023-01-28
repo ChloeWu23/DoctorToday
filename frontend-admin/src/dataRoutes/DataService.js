@@ -9,6 +9,9 @@ class DataService {
         return http.post("/admin/service", data);
     }
 
+    sendEmail(data) {
+        return http.post("/sendEmail", data);
+    }
     // deleteService(data){
     //     return http.delete("/admin/service",data);
     // }
