@@ -31,12 +31,13 @@ app.use(express.static(`${__dirname}/public`));
 
 const serviceRouter = require('./routes/serviceRoutes');
 const adminServiceRouter = require('./routes/adminServiceRoutes');
-
+const emailServiceRouter = require('./routes/emailServiceRoutes');
 // app.use('/', serviceRouter);
 app.use('/service', serviceRouter); // serviceRouter.get()
 
 app.use('/admin/service', adminServiceRouter) // adminServiceRouter.post()
 
+app.use('/sendEmail', emailServiceRouter) //emailServiceRoutes.get()
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

@@ -30,7 +30,7 @@
         </label>
         <label class="block">
           <span class="text-gray-700">Gender</span>
-          <input type="email" class="
+          <input type="text" class="
                     mt-0
                     block
                     w-full
@@ -41,7 +41,7 @@
         </label>
         <label class="block">
           <span class="text-gray-700">Telephone</span>
-          <input type="email" class="
+          <input type="text" class="
                     mt-0
                     block
                     w-full
@@ -148,14 +148,16 @@
             autocomplete="off"></textarea>
         </label>
       </div>
-      <input type="submit" @submit="submitForm"
-        class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">
+      <button @click="sendEmail">submit</button>
+      <!-- <input type="submit" @submit="submitForm"
+        class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white"> -->
     </form>
     <div v-bind="request">{{ request }}</div>
   </div>
 </template>
 
 <script>
+import DataService from '../dataRoutes/DataService';
 import servicesData from '../assets/config.json';
 import AvailabilityPicker from '../components/AvailabilityPicker.vue'
 
@@ -199,8 +201,16 @@ export default {
     }
   },
   methods: {
-    submitForm(request) {
-
+    sendEmail() {
+      var data = {
+        email: this.request.email,
+        name: this.request.name,
+        gender: this.request.gender,
+        slotSelect1: this.request.slotSelect1,
+        slotSelect2: this.request.slotSelect2,
+        slotSelect3: this.request.slotSelect3
+      };
+      DataService.sendEmail(data);
     }
   }
 }
