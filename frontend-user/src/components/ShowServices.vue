@@ -36,30 +36,24 @@
 
         <div class="row py-lg-4 bg-light">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <a href="/admin" class="btn btn-primary">ADD NEW SERVICE</a>
+                <RouterLink to="/admin">ADD NEW SERVICE</RouterLink>
             </div>
         </div>
 
-        <div class="album py-5 bg-light">
-            <div class="container">
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div v-for="serviceInfo in servicesInfo" :key="serviceInfo.serviceName" class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ serviceInfo.serviceName }}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Including</h6>
-                                <p></p>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">{{ serviceInfo.description_1 }}</li>
-                                    <li class="list-group-item">{{ serviceInfo.description_2 }}</li>
-                                    <li class="list-group-item">{{ serviceInfo.description_3 }}</li>
-                                </ul>
-                                <button 
-                                    class="btn btn-primary">Delete Service</button>
-                            </div>
-
-                        </div>
+        <div class="album p-5 bg-light">
+            <div class="grid gap-10 md:grid-cols-3 xl:grid-cols-5 divide-x grid-auto-flow: column">
+                <div v-for="serviceInfo in servicesInfo" :key="serviceInfo.serviceName">
+                    <div class="bg-sky-100 border-sky-700 border-b-4 min-h-full p-4 drop-shadow-md ">
+                        <p class="font-bold text-sky-600 underline underline-offset-4 decoration-sky-700 ">{{
+                            serviceInfo.serviceName
+                        }}
+                        </p>
+                        <p class="my-2">include:</p>
+                        <span>
+                            <li class="list-group-item">{{ serviceInfo.description_1 }}</li>
+                            <li class="list-group-item">{{ serviceInfo.description_2 }}</li>
+                            <li class="list-group-item">{{ serviceInfo.description_3 }}</li>
+                        </span>
                     </div>
 
                 </div>
