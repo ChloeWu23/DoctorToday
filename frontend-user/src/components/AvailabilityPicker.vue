@@ -4,26 +4,32 @@
             <DayPilotNavigator id="nav" :config="datePickerConfig" ref="datePicker" :events="events" />
         </div>
 
-    <div class="flex-col pr-2">
+    <div class="flex-col pl-3">
         <div class="flex-col p-0 mb-2">
-            <span class="w-30 border-2 rounded-md hover:bg-sky-700 hover:text-white" v-for="(item,index) in timeList" :key="item.id">
+            <span class="" v-for="(item,index) in timeList" :key="item.id">
                 <span class="">
-                    <el-button class="p-1" size="small" style="width: 50px" :disabled="item.flag"
+                    <el-button class="m-1" :disabled="item.flag"
                             @click="selectTime(index, item.start, item.end, item.date, item.day)">{{item.start}}</el-button>
                 </span>
+                <!--
+        <span v-if="(index+1)%8==0">
+          <br>
+        </span>
+      -->
             </span>
         </div>
     
-    <div class="pl-6 flex-row" id="selection">
-      <p class="font-bold text-bg mt-2"> Your Selected Slots</p>
+    <div class="pl-2 flex-row" id="selection">
+      <p class="font-bold text-base mt-1 mb-1"> Your Selected Slots</p>
         <ul class="">
-          <li class="mt-2" v-for="(slot, index) in selectedSlots" :key='slot.id'>  {{slot.day}}
+          <li class="mt-2 text-sm" v-for="(slot, index) in selectedSlots" :key='slot.id'>  {{slot.day}}
             {{slot.start}}-{{slot.end}}
-            <button @click="removeSlot(index)" class="remove">X</button>
+            <el-button size="small" plain class="text-sm" @click="removeSlot(index)">
+              <el-icon class="el-icon-delete"><Delete /></el-icon>
+            </el-button>
           </li>
         </ul>
     </div>
-
   </div>
   </div>
 
@@ -32,15 +38,9 @@
 <script>
 import moment from 'moment';
 import { DayPilot, DayPilotNavigator } from '@daypilot/daypilot-lite-vue';
-
-//import { library } from '@fortawesome/fontawesome-svg-core';
-//import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-//import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
-//library.add(faTrashCan);
-
+import { Delete } from "@element-plus/icons";
 import { ElButton } from 'element-plus/lib/index';
 import 'element-plus/theme-chalk/index.css';
-let selection_count = 0;
 
 export default {
     name: 'AvailabilityPicker',
@@ -53,14 +53,19 @@ export default {
               {start: "2023-01-29T09:00:00", end: "2023-01-29T13:30:00"},
               {start: "2023-01-29T14:00:00", end: "2023-01-29T19:00:00"},
               {start: "2023-01-30T09:00:00", end: "2023-01-30T13:30:00"},
+              {start: "2023-01-31T09:00:00", end: "2023-01-31T13:30:00"},
+              {start: "2023-01-31T14:00:00", end: "2023-01-31T19:00:00"},
+              {start: "2023-02-01T09:00:00", end: "2023-02-01T13:30:00"},
+              {start: "2023-02-01T14:00:00", end: "2023-02-01T19:00:00"},
             ],
             timeList: [],
             selectedSlots: [],
             duration: 20,
             open: "10:00",
             close: "18:00",
-            busy: {start: "13:30", end: "14:00", date: ""},
+            disabledTime: {start: "13:30", end: "14:00", date: ""},
             selectedDate: moment().format("YYYY-MM-DD"),
+            selectionCount: 0,
 
             events: [],
             datePickerConfig: {
@@ -72,7 +77,6 @@ export default {
                 startDate: DayPilot.Date.today(),
                 selectionDay: DayPilot.Date.today(),
                 onTimeRangeSelected: args => {
-                  console.log(args.day.value);
                     // get selected day from navigator
                     if (args.day >= DayPilot.Date.today()) {
                         this.selectedDate = (moment(args.day.value).format("YYYY-MM-DD"));
@@ -80,7 +84,6 @@ export default {
                     }
                 },
                 onBeforeCellRender: args=> {
-                    //console.log(args.cell.day);
                     if (args.cell.day < DayPilot.Date.today()) {
                         args.cell.cssClass = "navigator-disabled-cell";
                     }
@@ -90,6 +93,7 @@ export default {
     },
     
     components: {
+        Delete,
         DayPilotNavigator
     },
 
@@ -102,18 +106,18 @@ export default {
     methods: {
         selectTime(index, start, end, date, day) {
             // check if there are three selected slots
-            if (selection_count >= 3) {
+            if (this.selectionCount >= 3) {
                 // a hint for removing a slot first
                 return;
             }
-            selection_count++;
+            this.selectionCount++;
             this.addSlot({start: start, end: end, date: date, day: day});
         },
         addSlot(slot) {
             this.selectedSlots.push(slot);
         },
         removeSlot(index) {
-            selection_count--;
+            this.selectionCount;
             console.log(index);
             this.selectedSlots.splice(index, 1);
         },
@@ -172,6 +176,18 @@ export default {
 
 .content {
     flex-grow: 1;
+}
+.navigator_default_main { 
+  border-left: 1px solid #c0c0c0;
+  border-right: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  background-color: white;
+  color: #000000;
+  box-sizing: content-box; }
+.navigator_default_main *, 
+.navigator_default_main *:before, 
+.navigator_default_main *:after { 
+  /*box-sizing: content-box; */
 }
 .navigator_default_busy.navigator_default_cell {
     background-color: #ee4f2e;
