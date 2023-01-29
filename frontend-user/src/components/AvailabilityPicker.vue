@@ -117,7 +117,7 @@ export default {
             this.selectedSlots.push(slot);
         },
         removeSlot(index) {
-            this.selectionCount;
+            this.selectionCount--;
             console.log(index);
             this.selectedSlots.splice(index, 1);
         },
