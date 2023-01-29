@@ -116,6 +116,13 @@ export default {
                 // a hint for removing a slot first
                 return;
             }
+            // check if already selected
+            for (let i = 0; i < this.selectedSlots.length; i++) {
+              if (moment(this.selectedSlots[i].date).format("YYYY-MM-DD").toString() === this.selectedDate && // check date
+                this.selectedSlots[i].start === start) { // check start time
+                  return;
+              }
+            }
             this.selectionCount++;
             this.addSlot({start: start, end: end, date: date, day: day});
         },
@@ -149,7 +156,7 @@ export default {
                         let singleSlot = {start: startOfSlot.format("HH:mm"), 
                                           end: endOfSlot.format("HH:mm"),
                                           date: this.selectedDate,
-                                          day: moment(this.selectedDate).toDate().toString().slice(0, 15),
+                                          day: moment(this.selectedDate).toDate().toString().slice(0, 15), // day of week
                                           flag: false};       
                         this.timeList.push(singleSlot);
                 }
