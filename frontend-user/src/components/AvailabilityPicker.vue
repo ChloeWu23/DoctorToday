@@ -4,35 +4,30 @@
             <DayPilotNavigator id="nav" :config="datePickerConfig" ref="datePicker" :events="events" />
         </div>
 
-    <div class="flex-col pl-3">
-        <div class="flex-col p-0 mb-2">
-            <span class="" v-for="(item,index) in timeList" :key="item.id">
-                <span class="">
-                    <el-button class="m-1" :disabled="item.flag"
-                            @click="selectTime(index, item.start, item.end, item.date, item.day)">{{item.start}}</el-button>
+        <div class="flex-col pl-3">
+            <div class="flex-col p-0 mb-3">
+                <span class="" v-for="(item,index) in timeList" :key="item.id">
+                    <span class="">
+                        <el-button class="m-1 h-10 leading-4 text-base align-text-top" size="large" round :disabled="item.flag"
+                                   @click="selectTime(index, item.start, item.end, item.date, item.day)">{{item.start}}
+                        </el-button>
+                    </span>
                 </span>
-                <!--
-        <span v-if="(index+1)%8==0">
-          <br>
-        </span>
-      -->
-            </span>
-        </div>
+            </div>
     
-    <div class="pl-2 flex-row" id="selection">
-      <p class="font-bold text-base mt-1 mb-1"> Your Selected Slots</p>
-        <ul class="">
-          <li class="mt-2 text-sm" v-for="(slot, index) in selectedSlots" :key='slot.id'>  {{slot.day}}
-            {{slot.start}}-{{slot.end}}
-            <el-button size="small" plain class="text-sm" @click="removeSlot(index)">
-              <el-icon class="el-icon-delete"><Delete /></el-icon>
-            </el-button>
-          </li>
-        </ul>
+            <div class="pl-2 flex-row" id="selection">
+                <p class="font-bold text-lg mt-1 mb-1"> Your Preferred Slots</p>
+                <ul class="">
+                    <li class="mt-2 text-base" v-for="(slot, index) in selectedSlots" :key='slot.id'>  {{slot.day}}
+                        {{slot.start}} - {{slot.end}}
+                        <el-button size="small" plain class="text-sm" @click="removeSlot(index)">
+                            <el-icon class="el-icon-delete"><Delete /></el-icon>
+                        </el-button>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
-
 </template>
 
 <script>
@@ -63,7 +58,14 @@ export default {
             duration: 20,
             open: "10:00",
             close: "18:00",
-            disabledTime: {start: "13:30", end: "14:00", date: ""},
+            disabledTimeEveryDay:[{start: "13:30", end: "14:00"}],
+            disabledTime:[
+              {start: "13:30", end: "14:00", date: "", type: "everyday"},
+              {start: "", end: "", date: "2023-01-31", type: "day"},
+              {start: "10:00", end: "11:00", date: "2023-01-31", type:"slot"},
+              {start: "00:00", end: "11:00", date: "", type:"Thursday"},
+              {start: "15:00", end: "23:59", date: "", type:"Thursday"},
+            ],
             selectedDate: moment().format("YYYY-MM-DD"),
             selectionCount: 0,
 
@@ -71,6 +73,10 @@ export default {
             datePickerConfig: {
                 showMonths: 1,
                 skipMonths: 1,
+                cellWidth: 35,
+                cellHeight: 35,
+                dayHeaderHeight: 35,
+                titleHeight: 35,
                 // "Day" highlights the selected day
                 // "Week" highlights the week of the selected day
                 selectMode: "Day",
@@ -118,7 +124,6 @@ export default {
         },
         removeSlot(index) {
             this.selectionCount--;
-            console.log(index);
             this.selectedSlots.splice(index, 1);
         },
         loadAvailableSlot() {
@@ -126,21 +131,21 @@ export default {
             this.timeList.length = 0;
 
             for (let i = 0; i < this.availabilityList.length; i++) {    
-              //if(moment(this.availabilityList[i].start).format("YYYY:MM:DD").toString() != this.selectedDate) {
-                //continue;
-              //} 
-              
                 let startOfSlot = moment(this.availabilityList[i].start);
                 let endOfAvailibility = moment(this.availabilityList[i].end);
                 let endOfSlot = startOfSlot.clone().add(this.duration, "minutes");
 
+                // if it is not selected date's availability, continue
                 if (startOfSlot.format("YYYY-MM-DD").toString() != this.selectedDate) {
                   continue;
                 }
 
+                // the end of a slot cannot be later than the end of availability
                 while (!endOfSlot.isAfter(endOfAvailibility)) {  
+                    // should be within openning hours
                     if (startOfSlot.format("HH:mm").toString() >= this.open && 
                         endOfSlot.format("HH:mm").toString() <= this.close) {
+                        // initialise a slot struction and add it to timeList
                         let singleSlot = {start: startOfSlot.format("HH:mm"), 
                                           end: endOfSlot.format("HH:mm"),
                                           date: this.selectedDate,
@@ -148,17 +153,18 @@ export default {
                                           flag: false};       
                         this.timeList.push(singleSlot);
                 }
+                // find next possible slot
                 startOfSlot = endOfSlot;
                 endOfSlot = startOfSlot.clone().add(this.duration, "minutes");
               }
             }
         },
+        // used for DayPilot Navigator
         loadEvents() {},
     },
     mounted() {
-        this.loadEvents();
+        this.loadEvents({});
         this.loadAvailableSlot();
-        //2023-01-26T00:00:00'
     }
 }
 </script>
@@ -173,10 +179,26 @@ export default {
     display: flex;
     flex-direction: column;
 }
-
 .content {
     flex-grow: 1;
 }
+
+.el-button:focus {
+  background-color: #FFF;
+  border-color: #DCDFE6;
+  color: #606266;
+}
+.el-button:hover {
+  color: white;
+  border-color: #c6e2ff;
+  background-color: rgb(3, 105, 161);
+}
+.el-button:active {
+  color: #3a8ee6;
+  border-color: #3a8ee6;
+  outline: 0;
+}
+
 .navigator_default_main { 
   border-left: 1px solid #c0c0c0;
   border-right: 1px solid #c0c0c0;
@@ -187,7 +209,8 @@ export default {
 .navigator_default_main *, 
 .navigator_default_main *:before, 
 .navigator_default_main *:after { 
-  /*box-sizing: content-box; */
+  box-sizing: conent-box;
+  font-size: 95%;
 }
 .navigator_default_busy.navigator_default_cell {
     background-color: #ee4f2e;
