@@ -3,62 +3,58 @@
         <div class="left">
             <DayPilotNavigator id="nav" :config="datePickerConfig" ref="datePicker" :events="events" />
         </div>
-        <!--<div class="content">
-            <DayPilotCalendar id="dp" :config="calendarConfig" ref="calendar" :events="events" />
-        </div>-->
-        
 
-        <div class="slot_picker" :config="slotPickerConfig">
-    <div class="vue-time-slot-container">
-      <div class="vue-time-slot-table-row-header">
-        <span class="vue-time-slot-column-header">Time</span>
-        <span class="vue-time-slot-row-header" v-for="value in slotRange" :key="value.label">
-          {{value.label}}
+    <div class="flex-col pr-2">
+        <div class="p-0 mb-2">
+            <span class="w-32 border-2 rounded-md" v-for="(item,index) in timeList" :key="index">
+                <span style="padding-left: 5px">
+                    <button size="medium" style="width: 80px" :disabled="item.flag"
+                            @click="selectTime(index, item.start, item.end, item.date, item.day)">{{item.start}}</button>
+            </span>
         </span>
-      </div>
-      <div class="vue-time-slot-calendar-table" id="vue-time-slot-calendar-table">
-        <div class="vue-time-slot-day-header" v-for="day in dayIndex" :key="day.label">
-          <span class="vue-time-slot-column-header">{{day.label}}</span>
-          <span class="vue-time-slot-cell" v-for="value in slotRange" :key="value.label" @click="slot($event, value, day)">
-            {{value.label}} 
-          </span>
-        </div>
-      </div>
-<!--
-    <div class="selection" id="selection">
-        <ul class="selected_slots">
-          <li class="slots" v-for="(slot, index) in selected_slots" :key='index'>{{slot.value}} {{slot.label}}</li>
-        </ul>
-      </div>
-    -->
-      
+    </div>
 
+    <div class="pl-6 flex-row" id="selection">
+      <p class="font-bold text-bg mt-2"> Your Selected Slots</p>
+        <ul class="text-bg">
+          <li class="mt-2" v-for="(slot, index) in selectedSlots" :key='slot.id'>  {{slot.day}}
+            {{slot.start}}-{{slot.end}}
+            <button @click="removeSlot(index)" class="remove"> x</button>
+          </li>
+        </ul>
     </div>
+
   </div>
-    </div>
+  </div>
 
 </template>
 
 <script>
+import moment from 'moment';
 import { DayPilot, DayPilotNavigator } from '@daypilot/daypilot-lite-vue'
 
-
-let selected_slots_count = 0;
 let selection_count = 0;
-//let lastDate = null;
 
 export default {
     name: 'AvailabilityPicker',
-    props: {
-    min: {
-      type: Number,
-      default: 3
-    }
-  },
-  watch: {},
+    props: {},
+    watch: {},
 
     data: function () {
         return {
+            availabilityList: [
+              {start: "2023-01-29T09:00:00", end: "2023-01-29T13:30:00"},
+              {start: "2023-01-29T14:00:00", end: "2023-01-29T19:00:00"},
+              {start: "2023-01-30T09:00:00", end: "2023-01-30T13:30:00"},
+            ],
+            timeList: [],
+            selectedSlots: [],
+            duration: 20,
+            open: "10:00",
+            close: "18:00",
+            busy: {start: "13:30", end: "14:00", date: ""},
+            selectedDate: moment().format("YYYY-MM-DD"),
+
             events: [],
             datePickerConfig: {
                 showMonths: 1,
@@ -69,221 +65,100 @@ export default {
                 startDate: DayPilot.Date.today(),
                 selectionDay: DayPilot.Date.today(),
                 onTimeRangeSelected: args => {
-                  this.datePickerConfig.selectionDay = args.day;
+                  console.log(args.day.value);
                     // get selected day from navigator
                     if (args.day >= DayPilot.Date.today()) {
-                        this.calendarConfig.startDate = args.day;
+                        this.selectedDate = (moment(args.day.value).format("YYYY-MM-DD"));
+                        this.loadAvailableSlot();
                     }
                 },
-                
-                
-                //need to block past days
-                /*
-                onTimeRangeSelect: args => {
-                    if (args.day < DayPilot.Date.today()) {
-                        args.preventDefault();
-                        //this.select(lastDate, {dontNotify: true, dontFocus: true});
-                    } else {
-                        lastDate = args.start;
-                    }
-                },
-                */
                 onBeforeCellRender: args=> {
                     //console.log(args.cell.day);
                     if (args.cell.day < DayPilot.Date.today()) {
                         args.cell.cssClass = "navigator-disabled-cell";
                     }
                 },
-                
-                
-
             },
-
-            
-            duration: 30, // only 10, 15, 20, 30 allowed
-            open: 10, // set openning hours
-            close: 18,      
-            slotRange: [/*
-            {
-            label: "13:40 - 14:00",
-            start_time: "13:40:00",
-            end_time: "14:00:00"
-            },*/
-            ],
-            dayIndex: [],
-            todaysDate: this.formatDate(new Date(), "long"),
-            dateIndex: 0,
-            selected_slots: [],
-            
-
         }
     },
     
-
     components: {
-        //DayPilotCalendar,
         DayPilotNavigator
     },
 
-
     computed: {
-        // DayPilot.Calendar object - https://api.daypilot.org/daypilot-calendar-class/
-       /* calendar() {
-            return this.$refs.calendar.control;
-        },
-        */
         datePicker() {
             return this.$refs.datePicker.control;
         }
     },
 
     methods: {
-        loadEvents() {
-            // placeholder for an HTTP call
-            /*
-            const busy = [
-                {
-                    id: 1,
-                    start: "2023-01-05T10:00:00",
-                    end: "2023-01-05T11:00:00",
-                    text: "busy",
-                    barColor: "#6aa84f",
-                },
-
-            ];
-            this.events = busy;
-            */ 
+        selectTime(index, start, end, date, day) {
+            // check if there are three selected slots
+            if (selection_count >= 3) {
+            // a hint for removing a slot first
+            return;
+            }
+            selection_count++;
+            this.addSlot({start: start, end: end, date: date, day: day});
         },
-        formatDate(date, type) {
-      let monthNames = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ];
-      var day = date.getDate();
-      var monthIndex = date.getMonth();
-      let month =
-        type == "short"
-          ? monthNames[monthIndex].slice(0, 3)
-          : monthNames[monthIndex];
-      return {
-        label: date.toString().slice(0, 3) + " " + month + " " + day,
-        value: date.toString().slice(0, 16),
-      };
-    },
-    addDate() {
-      this.dayIndex.push(
-        this.formatDate(this.nextDate(this.dateIndex), "short")
-      );
-      this.dateIndex++;
-    },
-    nextDate(index) {
-      let year = this.datePickerConfig.selectionDay.toString().slice(0, 4);
-      let month = this.datePickerConfig.selectionDay.toString().slice(5, 7);
-      let day = this.datePickerConfig.selectionDay.toString().slice(8, 10);
-      let selected_date = new Date();
-      selected_date.setFullYear(year, month, day);
-      return new Date(selected_date.getTime() + index * 24 * 60 * 60 * 1000);
-    },
-    slot(event, value, day) {
-      // select up to three slots
-      // unselect a slot by clicking it
-      if (event.target.classList[1] != "vue-time-slot-active-cell" && selection_count <=2) {
-        selection_count++;
-        event.target.classList.toggle("vue-time-slot-active-cell");
-        value.date = day.value;
-        this.$emit("callback", value);
-        let slot = {label: value.label, value: value.date};
-        this.addSlot(slot);
-        return;
-      } 
-      if (event.target.classList[1] == "vue-time-slot-active-cell") {
-        selection_count--;
-        event.target.classList.toggle("vue-time-slot-active-cell");
-        value.date = day.value;
-        this.$emit("callback", value);
-        let slot = {label: value.label, value: value.date};
-        this.removeSlot(slot);
-      }
-    },
-    initSlotRange() {
-    // initialise dateRange with a duration of 20 min
-      let start = "";
-      let end = "";
-    
-      for (let hour = this.open; hour < this.close; hour++) {
-        for (let min = 0; min <60; min += this.duration) {
-          start = end;
-          if(min != 0) {
-            end = hour + ":" + min;
-          } else {
-            end = hour + ":0" + min
-          }
-          let label = start + " - " + end;
-          let start_time = start + ":00";
-          let end_time = end + ":00";
-          let range = {label, start_time, end_time};
-          if (start != "") {
-            this.slotRange.push(range);
-          }
-        }
-      }
-      start = end;
-      end = this.close + ":00";
-      let label = start + " - " + end;
-      let start_time = start + ":00";
-      let end_time = end + ":00";
-      let range = {label, start_time, end_time};
-      this.slotRange.push(range);
-    },
-    addSlot(slot) {
-      this.selected_slots.push(slot);
-    },
-    removeSlot(slot) {
-    // get all slot data and then get index of selected slot in list
-    let items = document.querySelectorAll(".slots");
-    let item = [];
-    for (let i = 0; i < items.length; i++) {
-      item.push(items[i].innerHTML);
-    }
-    let slot_info = slot.value + " " + slot.label;
-    let index = item.indexOf(slot_info);
-    this.selected_slots.splice(index, 1);
-    },
-    /*
-    blockSlot() {
+        addSlot(slot) {
+            this.selectedSlots.push(slot);
+        },
+        removeSlot(index) {
+            selection_count--;
+            console.log(index);
+            this.selectedSlots.splice(index, 1);
+        },
+        loadAvailableSlot() {
+            // clear timeList
+            this.timeList.length = 0;
 
-    }
-    */
+            for (let i = 0; i < this.availabilityList.length; i++) {    
+              //if(moment(this.availabilityList[i].start).format("YYYY:MM:DD").toString() != this.selectedDate) {
+                //continue;
+              //} 
+              
+                let startOfSlot = moment(this.availabilityList[i].start);
+                let endOfAvailibility = moment(this.availabilityList[i].end);
+                let endOfSlot = startOfSlot.clone().add(this.duration, "minutes");
 
+                if (startOfSlot.format("YYYY-MM-DD").toString() != this.selectedDate) {
+                  continue;
+                }
 
-
+                while (!endOfSlot.isAfter(endOfAvailibility)) {  
+                    if (startOfSlot.format("HH:mm").toString() >= this.open && 
+                        endOfSlot.format("HH:mm").toString() <= this.close) {
+                        let singleSlot = {start: startOfSlot.format("HH:mm"), 
+                                          end: endOfSlot.format("HH:mm"),
+                                          date: this.selectedDate,
+                                          day: moment(this.selectedDate).toDate().toString().slice(0, 15),
+                                          flag: false};       
+                        this.timeList.push(singleSlot);
+                }
+                startOfSlot = endOfSlot;
+                endOfSlot = startOfSlot.clone().add(this.duration, "minutes");
+              }
+            }
+        },
+        loadEvents() {},
+        removeSlot(slot) {
+            // get all slot data and then get index of selected slot in list
+            let items = document.querySelectorAll(".slots");
+            let item = [];
+            for (let i = 0; i < items.length; i++) {
+                item.push(items[i].innerHTML);
+            }
+            let slot_info = slot.start + "-" + slot.end;
+            let index = item.indexOf(slot_info);
+            this.selected_slots.splice(index, 1);
+        },
     },
     mounted() {
         this.loadEvents();
+        this.loadAvailableSlot();
         //2023-01-26T00:00:00'
-
-    //let todaysDate = new Date(new Date().getTime() + 0 * 24 * 60 * 60 * 1000);
-        for (let index = 0; index < this.min; index++) {
-      this.dayIndex.push(
-        this.formatDate(this.nextDate(this.dateIndex), "short")
-      );
-      this.dateIndex++;
-    }
-
-    this.initSlotRange();
-    console.log(DayPilot.Date.today());
-    //this.blockSlot();
-
     }
 }
 </script>
@@ -294,15 +169,14 @@ export default {
 .left {
     margin-right: 10px;
 }
+.right {
+    display: flex;
+    flex-direction: column;
+}
 
 .content {
     flex-grow: 1;
 }
-/*
-.calendar_default_event_inner {
-    border-radius: 5px;
-}
-*/
 .navigator_default_busy.navigator_default_cell {
     background-color: #ee4f2e;
     border-radius: 15px;
@@ -333,99 +207,4 @@ export default {
   color: #888;
   cursor: not-allowed !important;
 }
-
-.vue-time-slot-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: 13px;
-  padding-left: 50px;
-}
-.vue-time-slot-row-header {
-  border: none !important;
-  text-align: left;
-  cursor: pointer;
-  background-color: #ccc;
-  font-size: 12px;
-  padding: 7px;
-  color: #000;
-  width: 120%;
-  height: 35px;
-}
-.vue-time-slot-column-header {
-  border: none !important;
-  text-align: center;
-  cursor: pointer;
-  background-color: #ccc;
-  font-size: 12px;
-  padding: 10px 0;
-  color: #000;
-}
-.vue-time-slot-cell{
-  padding-top: 10px;
-  background-color: #fff;
-  border-style: solid;
-  border-color: #ccc;
-  border-width: 1px 1px 0 0;
-  text-align: center;
-  cursor: pointer;
-  color: #fff;
-  font-size: 13px;
-  height: 100%;
-}
-.vue-time-slot-cell:last-child{
-  border-width: 1px 1px 1px 0;
-}
-.vue-time-slot-cell:hover{
-  background-color: rgb(3, 105, 161);
-}
-.vue-time-slot-active-cell {
-  background-color: rgb(3, 105, 161);
-  color: #fff;
-}
-.vue-time-slot-active-cell:hover{
-  background-color: rgb(3, 105, 161);
-}
-.vue-time-slot-table-row-header {
-  display: flex;
-  flex-direction: column;
-  width: 130px;
-}
-.vue-time-slot-day-header {
-  display: flex;
-  flex-direction: column;
-  width: 100px;
-}
-.vue-time-slot-calendar-table {
-  background-color: transparent;
-  overflow: auto;
-  white-space: nowrap;
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-.vue-time-slot-calendar-table .vue-time-slot-day-header:first-child{
-  border-style: solid;
-  border-color: #ccc;
-  border-width: 0 0 0 1px;
-}
-.arrow-block {
-  font-size: 25px;
-  font-weight: bolder;
-  color: #ef4144;
-  cursor: pointer;
-  margin: -10px 15px;
-}
-.selection {
-  width: 200px;
-  padding-right: 50px;
-}
-.selection .selected_slots{
-  list-style-type: none;
-  text-align: center;
-  font-size: 17px;
-  width: 100%;
-}
-
 </style>
