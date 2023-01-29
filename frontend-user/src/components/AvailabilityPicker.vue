@@ -5,21 +5,21 @@
         </div>
 
     <div class="flex-col pr-2">
-        <div class="p-0 mb-2">
-            <span class="w-32 border-2 rounded-md" v-for="(item,index) in timeList" :key="index">
-                <span style="padding-left: 5px">
-                    <button size="medium" style="width: 80px" :disabled="item.flag"
-                            @click="selectTime(index, item.start, item.end, item.date, item.day)">{{item.start}}</button>
+        <div class="flex-col p-0 mb-2">
+            <span class="w-30 border-2 rounded-md hover:bg-sky-700 hover:text-white" v-for="(item,index) in timeList" :key="item.id">
+                <span class="">
+                    <el-button class="p-1" size="small" style="width: 50px" :disabled="item.flag"
+                            @click="selectTime(index, item.start, item.end, item.date, item.day)">{{item.start}}</el-button>
+                </span>
             </span>
-        </span>
-    </div>
-
+        </div>
+    
     <div class="pl-6 flex-row" id="selection">
       <p class="font-bold text-bg mt-2"> Your Selected Slots</p>
-        <ul class="text-bg">
+        <ul class="">
           <li class="mt-2" v-for="(slot, index) in selectedSlots" :key='slot.id'>  {{slot.day}}
             {{slot.start}}-{{slot.end}}
-            <button @click="removeSlot(index)" class="remove"> x</button>
+            <button @click="removeSlot(index)" class="remove">X</button>
           </li>
         </ul>
     </div>
@@ -31,8 +31,15 @@
 
 <script>
 import moment from 'moment';
-import { DayPilot, DayPilotNavigator } from '@daypilot/daypilot-lite-vue'
+import { DayPilot, DayPilotNavigator } from '@daypilot/daypilot-lite-vue';
 
+//import { library } from '@fortawesome/fontawesome-svg-core';
+//import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+//import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+//library.add(faTrashCan);
+
+import { ElButton } from 'element-plus/lib/index';
+import 'element-plus/theme-chalk/index.css';
 let selection_count = 0;
 
 export default {
@@ -96,8 +103,8 @@ export default {
         selectTime(index, start, end, date, day) {
             // check if there are three selected slots
             if (selection_count >= 3) {
-            // a hint for removing a slot first
-            return;
+                // a hint for removing a slot first
+                return;
             }
             selection_count++;
             this.addSlot({start: start, end: end, date: date, day: day});
@@ -143,17 +150,6 @@ export default {
             }
         },
         loadEvents() {},
-        removeSlot(slot) {
-            // get all slot data and then get index of selected slot in list
-            let items = document.querySelectorAll(".slots");
-            let item = [];
-            for (let i = 0; i < items.length; i++) {
-                item.push(items[i].innerHTML);
-            }
-            let slot_info = slot.start + "-" + slot.end;
-            let index = item.indexOf(slot_info);
-            this.selected_slots.splice(index, 1);
-        },
     },
     mounted() {
         this.loadEvents();
