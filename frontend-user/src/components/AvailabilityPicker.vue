@@ -50,6 +50,7 @@ export default {
     watch: {
         duration(){
             this.loadAvailableSlot();
+            this.selectedSlots=[];
         },
     },
 
@@ -186,7 +187,7 @@ export default {
     },
     mounted() {
         this.loadEvents({});
-        this.loadAvailableSlot();
+        //this.loadAvailableSlot();
     }
     //Add this function to fetch data from semble
 
