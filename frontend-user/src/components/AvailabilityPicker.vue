@@ -51,6 +51,7 @@ export default {
         duration(){
             this.loadAvailableSlot();
             this.selectedSlots=[];
+            this.selectionCount = 0;
         },
     },
 
