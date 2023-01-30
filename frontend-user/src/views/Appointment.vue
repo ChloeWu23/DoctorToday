@@ -214,10 +214,9 @@ export default {
         slotSelect3: this.request.slotSelect3
       };
       DataService.sendEmail(data);
-
-      updateSelection(newValue) {
-        this.selectedSlots = newValue;
-      }
+    },
+    updateSelection(newValue) {
+      this.selectedSlots = newValue;
     }
   }
 }
