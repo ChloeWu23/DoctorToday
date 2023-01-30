@@ -18,9 +18,19 @@ async function sendEmail(data){
             }
         });
 
-        const plainText = "Dear " + data.name + "\n" + "This is the slots you have chosen: \n"
-        + data.slotSelect1 + "\n" + data.slotSelect2 + "\n" + data.slotSelect3 + "\n"
-        + "we will get back to you as soon as possible for the arrangement of yout visit."
+        console.log("here"+typeof(data.slotSelect1))
+        slotSelect1 = JSON.parse(JSON.stringify(data.slotSelect1))
+        slotSelect2 = JSON.parse(JSON.stringify(data.slotSelect2))
+        slotSelect3 = JSON.parse(JSON.stringify(data.slotSelect3))
+        // console.log(slotSelect1)
+        // console.log(typeof(slotSelect1))
+        // console.log(slotSelect1.end)
+        const plainText = "Dear " + data.name + "," + "\n\n"
+        + "These are the slots you have chosen:" + "\n\n"
+        + slotSelect1.start + " - " + slotSelect1.end + " on " + slotSelect1.day + "\n"
+        + slotSelect2.start + " - " + slotSelect2.end + " on " + slotSelect2.day + "\n"
+        + slotSelect3.start + " - " + slotSelect3.end + " on " + slotSelect3.day + "\n\n"
+        + "We will get back to you as soon as possible for the final arrangement of your visit."
         let mailOptions = {
             from: "tiankgt@hotmail.com",
             to: data.email,

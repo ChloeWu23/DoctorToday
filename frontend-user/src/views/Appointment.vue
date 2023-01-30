@@ -205,14 +205,16 @@ export default {
         email: this.request.email,
         name: this.request.name,
         gender: this.request.gender,
-        slotSelect1: this.request.slotSelect1,
-        slotSelect2: this.request.slotSelect2,
-        slotSelect3: this.request.slotSelect3
+        slotSelect1: this.request.selectedSlots[0],
+        slotSelect2: this.request.selectedSlots[1],
+        slotSelect3: this.request.selectedSlots[2]
       };
       DataService.sendEmail(data);
     },
     updateSelection(newValue) {
-      this.selectedSlots = newValue;
+      console.log("in the updateSelection method")
+      this.request.selectedSlots = newValue;
+      console.log(this.request.selectedSlots)
     }
   }
 }
