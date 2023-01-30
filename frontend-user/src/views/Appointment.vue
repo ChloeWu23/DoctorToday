@@ -73,7 +73,7 @@
           below.</div>
 
         <div>
-          <AvailabilityPicker></AvailabilityPicker>
+          <AvailabilityPicker :duration = "request.duration"></AvailabilityPicker>
         </div>
         
         <div class="inline-flex text-gray-700">For the safety of all our patients and staff we are now screening each

@@ -36,10 +36,17 @@ import { DayPilot, DayPilotNavigator } from '@daypilot/daypilot-lite-vue';
 import { Delete } from "@element-plus/icons";
 import { ElButton } from 'element-plus/lib/index';
 import 'element-plus/theme-chalk/index.css';
+import axios from 'axios';
+import { ReactiveEffect } from 'vue';
 
 export default {
     name: 'AvailabilityPicker',
-    props: {},
+    props: {
+        duration:{
+            type: String,
+            required: true
+        }
+    },
     watch: {},
 
     data: function () {
@@ -53,9 +60,11 @@ export default {
               {start: "2023-02-01T09:00:00", end: "2023-02-01T13:30:00"},
               {start: "2023-02-01T14:00:00", end: "2023-02-01T19:00:00"},
             ],
+    
             timeList: [],
             selectedSlots: [],
-            duration: 20,
+            //duration = this.$Appointment.request.duration,
+            //duration: 20,
             open: "10:00",
             close: "18:00",
             disabledTimeEveryDay:[{start: "13:30", end: "14:00"}],
@@ -81,7 +90,6 @@ export default {
                 // "Week" highlights the week of the selected day
                 selectMode: "Day",
                 startDate: DayPilot.Date.today(),
-                selectionDay: DayPilot.Date.today(),
                 onTimeRangeSelected: args => {
                     // get selected day from navigator
                     if (args.day >= DayPilot.Date.today()) {
@@ -100,13 +108,13 @@ export default {
     
     components: {
         Delete,
-        DayPilotNavigator
+        DayPilotNavigator,
     },
 
     computed: {
         datePicker() {
             return this.$refs.datePicker.control;
-        }
+        },
     },
 
     methods: {
@@ -173,6 +181,19 @@ export default {
         this.loadEvents({});
         this.loadAvailableSlot();
     }
+    //Add this function to fetch data from semble
+
+/*
+    async created(){
+        try{
+            const response = await axios.get("http://");
+            this.RealavailabilityList = response.data;
+        
+        } catch (error){
+            console.error(error);
+        }
+    }
+    */
 }
 </script>
 <style>
