@@ -73,9 +73,9 @@
           below.</div>
 
         <div>
-          <AvailabilityPicker :duration = "request.duration"></AvailabilityPicker>
+          <AvailabilityPicker :duration="request.duration" @slotSelection="updateSelection"></AvailabilityPicker>
         </div>
-        
+
         <div class="inline-flex text-gray-700">For the safety of all our patients and staff we are now screening each
           patient for possible symptoms of
           COVID-19. Please answer all questions to the best of your knowledge so that we can offer you the best care. We
@@ -182,9 +182,10 @@ export default {
         cough: 'false',
         shortBreath: 'false',
         respiratoryProblems: 'false',
-        slotSelect1:'',
-        slotSelect2:'',
-        slotSelect3:''
+        selectedSlots: [],
+        //slotSelect1:'',
+        //slotSelect2:'',
+        //slotSelect3:''
       },
       services: servicesData.appointmentDropDown,
       isSending: false
@@ -198,6 +199,8 @@ export default {
           vm.request.duration = service.time;
         }
       }
+      //console.log(1);
+      //console.log(this.selectedSlots[0]);
     }
   },
   methods: {
@@ -211,6 +214,10 @@ export default {
         slotSelect3: this.request.slotSelect3
       };
       DataService.sendEmail(data);
+
+      updateSelection(newValue) {
+        this.selectedSlots = newValue;
+      }
     }
   }
 }

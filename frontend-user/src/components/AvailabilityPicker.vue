@@ -47,7 +47,11 @@ export default {
             required: true
         }
     },
-    watch: {},
+    watch: {
+        duration(){
+            this.loadAvailableSlot();
+        },
+    },
 
     data: function () {
         return {
@@ -136,10 +140,13 @@ export default {
         },
         addSlot(slot) {
             this.selectedSlots.push(slot);
+            this.$emit("slotSelection", this.selectedSlots);
+            //console.log(this.selectedSlots[0].start);
         },
         removeSlot(index) {
             this.selectionCount--;
             this.selectedSlots.splice(index, 1);
+            this.$emit("slotSelection", this.selectedSlots);
         },
         loadAvailableSlot() {
             // clear timeList
