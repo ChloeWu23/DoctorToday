@@ -148,11 +148,10 @@
             autocomplete="off"></textarea>
         </label>
       </div>
-      <button @click="sendEmail">submit</button>
+      <button @click="sendEmail" class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">submit</button>
       <!-- <input type="submit" @submit="submitForm"
         class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white"> -->
     </form>
-    <div v-bind="request">{{ request }}</div>
   </div>
 </template>
 
