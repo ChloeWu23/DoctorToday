@@ -3,7 +3,6 @@
     <h1 class="text-gray-700 m-10">Appointment Request Form</h1>
     <div class="separator"></div>
 
-    <div v-if="isSending" class="loading">Sending...</div>
     <form class="m-10 min-w-fit max-w-sm md:max-w-lg">
       <div class="grid md:grid-cols-2 gap-6">
         <label class="block">
@@ -73,9 +72,9 @@
           below.</div>
 
         <div>
-          <AvailabilityPicker></AvailabilityPicker>
+          <AvailabilityPicker :duration="request.duration" @slotSelection="updateSelection"></AvailabilityPicker>
         </div>
-        
+
         <div class="inline-flex text-gray-700">For the safety of all our patients and staff we are now screening each
           patient for possible symptoms of
           COVID-19. Please answer all questions to the best of your knowledge so that we can offer you the best care. We
@@ -148,11 +147,8 @@
             autocomplete="off"></textarea>
         </label>
       </div>
-      <button @click="sendEmail">submit</button>
-      <!-- <input type="submit" @submit="submitForm"
-        class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white"> -->
+      <button @click="sendEmail" class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
     </form>
-    <div v-bind="request">{{ request }}</div>
   </div>
 </template>
 
@@ -182,9 +178,10 @@ export default {
         cough: 'false',
         shortBreath: 'false',
         respiratoryProblems: 'false',
-        slotSelect1:'',
-        slotSelect2:'',
-        slotSelect3:''
+        selectedSlots: [],
+        //slotSelect1:'',
+        //slotSelect2:'',
+        //slotSelect3:''
       },
       services: servicesData.appointmentDropDown,
       isSending: false
@@ -198,6 +195,8 @@ export default {
           vm.request.duration = service.time;
         }
       }
+      //console.log(1);
+      //console.log(this.selectedSlots[0]);
     }
   },
   methods: {
@@ -206,11 +205,16 @@ export default {
         email: this.request.email,
         name: this.request.name,
         gender: this.request.gender,
-        slotSelect1: this.request.slotSelect1,
-        slotSelect2: this.request.slotSelect2,
-        slotSelect3: this.request.slotSelect3
+        slotSelect1: this.request.selectedSlots[0],
+        slotSelect2: this.request.selectedSlots[1],
+        slotSelect3: this.request.selectedSlots[2]
       };
       DataService.sendEmail(data);
+    },
+    updateSelection(newValue) {
+      console.log("in the updateSelection method")
+      this.request.selectedSlots = newValue;
+      console.log(this.request.selectedSlots)
     }
   }
 }
