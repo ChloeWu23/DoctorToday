@@ -1,7 +1,7 @@
 <template>
     <div class="text-gray-700">
         <h1 class="text-gray-700 m-6 md:m-10 font-bold">New Patient Registration Form</h1>
-        <form class="mx-6 md:mx-20 min-w-fit">
+        <form class="m-10 min-w-fit max-w-sm md:max-w-lg">
             <div class="grid md:grid-cols-2 gap-10">
                 <label class="block">
                     <span>First name</span>
@@ -82,9 +82,8 @@
                     </div>
                 </label>
             </div>
-            <input type="submit" @submit="submitForm"
-                class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">
-            <div class="m-10" v-bind="register">{{ register }}</div>
+            <button type="submit" @submit="submitForm"
+                class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
         </form>
     </div>
 </template>

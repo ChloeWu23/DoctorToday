@@ -3,7 +3,6 @@
     <h1 class="text-gray-700 m-10">Appointment Request Form</h1>
     <div class="separator"></div>
 
-    <div v-if="isSending" class="loading">Sending...</div>
     <form class="m-10 min-w-fit max-w-sm md:max-w-lg">
       <div class="grid md:grid-cols-2 gap-6">
         <label class="block">
@@ -148,9 +147,7 @@
             autocomplete="off"></textarea>
         </label>
       </div>
-      <button @click="sendEmail" class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">submit</button>
-      <!-- <input type="submit" @submit="submitForm"
-        class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white"> -->
+      <button @click="sendEmail" class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
     </form>
   </div>
 </template>
