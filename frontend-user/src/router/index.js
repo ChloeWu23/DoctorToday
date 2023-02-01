@@ -4,7 +4,7 @@ import Home from '../components/Home.vue'
 import Appointment from '../views/Appointment.vue'
 import NewPatientRegister from '../views/NewPatientRegister.vue'
 import ServicesOverview from '../views/ServicesOverview.vue'
-//import TravelGuides from '../views/TravelGuides.vue'
+import TravelGuides from '../views/TravelGuides.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 
 const routes = [
@@ -21,11 +21,11 @@ const routes = [
       name: 'Services & Prices',
       component: ServicesOverview
     },
-    //{
-    //  path: 'travelGuides',
-    //  name: 'TravelGuides',
-    //  component: TravelGuides
-    //},
+    {
+     path: 'travelGuides',
+     name: 'TravelGuides',
+     component: TravelGuides
+    },
     {
       path: 'appointment',
       name: 'Appointment',
