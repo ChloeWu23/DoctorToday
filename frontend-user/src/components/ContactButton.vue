@@ -46,7 +46,7 @@ export default {
       }
       const all = url + "?phone=" + this.phoneNumber + `&text=${this.text}`;
       //window.open(all, "_blank");
-      window.open("https://wa.me/447879635767");
+      window.open("https://wa.me/447879635767","_blank");
     },
   },
 };
@@ -74,21 +74,26 @@ export default {
           pattern="https://elfsight.com/assets/chats/patterns/whatsapp.png"
           class="WhatsappChat__Component-sc-Yvjha whatsapp-chat-body"
         >
+        
           <ContactMessage :messages="messages" :companyName="companyName" />
         </div>
 
         <div class="blanter-msg">
-          <textarea
+          <!--
+            <textarea
             id="chat-input"
             placeholder="Write a response"
             maxlength="120"
             row="1"
             v-model="text"
           ></textarea>
-          <button id="send-it" @click="openLink">
-            <svg viewBox="0 0 448 448">
+          -->
+          
+          <button id="send-it" style = "width:500px; font-size: 15px;" @click="openLink">
+            <!--<svg viewBox="0 0 480 480">
               <path d="M.213 32L0 181.333 320 224 0 266.667.213 416 448 224z" />
-            </svg>
+            </svg>-->
+            CLick Me to WhatsApp
           </button>
         </div>
       </div>
@@ -264,7 +269,7 @@ textarea#chat-input {
   font-size: 14px;
 }
 button#send-it {
-  width: 30px;
+  width: 200px;
   font-weight: 700;
   border-color: transparent;
   cursor: pointer;
