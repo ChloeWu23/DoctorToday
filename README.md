@@ -1,4 +1,5 @@
 # doctor-today
+This is the repository for group project.
 
 ## Required packages
   npm install -D tailwindcss
