@@ -10,7 +10,7 @@
         <RequestAppointmentButton></RequestAppointmentButton>
         <NewPatientButton></NewPatientButton>
         <ContactIcon />
-        <ContactButton phoneNumber="+447879635767" />
+        <ContactButton />
         <MapIcon />
     </div>
     <div class="col-span-3 text-md p-10">

@@ -169,7 +169,7 @@ export default {
         telephone: '',
         gender: '',
         service: '',
-        duration: '20',
+        duration: '999',
         message: '',
         visitedBefore: 'false',
         travelOutside: 'false',

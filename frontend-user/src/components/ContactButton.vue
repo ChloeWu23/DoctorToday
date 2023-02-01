@@ -46,7 +46,7 @@ export default {
       }
       const all = url + "?phone=" + this.phoneNumber + `&text=${this.text}`;
       //window.open(all, "_blank");
-      window.open("https://wa.me/447879635767","_blank");
+      window.open("https://wa.me/447879635767");
     },
   },
 };
@@ -190,7 +190,7 @@ button.blantershow-chat svg {
   padding-left: 10px;
   height: 60px;
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   color: #fff;
 }
 .companyLogo {

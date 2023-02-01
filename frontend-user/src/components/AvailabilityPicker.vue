@@ -5,7 +5,6 @@
         </div>
 
         <div class="flex-col pl-3">
-            <p v-if="noAvailability"> No availability </p>
             <div class="flex-col p-0 mb-3">
                 <span class="" v-for="(item,index) in timeList" :key="item.id">
                     <span class="">
@@ -17,10 +16,12 @@
             </div>
     
             <div class="pl-2 flex-row" id="selection">
+                <p class="text-xl mb-2" v-if="duration === '999'">Please select a service first</p>
+                <p class="text-xl mb-2" v-if="noAvailability && duration != '999'">No availability</p>
                 <p class="font-bold text-lg mt-1 mb-1"> Your Preferred Slots</p>
                 <ul class="">
-                    <li class="mt-2 text-base" v-for="(slot, index) in selectedSlots" :key='slot.id'>  {{slot.day}}
-                        {{slot.start}} - {{slot.end}}
+                    <li class="mt-2 text-base" v-for="(slot, index) in selectedSlots" :key='slot.id'>
+                        {{slot.start}} - {{slot.end}} on {{slot.day}}
                         <el-button size="small" plain class="text-sm" @click="removeSlot(index)">
                             <el-icon class="el-icon-delete"><Delete /></el-icon>
                         </el-button>
@@ -45,7 +46,8 @@ export default {
     props: {
         duration:{
             type: String,
-            required: true
+            required: true,
+            default: 100,
         }
     },
     watch: {
@@ -144,7 +146,6 @@ export default {
         addSlot(slot) {
             this.selectedSlots.push(slot);
             this.$emit("slotSelection", this.selectedSlots);
-            //console.log(this.selectedSlots[0].start);
         },
         removeSlot(index) {
             this.selectionCount--;
