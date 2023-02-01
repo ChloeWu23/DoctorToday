@@ -9,9 +9,11 @@
     <div class="col-span-6 flex justify-end">
         <RequestAppointmentButton></RequestAppointmentButton>
         <NewPatientButton></NewPatientButton>
+        <ContactIcon />
+        <MapIcon />
     </div>
     <div class="col-span-3 text-md p-10">
-      We offer pre-booked and walk-in appointments to everyone, irrespective of registration with an NHS doctor, private
+      We offer pre-booked appointments to everyone, irrespective of registration with an NHS doctor, private
       medical insurance or visitor status. Walk-in patients are welcome during our clinical hours, however booking an
       appointment is strongly recommended due to possible long waiting times as priority is given to booked
       appointments.
@@ -25,12 +27,14 @@
 <script>
 import RequestAppointmentButton from './RequestAppointmentButton.vue';
 import NewPatientButton from './NewPatientButton.vue';
+import ContactIcon from './ContactIcon.vue';
+import MapIcon from './MapIcon.vue'
 
 
 export default {
   data() {
     return {};
   },
-  components: { RequestAppointmentButton, NewPatientButton }
+  components: { RequestAppointmentButton, NewPatientButton, ContactIcon, MapIcon }
 }
 </script>
