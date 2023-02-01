@@ -59,7 +59,7 @@
             ]
         }
     ],
-    "servicesDetails": [
+    "ServiceDetails": [
         {
             "id": 0,
             "name": "Standard GP consultation (20 minutes, no additional charges for prescription or referrals)",

@@ -15,13 +15,13 @@
                 </span> -->
                 <span>
                     <li>
-                        <RouterLink to="/gpconsultations">{{ service.description_1 }}</RouterLink>
+                        <RouterLink to="/services/gpconsultations">{{ service.description_1 }}</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/gpconsultations">{{ service.description_2 }}</RouterLink>
+                        <RouterLink to="/services/gpconsultations">{{ service.description_2 }}</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/gpconsultations">{{ service.description_3 }}</RouterLink>
+                        <RouterLink to="/services/gpconsultations">{{ service.description_3 }}</RouterLink>
                     </li>
                 </span>
             </div>

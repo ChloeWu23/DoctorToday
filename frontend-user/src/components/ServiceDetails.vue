@@ -1,6 +1,7 @@
 <template>
+    <div>TODO: Send get request to backend to obtain subservices, prices and descriptions under this service: {{ service }}</div>
     <div class="w-full h-full shadow-md accordion accordion-flush" id="accordionSideBar">
-        <ul class="w-full text-sm accordion-item border-sky-700 hover:bg-gray-100" v-for="item in servicesDetails">
+        <ul class="w-full text-sm accordion-item border-sky-700 hover:bg-gray-100" v-for="item in ServiceDetails">
             <div class="accordion-header">
                 <button class="accordion-button flex items-center text-left w-full transition focus:outline-none p-2"
                     type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse' + item.id" aria-expanded="true"
@@ -27,7 +28,8 @@ import 'tw-elements';
 export default {
     data() {
         return {
-            servicesDetails: services.servicesDetails
+            service: this.$route.params.serviceName,
+            ServiceDetails: services.ServiceDetails //to be replaced with a dataroute call
         }
     }
 }
