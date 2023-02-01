@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col justify-center">
         <div>
             <Logo></Logo>
             <nav class="flex items-center justify-between flex-wrap bg-sky-700 p-6">
@@ -7,10 +7,10 @@
                 <SearchBox></SearchBox>
             </nav>
         </div>
-        <div class="h-full">
+        <div class="h-full md:max-w-screen-lg self-center">
             <RouterView></RouterView>
         </div>
-        <div class="flex items-center justify-between flex-wrap bg-sky-700 p-2 ">
+        <div class="flex items-center justify-between flex-wrap bg-sky-700 p-2">
             <Footer></Footer>
         </div>
     </div>
