@@ -58,5 +58,25 @@
                 }
             ]
         }
+    ],
+    "servicesDetails": [
+        {
+            "id": 0,
+            "name": "Standard GP consultation (20 minutes, no additional charges for prescription or referrals)",
+            "price": 100,
+            "description": "PLACEHOLDER FOR DESCRIPTION"
+        },
+        {
+            "id": 1,
+            "name": "Follow-up GP consultation within one week of initial consultation for same concern",
+            "price": 100,
+            "description": "PLACEHOLDER FOR DESCRIPTION"
+        },
+        {
+            "id": 2,
+            "name": "In-depth GP consultation with clinician",
+            "price": 100,
+            "description": "PLACEHOLDER FOR DESCRIPTION"
+        }
     ]
 }

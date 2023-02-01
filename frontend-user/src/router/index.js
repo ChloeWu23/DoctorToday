@@ -3,7 +3,7 @@ import Header from '../views/Header.vue'
 import Home from '../components/Home.vue'
 import Appointment from '../views/Appointment.vue'
 import NewPatientRegister from '../views/NewPatientRegister.vue'
-import Services from '../views/Services.vue'
+import ServicesOverview from '../views/ServicesOverview.vue'
 //import TravelGuides from '../views/TravelGuides.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 
@@ -19,7 +19,7 @@ const routes = [
     {
       path: 'services',
       name: 'Services & Prices',
-      component: Services
+      component: ServicesOverview
     },
     //{
     //  path: 'travelGuides',
@@ -35,6 +35,11 @@ const routes = [
       path: 'newPatientRegister',
       name: 'NewPatientRegister',
       component: NewPatientRegister
+    },
+    {
+      path: "/gpconsultations",
+      name: "GP Consultation",
+      component: () => import("../components/SubServicesNav")
     },
     {
       path: "/test",
