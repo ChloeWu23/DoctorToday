@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center bg-white text-sky-700 m-10">
-        <span class="font-semibold md:text-xl tracking-tight"><a href="tel:+4402074331444"><svg width="24px"
+        <span class="font-semibold md:text-xl tracking-tight"><a href="https://wa.me/447879635767"><svg width="24px"
                     height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                     color="#2252a0">
                     <path

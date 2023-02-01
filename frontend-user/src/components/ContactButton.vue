@@ -45,15 +45,13 @@ export default {
         url = "whatsapp://send";
       }
       const all = url + "?phone=" + this.phoneNumber + `&text=${this.text}`;
-      window.open(all, "_blank");
+      //window.open(all, "_blank");
+      window.open("https://wa.me/447879635767");
     },
   },
 };
 </script>
 <template>
-  <a aria-label="Chat on WhatsApp" href="https://wa.me/447879635767"> 
-    <img alt="Chat on WhatsApp" src="WhatsAppButtonGreenLarge.svg" /> 
-  </a>
   <div id="wp-widget">
     <div v-if="control" id="whatsapp-chat">
       <div class="whatsapp-chat-header">
