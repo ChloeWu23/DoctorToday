@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import services from '../assets/config.json'
 import DataService from '../dataRoutes/DataService';
 
 export default {

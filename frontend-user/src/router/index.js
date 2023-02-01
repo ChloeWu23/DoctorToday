@@ -37,7 +37,7 @@ const routes = [
       component: NewPatientRegister
     },
     {
-      path: "/services/:serviceName",
+      path: "services/:serviceName",
       component: () => import("../components/ServiceDetails")
     },
     {
