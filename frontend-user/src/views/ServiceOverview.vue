@@ -5,15 +5,19 @@
             the following categories.</p>
         <p>Please click a category name to skip directly to detailed service and pricing information</p>
     </div>
+    <div>TODO: replace static router link & bg img link with shortname/path value in service object returned from GET</div>
     <div class="m-10 grid gap-10 md:grid-cols-3 divide-x grid-auto-flow: column">
         <div v-for="service in fullServices" :key="service.serviceName">
-            <div class="bg-sky-100 rounded border-sky-700 min-h-full p-4 drop-shadow-md">
+            <div class="bg-[url('assets/gpconsultations.png')] bg-sky-100 bg-no-repeat bg-right-bottom rounded border-sky-700 min-h-full p-4 drop-shadow-md">
                 <p class="font-bold text-sky-600">{{ service.serviceName }}</p>
                 <p class="my-2">include:</p>
                 <!-- <span v-for="subCatetory in service.children" :key="service.children.name">
                     <li><a :href="subCatetory.path">{{ subCatetory.name }}</a></li>
                 </span> -->
                 <span>
+                    <!-- <li>
+                        <RouterLink :to="'/services/'+service.shortname">{{ service.description_1 }}</RouterLink>
+                    </li> -->
                     <li>
                         <RouterLink to="/services/gpconsultations">{{ service.description_1 }}</RouterLink>
                     </li>
@@ -35,7 +39,7 @@ import DataService from '../dataRoutes/DataService';
 export default {
     data() {
         return {
-            fullServices: ''
+            fullServices: '',
         }
     },
     mounted() {
