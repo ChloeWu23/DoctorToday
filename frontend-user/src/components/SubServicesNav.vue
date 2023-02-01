@@ -1,12 +1,12 @@
 <template>
-    <div class="max-w-xl m-2 md:m-8 h-full shadow-md accordion accordion-flush" id="accordionSideBar">
-        <ul class="text-sm accordion-item border-sky-700 hover:bg-gray-100" v-for="item in servicesDetails">
+    <div class="w-full h-full shadow-md accordion accordion-flush" id="accordionSideBar">
+        <ul class="w-full text-sm accordion-item border-sky-700 hover:bg-gray-100" v-for="item in servicesDetails">
             <div class="accordion-header">
                 <button class="accordion-button flex items-center text-left w-full transition focus:outline-none p-2"
                     type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse' + item.id" aria-expanded="true"
                     aria-controls="'#collapse' + item.id">
                     <div class="grid grid-cols-5 w-full">
-                        <div class="col-span-3 text-sky-700">{{ item.name }}</div>
+                        <div class="col-span-3 p-2 text-sky-700">{{ item.name }}</div>
                         <span></span>
                         <p class="p-2 text-sky-700 ">£{{ item.price }}</p>
                     </div>

@@ -7,7 +7,7 @@
                 <SearchBox></SearchBox>
             </nav>
         </div>
-        <div class="h-full md:max-w-screen-lg self-center">
+        <div class="h-full lg:max-w-screen-lg self-center m-2">
             <RouterView></RouterView>
         </div>
         <div class="flex items-center justify-between flex-wrap bg-sky-700 p-2">
