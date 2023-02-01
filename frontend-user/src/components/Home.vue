@@ -20,6 +20,7 @@
     </div>
     <div class="col-span-3 m-10 bg-gray-100">
       PLACEHOLDER FOR MONTH COMPONENT
+      <Widget phoneNumber="+4478796357" />
     </div>
   </div>
 </template>
@@ -29,12 +30,12 @@ import RequestAppointmentButton from './RequestAppointmentButton.vue';
 import NewPatientButton from './NewPatientButton.vue';
 import ContactIcon from './ContactIcon.vue';
 import MapIcon from './MapIcon.vue'
-
+import Widget from "./Widget.vue";
 
 export default {
   data() {
     return {};
   },
-  components: { RequestAppointmentButton, NewPatientButton, ContactIcon, MapIcon }
+  components: { Widget, RequestAppointmentButton, NewPatientButton, ContactIcon, MapIcon }
 }
 </script>
