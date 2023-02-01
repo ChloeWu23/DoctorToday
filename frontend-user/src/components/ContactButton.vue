@@ -1,9 +1,9 @@
 <script>
-import Message from "./Message.vue";
+import ContactMessage from "./ContactMessage.vue";
 export default {
   
   components: {
-    Message,
+    ContactMessage,
   },
   
   data() {
@@ -73,7 +73,7 @@ export default {
           pattern="https://elfsight.com/assets/chats/patterns/whatsapp.png"
           class="WhatsappChat__Component-sc-Yvjha whatsapp-chat-body"
         >
-          <Message :messages="messages" :companyName="companyName" />
+          <ContactMessage :messages="messages" :companyName="companyName" />
         </div>
 
         <div class="blanter-msg">
@@ -178,7 +178,7 @@ button.blantershow-chat svg {
   transform: scale(1.2);
 }
 .whatsapp-chat-header {
-  background: #095e54;
+  background: rgb(3, 105, 161);
   display: inline-flex;
   align-items: center;
   padding-left: 10px;

@@ -5,6 +5,7 @@
         </div>
 
         <div class="flex-col pl-3">
+            <p v-if="noAvailability"> No availability </p>
             <div class="flex-col p-0 mb-3">
                 <span class="" v-for="(item,index) in timeList" :key="item.id">
                     <span class="">
@@ -50,7 +51,7 @@ export default {
     watch: {
         duration(){
             this.loadAvailableSlot();
-            this.selectedSlots=[];
+            this.selectedSlots = [];
             this.selectionCount = 0;
         },
     },
@@ -58,15 +59,15 @@ export default {
     data: function () {
         return {
             availabilityList: [
-              {start: "2023-01-29T09:00:00", end: "2023-01-29T13:30:00"},
-              {start: "2023-01-29T14:00:00", end: "2023-01-29T19:00:00"},
-              {start: "2023-01-30T09:00:00", end: "2023-01-30T13:30:00"},
-              {start: "2023-01-31T09:00:00", end: "2023-01-31T13:30:00"},
-              {start: "2023-01-31T14:00:00", end: "2023-01-31T19:00:00"},
+              {start: "2023-02-02T09:00:00", end: "2023-02-02T13:30:00"},
+              {start: "2023-02-02T14:00:00", end: "2023-02-02T19:00:00"},
+              {start: "2023-02-03T09:00:00", end: "2023-02-03T13:30:00"},
+              {start: "2023-02-03T09:00:00", end: "2023-02-03T13:30:00"},
+              {start: "2023-02-04T14:00:00", end: "2023-02-04T19:00:00"},
               {start: "2023-02-01T09:00:00", end: "2023-02-01T13:30:00"},
               {start: "2023-02-01T14:00:00", end: "2023-02-01T19:00:00"},
             ],
-    
+            noAvailability: true,
             timeList: [],
             selectedSlots: [],
             //duration = this.$Appointment.request.duration,
@@ -153,6 +154,7 @@ export default {
         loadAvailableSlot() {
             // clear timeList
             this.timeList.length = 0;
+            this.noAvailability = true;
 
             for (let i = 0; i < this.availabilityList.length; i++) {    
                 let startOfSlot = moment(this.availabilityList[i].start);
@@ -176,10 +178,12 @@ export default {
                                           day: moment(this.selectedDate).toDate().toString().slice(0, 15), // day of week
                                           flag: false};       
                         this.timeList.push(singleSlot);
-                }
+                        this.noAvailability = false;
+                    }
                 // find next possible slot
                 startOfSlot = endOfSlot;
                 endOfSlot = startOfSlot.clone().add(this.duration, "minutes");
+                this.noAvailability = false;
               }
             }
         },

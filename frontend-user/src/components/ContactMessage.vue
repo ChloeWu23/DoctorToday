@@ -19,6 +19,8 @@
   </div>
 </template>
 <script>
+import moment from 'moment'
+
 export default {
   props: {
     messages: {
@@ -32,7 +34,7 @@ export default {
   },
   computed: {
     time() {
-      return new Date().getHours() + ":" + new Date().getMinutes();
+      return moment().format("HH:mm");
     },
   },
 };
