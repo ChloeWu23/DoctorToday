@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const SubService = sequelize.define("SubService", {
+    const People = sequelize.define("People", {
         staff_id: {
             type: Sequelize.INTEGER,
             primaryKey: true
@@ -28,5 +28,5 @@ module.exports = (sequelize, Sequelize) => {
         }
     })
 
-    return SubService;
+    return People;
 }
