@@ -1,21 +1,23 @@
 <template>
-    <div>TODO: Send get request to backend to obtain subservices, prices and descriptions under this service: {{ service }}</div>
-    <div class="w-full h-full shadow-md accordion accordion-flush" id="accordionSideBar">
+    <div>TODO: Send get request to backend to obtain subservices, prices and descriptions under this service: {{
+        service
+    }}</div>
+    <div class="w-full h-full shadow-md accordion accordion-flush" id="accordion">
         <ul class="w-full text-sm accordion-item border-sky-700 hover:bg-gray-100" v-for="item in ServiceDetails">
             <div class="accordion-header">
-                <button class="accordion-button flex items-center text-left w-full transition focus:outline-none p-2"
-                    type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse' + item.id" aria-expanded="true"
+                <button class="accordion-button flex items-center text-left w-full focus:outline-none p-2" type="button"
+                    data-bs-toggle="collapse" :data-bs-target="'#collapse' + item.sub_service_id" aria-expanded="true"
                     aria-controls="'#collapse' + item.id">
                     <div class="grid grid-cols-5 w-full">
-                        <div class="col-span-3 p-2 text-sky-700">{{ item.name }}</div>
+                        <div class="col-span-3 p-2 text-sky-700">{{ item.sub_service_name }}</div>
                         <span></span>
-                        <p class="p-2 text-sky-700 ">£{{ item.price }}</p>
+                        <p class="p-2 text-sky-700">£{{ item.price }}</p>
                     </div>
                 </button>
             </div>
-            <div class="accordion-collapse collapse" :id="'collapse' + item.id" aria-labelledby="'#collapse' + item.id"
-                data-bs-parent="#accordionSideBar">
-                <div class="accordion-body">{{ item.description }}</div>
+            <div class="accordion-collapse collapse transition-none" :id="'collapse' + item.sub_service_id"
+                aria-labelledby="'#collapse' + item.id" data-bs-parent="#accordion">
+                <div class="accordion-body p-4" style="transition: color 0s">{{ item.description }}</div>
             </div>
         </ul>
     </div>
@@ -23,6 +25,7 @@
 
 <script>
 import services from '../assets/config.json'
+import DataService from '../dataRoutes/DataSubService';
 import 'tw-elements';
 
 export default {
@@ -31,7 +34,17 @@ export default {
             service: this.$route.params.serviceName,
             ServiceDetails: services.ServiceDetails //to be replaced with a dataroute call
         }
-    }
+    },
+    mounted() {
+        DataService.get(0)
+            .then(response => {
+                console.log(response.data);
+                this.ServiceDetails = response.data;
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    },
 }
 
 </script>
