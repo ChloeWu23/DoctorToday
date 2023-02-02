@@ -1,56 +1,3 @@
-<script>
-import ContactMessage from "./ContactMessage.vue";
-export default {
-  
-  components: {
-    ContactMessage,
-  },
-  
-  data() {
-    return {
-      control: false,
-      text: null,
-    };
-  },
-  props: {
-    companyName: {
-      type: String,
-      default: "Doctor Today",
-    },
-    textReply: {
-      type: String,
-      default: "Typically replies within an hour",
-    },
-    messages: {
-      type: Array,
-      default: () => ["Hi there 👋 How can I help you ?"],
-    },
-    companyLogo: {
-      type: String,
-      default: "",
-    },
-    phoneNumber: {
-      type: String,
-      default: "",
-    },
-  },
-  methods: {
-    openLink() {
-      let url = "https://web.whatsapp.com/send";
-      if (
-        /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        url = "whatsapp://send";
-      }
-      const all = url + "?phone=" + this.phoneNumber + `&text=${this.text}`;
-      //window.open(all, "_blank");
-      window.open("https://wa.me/447879635767");
-    },
-  },
-};
-</script>
 <template>
   <div id="wp-widget">
     <div v-if="control" id="whatsapp-chat">
@@ -93,7 +40,7 @@ export default {
             <!--<svg viewBox="0 0 480 480">
               <path d="M.213 32L0 181.333 320 224 0 266.667.213 416 448 224z" />
             </svg>-->
-            CLick Me to WhatsApp
+            Chat to us on WhatsApp
           </button>
         </div>
       </div>
@@ -122,6 +69,63 @@ export default {
     </button>
   </div>
 </template>
+
+<script>
+import ContactMessage from "./ContactMessage.vue";
+export default {
+  
+  components: {
+    ContactMessage,
+  },
+  
+  data() {
+    return {
+      control: false,
+      text: null,
+    };
+  },
+  props: {
+    companyName: {
+      type: String,
+      default: "Doctor Today",
+    },
+    textReply: {
+      type: String,
+      default: "Typically replies within an hour",
+    },
+    messages: {
+      type: Array,
+      default: () => ["Hi there 👋 How can I help you ?"],
+    },
+    companyLogo: {
+      type: String,
+      default: "",
+    },
+    phoneNumber: {
+      type: String,
+      default: "",
+    },
+  },
+  methods: {
+    openLink() {
+      /*
+      let url = "https://web.whatsapp.com/send";
+      if (
+        /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        url = "whatsapp://send";
+      }
+      const all = url + "?phone=" + this.phoneNumber + `&text=${this.text}`;
+      //window.open(all, "_blank");
+      */
+      window.open("https://wa.me/447879635767");
+    },
+  },
+};
+</script>
+
 <style>
 button {
   outline: none;
