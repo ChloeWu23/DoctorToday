@@ -7,10 +7,10 @@
     </div>
     <div>TODO: replace static bg img link with shortname/path value in service object returned from GET</div>
     <div class="m-10 grid gap-10 md:grid-cols-3 divide-x grid-auto-flow: column">
-        <div v-for="service in fullServices" :key="service.serviceName">
+        <div v-for="service in fullServices">
             <div
                 class="bg-[url('assets/gpconsultations.png')] bg-sky-100 bg-no-repeat bg-right-bottom rounded border-sky-700 p-4 drop-shadow-md h-full">
-                <RouterLink :to="'/services/' + service.serviceName.replace(/\s+/g, '-').toLowerCase()">
+                <RouterLink :to="'services/' + service.serviceName.replace(/\s+/g, '-').toLowerCase()">
                     <p class="font-bold text-sky-600">
                         {{ service.serviceName }}
                     </p>
