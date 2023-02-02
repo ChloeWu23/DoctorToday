@@ -16,10 +16,12 @@
             </div>
     
             <div class="pl-2 flex-row" id="selection">
+                <p class="text-xl mb-2" v-if="duration === '999'">Please select a service first</p>
+                <p class="text-xl mb-2" v-if="noAvailability && duration != '999'">No availability</p>
                 <p class="font-bold text-lg mt-1 mb-1"> Your Preferred Slots</p>
                 <ul class="">
-                    <li class="mt-2 text-base" v-for="(slot, index) in selectedSlots" :key='slot.id'>  {{slot.day}}
-                        {{slot.start}} - {{slot.end}}
+                    <li class="mt-2 text-base" v-for="(slot, index) in selectedSlots" :key='slot.id'>
+                        {{slot.start}} - {{slot.end}} on {{slot.day}}
                         <el-button size="small" plain class="text-sm" @click="removeSlot(index)">
                             <el-icon class="el-icon-delete"><Delete /></el-icon>
                         </el-button>
@@ -44,13 +46,14 @@ export default {
     props: {
         duration:{
             type: String,
-            required: true
+            required: true,
+            default: 100,
         }
     },
     watch: {
         duration(){
             this.loadAvailableSlot();
-            this.selectedSlots=[];
+            this.selectedSlots = [];
             this.selectionCount = 0;
         },
     },
@@ -58,15 +61,15 @@ export default {
     data: function () {
         return {
             availabilityList: [
-              {start: "2023-01-29T09:00:00", end: "2023-01-29T13:30:00"},
-              {start: "2023-01-29T14:00:00", end: "2023-01-29T19:00:00"},
-              {start: "2023-01-30T09:00:00", end: "2023-01-30T13:30:00"},
-              {start: "2023-01-31T09:00:00", end: "2023-01-31T13:30:00"},
-              {start: "2023-01-31T14:00:00", end: "2023-01-31T19:00:00"},
+              {start: "2023-02-02T09:00:00", end: "2023-02-02T13:30:00"},
+              {start: "2023-02-02T14:00:00", end: "2023-02-02T19:00:00"},
+              {start: "2023-02-03T09:00:00", end: "2023-02-03T13:30:00"},
+              {start: "2023-02-03T09:00:00", end: "2023-02-03T13:30:00"},
+              {start: "2023-02-04T14:00:00", end: "2023-02-04T19:00:00"},
               {start: "2023-02-01T09:00:00", end: "2023-02-01T13:30:00"},
               {start: "2023-02-01T14:00:00", end: "2023-02-01T19:00:00"},
             ],
-    
+            noAvailability: true,
             timeList: [],
             selectedSlots: [],
             //duration = this.$Appointment.request.duration,
@@ -143,7 +146,6 @@ export default {
         addSlot(slot) {
             this.selectedSlots.push(slot);
             this.$emit("slotSelection", this.selectedSlots);
-            //console.log(this.selectedSlots[0].start);
         },
         removeSlot(index) {
             this.selectionCount--;
@@ -153,6 +155,7 @@ export default {
         loadAvailableSlot() {
             // clear timeList
             this.timeList.length = 0;
+            this.noAvailability = true;
 
             for (let i = 0; i < this.availabilityList.length; i++) {    
                 let startOfSlot = moment(this.availabilityList[i].start);
@@ -176,10 +179,12 @@ export default {
                                           day: moment(this.selectedDate).toDate().toString().slice(0, 15), // day of week
                                           flag: false};       
                         this.timeList.push(singleSlot);
-                }
+                        this.noAvailability = false;
+                    }
                 // find next possible slot
                 startOfSlot = endOfSlot;
                 endOfSlot = startOfSlot.clone().add(this.duration, "minutes");
+                this.noAvailability = false;
               }
             }
         },
