@@ -31,13 +31,24 @@ app.use(express.static(`${__dirname}/public`));
 
 const serviceRouter = require('./routes/serviceRoutes');
 const adminServiceRouter = require('./routes/adminServiceRoutes');
-const emailServiceRouter = require('./routes/emailServiceRoutes');
+const adminSubServiceRouter = require('./routes/adminSubServiceRoutes');
+const adminDisableTimeRouter = require('./routes/appointmentRoutes');
+const openingHoursRouter = require('./routes/openingHoursRoutes');
+const faqRouter = require('./routes/faqRoutes');
+const travelRouter = require('./routes/travelRoutes');
+const otherInfoRouter = require('./routes/otherInfoRoutes');
+
 // app.use('/', serviceRouter);
-app.use('/service', serviceRouter); // serviceRouter.get()
+app.use('/service', serviceRouter); 
 
-app.use('/admin/service', adminServiceRouter) // adminServiceRouter.post()
+app.use('/admin/service', adminServiceRouter) ;
+app.use('/admin/sub-service', adminSubServiceRouter);
 
-app.use('/sendEmail', emailServiceRouter) //emailServiceRoutes.get()
+app.use('/disable-time-slot', adminDisableTimeRouter);
+app.use('/opening-hours', openingHoursRouter);
+app.use('/faq', faqRouter);
+app.use('/travel', travelRouter);
+app.use('/other-info', otherInfoRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

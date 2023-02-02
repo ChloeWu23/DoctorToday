@@ -2,29 +2,23 @@ const router = require("express").Router();
 
 /*
     post("/")  : add new service, need serviceName
-    patch("/") : update current service, need service_cat_id
-    delete("/") : delete service, need service_cat_id
+    patch("/:service_cat_id ") : update current service, need service_cat_id
+    delete("/:service_cat_id ") : delete service, need service_cat_id
     patch("/swap") : swap two service, need req.body.id_1 && req.body.id_2
 */
-
-// const fs = require('fs');
-// const data = JSON.parse(
-//   fs.readFileSync('./config-data/data.json')
-// );
 
 const db = require("../app/models");
 const ServiceOverviews = db.ServiceOverviews;
 const Op = db.Sequelize.Op;
 
-// need req.body { serviceName, service_cat_id, description_1 }
-
 router.post("/", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
-  if (!req.body.serviceName) {
+  if (req.body.serviceName === null || req.body.serviceName === undefined) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
+    console.log(req.body);
     return;
   }
 
@@ -48,37 +42,17 @@ router.post("/", async (req, res) => {
           err.message || "Some error occurred while creating the Service",
       });
     });
-
-  // const newId = data[data.length - 1].id + 1;
-  // const newService = Object.assign({ id : newId }, req.body);
-
-  // // const newService = Object.assign(req.body);
-  // data.push(newService);
-
-  // fs.writeFile( // todo : async or sync ?
-  //     './config-data/data.json',
-  //     JSON.stringify(data, null, 2),
-  //     'utf-8',
-  //     err => {
-  //         res.status(201).json({
-  //             status: 'success',
-  //             data: {
-  //                 data: newService
-  //             }
-  //         });
-  //     }
-  // );
 });
 
 // found the service by service_cat_id
 router.patch("/", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
-  // console.log(req.body);
 
-  if (req.body.service_cat_id === null) {
+  if (req.body.service_cat_id === null || req.body.service_cat_id === undefined) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
+    console.log(req.body);
     return;
   }
 
@@ -113,12 +87,12 @@ router.patch("/", async (req, res) => {
 // delete by service_cat_id
 router.delete("/", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
-  // console.log(req.body);
 
-  if (req.body.service_cat_id === null) {
+  if (req.body.service_cat_id === null || req.body.service_cat_id === undefined) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
+    console.log(req.body);
     return;
   }
 
@@ -156,7 +130,7 @@ router.patch("/swap", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
   // console.log(req.body);
 
-  if (req.body.id_1 === null || req.body.id_2 === null) {
+  if (req.body.id_1 === undefined || req.body.id_2 === undefined || req.body.id_1 === null || req.body.id_2 === null) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
