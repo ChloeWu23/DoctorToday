@@ -7,7 +7,9 @@
             <div class="text-sm md:text-md lg:flex-grow" v-for="tab in navTabs" :key="tab.name">
                 <li class="md:mx-4 md:my-0 my-6 text-white relative before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5 
                 before:bg-white before:block before:hover:scale-x-100 before:scale-x-0
-                before:transition before:ease-in-out before:duration-300"><a :href="tab.path" class="text-white">{{ tab.label }}</a></li>
+                before:transition before:ease-in-out before:duration-300">
+                    <RouterLink :to="tab.path" class="text-white">{{ tab.label }}</RouterLink>
+                </li>
             </div>
         </ul>
     </div>
@@ -30,12 +32,12 @@ export default {
                     label: "Home"
                 },
                 {
-                    path: "#/services",
+                    path: "/services",
                     name: "services",
                     label: "Services & Prices"
                 },
                 {
-                    path: "#/travelGuides",
+                    path: "/travelGuides",
                     name: "travelGuides",
                     label: "Travel Guides"
                 },
@@ -45,7 +47,7 @@ export default {
                     label: "Booking An Appointment"
                 },
                 {
-                    path: "#/trustpilot",
+                    path: "/trustpilot",
                     name: "review",
                     label: "Reviews"
                 },
