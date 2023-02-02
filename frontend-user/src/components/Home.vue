@@ -9,7 +9,7 @@
     <div class="col-span-6 flex justify-end">
       <RequestAppointmentButton></RequestAppointmentButton>
       <NewPatientButton></NewPatientButton>
-      <ContactIcon />
+      <ContactButton />
       <MapIcon />
     </div>
     <div class="col-span-3 text-md p-10">
@@ -27,14 +27,13 @@
 <script>
 import RequestAppointmentButton from './RequestAppointmentButton.vue';
 import NewPatientButton from './NewPatientButton.vue';
-import ContactIcon from './ContactIcon.vue';
 import MapIcon from './MapIcon.vue'
-
+import ContactButton from "./ContactButton.vue";
 
 export default {
   data() {
     return {};
   },
-  components: { RequestAppointmentButton, NewPatientButton, ContactIcon, MapIcon }
+  components: { RequestAppointmentButton, NewPatientButton, MapIcon, ContactButton }
 }
 </script>
