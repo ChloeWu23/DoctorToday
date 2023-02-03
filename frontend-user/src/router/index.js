@@ -22,9 +22,9 @@ const routes = [
       component: ServiceOverview
     },
     {
-     path: 'travelGuides',
-     name: 'TravelGuides',
-     component: TravelGuides
+      path: 'travelGuides',
+      name: 'TravelGuides',
+      component: TravelGuides
     },
     {
       path: 'appointment',
