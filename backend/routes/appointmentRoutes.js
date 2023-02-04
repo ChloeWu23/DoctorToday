@@ -8,7 +8,7 @@ const Op = db.Sequelize.Op;
 router.get("/", async(req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
-    if (req.body.date == null || req.body.date == undefined) {
+    if (req.body.date === null || req.body.date === undefined) {
       res.status(500).send({
         message: "request data should include 'date', will return disable slot "
       })
@@ -154,7 +154,7 @@ router.post("/holiday", async(req, res) => {
 router.delete("/holiday", async(req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
   
-  if (req.body.id == null || req.body.id == undefined) {
+  if (req.body.id === null || req.body.id === undefined) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
