@@ -8,7 +8,7 @@ router.get("/", async(req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
     Travel.findAll({
-        order: ["country_id"]
+        order: ["name"]
     })
     .then(data => {
         res.set('Access-Control-Allow-Origin', '*');

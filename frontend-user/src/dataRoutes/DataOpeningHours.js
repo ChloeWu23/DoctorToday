@@ -5,6 +5,10 @@ class DataOpeningHours {
         return http.get("/opening-hours");
     }
 
+    getDay(day) {
+        return http.get(`/opening-hours/${day}`)
+    }
+
     create(data) {
         return http.post("/opening-hours", data);
     }

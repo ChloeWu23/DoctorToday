@@ -7,7 +7,32 @@ const Op = db.Sequelize.Op;
 router.get("/", async(req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
-    OpeningHours.findAll()
+    OpeningHours.findAll({
+        attributes: ["day", "start_time", "end_time", "disable_time_start", "disable_time_end"],
+        order: ["day"]
+    })
+    .then(data => {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.status(200).json(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: 
+            err.message || "Some error occurred while retriving opening hours data"
+        });
+      });
+});
+
+router.get("/:day", async(req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+
+    if (req.params.day < 1 || req.params.day > 7) {
+        res.status(500).send({
+            message: "The day (OpeningHours) should be 1-7 "
+        })
+    }
+
+    OpeningHours.findByPk(req.params.day)
     .then(data => {
         res.set('Access-Control-Allow-Origin', '*');
         res.status(200).json(data);
@@ -41,8 +66,10 @@ router.post("/", async(req, res) => {
     
     var newItem = {
         day: req.body.day,
-        start_time: req.body.start_time,
-        end_time: req.body.end_time
+        start_time: (req.body.start_time) ? req.body.start_time : null,
+        end_time: (req.body.end_time)? req.body.end_time : null,
+        disable_time_start: (req.body.disable_time_start)? req.body.disable_time_start : null,
+        disable_time_end: (req.body.disable_time_end)? req.body.disable_time_end : null
     }
 
     OpeningHours.create(newItem)
@@ -83,8 +110,10 @@ router.patch("/", async(req, res) => {
 
     item.set({
         day: req.body.day,
-        start_time: req.body.start_time,
-        end_time: req.body.end_time
+        start_time: (req.body.start_time) ? req.body.start_time : null,
+        end_time: (req.body.end_time)? req.body.end_time : null,
+        disable_time_start: (req.body.disable_time_start)? req.body.disable_time_start : null,
+        disable_time_end: (req.body.disable_time_end)? req.body.disable_time_end : null
     });
 
     await item

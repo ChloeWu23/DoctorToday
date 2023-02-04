@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center bg-white text-sky-700 m-10">
-        <span class="font-semibold md:text-xl tracking-tight">Doctor Today | Private Medical Centre</span>
+        <span class="md:text-xl tracking-tight">Doctor Today | Private Medical Centre</span>
     </div>
 </template>
 

@@ -37,6 +37,7 @@ const openingHoursRouter = require('./routes/openingHoursRoutes');
 const faqRouter = require('./routes/faqRoutes');
 const travelRouter = require('./routes/travelRoutes');
 const otherInfoRouter = require('./routes/otherInfoRoutes');
+const peopleRouter = require('./routes/peopleRoutes');
 
 // app.use('/', serviceRouter);
 app.use('/service', serviceRouter); 
@@ -49,6 +50,8 @@ app.use('/opening-hours', openingHoursRouter);
 app.use('/faq', faqRouter);
 app.use('/travel', travelRouter);
 app.use('/other-info', otherInfoRouter);
+app.use('/people', peopleRouter);
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

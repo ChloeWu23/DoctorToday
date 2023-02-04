@@ -3,7 +3,7 @@ import Header from '../views/Header.vue'
 import Home from '../components/Home.vue'
 import Appointment from '../views/Appointment.vue'
 import NewPatientRegister from '../views/NewPatientRegister.vue'
-import Services from '../views/Services.vue'
+import ServiceOverview from '../views/ServiceOverview.vue'
 import TravelGuides from '../views/TravelGuides.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 
@@ -19,12 +19,12 @@ const routes = [
     {
       path: 'services',
       name: 'Services & Prices',
-      component: Services
+      component: ServiceOverview
     },
     {
-     path: 'travelGuides',
-     name: 'TravelGuides',
-     component: TravelGuides
+      path: 'travelGuides',
+      name: 'TravelGuides',
+      component: TravelGuides
     },
     {
       path: 'appointment',
@@ -35,6 +35,10 @@ const routes = [
       path: 'newPatientRegister',
       name: 'NewPatientRegister',
       component: NewPatientRegister
+    },
+    {
+      path: "services/:serviceName",
+      component: () => import("../components/ServiceDetails")
     },
     {
       path: "/test",
@@ -57,12 +61,6 @@ const routes = [
       //   path: ':catchAll(.*)*',
       //   name: "PageNotFound",
       //   component: PageNotFound,
-      // }
-      // {
-      //   path: 'admin',
-      //   name: 'Admin',
-      //   component: ''
-
       // }
     ]
   }

@@ -1,12 +1,14 @@
 module.exports = (sequelize, Sequelize) => {
     const disableTime = sequelize.define("DisableTime", {
-        start_time: {
-            type: Sequelize.DATE,
+        date: {
+            type: Sequelize.DATEONLY,
             allowNull: false
         },
+        start_time: {
+            type: Sequelize.TIME
+        },
         end_time: {
-            type: Sequelize.DATE,
-            allowNull: false
+            type: Sequelize.TIME
         }   
     })
 

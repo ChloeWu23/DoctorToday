@@ -14,14 +14,12 @@ module.exports = (sequelize, Sequelize) => {
         },
         profile: {
             type: Sequelize.TEXT('tiny'), // CHAR(256)
-            allowNull: false
         },
         description: {
             type: Sequelize.TEXT('medium') // VARCHAR(16777216)
         }, 
         image: {
-            type: Sequelize.BLOB('long'),
-            allowNull: false
+            type: Sequelize.BLOB('long')
         }, 
         website: {
             type: Sequelize.STRING
