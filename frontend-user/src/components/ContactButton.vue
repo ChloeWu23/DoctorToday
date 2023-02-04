@@ -134,7 +134,7 @@ button {
   font-family: --system-ui, "Lato", sans-serif;
   background: #f1f1f1;
 }
-a:link,
+/* a:link,
 a:visited {
   color: #444;
   text-decoration: none;
@@ -148,7 +148,8 @@ h1 {
   padding: 20px;
   color: #fff;
   border-radius: 50px;
-}
+} */
+
 /* CSS Multiple Whatsapp Chat */
 #whatsapp-chat {
   box-sizing: border-box !important;

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1 class="text-gray-700 m-10">Appointment Request Form</h1>
+    <h1 class="text-gray-700 m-10 w-full">Appointment Request Form</h1>
     <div class="separator"></div>
 
-    <form class="m-10 min-w-fit max-w-sm md:max-w-lg">
+    <form class="m-10 min-w-fit">
       <div class="grid md:grid-cols-2 gap-6">
         <label class="block">
           <span class="text-gray-700">Full name</span>
@@ -147,7 +147,8 @@
             autocomplete="off"></textarea>
         </label>
       </div>
-      <button @click="sendEmail" class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
+      <button @click="sendEmail"
+        class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
     </form>
   </div>
 </template>
@@ -179,9 +180,6 @@ export default {
         shortBreath: 'false',
         respiratoryProblems: 'false',
         selectedSlots: [],
-        //slotSelect1:'',
-        //slotSelect2:'',
-        //slotSelect3:''
       },
       services: servicesData.appointmentDropDown,
       isSending: false
@@ -195,8 +193,6 @@ export default {
           vm.request.duration = service.time;
         }
       }
-      //console.log(1);
-      //console.log(this.selectedSlots[0]);
     }
   },
   methods: {

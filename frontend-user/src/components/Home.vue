@@ -7,10 +7,10 @@
     </div>
     <div class="col-span-2 m-10 bg-gray-100">NEWS COMPONENT TO BE ADDED</div>
     <div class="col-span-6 flex justify-end">
-        <RequestAppointmentButton></RequestAppointmentButton>
-        <NewPatientButton></NewPatientButton>
-        <ContactButton />
-        <MapIcon />
+      <RequestAppointmentButton></RequestAppointmentButton>
+      <NewPatientButton></NewPatientButton>
+      <ContactButton />
+      <MapIcon />
     </div>
     <div class="col-span-3 text-md p-10">
       We offer pre-booked appointments to everyone, irrespective of registration with an NHS doctor, private
