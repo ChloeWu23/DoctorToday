@@ -101,7 +101,7 @@ router.patch("/", async(req, res) => {
 router.delete("/", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
   
-    if (!req.body.faq_id) {
+    if (req.body.faq_id == null || req.body.faq_id == undefined) {
       res.status(400).send({
         message: "Content can not be empty!",
       });

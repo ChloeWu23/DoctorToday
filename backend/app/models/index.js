@@ -22,6 +22,7 @@ db.sequelize = sequelize;
 db.ServiceOverviews = require("./service.model.js")(sequelize, Sequelize);
 db.SubService = require("./subService.model.js")(sequelize, Sequelize);
 db.DisableTime = require("./disableTime.model.js")(sequelize, Sequelize);
+db.Holiday = require("./holiday.model.js")(sequelize, Sequelize);
 db.OpeningHours = require("./openingHours.model.js")(sequelize, Sequelize);
 db.FAQ = require("./faq.model.js")(sequelize, Sequelize);
 db.People = require("./people.model.js")(sequelize, Sequelize);

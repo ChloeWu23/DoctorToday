@@ -9,7 +9,13 @@ module.exports = (sequelize, Sequelize) => {
         },
         end_time: {
             type: Sequelize.TIME
-        } 
+        },
+        disable_time_start: {
+            type: Sequelize.TIME
+        },
+        disable_time_end: {
+            type: Sequelize.TIME
+        }
     })
 
     return OpeningHours;

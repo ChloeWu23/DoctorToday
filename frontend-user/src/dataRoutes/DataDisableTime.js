@@ -1,8 +1,8 @@
 import http from "../http-common";
 
 class DataDisableTime {
-    get() {
-        return http.get("/disable-time-slot");
+    get(data) {
+        return http.get("/disable-time-slot", data);
     }
 
     create(data) {
