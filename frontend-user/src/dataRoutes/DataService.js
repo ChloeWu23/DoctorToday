@@ -30,6 +30,9 @@ class DataService {
         return http.post("/sendEmail", data);
     }
 
+    sendRegisterEmail(data) {
+        return http.post("/sendRegisterEmail", data);
+    }
     // deleteService(data){
     //     return http.delete("/admin/service",data);
     // }

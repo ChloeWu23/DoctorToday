@@ -82,17 +82,16 @@
                     </div>
                 </label>
             </div>
-            <button type="submit" @submit="submitForm"
+            <button @click="sendRegisterEmail"
                 class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
         </form>
     </div>
 </template>
 
 <script>
+import DataService from '../dataRoutes/DataService';
+
 export default {
-    method: {
-        submitForm() { }
-    },
     data() {
         return {
             register: {
@@ -111,8 +110,19 @@ export default {
                 media: [{ medium: "Google", flag: 'false' }, { medium: "Yahoo", flag: 'false' }, { medium: "Other Search Engines", flag: 'false' }, { medium: "Word of Mouth", flag: 'false' }, { medium: "Walked By", flag: 'false' }, { medium: "Other", flag: 'false' }],
                 comms: [{ comm: "Phone", flag: 'false' }, { comm: "Email", flag: 'false' }, { comm: "Fax", flag: 'false' }, { comm: "Post", flag: 'false' }],
                 notes: ''
-            }
+            },
+        isSending: false
         }
+    },
+    methods: {
+    sendRegisterEmail() {
+      var data = {
+        email: this.register.email,
+        firstName: this.register.firstName,
+        lastName: this.register.lastName,
+      };
+      DataService.sendRegisterEmail(data);
     }
+  }
 }
 </script>

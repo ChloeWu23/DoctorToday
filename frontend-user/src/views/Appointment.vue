@@ -201,9 +201,9 @@ export default {
         email: this.request.email,
         name: this.request.name,
         gender: this.request.gender,
-        slotSelect1: this.request.selectedSlots[0],
-        slotSelect2: this.request.selectedSlots[1],
-        slotSelect3: this.request.selectedSlots[2]
+        slotSelect1: "hello1",//this.request.selectedSlots[0],
+        slotSelect2: "hell02",//this.request.selectedSlots[1],
+        slotSelect3: "hello3"//this.request.selectedSlots[2]
       };
       DataService.sendEmail(data);
     },
