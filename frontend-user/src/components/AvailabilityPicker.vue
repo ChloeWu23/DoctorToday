@@ -30,6 +30,7 @@
             </div>
         </div>
     </div>
+    <People />
 </template>
 
 <script>
@@ -41,8 +42,15 @@ import 'element-plus/theme-chalk/index.css';
 import axios from 'axios';
 import { ReactiveEffect } from 'vue';
 
+import People from "./People.vue";
+
 export default {
     name: 'AvailabilityPicker',
+    components: {
+        Delete,
+        DayPilotNavigator,
+        People,
+    },
     props: {
         duration:{
             type: String,
@@ -58,7 +66,7 @@ export default {
         },
     },
 
-    data: function () {
+    data () {
         return {
             availabilityList: [
               {start: "2023-02-02T09:00:00", end: "2023-02-02T13:30:00"},
@@ -113,11 +121,6 @@ export default {
                 },
             },
         }
-    },
-    
-    components: {
-        Delete,
-        DayPilotNavigator,
     },
 
     computed: {
