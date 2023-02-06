@@ -55,6 +55,11 @@ export default {
                     path: "#",
                     name: "about",
                     label: "About Us"
+                },
+                {
+                    path: "#",
+                    name:"people",
+                    label: "People"
                 }
             ]
         }
