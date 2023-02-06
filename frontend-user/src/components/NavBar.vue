@@ -58,7 +58,7 @@ export default {
                 },
 
                 {
-                    path: "#",
+                    path: "/FAQs",
                     name: "FAQs",
                     label: "FAQs"
                 },
