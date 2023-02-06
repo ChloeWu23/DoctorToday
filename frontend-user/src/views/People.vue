@@ -1,5 +1,5 @@
 <template>
-    <div class ="grid_12">
+    <div>
 		<ul id="people">
             <li v-for="(item,index) in peopleList" :key="item.id">
 				<p src="" style="float: left; width: 100px; margin-right: 20px; margin-bottom: 20px;"> Space for Image </p>
