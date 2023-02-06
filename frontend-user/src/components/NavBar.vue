@@ -42,9 +42,9 @@ export default {
                     label: "Travel Guides"
                 },
                 {
-                    path: "#",
-                    name: "booking",
-                    label: "Booking An Appointment"
+                    path: "/bookingAppointment",
+                    name:"bookingAppointment",
+                    label: "Appointments"
                 },
                 {
                     path: "/trustpilot",
@@ -52,15 +52,22 @@ export default {
                     label: "Reviews"
                 },
                 {
+                    path: "/people",
+                    name:"people",
+                    label: "People"
+                },
+
+                {
+                    path: "#",
+                    name: "FAQs",
+                    label: "FAQs"
+                },
+                {
                     path: "#",
                     name: "about",
                     label: "About Us"
                 },
-                {
-                    path: "#",
-                    name:"people",
-                    label: "People"
-                }
+                             
             ]
         }
     },
