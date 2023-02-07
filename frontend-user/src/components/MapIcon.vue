@@ -1,16 +1,7 @@
 <template>
     <div class="flex items-center bg-white text-sky-700 m-10">
-        <span class="font-semibold md:text-xl tracking-tight"><button @click="getDirection">
-                <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg" color="#2252a0">
-                    <path d="M16 9.2C16 13.177 9 20 9 20S2 13.177 2 9.2C2 5.224 5.134 2 9 2s7 3.224 7 7.2z"
-                        stroke="#2252a0" stroke-width="1.5"></path>
-                    <path d="M9 10a1 1 0 100-2 1 1 0 000 2z" fill="#2252a0" stroke="#2252a0" stroke-width="1.5"
-                        stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M16 19h3m3 0h-3m0 0v-3m0 3v3" stroke="#2252a0" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                </svg>Get
-                Direction
+        <span class="font md:text-xl tracking-tight"><button @click="getDirection">
+                Get Direction
             </button></span>
     </div>
 </template>

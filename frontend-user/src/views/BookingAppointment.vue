@@ -46,7 +46,7 @@
         <div><b><br></b></div>
         <h1 class = "text-gray-700  font-bold text-lg">Register Online</h1>
         <div>You can save time at your appointment by filling out this
-             <a class = "text-red-400" href="https://www.doctortoday.co.uk/patient_registration">online patient registration</a> 
+             <RouterLink class = "text-red-400" to="newpatientregister">online patient registration</RouterLink> 
              form prior to your arrival.
         </div>
             <div><br></div><div><br></div><div><br></div>	
