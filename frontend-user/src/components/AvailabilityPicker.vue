@@ -30,7 +30,6 @@
             </div>
         </div>
     </div>
-    <People />
 </template>
 
 <script>
@@ -42,14 +41,11 @@ import 'element-plus/theme-chalk/index.css';
 import axios from 'axios';
 import { ReactiveEffect } from 'vue';
 
-import People from "./People.vue";
-
 export default {
     name: 'AvailabilityPicker',
     components: {
         Delete,
         DayPilotNavigator,
-        People,
     },
     props: {
         duration:{
