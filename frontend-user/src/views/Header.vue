@@ -1,15 +1,15 @@
 <template>
     <div class="flex flex-col min-h-screen justify-between">
-        <div class="w-full">
+        <div class="w-full flex flex-col justify-center">
             <Logo></Logo>
-            <nav class="flex items-center justify-between flex-wrap bg-sky-700/80 p-6 gap-6">
+            <nav class="flex items-center flex-wrap bg-sky-700/80 p-6 gap-6">
                 <div>
                     <NavBar></NavBar>
                 </div>
                 <SearchBox></SearchBox>
             </nav>
 
-            <div class="h-full xl:max-w-screen-xl w-full content-around">
+            <div class="h-full xl:max-w-screen-xl place-self-center justify-center m-0">
                 <RouterView></RouterView>
             </div>
         </div>
