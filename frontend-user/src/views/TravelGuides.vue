@@ -43,7 +43,7 @@
                                 class="rounded border border-gray-300 bg-slate-100 px-4 py-2 space-y-1 absolute z-10">
                                 <li v-for="country in searchCountries" :key="country.name"
                                     @click="openRedirection(country)"
-                                    class="cursor-pointer hover:bg-sky-700 hover:text-white p-1">
+                                    class="cursor-pointer hover:bg-sky-700/80 hover:text-white p-1">
                                     {{ country.name }}
                                 </li>
                             </ul>

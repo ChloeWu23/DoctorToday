@@ -16,7 +16,7 @@
             <p class="text-sky-700">Doctor Today is a London-based private medical clinic that aims to provide
               high-quality
               independent health care services to individuals, families and companies at reasonable cost.</p>
-            <button class="bg-sky-700/90 text-white rounded px-4 py-2 my-4">
+            <button class="bg-sky-700/80/90 text-white rounded px-4 py-2 my-4">
               <RouterLink to="people">Meet Our Team</RouterLink>
             </button>
           </div>

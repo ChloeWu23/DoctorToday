@@ -46,12 +46,12 @@
           name="description_3" />
       </div>
 
-      <button @click="saveNewService" class="my-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
+      <button @click="saveNewService" class="my-8 p-2 bg-sky-700/80 text-center rounded-lg text-white border-white">Submit</button>
     </div>
 
     <div v-else>
       <h4>Add a Service Successful</h4>
-      <button class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white" @click="InitService">Add a New One!</button>
+      <button class="mt-8 p-2 bg-sky-700/80 text-center rounded-lg text-white border-white" @click="InitService">Add a New One!</button>
     </div>
   </div>
 </template>

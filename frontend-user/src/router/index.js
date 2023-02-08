@@ -29,19 +29,19 @@ const routes = [
       component: TravelGuides
     },
     {
-      path: "/people",
+      path: "people",
       name: "People",
       component: People
     },
 
     {
-      path: "/bookingAppointment",
+      path: "bookingAppointment",
       name: "BookingAppointment",
       component: BookingAppointment
     },
     
     {
-      path: "/FAQs",
+      path: "FAQs",
       name: "FAQs",
       component: FAQs
     },
