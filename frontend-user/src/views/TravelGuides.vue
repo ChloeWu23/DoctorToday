@@ -87,8 +87,7 @@
                 </div>
                 <div class="m-2 mt-6 p-5 bg-slate-50/30 backdrop-blur-md">
                     <div class="text-sky-700 font-bold text-xl mb-2">Step 3:</div>
-                    <p class="text-base">Fill in our <a class="text-sky-700 underline"
-                            href="#/appointment">online
+                    <p class="text-base">Fill in our <a class="text-sky-700 underline" href="#/appointment">online
                             appointment request form</a> to discuss your
                         specific needs or email us at <a class="text-sky-700 underline"
                             href="mailto:enquiries@doctortoday.co.uk">enquiries@doctortoday.co.uk</a>.
