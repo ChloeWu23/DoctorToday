@@ -148,7 +148,7 @@
         </label>
       </div>
       <button @click="sendEmail"
-        class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
+        class="mt-8 p-2 bg-sky-700/80 text-center rounded-lg text-white border-white">Submit</button>
     </form>
   </div>
 </template>

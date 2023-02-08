@@ -1,22 +1,19 @@
 <template>
-    <div class="md:my-4 w-full h-full shadow-md accordion accordion-flush" id="accordion">
-        <ul class="w-full text-sm accordion-item border-sky-700 hover:bg-gray-100" v-for="item in this.ServiceDetails">
-            <div class="accordion-header">
-                <button class="accordion-button flex items-center text-left w-full focus:outline-none p-2" type="button"
-                    data-bs-toggle="collapse" :data-bs-target="'#collapse' + item.sub_service_id" aria-expanded="true"
-                    aria-controls="'#collapse' + item.id">
-                    <div class="grid grid-cols-5 w-full">
-                        <div class="col-span-3 p-2 text-sky-700">{{ item.sub_service_name }}</div>
-                        <span></span>
-                        <p class="p-2 text-sky-700">£{{ item.price }}</p>
+    <div class="h-full shadow-md m-4 md:m-8">
+        <div class="">
+            <details class="open:bg-gray-100 duration-300" v-for="item in this.ServiceDetails">
+                <summary
+                    class="px-5 py-3 text-lg cursor-pointer hover:bg-gray-100 border border-2 flex justify-between items-center w-full text-sm md:text-base">
+                    <div class="p-2 text-sky-700 w-3/4">
+                        <div class="break-words">{{ item.sub_service_name }}</div>
                     </div>
-                </button>
-            </div>
-            <div class="accordion-collapse collapse transition-none" :id="'collapse' + item.sub_service_id"
-                aria-labelledby="'#collapse' + item.id" data-bs-parent="#accordion">
-                <div class="accordion-body p-6" style="transition: color 0s">{{ item.description }}</div>
-            </div>
-        </ul>
+                    <p class="p-2 pr-10 text-sky-700">£{{ item.price }}</p>
+                </summary>
+                <div class="bg-white p-8 text-sm">
+                    {{ item.description }}
+                </div>
+            </details>
+        </div>
     </div>
 </template>
 
@@ -25,7 +22,6 @@ import DataService from '../dataRoutes/DataService';
 import DataSubService from '../dataRoutes/DataSubService';
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
-import 'tw-elements';
 
 export default {
     data() {
@@ -63,3 +59,23 @@ export default {
 
 }
 </script>
+
+<style>
+details>summary {
+    list-style: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary::after {
+    content: '+';
+    font-size: 2em;
+    color: slategrey
+}
+
+details[open] summary::after {
+    content: "-";
+}
+</style>

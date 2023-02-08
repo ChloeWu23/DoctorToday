@@ -29,6 +29,23 @@ const routes = [
       component: TravelGuides
     },
     {
+      path: "people",
+      name: "People",
+      component: People
+    },
+
+    {
+      path: "bookingAppointment",
+      name: "BookingAppointment",
+      component: BookingAppointment
+    },
+    
+    {
+      path: "FAQs",
+      name: "FAQs",
+      component: FAQs
+    },
+    {
       path: 'appointment',
       name: 'Appointment',
       component: Appointment
@@ -57,23 +74,6 @@ const routes = [
       path: "/showServices",
       name: "showServices",
       component: () => import("../components/ShowServices")
-    },
-    {
-      path: "/people",
-      name: "People",
-      component: People
-    },
-
-    {
-      path: "/bookingAppointment",
-      name: "BookingAppointment",
-      component: BookingAppointment
-    },
-    
-    {
-      path: "/FAQs",
-      name: "FAQs",
-      component: FAQs
     }
       // },
       // {
