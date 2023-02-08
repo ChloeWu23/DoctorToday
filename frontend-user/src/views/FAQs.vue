@@ -44,6 +44,7 @@ export default {
             flag: false
         }
     },
+    /*
     methods:{
         showAnswer(){
             if (flag) flag = false;
@@ -52,6 +53,7 @@ export default {
         }
 
     },
+    */
     mounted() {
         DataFAQ.get()
         .then(res => {
