@@ -2,8 +2,8 @@
     <div class="flex flex-col min-h-screen justify-between">
         <div class="w-full flex flex-col justify-center">
             <Logo></Logo>
-            <nav class="flex items-center flex-wrap bg-sky-700/80 p-6 gap-6">
-                <div>
+            <nav class="flex justify-between h-full flex-wrap bg-sky-700/80 p-6 gap-6">
+                <div class="flex items-center">
                     <NavBar></NavBar>
                 </div>
                 <SearchBox></SearchBox>
