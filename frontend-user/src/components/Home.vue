@@ -9,7 +9,6 @@
 
     </div>
     <div class="carousel-inner relative w-full overflow-hidden">
-
       <div class="carousel-item active float-left w-full h-full bg-[url('assets/img1.jpg')] bg-no-repeat bg-right p-10">
         <div class="grid grid-cols-2">
           <div class="p-6 md:p-12">
@@ -36,13 +35,12 @@
         </div>
       </div>
       <div class="carousel-item float-left w-full">
-        <div class="col-span-3 m-10 bg-gray-100">
+        <div class="m-10 bg-gray-100">
           PLACEHOLDER FOR MONTH COMPONENT
         </div>
       </div>
       <div class="carousel-item float-left w-full">
-
-        <div class="col-span-3 m-10 bg-gray-100">
+        <div class="-10 bg-gray-100">
           PLACEHOLDER FOR NEWS COMPONENT
         </div>
       </div>

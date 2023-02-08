@@ -1,16 +1,20 @@
 <template>
-    <div class="flex flex-col justify-center">
-        <div>
+    <div class="flex flex-col min-h-screen justify-between">
+        <div class="w-full">
             <Logo></Logo>
             <nav class="flex items-center justify-between flex-wrap bg-sky-700/80 p-6 gap-6">
-                <NavBar></NavBar>
+                <div>
+                    <NavBar></NavBar>
+                </div>
                 <SearchBox></SearchBox>
             </nav>
+
+            <div class="h-full xl:max-w-screen-xl w-full content-around">
+                <RouterView></RouterView>
+            </div>
         </div>
-        <div class="h-full xl:max-w-screen-xl w-full self-center z-0">
-            <RouterView></RouterView>
-        </div>
-        <div class="flex items-center justify-between flex-wrap bg-sky-700/80 p-2">
+
+        <div class="flex-wrap bg-sky-700/80 p-2">
             <Footer></Footer>
         </div>
     </div>
