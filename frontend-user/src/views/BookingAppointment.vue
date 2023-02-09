@@ -1,8 +1,5 @@
 <template>
-    <div class = "text-left fond-bold text-2xl m-0">
-		<h1>Appointments</h1> <br>
-	</div>
-
+    <div><br></div>
     <div>
         <h1 class = "text-gray-700 font-bold text-xl font-sans">Booking Requests<br></h1>
         <p class = "text-lg">Appointments can be requested online via our <RouterLink class = "text-red-400 font-bold-medium" to="Appointment"> online booking system.</RouterLink> 
@@ -10,10 +7,11 @@
         <b class = "text-lg text-black font-bold">Please check your junk mail for confirmation emails.</b> </p>
         <div><br></div>
         <div class = "text-lg">
-            <b>Alternatively, appointments can be booked by telephone on 020 7433 1444.</b> 
+            <b>Alternatively, appointments can be booked by telephone on 020 7433 1444 or <a class = "text-red-400" href="https://wa.me/447879635767">WhatsApp</a> . </b>
+                
                 If you are not sure which services you will require, our friendly and helpful reception staff will 
                 be happy to discuss your needs.
-        
+            <div><br></div>
             <p>Due to high demand for appointments we do require a 
             <b>deposit of £40 for all new patients and Saturday appointments</b>. 
                 This will be deducted from the total charge on the day.
@@ -45,7 +43,7 @@
 
         <div><b><br></b></div>
         <h1 class = "text-gray-700  font-bold text-xl font-sans">Register Online</h1>
-        <div>You can save time at your appointment by filling out this
+        <div class = "text-lg">You can save time at your appointment by filling out this
              <RouterLink class = "text-red-400" to="NewPatientRegister">online patient registration</RouterLink> 
              form prior to your arrival.
         </div>
