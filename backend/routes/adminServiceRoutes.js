@@ -85,8 +85,11 @@ router.patch("/", async (req, res) => {
 });
 
 // delete by service_cat_id
-router.delete("/", async (req, res) => {
+router.post("/deleteService", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
+  console.log("params: "+req.params.service_cat_id)
+  console.log("in delete:  " + req.body)
+  console.log(JSON.stringify(req.body))
 
   if (req.body.service_cat_id === null || req.body.service_cat_id === undefined) {
     res.status(400).send({
