@@ -2,12 +2,12 @@
     <div><br></div>
     <div>
         <h1 class = "text-gray-700 font-bold text-xl font-sans">Booking Requests<br></h1>
-        <p class = "text-lg">Appointments can be requested online via our <RouterLink class = "text-red-400 font-bold-medium" to="Appointment"> online booking system.</RouterLink> 
+        <p class = "text-lg">Appointments can be requested online via our <RouterLink class = "text-sky-700 font-extrabold" to="Appointment"> online booking system.</RouterLink> 
         You will need to wait for one of our friendly staff to email you back with a confimation before your appoitnment is booked.
         <b class = "text-lg text-black font-bold">Please check your junk mail for confirmation emails.</b> </p>
         <div><br></div>
         <div class = "text-lg">
-            <b>Alternatively, appointments can be booked by telephone on 020 7433 1444 or <a class = "text-red-400" href="https://wa.me/447879635767">WhatsApp</a> . </b>
+            <p>Alternatively, appointments can be booked by telephone on 020 7433 1444 or <a class = "text-sky-700 font-extrabold" href="https://wa.me/447879635767"> WhatsApp</a> . </p>
                 
                 If you are not sure which services you will require, our friendly and helpful reception staff will 
                 be happy to discuss your needs.
@@ -44,7 +44,7 @@
         <div><b><br></b></div>
         <h1 class = "text-gray-700  font-bold text-xl font-sans">Register Online</h1>
         <div class = "text-lg">You can save time at your appointment by filling out this
-             <RouterLink class = "text-red-400" to="NewPatientRegister">online patient registration</RouterLink> 
+             <RouterLink class = "text-sky-700 font-extrabold" to="NewPatientRegister">online patient registration</RouterLink> 
              form prior to your arrival.
         </div>
             <div><br></div><div><br></div><div><br></div>	

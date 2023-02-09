@@ -1,7 +1,8 @@
 <template>
     
-    <div class = "pr-0 text-2xl">
-		<h1>Frequently Asked Questions</h1>
+    <div class = "text-left text-2xl">
+        <div><br></div>
+		<h1 class="text-sky-700">Frequently Asked Questions</h1>
         <div><br></div>
 	</div> 
     
@@ -9,7 +10,7 @@
         <ol>
             <li v-for="(item,index) in QuestionList" :key="index" class="mb-4">
                 <button  
-                    class="text-left w-full py-1 text-black text-lg font-extrabold  hover:bg-sky-200"
+                    class="text-left w-full py-1 text-black text-lg font-extrabold  hover:bg-gray-200"
                     @click="item.showAnswer = !item.showAnswer">
                       <span class = "font-bold inline-flex">{{ index +1 }}. &nbsp;</span>
                       {{ item.question }}    
@@ -17,7 +18,7 @@
             
             <transition name="slide-fade">
                 <p v-if="item.showAnswer"
-                    class="py-2 p-4 bg-white font-bold text-base border border-gray-300 rounded-lg">
+                    class="py-2 p-4 bg-white font-bold text-base ">
                         {{ item.answer }}
                 </p>
             </transition>
@@ -26,31 +27,18 @@
             
         </ol>
     </div>
+
 </template>
 
 <script>
-import DataFAQ from '../dataRoutes/DataFAQ';
-
+import DataFAQ from '../dataRoutes/DataFAQ'
 
 export default {
-    
     data () {
         return {
-            QuestionList:[],
-            
+            QuestionList:[]
         }
     },
-    /*
-    methods:{
-        showAnswer(){
-            if (flag) flag = false;
-            if (!flag) flag = true;
-            return flag;
-        }
-
-    },
-    */
-   // class="text-left w-full py-1 text-black text-lg font-extrabold  hover:bg-sky-200"
     mounted() {
         DataFAQ.get()
         .then(res => {
