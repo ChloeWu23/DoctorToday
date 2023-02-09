@@ -1,8 +1,12 @@
 <template>
+  <div style="text-align:center;">
+  <iframe src="https://online-booking.semble.io/?token=59df46c901c3c1673ec018b4eec76f70ce63838c"
+    width="800" height="800" frameborder="0" scrolling="auto"></iframe>
+  </div>
+  <!--
   <div>
     <h1 class="text-gray-700 m-10 w-full">Appointment Request Form</h1>
     <div class="separator"></div>
-
     <form class="m-10 min-w-fit">
       <div class="grid md:grid-cols-2 gap-6">
         <label class="block">
@@ -74,7 +78,6 @@
         <div>
           <AvailabilityPicker :duration="request.duration" @slotSelection="updateSelection"></AvailabilityPicker>
         </div>
-
         <div class="inline-flex text-gray-700">For the safety of all our patients and staff we are now screening each
           patient for possible symptoms of
           COVID-19. Please answer all questions to the best of your knowledge so that we can offer you the best care. We
@@ -148,20 +151,25 @@
         </label>
       </div>
       <button @click="sendEmail"
-        class="mt-8 p-2 bg-sky-700 text-center rounded-lg text-white border-white">Submit</button>
+        class="mt-8 p-2 bg-sky-700/80 text-center rounded-lg text-white border-white">Submit</button>
     </form>
   </div>
+-->
+
 </template>
 
 <script>
 import DataService from '../dataRoutes/DataService';
 import servicesData from '../assets/config.json';
-import AvailabilityPicker from '../components/AvailabilityPicker.vue'
+import AvailabilityPicker from '../components/AvailabilityPicker.vue';
+
+
 
 export default {
   components: {
-    AvailabilityPicker
-  },
+    AvailabilityPicker,
+  
+},
   data() {
     return {
       request: {
@@ -201,9 +209,9 @@ export default {
         email: this.request.email,
         name: this.request.name,
         gender: this.request.gender,
-        slotSelect1: this.request.selectedSlots[0],
-        slotSelect2: this.request.selectedSlots[1],
-        slotSelect3: this.request.selectedSlots[2]
+        slotSelect1: "hello1",//this.request.selectedSlots[0],
+        slotSelect2: "hell02",//this.request.selectedSlots[1],
+        slotSelect3: "hello3"//this.request.selectedSlots[2]
       };
       DataService.sendEmail(data);
     },

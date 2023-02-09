@@ -18,7 +18,7 @@ class DataService {
 
     delete(data) {
         // data.service_cat_id
-        return http.delete("/admin/service", data);
+        return http.post("/admin/service/deleteService", data);
     }
 
     swap(data) {
@@ -30,6 +30,9 @@ class DataService {
         return http.post("/sendEmail", data);
     }
 
+    sendRegisterEmail(data) {
+        return http.post("/sendRegisterEmail", data);
+    }
     // deleteService(data){
     //     return http.delete("/admin/service",data);
     // }

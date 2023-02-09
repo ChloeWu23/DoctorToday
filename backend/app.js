@@ -33,6 +33,10 @@ const serviceRouter = require('./routes/serviceRoutes');
 const adminServiceRouter = require('./routes/adminServiceRoutes');
 const adminSubServiceRouter = require('./routes/adminSubServiceRoutes');
 const adminDisableTimeRouter = require('./routes/appointmentRoutes');
+const emailServiceRouter = require('./routes/emailServiceRoutes');
+
+const registerEmailRouter = require('./routes/registerEmailRoutes');
+
 const openingHoursRouter = require('./routes/openingHoursRoutes');
 const faqRouter = require('./routes/faqRoutes');
 const travelRouter = require('./routes/travelRoutes');
@@ -44,9 +48,11 @@ const userMiddleware = require('./middleware/user.js');
 
 // app.use('/', serviceRouter);
 app.use('/service', serviceRouter); 
-
-app.use('/admin/service', userMiddleware.isLoggedIn, adminServiceRouter) ;
+app.use('/admin/service', adminServiceRouter) ;
 app.use('/admin/sub-service', adminSubServiceRouter);
+app.use('/sendEmail', emailServiceRouter)
+
+app.use('/sendRegisterEmail', registerEmailRouter)
 
 app.use('/disable-time-slot', adminDisableTimeRouter);
 app.use('/opening-hours', openingHoursRouter);
