@@ -200,6 +200,14 @@ export default {
             dialogFormVisible: false
         }
     },
+    
+    async created() {
+        console.log(this.$store.getters.isLoggedIn);
+        if (!this.$store.getters.isLoggedIn) {
+            this.$router.push('/login');
+        }
+    },
+    
     setup() {
         const dialogFormVisible = ref(false);
 
