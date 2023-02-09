@@ -5,8 +5,13 @@ import Appointment from '../views/Appointment.vue'
 import NewPatientRegister from '../views/NewPatientRegister.vue'
 import ServiceOverview from '../views/ServiceOverview.vue'
 import TravelGuides from '../views/TravelGuides.vue'
+
+import BookingAppointment from '../views/BookingAppointment.vue'
+import FAQs from "../views/FAQs.vue"
+import People from '../views/People.vue'
+import FindUs from '../views/FindUs.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
-// import RootComp from './RootComp.vue'
+
 
 
 const routes = [
@@ -28,6 +33,27 @@ const routes = [
       name: 'TravelGuides',
       component: TravelGuides
     },
+    {
+      path: "bookingAppointment",
+      name: "BookingAppointment",
+      component: BookingAppointment
+    },
+    {
+      path: "FAQs",
+      name: "FAQs",
+      component: FAQs
+    },
+    {
+      path: "people",
+      name: "People",
+      component: People
+    },
+    {
+      path: "findUs",
+      name: "Find Us",
+      component: FindUs
+    },
+
     {
       path: 'appointment',
       name: 'Appointment',
