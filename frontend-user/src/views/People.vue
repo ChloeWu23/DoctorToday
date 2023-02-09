@@ -1,6 +1,6 @@
 <template>
     <div>
-		<ul id="people">
+		<ul id="people" class="text-justify">
             <li v-for="(item,index) in peopleList" :key="item.id">
 				<p src="" style="float: left; width: 100px; margin-right: 20px; margin-bottom: 20px;"> Space for Image </p>
                     <div sytle="float:left;">
@@ -13,6 +13,7 @@
 			</li>
         </ul>
     </div>
+
 </template>
 
 <script>
