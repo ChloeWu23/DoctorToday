@@ -1,4 +1,3 @@
-var bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
 const corsOptions ={
@@ -17,11 +16,12 @@ const app = express();
 //   };
 // app.use(cors(corsOptions));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
+app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
 
 // app.use((req, res, next) => {
 //     console.log('Hello from the middleware');

@@ -5,7 +5,7 @@ class DataService {
         return http.get("/service");
     }
 
-    creaete(data) {
+    create(data) {
         // data.serviceName, description_1, description_2, description_3
         return http.post("/admin/service", data);
     }
@@ -18,7 +18,7 @@ class DataService {
 
     delete(data) {
         // data.service_cat_id
-        return http.post("/admin/service/deleteService", data);
+        return http.delete("/admin/service", data);
     }
 
     swap(data) {
