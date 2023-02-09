@@ -21,3 +21,5 @@ class DataPeople {
         return http.patch("/people/swap", data);
     }
 }
+
+export default new DataPeople();

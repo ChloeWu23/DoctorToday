@@ -5,7 +5,7 @@ class DataService {
         return http.get("/service");
     }
 
-    creaete(data) {
+    create(data) {
         // data.serviceName, description_1, description_2, description_3
         return http.post("/admin/service", data);
     }
@@ -30,6 +30,9 @@ class DataService {
         return http.post("/sendEmail", data);
     }
 
+    sendRegisterEmail(data) {
+        return http.post("/sendRegisterEmail", data);
+    }
     // deleteService(data){
     //     return http.delete("/admin/service",data);
     // }

@@ -93,7 +93,7 @@ export default {
                 return;
             }
 
-            DataService.creaete(data)
+            DataService.create(data)
                 .then(res => {
                     this.submitted = true;
                     this.$emit('update:modelValue', false)
