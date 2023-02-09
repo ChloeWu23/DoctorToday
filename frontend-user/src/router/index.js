@@ -6,6 +6,8 @@ import NewPatientRegister from '../views/NewPatientRegister.vue'
 import ServiceOverview from '../views/ServiceOverview.vue'
 import TravelGuides from '../views/TravelGuides.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
+// import RootComp from './RootComp.vue'
+
 
 const routes = [
   { // landing page
@@ -51,11 +53,11 @@ const routes = [
       name: "admin",
       component: () => import("../components/Admin")
     },
-    {
-      path: "/showServices",
-      name: "showServices",
-      component: () => import("../components/ShowServices")
-    }
+    // {
+    //   path: "/showServices",
+    //   name: "showServices",
+    //   component: () => import("../components/ShowServices")
+    // }
       // },
       // {
       //   path: ':catchAll(.*)*',
@@ -63,6 +65,11 @@ const routes = [
       //   component: PageNotFound,
       // }
     ]
+  },
+  {
+    path: "/showServices",
+    name: "showServices",
+    component: () => import("../components/ShowServices")
   }
 
 ]
