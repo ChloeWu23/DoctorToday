@@ -13,6 +13,7 @@ import FindUs from '../views/FindUs.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 
 
+
 const routes = [
   { // landing page
     path: '/',
@@ -52,6 +53,7 @@ const routes = [
       name: "Find Us",
       component: FindUs
     },
+
     {
       path: 'appointment',
       name: 'Appointment',
@@ -77,11 +79,11 @@ const routes = [
       name: "admin",
       component: () => import("../components/Admin")
     },
-    {
-      path: "/showServices",
-      name: "showServices",
-      component: () => import("../components/ShowServices")
-    }
+    // {
+    //   path: "/showServices",
+    //   name: "showServices",
+    //   component: () => import("../components/ShowServices")
+    // }
       // },
       // {
       //   path: ':catchAll(.*)*',
@@ -89,6 +91,11 @@ const routes = [
       //   component: PageNotFound,
       // }
     ]
+  },
+  {
+    path: "/showServices",
+    name: "showServices",
+    component: () => import("../components/ShowServices")
   }
 
 ]
