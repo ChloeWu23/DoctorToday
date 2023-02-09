@@ -69,6 +69,12 @@ export default {
             servicesInfo: ""
         }
     },
+    async created() {
+        console.log(this.$store.getters.isLoggedIn);
+        if (!this.$store.getters.isLoggedIn) {
+            this.$router.push('/login');
+        }
+    },
     mounted() {
         DataService.get()
             .then(response => {

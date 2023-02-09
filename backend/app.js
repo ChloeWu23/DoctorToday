@@ -39,10 +39,13 @@ const travelRouter = require('./routes/travelRoutes');
 const otherInfoRouter = require('./routes/otherInfoRoutes');
 const peopleRouter = require('./routes/peopleRoutes');
 
+// middleware
+const userMiddleware = require('./middleware/user.js');
+
 // app.use('/', serviceRouter);
 app.use('/service', serviceRouter); 
 
-app.use('/admin/service', adminServiceRouter) ;
+app.use('/admin/service', userMiddleware.isLoggedIn, adminServiceRouter) ;
 app.use('/admin/sub-service', adminSubServiceRouter);
 
 app.use('/disable-time-slot', adminDisableTimeRouter);

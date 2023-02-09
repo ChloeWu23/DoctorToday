@@ -55,6 +55,11 @@ const routes = [
       path: "/showServices",
       name: "showServices",
       component: () => import("../components/ShowServices")
+    }, 
+    {
+      path:"/login",
+      name: "login",
+      component: () => import("../components/Login")
     }
       // },
       // {

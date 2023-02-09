@@ -12,6 +12,7 @@ router.get("/", async(req, res) => {
             attributes: ['info_type', 'info_content']
         })
         .then(data => {
+            console.log(req.body);
             res.status(401).json(data);
         })
         .catch(err => {
@@ -45,6 +46,56 @@ router.get("/", async(req, res) => {
     res.status(200).send(item.info_content);
     
 });
+
+router.post("/login", async(req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    console.log(req.body);
+
+    if (req.body.username === undefined || req.body.username === null) {
+        data = {
+            "msg": "No username! "
+        }
+        res.status(401).json(data);
+    }
+
+    const itemUserName = await OtherInfo.findOne({
+        where: {
+            info_type: "admin-name",
+            info_content: req.body.username
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(402).json(data);
+    });
+
+    const itemUserPassword = await OtherInfo.findOne({
+        where: {
+            info_type: "admin-password",
+            info_content: req.body.password
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(403).json(data);
+    });
+
+    if (itemUserName === null || itemUserName === undefined || itemUserPassword === null || itemUserPassword === undefined) {
+        data = {
+            "msg": "Wrong name or password! "
+        }
+        res.status(405).json(data);
+        
+    }
+    else {
+        data = {
+            "msg": "Log in successfully! ",
+            "user": req.body.username
+        }
+        res.status(200).json(data);
+    }
+
+})
 
 
 router.post("/", async(req, res) => {
