@@ -5,10 +5,15 @@ import Appointment from '../views/Appointment.vue'
 import NewPatientRegister from '../views/NewPatientRegister.vue'
 import ServiceOverview from '../views/ServiceOverview.vue'
 import TravelGuides from '../views/TravelGuides.vue'
-import PageNotFound from '@/views/PageNotFound.vue'
-import People from '../views/People.vue'
+
 import BookingAppointment from '../views/BookingAppointment.vue'
 import FAQs from "../views/FAQs.vue"
+import People from '../views/People.vue'
+import FindUs from '../views/FindUs.vue'
+import PageNotFound from '@/views/PageNotFound.vue'
+
+
+
 const routes = [
   { // landing page
     path: '/',
@@ -29,22 +34,26 @@ const routes = [
       component: TravelGuides
     },
     {
-      path: "people",
-      name: "People",
-      component: People
-    },
-
-    {
       path: "bookingAppointment",
       name: "BookingAppointment",
       component: BookingAppointment
     },
-    
     {
       path: "FAQs",
       name: "FAQs",
       component: FAQs
     },
+    {
+      path: "people",
+      name: "People",
+      component: People
+    },
+    {
+      path: "findUs",
+      name: "Find Us",
+      component: FindUs
+    },
+
     {
       path: 'appointment',
       name: 'Appointment',
@@ -71,9 +80,9 @@ const routes = [
       component: () => import("../components/Admin")
     },
     {
-      path: "/showServices",
-      name: "showServices",
-      component: () => import("../components/ShowServices")
+      path:"/login",
+      name: "login",
+      component: () => import("../components/Login")
     }
       // },
       // {
@@ -82,6 +91,11 @@ const routes = [
       //   component: PageNotFound,
       // }
     ]
+  },
+  {
+    path: "/showServices",
+    name: "showServices",
+    component: () => import("../components/ShowServices")
   }
 
 ]
