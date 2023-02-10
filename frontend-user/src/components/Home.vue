@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item float-left w-full h-full bg-[url('assets/img1.jpg')] bg-no-repeat bg-right p-10">
+      <div class="carousel-item float-left w-full h-full bg-[url('assets/img2.jpg')] bg-no-repeat bg-right bg-contain p-10">
         <div class="grid grid-cols-2">
           <div class="p-6 md:p-12">
             <p class="text-sky-700">We offer pre-booked appointments to everyone, irrespective of registration with an
@@ -36,14 +36,11 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item float-left w-full">
-        <div class="m-10 bg-gray-100">
-          PLACEHOLDER FOR MONTH COMPONENT
-        </div>
-      </div>
-      <div class="carousel-item float-left w-full">
-        <div class="-10 bg-gray-100">
-          PLACEHOLDER FOR NEWS COMPONENT
+      <div class="carousel-item float-left w-full bg-[url('assets/img3.jpg')] bg-no-repeat bg-right bg-contain">
+        <div class="grid grid-cols-2">
+          <div class="p-6 md:p-12">
+            <p class="text-sky-700">PLACEHOLDER FOR TEXT</p>
+          </div>
         </div>
       </div>
     </div>
