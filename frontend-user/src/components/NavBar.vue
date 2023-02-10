@@ -11,7 +11,6 @@
                 before:transition before:ease-in-out before:duration-300">
                         <span v-if="tab.name === 'review'"><a @click="openRedirection()">{{ tab.label }}</a></span>
                         <span v-else-if="tab.name === 'about'">
-
                             <div class="relative group">
                                 <button
                                     class="text-white md:text-blue-dark flex items-center group-hover:border-grey-light">
@@ -23,17 +22,15 @@
                                     </svg>
                                 </button>
                                 <div
-                                    class="text-black absolute border border-t-0 bg-slate-50 p-2 invisible group-hover:visible min-w-content">
+                                    class="text-sky-700 absolute border z-2 border-t-0 rounded-b-md bg-slate-50 p-2 invisible group-hover:visible min-w-content">
                                     <RouterLink :to="tab.children[0].path" class="p-2 block hover:bg-grey-lighter">{{
                                         tab.children[0].label
-                                    
                                     }}</RouterLink>
                                     <RouterLink :to="tab.children[1].path" class="p-2 block hover:bg-grey-lighter">{{
                                         tab.children[1].label
                                     }}</RouterLink>
                                 </div>
                             </div>
-
                         </span>
                         <span v-else>
                             <RouterLink :to="tab.path" class="text-white">{{ tab.label }}</RouterLink>

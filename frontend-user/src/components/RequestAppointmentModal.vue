@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         handleClose() {
-            this.$emit('close');
+            this.$emit("close");
         }
     }
 }
