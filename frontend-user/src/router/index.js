@@ -79,11 +79,11 @@ const routes = [
       name: "admin",
       component: () => import("../components/Admin")
     },
-    // {
-    //   path: "/showServices",
-    //   name: "showServices",
-    //   component: () => import("../components/ShowServices")
-    // }
+    {
+      path:"/login",
+      name: "login",
+      component: () => import("../components/Login")
+    }
       // },
       // {
       //   path: ':catchAll(.*)*',
