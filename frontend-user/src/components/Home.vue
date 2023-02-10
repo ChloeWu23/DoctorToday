@@ -62,8 +62,8 @@
   </div>
   <ContactButton />
   <div class="m-4"></div>
-  <div class="grid grid-cols-3">
-    <div class="w-full flex items-center bg-yellow-500 py-10 pl-4 text-white">
+  <div class="grid md:grid-cols-3">
+    <div class="w-full flex items-center bg-yellow-500 py-10 pl-2 lg:pl-4 text-white">
       <div class="p-4 scale-125">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />
@@ -81,7 +81,7 @@
       </div>
 
     </div>
-    <div class="w-full flex items-center bg-sky-700/80 py-10 pl-4 text-white">
+    <div class="w-full flex items-center bg-sky-700/80 py-10 pl-2 lg:pl-4 text-white">
       <div class="p-4 scale-125"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -102,7 +102,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full flex items-center bg-teal-600 py-10 pl-4 text-white">
+    <div class="w-full flex items-center bg-teal-600 py-10 pl-2 lg:pl-4 text-white">
       <div class="p-4 scale-125">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />
