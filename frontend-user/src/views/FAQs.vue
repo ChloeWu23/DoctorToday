@@ -1,16 +1,31 @@
 <template>
-    <div class = "h-full shadow-md md:m-8">
-		<h1 class="text-2xl text-sky-700 px-6 pb-4">Frequently Asked Questions</h1>
-        <div class="">
-            <details class="open:bg-gray-100 duration-300" v-for="(item,index) in QuestionList" :key="index">
-                <summary
-                    class="px-4 py-3 text-lg cursor-pointer hover:bg-gray-100 border-t-2 flex justify-between items-center w-full text-sm md:text-base">
-                    <p class="p-2 text-sky-700">{{ index+1 }}. {{ item.question }}</p>
-                </summary>
-                <div class="bg-white p-6 text-base text-justify" style="white-space: pre-line">{{ item.answer }}</div>
-            </details>
+    <div class="pl-10 pr-7 md:p-40 md:bg-top md:pt-30 bg-[url('@/assets/faq.jpg')] bg-no-repeat">
+        <div class="grid md:grid-cols-5">
+            <div class="pt-20 md:pt-0 md:pl-10 md:col-start-3 md:col-span-3 md:w-4/5">
+            <p class="px-6 py-6 md:px-10 md:py-8 text-3xl md:text-4xl font-bold text-sky-700 bg-slate-300 rounded-3xl bg-opacity-50 md:leading-relaxed"> 
+            Frequently Asked<br>Questions</p>
         </div>
     </div>
+
+    <div class="pt-10 md:pt-20"><br></div>
+
+    <div class="pb-10">
+        <div class = "w-full h-full shadow-md md:m-4 backdrop-blur-sm bg-white bg-opacity-50">
+            <div class="">
+                <details class="open:bg-gray-100 duration-300" v-for="(item,index) in QuestionList" :key="index">
+                    <summary style="outline: none;" 
+                    class="px-2 py-3 text-lg cursor-pointer hover:bg-gray-100 border-t-2 flex justify-between items-center w-full text-sm md:text-base">
+                        <p class="p-2 text-sky-700">{{ index+1 }}. {{ item.question }}</p>
+                    </summary>
+                    <div class="bg-white p-8 py-10 text-sm md:text-base text-justify leading-7" style="white-space: pre-line">
+                    {{ item.answer }}
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+</div>
+
 </template>
 
 <script>
@@ -47,12 +62,15 @@ details summary::-webkit-details-marker {
 }
 
 details summary::after {
-    content: '+';
+    content: url("@/assets/plus.png");
     font-size: 2em;
-    color: slategrey
+    color: #708090;
+    transition: transform 0.5s ease-in-out;
+}
+details[open] summary::after {
+    content: url("@/assets/plus.png");
+    transform: rotate(-45deg);
+    transition: transform 0.5s ease-in-out;
 }
 
-details[open] summary::after {
-    content: "-";
-}
 </style>
