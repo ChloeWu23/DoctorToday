@@ -13,6 +13,9 @@ module.exports = {
       },
       spacing: {
         180: '32rem'
+      },
+      backgroundImage: {
+        'hero': "url('assets/homepage-bg-4.png')",
       }
     },
   },

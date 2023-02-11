@@ -1,6 +1,6 @@
 <template>
-    <div class="relative container mx-auto bg-blueDark">
-        <div class="flex items-start justify-between bg-white">
+    <div class="relative container mx-auto bg-hero bg-contain">
+        <div class="flex items-start justify-between">
             <img class="h-20 object-cover mx-[100px] mt-[50px]" src="../assets/logo-2.png" alt="" />
             <div class="box shadow-lg top-0 right-0 p-3 rounded-b-lg bg-gradient-to-r from-cyan-500 to-blue-500">
                 <div class="text-white align-text-bottom font-medium tracking-wide [text-shadow:_1px_1px_0_rgb(0_0_0_/_40%)]">
@@ -45,15 +45,6 @@
 
     <div class="flex flex-col min-h-screen justify-between">
         <div class="w-full flex flex-col justify-center">
-            <!-- <div class="flex justify-between h-full xl:max-w-screen-xl place-self-center bg-blueDark items-start"> -->
-            <!-- <div class="flex items-start justify-between h-full xl:max-w-screen-xl place-self-center bg-black"> -->
-            
-            <!-- <nav class="flex justify-between h-full flex-wrap bg-sky-700/80 p-6 gap-6">
-                <div class="flex items-center">
-                    <NavBar></NavBar>
-                </div>
-                <SearchBox></SearchBox>
-            </nav> -->
 
             <div class="h-full xl:max-w-screen-xl place-self-center justify-center m-0">
                 <RouterView></RouterView>
@@ -67,6 +58,15 @@
 </template>
 
 
+            <!-- <div class="flex justify-between h-full xl:max-w-screen-xl place-self-center bg-blueDark items-start"> -->
+            <!-- <div class="flex items-start justify-between h-full xl:max-w-screen-xl place-self-center bg-black"> -->
+            
+            <!-- <nav class="flex justify-between h-full flex-wrap bg-sky-700/80 p-6 gap-6">
+                <div class="flex items-center">
+                    <NavBar></NavBar>
+                </div>
+                <SearchBox></SearchBox>
+            </nav> -->
 
 <script>
 import NavBar from '../components/NavBar.vue';
