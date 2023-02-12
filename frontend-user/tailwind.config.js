@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cyanLight: 'hsl(166, 80%, 63%)',
-        blueLight: 'hsl(205, 95%, 57%)',
-        blueDark: 'hsl(201, 61%, 39%)'
+        blueLight: 'hsl(206, 40%, 50%)',
+        blueDark: 'hsl(211, 28%, 29%)',
+        greenTrustPilot: 'hsl(150, 48%, 48%)'
       }, 
       fontFamily: {
         sans: ['Poppins', 'sans-serif']
@@ -15,7 +15,7 @@ module.exports = {
         180: '32rem'
       },
       backgroundImage: {
-        'hero': "url('assets/homepage-bg-4.png')",
+        'hero': "url('assets/homepage-bg-5-combo.png')",
       }
     },
   },
