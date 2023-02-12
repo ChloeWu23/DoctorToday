@@ -26,25 +26,6 @@
             </div>
         </div>
     </div>
-
-
-    <details class="open:bg-gray-100 duration-500"> 
-		<summary>Title for the panel</summary>
-		<div>
-			Add some info here.
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet, dignissimos, laboriosam temporibus aut quas mollitia dicta accusamus adipisci nisi dolor sunt eaque eligendi nemo a maxime quasi eos voluptates?</p>
-		</div>
-	</details>
-	
-	<details class="open:bg-gray-100 duration-500"> 
-		<summary>This is a styled detail tag</summary>
-		<div>
-			<p>All sorts of html can feature inside</p>
-			<h3>I'm a heading 3</h3>
-		</div>
-	</details>
-  
-
 </template>
 
 <script>
