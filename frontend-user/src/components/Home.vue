@@ -6,21 +6,9 @@
     <!-- End TrustBox script -->
   </head>
   <ContactButton />
-  <div>
-    <Carousel class="w-full">
-      <Slide v-for="slide in 10" :key="slide">
-        <div class="carousel__item">{{ slide }}</div>
-      </Slide>
 
-      <template #addons>
-        <Navigation />
-        <Pagination />
-      </template>
-    </Carousel>
-
-  </div>
   <!-- Upper: Brand & News -->
-  <div class="w-full grid lg:grid-cols-3 gap-6 min-h-[24rem] border border-2 border-gray-100">
+  <div class="w-full grid lg:grid-cols-3 lg:gap-6 md:h-96 border border-2 border-gray-100">
     <div
       class="w-full lg:col-span-2 bg-[url('assets/img2.jpg')] bg-no-repeat bg-right bg-cover grid lg:grid-cols-3 items-center">
       <div class="w-full p-10 text-white lg:col-span-2">
@@ -34,8 +22,8 @@
 
       </div>
     </div>
-    <div id="news" class="m-4 p-6 shadow-lg w-full">
-      <div class="flex my-2 w-full">
+    <div id="news" class="m-4 my-8 shadow-lg w-full overflow-y-auto h-48 md:h-5/6">
+      <div class="flex my-2 w-full sticky top-0 bg-gray-100 p-2">
         <span class="md:mr-2">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
             <path fill="none" d="M0 0h24v24H0z" />
@@ -46,20 +34,13 @@
         <span class="text-[#143B71]">Doctor Today News
         </span>
       </div>
-      <div class="w-full">
-        <carousel :items-to-show="1" :snapAlign="center" :wrap-around="true">
-          <slide v-for="item in news" :key="item.title">
-            <div class="carousel__item w-full justify-between h-full md:text-sm">
-              <p class="">{{ item.title }}</p>
-              <p class="p-6 text-left">{{ item.description }}</p>
-            </div>
-          </slide>
-          <template #addons>
-            <navigation />
-            <pagination />
-          </template>
-        </carousel>
+      <div class="divide-y divide-dashed md:text-sm">
+        <div class="w-full p-4" v-for="item in news">
+          <div class="font-semibold text-[#143B71]">{{ item.title }}</div>
+          <div class="">{{ item.description }}</div>
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -89,7 +70,6 @@
           </div>
           <!-- End TrustBox widget -->
         </div>
-
       </div>
     </div>
     <div class="w-full flex items-center border-t-8 border-[#8E603F] py-8 shadow-lg px-4">
@@ -100,10 +80,10 @@
             fill="#8E603F" />
         </svg></div>
       <div class="w-full">
-        <div class="my-2">Find A Slot
+        <div class="my-2 sticky top-2">Find A Slot
         </div>
-        <div class="flex">
-          <button class="border border-2 border-[#8E603F] p-2 shrink" @click="showModal = true">Check Available
+        <div class="flex w-5/6">
+          <button class="border border-2 border-[#8E603F] p-2 text-sm" @click="showModal = true">Check Available
             Slots</button>
           <transition name="modal">
             <div class="modal-mask" v-if="showModal">
@@ -125,7 +105,7 @@
       <div>
         <div class="my-2">Find A Service
         </div>
-        <div>
+        <div class="w-5/6">
           <SearchBox />
         </div>
       </div>
@@ -135,7 +115,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />
           <path
-            d="M3.161 4.469a6.5 6.5 0 0 1 8.84-.328 6.5 6.5 0 0 1 9.178 9.154l-7.765 7.79a2 2 0 0 1-2.719.102l-.11-.101-7.764-7.791a6.5 6.5 0 0 1 .34-8.826zm1.414 1.414a4.5 4.5 0 0 0-.146 6.21l.146.154L12 19.672l5.303-5.304-3.535-3.535-1.06 1.06a3 3 0 1 1-4.244-4.242l2.102-2.103a4.501 4.501 0 0 0-5.837.189l-.154.146zm8.486 2.828a1 1 0 0 1 1.414 0l4.242 4.242.708-.706a4.5 4.5 0 0 0-6.211-6.51l-.153.146-3.182 3.182a1 1 0 0 0-.078 1.327l.078.087a1 1 0 0 0 1.327.078l.087-.078 1.768-1.768z"
+            d="M17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4V1h2v2h6V1h2v2zm3 6V5h-3v2h-2V5H9v2H7V5H4v4h16zm0 2H4v8h16v-8zM6 13h5v4H6v-4z"
             fill="#8896AB" />
         </svg>
       </div>
@@ -159,8 +139,6 @@ import NewPatientButton from './NewPatientButton.vue';
 import SearchBox from './SearchBox.vue';
 import MapIcon from './MapIcon.vue'
 import ContactButton from "./ContactButton.vue";
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 
 export default {
@@ -263,8 +241,7 @@ export default {
     };
   },
   components: {
-    RequestAppointmentModal, NewPatientButton, MapIcon, ContactButton, SearchBox,
-    Carousel, Slide, Pagination, Navigation
+    RequestAppointmentModal, NewPatientButton, MapIcon, ContactButton, SearchBox
   },
   methods:
   {
@@ -286,12 +263,3 @@ export default {
   }
 }
 </script>
-
-
-<style>
-.carousel__item {
-  border-radius: 8px;
-  justify-content: center;
-  align-items: center;
-}
-</style>
