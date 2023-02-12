@@ -1,5 +1,5 @@
 <template>
-    <button class="px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white">
+    <button class="px-3 py-2 border rounded text-black border-black hover:text-black hover:border-black">
         <div class="text-sm"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
