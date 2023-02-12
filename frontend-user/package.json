@@ -30,6 +30,7 @@
     "vue-cli": "^1.2.0",
     "vue-router": "^4.0.3",
     "vue-whatsapp-widget": "^1.0.0",
+    "vue3-carousel": "^0.2.9",
     "vuex": "^4.1.0"
   },
   "devDependencies": {

@@ -8,10 +8,10 @@
   <ContactButton />
 
   <!-- Upper: Brand & News -->
-  <div class="grid md:grid-cols-3 min-h-[24rem] gap-6">
+  <div class="w-full grid lg:grid-cols-3 gap-6 min-h-[24rem] border border-2 border-gray-100">
     <div
-      class="md:col-span-2 bg-[url('assets/img2.jpg')] bg-no-repeat bg-right bg-cover grid lg:grid-cols-3 items-center">
-      <div class="p-10 text-white lg:col-span-2">
+      class="w-full lg:col-span-2 bg-[url('assets/img2.jpg')] bg-no-repeat bg-right bg-contain lg:bg-cover grid lg:grid-cols-3 items-center">
+      <div class="w-full p-10 text-white lg:col-span-2">
         <button class="bg-[#143B71] text-white rounded px-4 py-2 mb-8">
           <RouterLink to="people">Meet Our Team</RouterLink>
         </button>
@@ -22,17 +22,40 @@
 
       </div>
     </div>
-    <div id="news">
-      NEWS CARDS
+    <div id="news" class="m-4 p-6 shadow-lg">
+      <div class="flex my-2">
+        <span class="md:mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              d="M16 20V4H4v15a1 1 0 0 0 1 1h11zm3 2H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v7h4v9a3 3 0 0 1-3 3zm-1-10v7a1 1 0 0 0 2 0v-7h-2zM6 6h6v6H6V6zm2 2v2h2V8H8zm-2 5h8v2H6v-2zm0 3h8v2H6v-2z" />
+          </svg>
+        </span>
+        <span>Doctor Today News</span>
+      </div>
+      <div class="w-full">
+        <carousel :items-to-show="1" :snapAlign="center">
+          <slide v-for="item in news" :key="item.title">
+            <div class="w-full justify-between carousel__item h-full md:text-sm">
+              <p class="underline">{{ item.title }}</p>
+              <p class="p-6 text-left">{{ item.description }}</p>
+            </div>
+          </slide>
+          <template #addons>
+            <navigation />
+            <pagination />
+          </template>
+        </carousel>
+      </div>
     </div>
   </div>
 
   <div class="m-4"></div>
 
   <!-- Lower: search, appointment, reviews -->
-  <div class="grid md:grid-cols-4 gap-10 min-h-[16rem] mx-4">
-    <div class="w-full flex items-center border-t-8 border-[#5BB57B] py-10 pl-2 lg:pl-4 shadow-lg">
-      <div class="p-4 scale-125">
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 min-h-[16rem] border border-2 border-gray-100">
+    <div class="w-full flex items-center border-t-8 border-[#5BB57B] py-8 shadow-lg px-4">
+      <div class="pr-2 scale-125">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -56,8 +79,8 @@
 
       </div>
     </div>
-    <div class="w-full flex items-center border-t-8 border-[#8E603F] py-10 pl-2 lg:pl-4 shadow-lg">
-      <div class="p-4 scale-125"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+    <div class="w-full flex items-center border-t-8 border-[#8E603F] py-8 shadow-lg px-4">
+      <div class="pr-2 scale-125"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />
           <path
             d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-8h4v2h-6V7h2v5z"
@@ -77,8 +100,8 @@
         </div>
       </div>
     </div>
-    <div class="w-full flex items-center border-t-8 border-[#2A4359] lg:p-10 pl-2 lg:pl-4 shadow-lg">
-      <div class="p-4 scale-125">
+    <div class="w-full flex items-center border-t-8 border-[#2A4359] py-8 shadow-lg px-4">
+      <div class="pr-2 scale-125">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -94,8 +117,8 @@
         </div>
       </div>
     </div>
-    <div class="w-full flex items-center border-t-8 border-[#8896AB] py-10 pl-2 lg:pl-4 shadow-lg">
-      <div class="p-4 scale-125">
+    <div class="w-full flex items-center border-t-8 border-[#8896AB] py-8 shadow-lg px-4">
+      <div class="pr-2 scale-125">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -116,7 +139,6 @@
   </div>
   <div class="m-4"></div>
 
-
 </template>
 
 <script>
@@ -125,8 +147,9 @@ import NewPatientButton from './NewPatientButton.vue';
 import SearchBox from './SearchBox.vue';
 import MapIcon from './MapIcon.vue'
 import ContactButton from "./ContactButton.vue";
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
-// import "tw-elements";
 
 export default {
   data() {
@@ -192,13 +215,47 @@ export default {
       {
         title: "Home Visits",
         description: "One of our experienced doctors can come and see you in the comfort of your home.",
+        link: "",
+        pics: ""
+      },
+      {
+        title: "Online Appointment Request",
+        description: "Patients wishing to request an appointment can now do so using our online request form.",
+        link: "",
+        pics: ""
+      },
+      {
+        title: "Flu vaccine",
+        description: "Flu vaccines currently in stock. We only offer the flu injection. This is offered to all adults and in children from 6 months of age.",
+        link: "",
+        pics: ""
+      },
+      {
+        title: "Visa Medicals",
+        description: "We are pleased to offer Chinese Visa Medicals and Saudi Visa Medicals. Click picture above for more information",
+        link: "",
+        pics: ""
+      },
+      {
+        title: "Travel vaccines and anti-malarials",
+        description: "Going Travelling? Click to use our interactive travel guide to find non-vaccine specific health related travel information for the country you intend to visit.",
+        link: "services/general-health-screens",
+        pics: ""
+      },
+      {
+        title: "Non-surgical Cosmetic Procedures",
+        description: "Doctor Today now offers wrinkle reduction treatment and dermal fillers. Click for more information.",
         link: "services/general-health-screens",
         pics: ""
       }]
     };
   },
   components: {
-    RequestAppointmentModal, NewPatientButton, MapIcon, ContactButton, SearchBox
+    RequestAppointmentModal, NewPatientButton, MapIcon, ContactButton, SearchBox,
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation
   },
   methods:
   {
@@ -220,3 +277,18 @@ export default {
   }
 }
 </script>
+
+
+<style>
+.carousel__item {
+  min-height: 200px;
+  width: 100%;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel__slide {
+  padding: 10px;
+}
+</style>
