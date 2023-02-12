@@ -6,11 +6,23 @@
     <!-- End TrustBox script -->
   </head>
   <ContactButton />
+  <div>
+    <Carousel class="w-full">
+      <Slide v-for="slide in 10" :key="slide">
+        <div class="carousel__item">{{ slide }}</div>
+      </Slide>
 
+      <template #addons>
+        <Navigation />
+        <Pagination />
+      </template>
+    </Carousel>
+
+  </div>
   <!-- Upper: Brand & News -->
   <div class="w-full grid lg:grid-cols-3 gap-6 min-h-[24rem] border border-2 border-gray-100">
     <div
-      class="w-full lg:col-span-2 bg-[url('assets/img2.jpg')] bg-no-repeat bg-right bg-contain lg:bg-cover grid lg:grid-cols-3 items-center">
+      class="w-full lg:col-span-2 bg-[url('assets/img2.jpg')] bg-no-repeat bg-right bg-cover grid lg:grid-cols-3 items-center">
       <div class="w-full p-10 text-white lg:col-span-2">
         <button class="bg-[#143B71] text-white rounded px-4 py-2 mb-8">
           <RouterLink to="people">Meet Our Team</RouterLink>
@@ -22,8 +34,8 @@
 
       </div>
     </div>
-    <div id="news" class="m-4 p-6 shadow-lg">
-      <div class="flex my-2">
+    <div id="news" class="m-4 p-6 shadow-lg w-full">
+      <div class="flex my-2 w-full">
         <span class="md:mr-2">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
             <path fill="none" d="M0 0h24v24H0z" />
@@ -31,13 +43,14 @@
               d="M16 20V4H4v15a1 1 0 0 0 1 1h11zm3 2H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v7h4v9a3 3 0 0 1-3 3zm-1-10v7a1 1 0 0 0 2 0v-7h-2zM6 6h6v6H6V6zm2 2v2h2V8H8zm-2 5h8v2H6v-2zm0 3h8v2H6v-2z" />
           </svg>
         </span>
-        <span>Doctor Today News</span>
+        <span class="text-[#143B71]">Doctor Today News
+        </span>
       </div>
       <div class="w-full">
-        <carousel :items-to-show="1" :snapAlign="center">
+        <carousel :items-to-show="1" :snapAlign="center" :wrap-around="true">
           <slide v-for="item in news" :key="item.title">
-            <div class="w-full justify-between carousel__item h-full md:text-sm">
-              <p class="underline">{{ item.title }}</p>
+            <div class="carousel__item w-full justify-between h-full md:text-sm">
+              <p class="">{{ item.title }}</p>
               <p class="p-6 text-left">{{ item.description }}</p>
             </div>
           </slide>
@@ -135,7 +148,6 @@
         </div>
       </div>
     </div>
-
   </div>
   <div class="m-4"></div>
 
@@ -147,8 +159,8 @@ import NewPatientButton from './NewPatientButton.vue';
 import SearchBox from './SearchBox.vue';
 import MapIcon from './MapIcon.vue'
 import ContactButton from "./ContactButton.vue";
-import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 
 export default {
@@ -252,10 +264,7 @@ export default {
   },
   components: {
     RequestAppointmentModal, NewPatientButton, MapIcon, ContactButton, SearchBox,
-    Carousel,
-    Slide,
-    Pagination,
-    Navigation
+    Carousel, Slide, Pagination, Navigation
   },
   methods:
   {
@@ -281,14 +290,8 @@ export default {
 
 <style>
 .carousel__item {
-  min-height: 200px;
-  width: 100%;
   border-radius: 8px;
   justify-content: center;
   align-items: center;
-}
-
-.carousel__slide {
-  padding: 10px;
 }
 </style>
