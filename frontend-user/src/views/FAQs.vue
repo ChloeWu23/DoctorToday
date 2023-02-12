@@ -13,7 +13,7 @@
         <div class="pb-10">
             <div class = "w-full h-full shadow-md md:m-4 backdrop-blur-sm bg-white bg-opacity-50">
                 <div class="">
-                    <details class="open:bg-gray-100 duration-300" v-for="(item,index) in QuestionList" :key="index">
+                    <details class="open:bg-gray-100" v-for="(item,index) in QuestionList" :key="index">
                         <summary style="outline: none;" 
                         class="px-2 py-3 text-lg cursor-pointer hover:bg-gray-100 border-t-2 flex justify-between items-center w-full text-sm md:text-base">
                             <p class="p-2 text-sky-700">{{ index+1 }}. {{ item.question }}</p>
@@ -26,18 +26,30 @@
             </div>
         </div>
     </div>
+
+
+    <details class="open:bg-gray-100 duration-500"> 
+		<summary>Title for the panel</summary>
+		<div>
+			Add some info here.
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet, dignissimos, laboriosam temporibus aut quas mollitia dicta accusamus adipisci nisi dolor sunt eaque eligendi nemo a maxime quasi eos voluptates?</p>
+		</div>
+	</details>
+	
+	<details class="open:bg-gray-100 duration-500"> 
+		<summary>This is a styled detail tag</summary>
+		<div>
+			<p>All sorts of html can feature inside</p>
+			<h3>I'm a heading 3</h3>
+		</div>
+	</details>
+  
+
 </template>
 
 <script>
 import DataFAQ from '../dataRoutes/DataFAQ'
-/*
-            <div class="pt-20 md:pt-0 md:px-20 md:col-end-5">
-                <p class="px-10 py-6 md:py-8 text-3xl md:w-full md:text-4xl font-bold text-sky-700 
-                        bg-slate-300 rounded-3xl bg-opacity-50 leading-relaxed
-                        flex items-center justify-center text-left"> 
-                Frequently Asked<br>Questions</p>
-            </div>
-            */
+
 export default {
     data () {
         return {
@@ -74,10 +86,20 @@ details summary::after {
     color: #708090;
     transition: transform 0.5s ease-in-out;
 }
+
 details[open] summary::after {
     content: url("@/assets/plus.png");
     transform: rotate(-45deg);
     transition: transform 0.5s ease-in-out;
 }
 
+details{
+	transition: all 0.5s ease-in-out;
+	max-height: 100px;
+	overflow: hidden;
+}
+
+details[open] {
+	max-height: 500px;
+}
 </style>
