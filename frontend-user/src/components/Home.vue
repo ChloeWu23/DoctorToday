@@ -8,7 +8,7 @@
   <ContactButton />
 
   <!-- Upper: Brand & News -->
-  <div class="w-full grid lg:grid-cols-3 lg:gap-6 md:h-96 border border-2 border-gray-100">
+  <div class="w-full grid lg:grid-cols-3 lg:gap-6 md:h-96 ">
     <div
       class="w-full lg:col-span-2 bg-[url('assets/img2.jpg')] bg-no-repeat bg-right bg-cover grid lg:grid-cols-3 items-center">
       <div class="w-full p-10 text-white lg:col-span-2">
@@ -47,7 +47,7 @@
   <div class="m-4"></div>
 
   <!-- Lower: search, appointment, reviews -->
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 min-h-[16rem] border border-2 border-gray-100">
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 min-h-[16rem] ">
     <div class="w-full flex items-center border-t-8 border-[#5BB57B] py-8 shadow-lg px-4">
       <div class="pr-2 scale-125">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
