@@ -3,10 +3,10 @@
         <div @click="showMenu = !showMenu" class="justify-end block md:hidden">
             <navButton></navButton>
         </div>
-        <div class="w-full block md:flex md:items-center md:w-auto" :class="showMenu ? 'flex' : 'hidden'">
-            <ul class="md:flex md:items-center">
-                <div class="text-sm md:text-base lg:flex-grow" v-for="tab in navTabs" :key="tab.name">
-                    <li class="md:mx-4 md:my-0 my-6 text-black relative ">
+        <div class="w-full block md:flex md:items-center md:w-auto " :class="showMenu ? 'flex' : 'hidden'">
+            <ul class="md:flex md:items-center w-full xl:ml-[120px] lg:mx-10">
+                <div class="text-sm md:text-base lg:flex-grow md:mx-2 lg:mx-3 xl:mx-4" v-for="tab in navTabs" :key="tab.name">
+                    <li class="md:my-0 my-6 text-black hover:text-blueLight relative">
                         <span v-if="tab.name === 'review'"><a @click="openRedirection()">{{ tab.label }}</a></span>
                         <span v-else-if="tab.name === 'search'">
                             <div class="border-2 border-blueDark bg-gray-300 py-1 px-2 rounded">{{ tab.label }}</div>
