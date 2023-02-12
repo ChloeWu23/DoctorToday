@@ -9,13 +9,13 @@
     <div class="m-10 grid gap-10 md:grid-cols-3 divide-x grid-auto-flow: column">
         <div v-for="service in fullServices">
             <div
-                class="bg-[url('assets/gpconsultations.png')] bg-sky-100 bg-no-repeat bg-right-bottom rounded border-sky-700 p-4 drop-shadow-md h-full">
+                class="bg-[url('assets/gpconsultations.png')] hover:bg-[#143B71] text-[#143B71] hover:text-white bg-sky-100 bg-no-repeat bg-right-bottom rounded-lg p-4 shadow-md h-full">
                 <RouterLink :to="'services/' + service.serviceName.replace(/\s+/g, '-').toLowerCase()">
-                    <p class="font-bold text-sky-600">
+                    <p class="font-bold">
                         {{ service.serviceName }}
                     </p>
                     <p class="my-2">include:</p>
-                    <span>
+                    <span class="">
                         <li>{{ service.description_1 }} </li>
                         <li>{{ service.description_2 }} </li>
                         <li>{{ service.description_3 }} </li>
