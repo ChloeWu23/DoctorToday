@@ -9,7 +9,7 @@ module.exports = {
         greenTrustPilot: 'hsl(150, 48%, 48%)'
       }, 
       fontFamily: {
-        sans: ['Poppins', 'sans-serif']
+        sans: ['Lato', 'sans-serif']
       },
       spacing: {
         180: '32rem'
