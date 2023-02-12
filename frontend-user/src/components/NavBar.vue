@@ -1,4 +1,5 @@
 <template>
+    <div class="text-black">{{ showMenu }}</div>
     <div class="z-100">
         <div @click="showMenu = !showMenu" class="justify-end block md:hidden">
             <navButton></navButton>
@@ -11,8 +12,15 @@
                         <span v-else-if="tab.name === 'search'">
                             <div class="border-2 border-blueDark bg-gray-300 py-1 px-2 rounded">{{ tab.label }}</div>
                         </span>
+                        <span class="span md:hidden" v-else-if="tab.name === 'tel'">
+                            <div class="">Tel:020 7433 1444</div>
+                            <div class="">enquiries@doctortoday.co.uk</div>
+                        </span>
                         <span v-else>
-                            <RouterLink :to="tab.path" class="">{{ tab.label }}</RouterLink>
+                            <!-- todo: @click="showMenu = false" -->
+                            <RouterLink :to="tab.path" class=""> 
+                                {{ tab.label }}
+                            </RouterLink>
                         </span>
 
                     </li>
@@ -87,6 +95,11 @@ export default {
                     name: "search",
                     label: "Search", // TODO
                     children: [] 
+                },
+                {
+                    name: "tel",
+                    label: "Tel 020 7433 1444", // TODO
+                    children: [] 
                 }
             ]
         }
@@ -98,7 +111,7 @@ export default {
     },
     methods: {
         openRedirection() {
-            window.open('https://uk.trustpilot.com/review/doctortoday.co.uk?utm_medium=trustbox&utm_source=MicroReviewCount')
+            window.open('https://uk.trustpilot.com/review/doctortoday.co.uk?utm_medium=trustbox&utm_source=MicroReviewCount');
         }
     }
 

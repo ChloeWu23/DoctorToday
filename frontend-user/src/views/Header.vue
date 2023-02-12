@@ -4,7 +4,7 @@
             <div class="flex items-start justify-between">
                 <img class="h-[120px] object-cover mx-[40px] xl:mx-[140px] mt-[20px]" src="../assets/title-4.png" alt="" />
                 <div class="hidden md:flex shadow-lg mx-20 p-3 rounded-b-lg bg-gradient-to-r from-blueLight to-blueDark">
-                    <div class="text-white text-xs lg:text-sm align-text-bottom font-bold tracking-wider]">
+                    <div class="text-white text-xs lg:text-sm align-text-bottom font-bold tracking-wider">
                         Tel:020 7433 1444 | enquiries@doctortoday.co.uk
                     </div>
                 </div>
