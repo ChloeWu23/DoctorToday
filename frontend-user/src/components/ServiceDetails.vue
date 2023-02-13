@@ -9,7 +9,7 @@
                     </div>
                     <p class="p-2 pr-10 text-sky-700">£{{ item.price }}</p>
                 </summary>
-                <div class="bg-white p-8 text-sm">
+                <div class="bg-white p-8 text-sm whitespace-pre-line">
                     {{ item.description }}
                 </div>
             </details>
