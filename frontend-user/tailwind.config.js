@@ -6,8 +6,7 @@ module.exports = {
       colors: {
         blueLight: 'hsl(206, 40%, 50%)',
         blueDark: 'hsl(211, 28%, 29%)',
-        greenTrustPilot: 'hsl(150, 48%, 48%)',
-        grayDark: 'gray-600'
+        greenTrustPilot: 'hsl(150, 48%, 48%)'
       }, 
       fontFamily: {
         sans: ['Lato', 'sans-serif']

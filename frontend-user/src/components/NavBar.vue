@@ -9,7 +9,7 @@
                     <li class="md:my-0 my-6 text-black hover:text-blueLight relative">
                         <span v-if="tab.name === 'review'"><a @click="openRedirection()">{{ tab.label }}</a></span>
                         <span v-else-if="tab.name === 'search'">
-                            <div class="border-2 border-blueDark bg-gray-300 py-1 px-2 rounded">{{ tab.label }}</div>
+                            <div class="border-2 border-blueDark bg-gray-200 py-1 px-2 rounded text-gray-500">{{ tab.label }}</div>
                         </span>
                         <span class="span md:hidden" v-else-if="tab.name === 'tel'">
                             <div class="">Tel:020 7433 1444</div>
