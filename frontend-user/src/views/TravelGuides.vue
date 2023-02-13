@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-[url('assets/map.jpg')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 gap-8 w-full">
-        <div class="m-12 p-6 justify-center bg-slate-50/30 drop-shadow-lg backdrop-blur-md">
+    <div class="bg-[url('assets/map_2.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 gap-8 w-full">
+        <div class="m-12 p-6 justify-center bg-white bg-opacity-50 drop-shadow-lg backdrop-blur-md">
             <div class="text-2xl my-4 text-sky-700">Travel vaccines, medications and advice</div>
             <div class="self-center text-base">
                 <p class="my-2">Our popular fast-track travel clinic at Doctor Today offers you an
@@ -28,7 +28,7 @@
                     </div>
                     <div class="w-px h-full bg-gray-300"></div>
                 </div>
-                <div class="m-2 mt-6 p-5 bg-slate-50/30 backdrop-blur-md">
+                <div class="m-2 mt-6 p-5  bg-white bg-opacity-50 backdrop-blur-md">
                     <div class="text-sky-700 font-bold text-xl mb-2">Step 1</div>
                     <p class="text-base">Select below for your travel destination. This will allow you to
                         consult the relevant section of the NHS Fit for travel website.
@@ -64,7 +64,7 @@
                     </div>
                     <div class="w-px h-full bg-gray-300"></div>
                 </div>
-                <div class="m-2 mt-6 p-5 bg-slate-50/30 backdrop-blur-md">
+                <div class="m-2 mt-6 p-5 bg-white bg-opacity-50 backdrop-blur-md">
                     <div class="text-sky-700 font-bold text-xl mb-2">Step 2</div>
                     <p class="text-base">Consult our <a class="text-sky-700 underline"
                             href="#/services/travel-medication">services and prices</a> list to obtain detailed medical
@@ -85,7 +85,7 @@
                     </div>
                     <div class="w-px h-full bg-gray-300"></div>
                 </div>
-                <div class="m-2 mt-6 p-5 bg-slate-50/30 backdrop-blur-md">
+                <div class="m-2 mt-6 p-5  bg-white bg-opacity-50 backdrop-blur-md">
                     <div class="text-sky-700 font-bold text-xl mb-2">Step 3:</div>
                     <p class="text-base">Fill in our <a class="text-sky-700 underline" href="#/appointment">online
                             appointment request form</a> to discuss your
