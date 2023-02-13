@@ -15,7 +15,8 @@
                 <div class="">
                     <details class="open:bg-gray-100" v-for="(item,index) in QuestionList" :key="index">
                         <summary style="outline: none;" 
-                        class="px-2 py-3 text-lg cursor-pointer hover:bg-gray-100 border-t-2 flex justify-between items-center w-full text-sm md:text-base">
+                                 class="px-2 py-3 text-lg cursor-pointer hover:bg-gray-100 
+                                 border-t-2 flex justify-between items-center w-full text-sm md:text-base">
                             <p class="p-2 text-sky-700">{{ index+1 }}. {{ item.question }}</p>
                         </summary>
                         <div class="bg-white p-8 py-10 text-sm md:text-base text-justify leading-7" style="white-space: pre-line">
