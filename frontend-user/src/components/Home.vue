@@ -5,7 +5,7 @@
       src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></component>
     <!-- End TrustBox script -->
   </head>
-  <ContactButton />
+
 
   <!-- Upper: Brand & News -->
   <div class="w-full grid lg:grid-cols-3 lg:gap-6 md:h-96 ">
@@ -139,7 +139,6 @@ import RequestAppointmentModal from './RequestAppointmentModal.vue';
 import NewPatientButton from './NewPatientButton.vue';
 import SearchBox from './SearchBox.vue';
 import MapIcon from './MapIcon.vue'
-import ContactButton from "./ContactButton.vue";
 
 
 export default {
@@ -242,7 +241,7 @@ export default {
     };
   },
   components: {
-    RequestAppointmentModal, NewPatientButton, MapIcon, ContactButton, SearchBox
+    RequestAppointmentModal, NewPatientButton, MapIcon, SearchBox
   },
   methods:
   {
