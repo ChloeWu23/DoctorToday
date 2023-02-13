@@ -1,5 +1,4 @@
 <template>
-    <div class="text-black">{{ showMenu }}</div>
     <div class="z-100">
         <div @click="showMenu = !showMenu" class="justify-end block md:hidden">
             <navButton></navButton>
@@ -16,7 +15,7 @@
                             <div class="">Tel:020 7433 1444</div>
                             <div class="">enquiries@doctortoday.co.uk</div>
                         </span>
-                        <span v-else>
+                        <span @click="showMenu = !showMenu" v-else>
                             <!-- todo: @click="showMenu = false" -->
                             <RouterLink :to="tab.path" class=""> 
                                 {{ tab.label }}

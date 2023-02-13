@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-[url('assets/map.jpg')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 gap-8 w-full">
-        <div class="m-12 p-6 justify-center bg-slate-50/30 drop-shadow-lg backdrop-blur-md">
+    <div class="bg-[url('assets/map_2.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 gap-8 w-full">
+        <div class="m-12 p-6 justify-center bg-white bg-opacity-50 drop-shadow-lg backdrop-blur-md">
             <div class="text-2xl my-4 text-sky-700">Travel vaccines, medications and advice</div>
             <div class="self-center text-base">
                 <p class="my-2">Our popular fast-track travel clinic at Doctor Today offers you an
