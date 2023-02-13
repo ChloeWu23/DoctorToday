@@ -21,6 +21,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('tailwind-scrollbar'),
     require('tw-elements/dist/plugin')
   ],
 }
