@@ -51,7 +51,6 @@ export default {
     },
     setup(props, { emit }) {
         const dialogFormVisible = ref(false)
-        //const formLabelWidth = '200px'
         const form = reactive({
             name: '',
             desc1: '',
@@ -59,13 +58,11 @@ export default {
             desc3: '',
         })
 
-        //关闭的点击事件
         const handleClose = () => {
             emit('update:modelValue', false)
         }
         return {
             handleClose,
-            //form,
             dialogFormVisible,
         };
     },
