@@ -14,7 +14,7 @@ class DataSubService {
     }
 
     delete(cat_id, data) {
-        return http.delete(`/admin/sub-service/${cat_id}`, data);
+        return http.post(`/admin/sub-service/${cat_id}/delete`, data);
     }
 
     swap(cat_id, data) {

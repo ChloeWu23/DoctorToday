@@ -109,7 +109,7 @@ router.patch("/", async(req, res) => {
         });
 });
 
-router.delete("/", async (req, res) => {
+router.post("/delete", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
     if (req.body.staff_id === null || req.body.staff_id === undefined) {
