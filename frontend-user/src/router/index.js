@@ -68,11 +68,6 @@ const routes = [
       component: () => import("../components/ServiceDetails")
     },
     {
-      path: "/admin",
-      name: "admin",
-      component: () => import("../components/Admin")
-    },
-    {
       path:"/login",
       name: "login",
       component: () => import("../components/Login")
