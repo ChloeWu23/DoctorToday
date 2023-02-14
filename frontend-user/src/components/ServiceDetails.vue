@@ -59,7 +59,7 @@ export default {
 
 }
 </script>
-
+<!-- 
 <style>
 details>summary {
     list-style: none;
@@ -78,4 +78,4 @@ details summary::after {
 details[open] summary::after {
     content: "-";
 }
-</style>
+</style> -->
