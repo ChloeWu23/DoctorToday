@@ -1,13 +1,69 @@
-"id";"cat_id";"sub_service_id";"short_name";"sub_service_name";"description";"price";"createdAt";"updatedAt"
-3;0;0;"GP-follow-up-same";"Follow-up GP consultation within one week of initial consultation for same concern";"Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+id,cat_id,sub_service_id,short_name,sub_service_name,description,price,createdAt,updatedAt
+0,0,0,gp-consultations,"Standard GP consultation (20 minutes, no additional charges for prescription or referrals)","Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+
 We provide standard (20 mins) and in-depth (30 mins) consultations. Follow-up consultations are also available at a reduced rate. The cost of consultation includes associated expenses such as blood taking, swab taking, post-test counselling and prescription fee. ECGs, lab tests and the cost of medications are additional.
+
 In most cases we find we are able to meet our patients needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.";85;"2023-01-26 16:19:40";"2023-01-26 17:06:18"
-4;0;1;"GP-follow-up-same";"name 1";"des1";100;"2023-01-26 17:14:06";"2023-01-26 17:14:06"
-5;0;2;"GP-follow-up-same";"name 2";"des1";100;"2023-01-26 17:14:12";"2023-01-26 17:14:12"
-6;1;2;"GP-follow-up-same";"name 3";"des1";100;"2023-01-26 17:14:21";"2023-01-26 17:29:17"
-7;1;0;"GP-follow-up-same";"name 4";"des1";100;"2023-01-26 17:14:29";"2023-01-26 17:28:51"
-8;1;1;"GP-follow-up-same";"Follow-up GP consultation within one week of initial consultation for same concern";"Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",100,,
+1,0,1,gp-consultations,Follow-up GP consultation within one week of initial consultation for same concern,"Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+
 We provide standard (20 mins) and in-depth (30 mins) consultations. Follow-up consultations are also available at a reduced rate. The cost of consultation includes associated expenses such as blood taking, swab taking, post-test counselling and prescription fee. ECGs, lab tests and the cost of medications are additional.
+
 In most cases we find we are able to meet our patients needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.";85;"2023-01-26 17:14:34";"2023-01-26 17:29:17"
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",85,26/01/2023 17:14,26/01/2023 17:14
+2,0,2,gp-consultations,Follow-up GP consultation related to chronic conditions/contraception,"Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+
+We provide standard (20 mins) and in-depth (30 mins) consultations. Follow-up consultations are also available at a reduced rate. The cost of consultation includes associated expenses such as blood taking, swab taking, post-test counselling and prescription fee. ECGs, lab tests and the cost of medications are additional.
+
+In most cases we find we are able to meet our patients needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",85,26/01/2023 17:14,26/01/2023 17:14
+3,0,3,gp-consultations,In-depth GP consultation with clinician,"Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+
+We provide standard (20 mins) and in-depth (30 mins) consultations. Follow-up consultations are also available at a reduced rate. The cost of consultation includes associated expenses such as blood taking, swab taking, post-test counselling and prescription fee. ECGs, lab tests and the cost of medications are additional.
+
+In most cases we find we are able to meet our patients needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",140,26/01/2023 17:14,26/01/2023 17:29
+4,0,4,gp-consultations,"Repeat prescription by telephone request (existing patients only, excludes cost of medication)",Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.,10,26/01/2023 17:14,26/01/2023 17:28
+5,0,5,gp-consultations,Telephone Consultation,"20 minute telephone consultation with one of the GPs.
+
+Conditions:
+
+telephone consultations are only offered through a booked time slot - limited to 15 minutes
+payment is made at the time of booking the consultation
+patients will then be offered a time slot that suits them, to call back and speak to the doctor.
+There are certain situations where the doctor will need to examine you, if this is the case they will advise during the telephone consultation. Those patients that then decide to use Doctor Today will be offered a consultation at a reduced rate of ?5 (normally ?00)
+
+Prescriptions are issued at the discretion of the doctor. These can be posted to you or faxed to your nearest pharmacy. Alternatively you can pick up certain medication from the practice.",70,,
+6,0,6,gp-consultations,Ear syringing (including free follow-up appointment within one week if necessary),,110,,
+7,0,7,gp-consultations,Histofreeze consultation,"Removing a wart/verruca is a problem you may be able to solve yourself over the course of a few months using duct tape (available from hardware stores) (more information and instructions). However, if you would like an accelerated resolution of the problem, Doctor Today offers a cryotherapy service (i.e. freezing the wart/verruca using liquid nitrogen or similar cryogen).
+
+Note that it is important to be sure that what you have is indeed a wart or verruca caused by Human Papillomavirus (HPV) and not a skin growth or cancer which may need surgical or other treatment. If you are in doubt, or if you have tried the duct tape remedy and the wart or verruca is not going away as it should, please book a consultation and we will be happy to review it and at the same time carry out a review of your moles and other skin blemishes which may need attention. If cryotherapy is indicated, but the wart/verruca is not in an area amenable to this treatment, other methods may be needed -- we will be happy to help you choose the right one.
+
+In terms of costs, we typically charge ?10 for the initial consultation; if necessary, subsequent sessions are ?5.
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",115,,
+8,0,8,gp-consultations,Follow-up histofreeze consultation (same lesions),"Removing a wart/verruca is a problem you may be able to solve yourself over the course of a few months using duct tape (available from hardware stores) (more information and instructions). However, if you would like an accelerated resolution of the problem, Doctor Today offers a cryotherapy service (i.e. freezing the wart/verruca using liquid nitrogen or similar cryogen).
+
+Note that it is important to be sure that what you have is indeed a wart or verruca caused by Human Papillomavirus (HPV) and not a skin growth or cancer which may need surgical or other treatment. If you are in doubt, or if you have tried the duct tape remedy and the wart or verruca is not going away as it should, please book a consultation and we will be happy to review it and at the same time carry out a review of your moles and other skin blemishes which may need attention. If cryotherapy is indicated, but the wart/verruca is not in an area amenable to this treatment, other methods may be needed -- we will be happy to help you choose the right one.
+
+In terms of costs, we typically charge ?10 for the initial consultation; if necessary, subsequent sessions are ?5.
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",95,,
+9,0,9,gp-consultations,Referrals,"If you are an existing patient and in need of a referral letter, you can request one at a cost of ?0. Our GP must already have knowledge of the issue and agree that specialist attention is necessary. If you are a new patient, a consultation is necessary before requesting a referral letter.",20,,
+10,0,10,gp-consultations,Video Consultations,"We offer 20 minute video consultations for those patients who cannot make it to the practise. You can use your smart phone, laptop or computer for this service. Once your appointment is booked you will receive a confirmation email with a video link, click the link at your appointment time and wait for the doctor to join your consultation. Please call us on 0207 433 1444 if you would like to book a video consultation.",70,,
+11,1,0,antenatal-care,Antenatal Care Package,,,,
+12,2,0,sexual-health,FAST STD testing,"Tests include: HIV, Hepatitis B and C, Syphilis, Chlamydia and Gonorrhoea. Same day results (for appointments before 12.30pm). 
+
+For men - urine and blood sample only. NO swab needed!
+
+The screening fee includes an in-depth discussion about your worries in this area, in addition to full lab costs for the tests outlined above. The consultation at which you are given your results is included in the screening fee. However, confirmatory or follow-up laboratory testing at a later date (recommended in high-risk situations or given an initial positive result) will incur extra costs according to the individual test(s) required (see price list).
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",,,
+13,1,1,sexual-health,,,,,
+14,1,2,sexual-health,,,,,
+15,1,3,sexual-health,,,,,
+16,1,4,sexual-health,,,,,

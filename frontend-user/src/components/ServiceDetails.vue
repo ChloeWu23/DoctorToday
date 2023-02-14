@@ -1,7 +1,7 @@
 <template>
-    <div class="h-full shadow-md m-4 md:m-8">
-        <div class="">
-            <details class="open:bg-gray-100 duration-300" v-for="item in this.ServiceDetails">
+    <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md m-4 md:m-8">
+        <div class="w-full">
+            <details class="open:bg-gray-100 duration-300 w-full" v-for="item in this.ServiceDetails">
                 <summary
                     class="px-5 py-3 text-lg cursor-pointer hover:bg-gray-100 border border-2 flex justify-between items-center w-full text-sm md:text-base">
                     <div class="p-2 text-sky-700 w-3/4">
@@ -9,7 +9,7 @@
                     </div>
                     <p class="p-2 pr-10 text-sky-700">£{{ item.price }}</p>
                 </summary>
-                <div class="bg-white p-8 text-sm">
+                <div class="bg-white p-8 text-sm whitespace-pre-line">
                     {{ item.description }}
                 </div>
             </details>
@@ -59,7 +59,7 @@ export default {
 
 }
 </script>
-
+<!-- 
 <style>
 details>summary {
     list-style: none;
@@ -78,4 +78,4 @@ details summary::after {
 details[open] summary::after {
     content: "-";
 }
-</style>
+</style> -->

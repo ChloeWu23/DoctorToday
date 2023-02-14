@@ -1,4 +1,5 @@
 <template>
+    <ContactButton/>
     <body class="bg-gray-100">
         <div class="container items-center mx-auto bg-hero bg-[length:1920px_260px]  border-b-2 drop-shadow-md mb-6">
             <div class="flex items-start justify-between">
@@ -68,6 +69,7 @@ import NavBar from '../components/NavBar.vue';
 import Logo from '../components/Logo.vue';
 import SearchBox from '../components/SearchBox.vue';
 import Footer from '../components/Footer.vue'
+import ContactButton from '@/components/ContactButton.vue';
 
 export default {
     data() {
@@ -77,7 +79,8 @@ export default {
         NavBar,
         Logo,
         SearchBox,
-        Footer
+        Footer,
+        ContactButton
     }
 }
 

@@ -5,7 +5,6 @@ import Appointment from '../views/Appointment.vue'
 import NewPatientRegister from '../views/NewPatientRegister.vue'
 import ServiceOverview from '../views/ServiceOverview.vue'
 import TravelGuides from '../views/TravelGuides.vue'
-
 import BookingAppointment from '../views/BookingAppointment.vue'
 import FAQs from "../views/FAQs.vue"
 import People from '../views/People.vue'
@@ -67,17 +66,6 @@ const routes = [
     {
       path: "services/:serviceName",
       component: () => import("../components/ServiceDetails")
-    },
-    {
-      path: "/test",
-      alias: "/test",
-      name: "test",
-      component: () => import("../components/Test")
-    },
-    {
-      path: "/admin",
-      name: "admin",
-      component: () => import("../components/Admin")
     },
     {
       path:"/login",
