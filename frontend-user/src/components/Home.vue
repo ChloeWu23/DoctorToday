@@ -6,7 +6,11 @@
     <!-- End TrustBox script -->
   </head>
 
-
+  <transition name="modal" v-if="showModal">
+    <!-- <div class="modal-mask" > -->
+    <RequestAppointmentModal @close="closeModal" />
+    <!-- </div> -->
+  </transition>
   <!-- Upper: Brand & News -->
   <div class="w-full grid lg:grid-cols-3 lg:gap-6 md:h-96 ">
     <div
@@ -22,14 +26,15 @@
 
       </div>
     </div>
-    <div id="news" class="m-4 lg:m-0 shadow-lg lg:w-full overflow-y-scroll h-48 md:h-5/6 lg:h-full scrollbar-thin scrollbar-thumb-[#2A4359] scrollbar-track-[#8896AB]">
+    <div id="news"
+      class="m-4 lg:m-0 shadow-lg lg:w-full overflow-y-scroll h-48 md:h-5/6 lg:h-full scrollbar-thin scrollbar-thumb-[#2A4359] scrollbar-track-[#8896AB]">
       <div class="flex my-2 w-full sticky top-0 bg-gray-100 p-2">
         <span class="md:mr-2">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path
-              d="M16 20V4H4v15a1 1 0 0 0 1 1h11zm3 2H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v7h4v9a3 3 0 0 1-3 3zm-1-10v7a1 1 0 0 0 2 0v-7h-2zM6 6h6v6H6V6zm2 2v2h2V8H8zm-2 5h8v2H6v-2zm0 3h8v2H6v-2z" 
-              fill="#2A4359"/>
+              d="M16 20V4H4v15a1 1 0 0 0 1 1h11zm3 2H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v7h4v9a3 3 0 0 1-3 3zm-1-10v7a1 1 0 0 0 2 0v-7h-2zM6 6h6v6H6V6zm2 2v2h2V8H8zm-2 5h8v2H6v-2zm0 3h8v2H6v-2z"
+              fill="#2A4359" />
           </svg>
         </span>
         <span class="text-[#143B71] font-semibold underline">Doctor Today News
@@ -86,11 +91,7 @@
         <div class="flex w-5/6">
           <button class="border border-2 border-[#8E603F] p-2 text-sm" @click="showModal = true">Check Available
             Slots</button>
-          <transition name="modal">
-            <div class="modal-mask" v-if="showModal">
-              <RequestAppointmentModal @close="closeModal" />
-            </div>
-          </transition>
+
         </div>
       </div>
     </div>
