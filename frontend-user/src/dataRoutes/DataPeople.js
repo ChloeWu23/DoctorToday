@@ -14,7 +14,7 @@ class DataPeople {
     }
 
     delete(data) {
-        return http.delete("/people", data);
+        return http.post("/people/delete", data);
     }
 
     swap(data) {

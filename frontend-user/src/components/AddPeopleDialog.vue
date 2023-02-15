@@ -1,21 +1,21 @@
 <template>
-    <el-dialog :model-value="dialogFormVisible" title="Adding New Service" :show-close="false"
+    <el-dialog :model-value="dialogFormVisible" title="Adding People" :show-close="false"
         :close-on-click-modal="false">
-        <el-form :model="form">
-            <el-form-item label="Service Category Name">
-                <el-input v-model="newService.name" autocomplete="off">{{ newService.name }}</el-input>
+        <el-form>
+            <el-form-item label="Name">
+                <el-input v-model="newPeople.name" autocomplete="off">{{ newPeople.name }}</el-input>
             </el-form-item>
 
-            <el-form-item label="Description 1" prop="desc">
-                <el-input v-model="newService.desc1" type="textarea">{{ newService.desc1 }}</el-input>
+            <el-form-item label="Title" prop="desc">
+                <el-input v-model="newPeople.title" type="textarea">{{ newPeople.title }}</el-input>
             </el-form-item>
 
-            <el-form-item label="Description 2" prop="desc">
-                <el-input v-model="newService.desc2" type="textarea">{{ newService.desc2 }}</el-input>
+            <el-form-item label="Profile" prop="desc">
+                <el-input v-model="newPeople.profile" type="textarea">{{ newPeople.profile }}</el-input>
             </el-form-item>
 
-            <el-form-item label="Description 3" prop="desc">
-                <el-input v-model="newService.desc3" type="textarea">{{ newService.desc3 }}</el-input>
+            <el-form-item label="Description" prop="desc">
+                <el-input v-model="newPeople.description" type="textarea">{{ newPeople.description }}</el-input>
             </el-form-item>
 
         </el-form>
@@ -26,7 +26,7 @@
                     @click="handleClose">Cancel</button>
                 <button type="button"
                     class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    @click="addService">Confirm</button>
+                    @click="addPeople">Confirm</button>
             </span>
         </template>
     </el-dialog>
@@ -35,28 +35,22 @@
 
 <script>
 import { reactive, ref } from "vue";
-import DataService from '@/dataRoutes/DataService';
+import DataService from '@/dataRoutes/DataPeople';
 
 export default {
     data() {
         return {
-            newService: {
+            newPeople: {
                 name: "",
-                desc1: "",
-                desc2: "",
-                desc3: ""
+                title: "",
+                profile: "",
+                description: ""
             },
             submitted: false
         };
     },
     setup(props, { emit }) {
         const dialogFormVisible = ref(false)
-        const form = reactive({
-            name: '',
-            desc1: '',
-            desc2: '',
-            desc3: '',
-        })
 
         const handleClose = () => {
             emit('update:modelValue', false)
@@ -67,26 +61,25 @@ export default {
         };
     },
     methods: {
-        addService() {
+        addPeople() {
             var data = {
-                serviceName: this.newService.name,
-                description_1: this.newService.desc1,
-                description_2: this.newService.desc2,
-                description_3: this.newService.desc3
+                name: this.newPeople.name,
+                title: this.newPeople.title,
+                profile: this.newPeople.profile,
+                description: this.newPeople.description
             };
-
 
             console.log(data)
 
-            if(data.serviceName == undefined || data.serviceName == ''){
-                console.log('please input a service name')
-                alert('please input a service name')
+            if(data.name == undefined || data.name == ''){
+                console.log('please input name')
+                alert('please input name')
                 return;
             }
 
-            if(data.description_1 == undefined || data.description_1 == ''){
-                console.log('please input at least one description')
-                alert('please input at least one description')
+            if(data.title == undefined || data.title == ''){
+                console.log('please input the title')
+                alert('please input the title')
                 return;
             }
 
@@ -100,8 +93,6 @@ export default {
                     console.log(err);
                 });
 
-
-            console.log("after parent emit")
         },
     }
 

@@ -1,6 +1,5 @@
 <template>
     <SideBar></SideBar>
-
     <div class="p-4 sm:ml-64 ">
         <button type="button" @click="handlerDialog"
             class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -10,7 +9,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z">
                 </path>
             </svg>
-            Add Service
+            Add People
         </button>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -18,16 +17,16 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Service Name
+                            Name
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Description1
+                            Title 
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Description2
+                            Profile
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Description3
+                            Description
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Action
@@ -35,29 +34,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="serviceInfo in servicesInfo"
+                    <tr v-for="people in peopleList" :key="people.staff_id"
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ serviceInfo.serviceName }}
+                            {{ people.name }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ serviceInfo.description_1 }}
+                            {{ people.title }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ serviceInfo.description_2 }}
+                            {{ people.profile }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ serviceInfo.description_3 }}
+                            {{ people.description }}
                         </td>
                         <td class="flex items-center px-6 py-4 space-x-3">
-                            <button @click="deleteService(serviceInfo.service_cat_id)"
+                            <!-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> -->
+                            <button @click="deletePeople(people.staff_id)"
                                 class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                            <button @click="swapServicesDown(serviceInfo.service_cat_id)"
+                            <button @click="swapPeopleDown(people.staff_id)"
                                 class="font-medium text-green-600 dark:text-green-500 hover:underline">Down</button>
-                            <button @click="swapServicesUp(serviceInfo.service_cat_id)"
+                            <button @click="swapPeopleUp(people.staff_id)"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Up</button>
-                            <button @click="openSubServiceDialog"
-                                class="font-medium text-pink-600 dark:text-blue-500 hover:underline">Add sub-service</button>
                         </td>
                     </tr>
                 </tbody>
@@ -65,91 +63,79 @@
 
         </div>
 
-        <test v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
-        <test />
-
-        <SubServiceDialog v-model="subServiceVisible" v-if="subServiceVisible" :service_cat_id = this.service_cat_id></SubServiceDialog>
-        
+        <AddPeopleDialog v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView"/><AddPeopleDialog />        
     </div>
 </template>
 
 
 <script>
-import DataService from '../dataRoutes/DataService';
-import test from './dialog.vue'
-import SubServiceDialog from './SubServiceDialog.vue'; 
+import DataPeople from '../dataRoutes/DataPeople'
+import AddPeopleDialog from './AddPeopleDialog.vue'
 import SideBar from './SideBar.vue'
 import { reactive, ref } from "vue";
 
 export default {
     components: {
-        test,
-        SubServiceDialog,
+        AddPeopleDialog,
         SideBar
     },
 
     data() {
         return {
-            servicesInfo: "",
-            dialogFormVisible: false,
-            subServiceVisible: false,
-            service_cat_id: 0
+            peopleList: "",
+            dialogFormVisible: false
         }
     },
-
+    
     async created() {
         console.log(this.$store.getters.isLoggedIn);
         if (!this.$store.getters.isLoggedIn) {
             this.$router.push('/login');
         }
     },
-
+    
     setup() {
         const dialogFormVisible = ref(false);
-        const subServiceVisible = ref(false);
 
         const handlerDialog = () => {
             dialogFormVisible.value = true;
         };
-        const openSubServiceDialog = () => {
-            subServiceVisible.value = true;
-        };
 
         return {
             dialogFormVisible,
-            subServiceVisible,
             handlerDialog,
-            openSubServiceDialog,
-            
         };
     },
 
     mounted() {
-        DataService.get()
-            .then(response => {
-                console.log(response.data);
-                this.servicesInfo = response.data;
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        DataPeople.get()
+        .then(res => {
+            this.peopleList = res.data;
+            console.log("print out this.peopleList")
+            console.log(this.peopleList)
+        })
+        .catch(err => {
+            console.log("Error: cannot retrieve people data");
+        })
     },
     methods: {
         refreshServiceView() {
-            DataService.get()
+            DataPeople.get()
                 .then(response => {
                     console.log(response.data);
-                    this.servicesInfo = response.data;
+                    this.peopleList = response.data;
                 })
                 .catch(err => {
                     console.log(err);
                 });
         },
-        deleteService(serviceId) {
+        deletePeople(staff_id) {
+            //console.log("here" + serviceId)
             var data = {
-                service_cat_id: serviceId
+                staff_id: staff_id
             };
-            DataService.delete(data)
+            //console.log("in vue: " + data.service_cat_id)
+            DataPeople.delete(data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();
@@ -158,12 +144,12 @@ export default {
                     console.log(err);
                 });
         },
-        swapServicesDown(serviceId) {
+        swapPeopleDown(staff_id) {
             var data = {
-                id_1: serviceId,
-                id_2: serviceId + 1
+                id_1: staff_id,
+                id_2: staff_id + 1
             };
-            DataService.swap(data)
+            DataPeople.swap(data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();
@@ -172,12 +158,12 @@ export default {
                     console.log(err);
                 });
         },
-        swapServicesUp(serviceId) {
+        swapPeopleUp(staff_id) {
             var data = {
-                id_1: serviceId,
-                id_2: serviceId - 1
+                id_1: staff_id,
+                id_2: staff_id - 1
             };
-            DataService.swap(data)
+            DataPeople.swap(data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();
@@ -186,10 +172,6 @@ export default {
                     console.log(err);
                 });
         },
-        addSubService(service_cat_id){
-            this.service_cat_id = service_cat_id
-            this.subServiceVisible = true;
-        }
     }
 
 }

@@ -6,6 +6,8 @@ const Op = db.Sequelize.Op;
 
 router.post("/:cat_id", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
+    console.log("in post add subservice")
+    console.log(req.params.cat_id)
 
     // INSERT WHERE cat_id = req.params.cat_id
     if (req.body.sub_service_name === null || req.body.sub_service_name === undefined ) {
@@ -95,7 +97,7 @@ router.patch("/:cat_id/", async(req, res) => {
   
 });
 
-router.delete("/:cat_id", async (req, res) => {
+router.post("/:cat_id/delete", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
     if (req.body.sub_service_id === null || req.body.sub_service_id === undefined) {
