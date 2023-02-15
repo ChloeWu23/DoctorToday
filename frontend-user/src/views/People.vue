@@ -2,8 +2,8 @@
     <div class="flex justify-center items-center">
         <div class="bg-center w-full items-center md:py-40 md:pt-120 bg-[url('@/assets/doctor_today.jpg')] bg-no-repeat">
             <div class = "flex justify-center items-center">
-                <h1 class = "text-5xl text-sky-700 text-center p-8 font-extrabold
-                            bg-slate-200 rounded-3xl bg-opacity-60">
+                <h1 class = "text-5xl text-white text-center p-8 font-extrabold
+                            bg-[#143B71] rounded-3xl bg-opacity-80">
                             Meet Our Team
                 </h1>
             </div>

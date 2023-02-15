@@ -1,7 +1,7 @@
 <template>
     <div class="px-5 md:p-40 md:bg-top md:pt-30 bg-[url('@/assets/faq.jpg')] bg-no-repeat">
         <div class="grid justify-items-stretch pt-20 md:pt-0 md:pr-20">
-            <div class="justify-center py-6 md:p-8 md:pr-10 text-2xl md:w-30 md:text-4xl font-bold text-sky-700 
+            <div class="bg-center py-6 md:p-8 md:pr-10 text-2xl md:w-30 md:text-4xl font-bold text-sky-700 
                         bg-slate-300 rounded-3xl bg-opacity-50 leading-relaxed md:leading-relaxed
                         flex items-center md:justify-self-end">
                     Frequently Asked<br>Questions
