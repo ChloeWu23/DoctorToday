@@ -9,8 +9,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
         short_name: {
-            type: Sequelize.STRING,
-            allowNull: false
+            type: Sequelize.STRING
         },
         sub_service_name: {
             type: Sequelize.TEXT('tiny'), // CHAR(256)
@@ -20,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.TEXT('medium') // VARCHAR(16777216)
         }, 
         price: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false
         }
     })
