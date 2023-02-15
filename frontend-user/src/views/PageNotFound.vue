@@ -10,7 +10,7 @@
 
 
 <script>
-import TextEditorVue from "./TextEditor.vue";
+import TextEditorVue from "../components/TextEditor.vue";
 
 export default {
   components: { TextEditorVue }
