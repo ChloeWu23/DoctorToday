@@ -68,16 +68,15 @@ const routes = [
       component: () => import("../components/ServiceDetails")
     },
     {
-      path:"/login",
+      path: "/login",
       name: "login",
       component: () => import("../components/Login")
+    },
+    {
+      path: ':catchAll(.*)*',
+      name: "PageNotFound",
+      component: PageNotFound,
     }
-      // },
-      // {
-      //   path: ':catchAll(.*)*',
-      //   name: "PageNotFound",
-      //   component: PageNotFound,
-      // }
     ]
   },
   {
@@ -95,7 +94,7 @@ const routes = [
     name: "subServiceAdmin",
     component: () => import("../components/SubServiceAdmin")
   },
-  
+
 ]
 
 const router = createRouter({
