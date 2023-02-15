@@ -1,69 +1,177 @@
 id,cat_id,sub_service_id,short_name,sub_service_name,description,price,createdAt,updatedAt
-0,0,0,gp-consultations,"Standard GP consultation (20 minutes, no additional charges for prescription or referrals)","Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+0,0,0,gp-consultations,Standard GP consultation (20/30/45 minutes),"Our private GP consultation typically involves a one-on-one appointment with a general practitioner (GP) in our clinic. During the consultation, the GP will ask you about your medical history and symptoms, perform a physical examination if necessary, and make a diagnosis or provide treatment options. The GP may also order any necessary *tests or refer the patient to a specialist if needed. In most cases we find we are able to meet our patient? needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
 
-We provide standard (20 mins) and in-depth (30 mins) consultations. Follow-up consultations are also available at a reduced rate. The cost of consultation includes associated expenses such as blood taking, swab taking, post-test counselling and prescription fee. ECGs, lab tests and the cost of medications are additional.
+The consultation usually lasts between 20 to 45 minutes (depending on booking choice)
+* ECGs, lab tests are additional.
 
-In most cases we find we are able to meet our patients needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",100,25/01/2023 11:37,25/01/2023 11:37
+1,0,1,gp-consultations,Follow-up GP consultation(Within one week of initial consultation for same concern or chronic conditions/contraception),"Sometimes, conditions don? go away as quickly as we would like, therefore we offer Follow-up consultations at a reduced rate. 
 
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",100,,
-1,0,1,gp-consultations,Follow-up GP consultation within one week of initial consultation for same concern,"Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+In most cases we find we are able to meet our patient? needs fully. Occasionally, however, specialist referral is necessary, which is included in the consultation fee.
 
-We provide standard (20 mins) and in-depth (30 mins) consultations. Follow-up consultations are also available at a reduced rate. The cost of consultation includes associated expenses such as blood taking, swab taking, post-test counselling and prescription fee. ECGs, lab tests and the cost of medications are additional.
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",100,26/01/2023 11:37,26/01/2023 11:37
+2,0,2,gp-consultations,Repeat prescription request (Existing patients only),"Existing patients only, will be cc'd in email once we have sent it to the pharmacy of your choice.
 
-In most cases we find we are able to meet our patients needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
+48 hour notice with collection of prescription = ?0 
+24 hour notice with collection of prescription = ?0 
+48 hour notice with prescription emailed and posted to pharmacy = ?5 
+24 hour notice with prescription emailed and posted to pharmacy = ?5",10,27/01/2023 11:37,27/01/2023 11:37
+3,0,3,gp-consultations,Consultation with ECG,"Regular ECGs are done at rest, and are designed to pick up disturbances of heart rate, rhythm and electrical conduction. They may also show evidence of the effects of high blood pressure, and other potentially dangerous conditions.
 
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",85,26/01/2023 17:14,26/01/2023 17:14
-2,0,2,gp-consultations,Follow-up GP consultation related to chronic conditions/contraception,"Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
+Regular ECGs are suitable as part of the general assessment for palpitations, chest pain, breathlessness at rest or as a pre-operative assessment for over 45s. 
 
-We provide standard (20 mins) and in-depth (30 mins) consultations. Follow-up consultations are also available at a reduced rate. The cost of consultation includes associated expenses such as blood taking, swab taking, post-test counselling and prescription fee. ECGs, lab tests and the cost of medications are additional.
-
-In most cases we find we are able to meet our patients needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
-
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",85,26/01/2023 17:14,26/01/2023 17:14
-3,0,3,gp-consultations,In-depth GP consultation with clinician,"Our clinicians at Doctor Today have extensive experience of general practice, as well as specialist knowledge in certain areas, as indicated in our staff profiles (e.g. women's health, vaccinations, STI/STD testing etc.)
-
-We provide standard (20 mins) and in-depth (30 mins) consultations. Follow-up consultations are also available at a reduced rate. The cost of consultation includes associated expenses such as blood taking, swab taking, post-test counselling and prescription fee. ECGs, lab tests and the cost of medications are additional.
-
-In most cases we find we are able to meet our patients needs fully. Occasionally, however, specialist referral is necessary. This is included in the consultation fee.
-
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",140,26/01/2023 17:14,26/01/2023 17:29
-4,0,4,gp-consultations,"Repeat prescription by telephone request (existing patients only, excludes cost of medication)",Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.,10,26/01/2023 17:14,26/01/2023 17:28
-5,0,5,gp-consultations,Telephone Consultation,"20 minute telephone consultation with one of the GPs.
+When you have a regular ECG with us, it is a full 12 lead study that is read by an experienced doctor who will give you a report which can be used by any doctor to whom you may subsequently be referred. If abnormalities are found which need attention, a recommendation will usually be made for further evaluation by a cardiologist, which we can arrange and is included in the consultation fee.",150,28/01/2023 11:37,28/01/2023 11:37
+4,0,4,gp-consultations,Virtual Consultations,"20 minute telephone/video consultation with GP/Nurse
 
 Conditions:
+?telephone consultations are only offered through a booked time slot - limited to 20 minutes
+?payment is made at the time of booking the consultation
+?patients will then be offered a time slot that suits them, to call back and speak to the doctor.
 
-telephone consultations are only offered through a booked time slot - limited to 15 minutes
-payment is made at the time of booking the consultation
-patients will then be offered a time slot that suits them, to call back and speak to the doctor.
 There are certain situations where the doctor will need to examine you, if this is the case they will advise during the telephone consultation. Those patients that then decide to use Doctor Today will be offered a consultation at a reduced rate of ?5 (normally ?00)
 
-Prescriptions are issued at the discretion of the doctor. These can be posted to you or faxed to your nearest pharmacy. Alternatively you can pick up certain medication from the practice.",70,,
-6,0,6,gp-consultations,Ear syringing (including free follow-up appointment within one week if necessary),,110,,
-7,0,7,gp-consultations,Histofreeze consultation,"Removing a wart/verruca is a problem you may be able to solve yourself over the course of a few months using duct tape (available from hardware stores) (more information and instructions). However, if you would like an accelerated resolution of the problem, Doctor Today offers a cryotherapy service (i.e. freezing the wart/verruca using liquid nitrogen or similar cryogen).
+Prescriptions are issued at the discretion of the doctor. These can be posted to you or faxed to your nearest pharmacy. Alternatively you can pick up certain medication from the practice.",70,29/01/2023 11:37,29/01/2023 11:37
+5,0,5,gp-consultations,Ear syringing (including free follow-up appointment within one week if necessary),"You may require our ear care consultation service if you are experiencing any of the following:
 
-Note that it is important to be sure that what you have is indeed a wart or verruca caused by Human Papillomavirus (HPV) and not a skin growth or cancer which may need surgical or other treatment. If you are in doubt, or if you have tried the duct tape remedy and the wart or verruca is not going away as it should, please book a consultation and we will be happy to review it and at the same time carry out a review of your moles and other skin blemishes which may need attention. If cryotherapy is indicated, but the wart/verruca is not in an area amenable to this treatment, other methods may be needed -- we will be happy to help you choose the right one.
+Ear pain 
+? If you have pain in your ear, you should see a qualified clinician as soon as possible. Pain generally indicates an infection which may benefit from medication. It may also be caused by dental problems. Either way your ear should be checked by a competent clinician.
 
-In terms of costs, we typically charge ?10 for the initial consultation; if necessary, subsequent sessions are ?5.
+Deafness in one ear without pain
+?This is often caused by the accumulation of wax in the ear canal, particularly if you have inadvertently pushed wax inwards using a finger or a cotton bud. The first step is to soften the wax by putting a few drops of olive oil into the ear while lying down on the opposite side. Wait 10 minutes and then put a small plug of cotton wool loosely in the ear hole opening. Repeat this for three days.
+?If you are still having problems, come in and see us so that the ear canal can be inspected for wax, and - if present in significant amounts - we can use our ""Pro-pulse"" ear irrigator to remove the wax safely. If the wax has not been softened with olive oil for three days prior to your visit, you may be advised to do so and come back again after three days (at no extra charge).
 
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",115,,
-8,0,8,gp-consultations,Follow-up histofreeze consultation (same lesions),"Removing a wart/verruca is a problem you may be able to solve yourself over the course of a few months using duct tape (available from hardware stores) (more information and instructions). However, if you would like an accelerated resolution of the problem, Doctor Today offers a cryotherapy service (i.e. freezing the wart/verruca using liquid nitrogen or similar cryogen).
+Deafness without pain or wax
+?If there is no wax or ear infection to account for hearing loss, we advise investigation of this initially with an audiogram screen (hearing test) which costs ?00 (including the consultation). If deafness is confirmed, you will need referral to an ear specialist, which we can arrange for you.
 
-Note that it is important to be sure that what you have is indeed a wart or verruca caused by Human Papillomavirus (HPV) and not a skin growth or cancer which may need surgical or other treatment. If you are in doubt, or if you have tried the duct tape remedy and the wart or verruca is not going away as it should, please book a consultation and we will be happy to review it and at the same time carry out a review of your moles and other skin blemishes which may need attention. If cryotherapy is indicated, but the wart/verruca is not in an area amenable to this treatment, other methods may be needed -- we will be happy to help you choose the right one.
+An ear care consultation costs ?10, which includes costs of infection treatment or ear irrigation (whichever, if any, is appropriate as discussed above). Follow up appointments within 1 week are free of charge; after one week follow up appointments are charged at ?5.
 
-In terms of costs, we typically charge ?10 for the initial consultation; if necessary, subsequent sessions are ?5.
-
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",95,,
-9,0,9,gp-consultations,Referrals,"If you are an existing patient and in need of a referral letter, you can request one at a cost of ?0. Our GP must already have knowledge of the issue and agree that specialist attention is necessary. If you are a new patient, a consultation is necessary before requesting a referral letter.",20,,
-10,0,10,gp-consultations,Video Consultations,"We offer 20 minute video consultations for those patients who cannot make it to the practise. You can use your smart phone, laptop or computer for this service. Once your appointment is booked you will receive a confirmation email with a video link, click the link at your appointment time and wait for the doctor to join your consultation. Please call us on 0207 433 1444 if you would like to book a video consultation.",70,,
-11,1,0,antenatal-care,Antenatal Care Package,,,,
-12,2,0,sexual-health,FAST STD testing,"Tests include: HIV, Hepatitis B and C, Syphilis, Chlamydia and Gonorrhoea. Same day results (for appointments before 12.30pm). 
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",110,30/01/2023 11:37,30/01/2023 11:37
+6,1,0,occupational-health,Occupational Health,"As a private GP practice, we offer occupational health services to support the well-being and productivity of employees in the workplace. These services may include pre-employment assessments, health surveillance, health promotion programs, and injury management. By providing access to these services, the practice can help businesses comply with health and safety regulations, while also promoting a healthy work environment for employees. We can also offer on-site health assessments and consultations to minimize disruption to the employee's work schedule. Offering occupational health services can help to improve employee morale and reduce sick leave, ultimately leading to a more efficient and productive workforce.",20,31/01/2023 11:37,31/01/2023 11:37
+7,2,0,sexual-health,FAST STD testing,"Tests include: HIV, Hepatitis B and C, Syphilis, Chlamydia and Gonorrhoea. Same day results (for appointments before 12.30pm). 
 
 For men - urine and blood sample only. NO swab needed!
 
 The screening fee includes an in-depth discussion about your worries in this area, in addition to full lab costs for the tests outlined above. The consultation at which you are given your results is included in the screening fee. However, confirmatory or follow-up laboratory testing at a later date (recommended in high-risk situations or given an initial positive result) will incur extra costs according to the individual test(s) required (see price list).
 
-Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",,,
-13,1,1,sexual-health,,,,,
-14,1,2,sexual-health,,,,,
-15,1,3,sexual-health,,,,,
-16,1,4,sexual-health,,,,,
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",70,01/02/2023 11:37,01/02/2023 11:37
+8,2,1,sexual-health,Sexual health consultation,"At Doctor Today we provide a discreet, confidential sexual health (STD) test consultation service. Our sexual health clinicians are sympathetic and non-judgmental and at all times their top priority is to help you, so you can approach them with confidence. The tests we use are chosen for their accuracy and ability to minimise patient discomfort.
+
+Patients who make use of this service usually fall into one of three groups:
+
+?Patients who do not have symptoms but have had unsafe sexual contact with one or more partners of unknown status
+?Patients who have symptoms (such as urethral or vaginal discharge, sores or burning on passing urine after recent sexual contact)
+?Couples who wish to obtain a clean bill of health before embarking on a new relationship or trying for pregnancy
+If you have symptoms, appropriate tests will be recommended. For most conditions, tests are not compulsory before treatment but you should be aware that all medications may have side effects and to cover all possibilities you may have to take a wide spectrum of medication, some of which may not be necessary. Whether have symptoms or not, you may wish to undergo a full sexual health screen where the consultation and a comprehensive set of tests are included in one cost-effective package (more information). 
+
+You should also be aware that any test performed may be negative in the very early stages of some diseases (such as HIV) and that a single negative test does not necessarily guarantee disease-free status. Therefore, a second test is recommended six weeks after any high-risk sexual activity (e.g. intercourse with unknown partners). If tests are done on urine or blood, you will be notified that the results are ready as soon as we have received them from the laboratory. Usually this is within 48 hours. HIV results, for example, are usually available on the same day for those with weekday appointments before 2pm, and by 11am the next business day morning for those with appointments between 2pm and 7pm. Certain more complicated tests (e.g. those involving lab cultures) may take longer. As STIs may also affect your partner(s) it may be recommended that they also be screened or treated. The second consultation in which you are given your results is included in the initial price, but you do have to pay for any further lab tests performed and/or necessary medications which are prescribed. 
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",2940,02/02/2023 11:37,02/02/2023 11:37
+9,2,2,sexual-health,Full sexual health screening (includes sexual health test consultation),"Doctor Today offers a comprehensive set of sexual health tests. There are two levels of screening, which are different for men and women. Depending on risk and known exposures, the clinician will recommend an appropriate package for you as follows:
+
+STI profile 2 (male) (?60)
+?includes a sexual health test consultation and tests for chlamydia, syphilis, gonorrhea, ureaplasma and mycoplasma as well as HIV, Hepatitis B and Hepatitis C. Urine and blood samples are taken.
+STI profile 4 (female) (?60)
+?as for STI profile 2. Swabs (vaginal), urine and blood are taken.
+The screening fee includes an in-depth discussion about your worries in this area, in addition to full lab costs for the tests outlined above. The consultation at which you are given your results is included in the screening fee. However, confirmatory or follow-up laboratory testing at a later date (recommended in high-risk situations or given an initial positive result) will incur extra costs according to the individual test(s) required (see price list).
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",305,03/02/2023 11:37,03/02/2023 11:37
+10,2,3,sexual-health,Basic sexual health screening (includes sexual health test consultation),"Doctor Today offers a comprehensive set of sexual health tests. There are two levels of screening, which are different for men and women. Depending on risk and known exposures, the clinician will recommend an appropriate package for you as follows:
+
+STI profile 1 (male) (?15)
+?includes a sexual health test consultation and tests for chlamydia, syphilis, gonorrhea, ureaplasma and mycoplasma. Swabs (urethral), urine and blood are taken.
+STI profile 3 (female) (?15)
+?is as for STI profile 1. Swabs (vaginal), urine and blood are taken.
+The screening fee includes an in-depth discussion about your worries in this area, in addition to full lab costs for the tests outlined above. The consultation at which you are given your results is included in the screening fee. However, confirmatory or follow-up laboratory testing at a later date (recommended in high-risk situations or given an initial positive result) will incur extra costs according to the individual test(s) required (see price list).
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",100,04/02/2023 11:37,04/02/2023 11:37
+11,2,4,sexual-health,HIV test (includes mandatory sexual health test consultation),"What is HIV?
+HIV is a viral infection that is transmitted by intimate sexual contact, infected blood, sharing needles or stick injury, pregnancy and birth.
+
+The clinical signs of HIV infection may not appear until the disease is well advanced, but flu-like symptoms may occur at any time from 1 to 3 months after infection starts; these include enlarged lymph nodes, fever, headache, muscle pains and tiredness. The AIDS syndrome which occurs in up to 50% of carriers may not appear until many years later when the destruction of the immune response leads to progressive inability to fight infections, wasting and certain cancers. Usually an HIV carrier will remain infective in spite of not having the overt signs of AIDS - you cannot tell if someone is an HIV carrier just by looking at them.
+
+Prevention is the best strategy (safe sex, avoid sharing needles) since there is at present no effective vaccine. For those infected with HIV, cure is problematic. Modern therapy can do much to improve quality of life and to reduce viral load and infectivity, however, so the sooner the treatment is started the better.
+
+HIV Testing at Doctor Today
+The test used at Doctor Today to diagnose HIV infection is called the HIV-DUO. This costs ?00 inclusive of a sexual health consultation and tests for both HIV 1&2 antibodies (formed in reaction to the virus) and the p24 antigen (part of the virus itself) for earlier diagnosis. Results for this test are usually available within one working day (usually on the same day for those with weekday appointments before 2pm, and by 11am the next business day morning for those with appointments between 2pm and 8pm). This test will usually become positive from 4 weeks after the contact which causes infection. For confirmation purposes, a second test at 3 to 6 months is advised if the initial test is negative. If both are negative, you can be very sure (99.99%) you are not infected with the HIV virus (this is of course provided no further contacts occur in the meantime; you are advised to maintain a policy of safe sex during this period). If earlier diagnosis is required, the HIV-1 proviral DNA by PCR test can be done from day 10 to 14 post-contact, but is more expensive; in addition, not only do results take longer (several days), but the test is also not quite as general as the DUO as it applies only to HIV-1 infections (the normal type). HIV-2 infection is more common in West African countries and if your contact may have been in this area, you should back up the HIV-1 proviral DNA test with a DUO test at 4 weeks.
+
+If your initial test is positive, we perform further confirmatory tests for you free of charge. This consists of three divergent methodologies to cross-check the positive result, as clearly a firm and accurate diagnosis is of the utmost importance. If a positive result is confirmed, we are able to advise you appropriately and to refer you to a specialist clinic for further management.
+
+Why we do not use ""instant"" HIV Tests
+The directors of Doctor Today have taken the view that so-called ""instant"" HIV testing by the INSTI or other point of care method will not be offered at this time to our patients for the following reasons:
+
+In areas of low HIV prevalence such as UK, 6 out of every 7 positive instant tests are in fact likely to turn out to be negative, so patients may be given unnecessary anxiety for no good reason.
+
+?There is also a small but appreciable false negative rate with instant tests (i.e. test shows negative but in fact the patient is positive), which could be disastrous for the patient and their partners if the instant test is relied upon.
+?An instant test is not a lot cheaper (at our clinic) than the HIV-DUO test. Any positive test would have to be followed up with by confirmatory testing which is more sensitive, so the cost of this would have to be extra. In our clinic the confirmatory testing after a positive HIV-DUO test is done free of charge to the patient. This can be very expensive if it is done separately and is something you need to take into account when choosing where to have your test done.
+?The instant test turns positive some time after the HIV-DUO test is positive (i.e. there is a longer ""window period"").
+?There is no p24 antigen testing with the instant tests which is a big advantage of the HIV-DUO test, the results for which are usually back within one working day.
+
+For all the above reasons we feel the regular HIV-DUO test is still the most appropriate test for our patients, with the PCR test for those who feel they cannot wait. For further information please see the British Association for Sexual Health and HIV's guidelines on point-of-care HIV testing.
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page.",260,05/02/2023 11:37,05/02/2023 11:37
+12,2,5,sexual-health,Executive Sexual Health Screen,"In addition to the full sexual health screen tests (listed above), this also includes a blood test for herpes antibodies as well as a swab for HPV (human papilloma virus). HPV is linked to cervical cancer in women and genital warts in both women and men.",215,06/02/2023 11:37,06/02/2023 11:37
+13,2,6,sexual-health,Sexual Health screen for Gay Men,"In addition to the full sexual health screen tests (listed above), this includes a throat and rectal swab for chlamydia and gonorrhoea.",110,07/02/2023 11:37,07/02/2023 11:37
+14,2,7,sexual-health,"Cervical smear (liquid-based cytology, includes sexual health test consultation)","Cervical cancer is the twelfth most common type of cancer in women in the UK. Around 950 women in the UK die from this cancer every year. However, the number of cases diagnosed each year has fallen over recent years. This is because cervical cancer can be prevented by regular cervical screening tests.
+
+Doctor Today offer cervical smears to all women who are sexually active and at risk of HPV and cervical cancer. 
+
+The cost includes a consultation with one of our GPs who will take a full gynaecological history. Results are usually available within 3-4 working days. 
+
+Please do not hesitate to contact us if you have any further questions or wish to make an appointment. For information on how to get in touch see our contact us page",375,08/02/2023 11:37,08/02/2023 11:37
+15,3,0,specific-health-tests,Blood tests,Doctor Today offer most blood tests. Prices and result times vary depending on the type of blood test required. Please call or email the practice for more information.,365,09/02/2023 11:37,09/02/2023 11:37
+16,3,1,specific-health-tests,Blood results explained by the doctor,"If you would like our doctors to explain the blood results to you but do not wish to come in for a consultation, we offer a service whereby you can have them explained to you by phone. When you come in for the blood test, please indicate whether you would like this service. If you would like to discuss the results with the doctor by phone, we will give you a time slot that is convenient for you where you can call the practice and speak to the doctor. If you would like this by email, our doctor will send you a written explanation at the time the results are emailed to you.",170,10/02/2023 11:37,10/02/2023 11:37
+17,8,0,aesthetics-&-skincare,Botox,"Aesthetics at Doctor Today is offered by our Nurse Prescriber, Debbie Joffe.
+Feeling happy inside goes hand-in-hand with feeling happy on the outside. Aesthetic procedures such as Wrinkle Reduction Treatments are a great way to help clients love what they see in the mirror each day.
+Patients receive a free aesthetic consultation before any procedure.
+
+BOTOX
+Botox, the most recognised and commonly used non-surgical cosmetic therapy, diminishes lines and wrinkles caused by smiling, laughing and frowning. Commonly treated wrinkles are those that occur on the forehead, the Glabella region (otherwise known as the ?1?lines that form in between your eyebrows) and ?row? feet? the wrinkles that occur in the outer corners of the eyes.
+
+How does Botox work?
+
+Botox works by relaxing the contraction of certain facial muscles, thereby smoothing out the overlying skin.
+
+Is the treatment painful?
+
+Botox injections involve such tiny needles that the treatment is virtually painless. 
+
+Are there any side effects?
+
+There may be some temporary redness, tenderness, swelling and bruising at the injection sites. Serious side effects and allergic-type reactions are extremely rare.
+
+Prices:   
+Botox 1 area: ?90
+Botox 2 area?: ?40
+Botox 3 area?: ?90",190,11/02/2023 11:37,11/02/2023 11:37
+18,8,1,aesthetics-&-skincare,Obagi,"Fully trained in the Obagi range, we are able to offer consultations and treatment options using the Obagi range skincare and treatment range
+
+Obagi Medical?Products have been specifically formulated to transform the skin from within to result in younger, healthier-looking skin. The Obagi Medical?Product range helps reduce the visible signs of ageing such as fine-lines, wrinkles, melasma (dark sports), hyper-pigmentation, laxity and uneven texture with additional targeted treatments for acne.  With over 30 years under their belts, they continue to design transformational products that promote skin health  and build on their legacy of science and innovation. Obagi is a complete skin care company designed and tested for every skin type ?there really is a solution for everyone.",190,12/02/2023 11:37,12/02/2023 11:37
+19,9,0,woundcare,Woundcare,"Our wound care clinic is run by Prescribing Nurse Debbie Joffe.
+ Aiming to provide both ongoing care (for chronic wounds) and dress acute wounds, we have a range of cleansing packs and specialist dressings.
+Wounds that we can dress:
+?Lacerations/cuts due to trauma
+?Surgical wounds
+?Suture/staple removal and dressing
+?Cosmetic wounds
+?Burns
+?Ulcers
+?Abscesses/cysts: post-drainage procedures
+?Swelling/bruising (following trauma)
+We will not only review your wound, but we will cleanse it and dress it regularly (if needed). If your wound is beginning to look like it may be infected, we will also offer suitable treatment or referral if needed. 
+We make use of the most appropriate, evidence based dressings for your wound to aid your recovery process, to minimise scarring and maximise healing. 
+Once your injury has been assessed, the best dressing is selected for your wound to enable the quickest possible tissue recovery.
+You will be given thorough after-care advice. Until your wound is fully healed, our team can continue to dress and review your wound.
+
+Woundcare Package prices (all inclusive* ).
+One off wound care dressing/ Suture removal  - ?0
+5 woundcare dressing appointments: - ?00
+10 wouncare dressing appointments ??00
+Personalised packages also available for chronic wounds POA
+Please note that this service is by appointment only.
+*( inclusive of nurse consultation, wound cleaning and dressing with basic in-stock dressings. More complicated dressings may require additional payment based on cost of complex materials needed)",50,13/02/2023 11:37,13/02/2023 11:37
+20,,,,,,,,
+21,,,,,,,,
+22,,,,,,,,
+23,,,,,,,,
+24,,,,,,,,
+25,,,,,,,,
