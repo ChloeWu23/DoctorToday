@@ -84,8 +84,18 @@ const routes = [
     path: "/showServices",
     name: "showServices",
     component: () => import("../components/ShowServices")
-  }
-
+  },
+  {
+    path: "/peopleAdmin",
+    name: "peopleAdmin",
+    component: () => import("../components/PeopleAdmin")
+  },
+  {
+    path: "/subServiceAdmin",
+    name: "subServiceAdmin",
+    component: () => import("../components/SubServiceAdmin")
+  },
+  
 ]
 
 const router = createRouter({
