@@ -46,7 +46,6 @@ backend-deploy:
   script:
     - cd backend
     - npm install
-    - npm run build
     - apt-get update -qq && apt-get install -y -qq ruby-dev rubygems build-essential
     - gem install dpl
     - dpl --provider=heroku --app=$doctor-today-back --api-key=$HEROKU_KEY_YC
