@@ -33,12 +33,12 @@ frontend-deploy:
   stage: deploy
   environment: production
   script:
-    - cd frontend-uer
+    - cd frontend-user
     - npm install
     - npm run build
     - apt-get update -qq && apt-get install -y -qq ruby-dev rubygems build-essential
     - gem install dpl
-    - dpl --provider=heroku --app=$doctor-today-fr --api-key=$HEROKU_KEY_YC
+    - dpl --provider=heroku --app=$doctor-today-front --api-key=$HEROKU_KEY_YC
 
 backend-deploy:
   stage: deploy
@@ -48,4 +48,4 @@ backend-deploy:
     - pip install -r requirements.txt
     - apt-get update -qq && apt-get install -y -qq ruby-dev rubygems build-essential
     - gem install dpl
-    - dpl --provider=heroku --app=$doctor-today-bk --api-key=$HEROKU_KEY_YC
+    - dpl --provider=heroku --app=$doctor-today-back --api-key=$HEROKU_KEY_YC
