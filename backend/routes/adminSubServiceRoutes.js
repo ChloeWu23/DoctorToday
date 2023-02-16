@@ -33,7 +33,6 @@ router.post("/:cat_id", async (req, res) => {
     var SubServiceItem = {
         cat_id: req.params.cat_id,
         sub_service_id: count,
-        short_name: req.body.short_name,
         sub_service_name: req.body.sub_service_name,
         description: req.body.description,
         price: req.body.price
@@ -77,7 +76,6 @@ router.patch("/:cat_id/", async(req, res) => {
     }
 
     patchItem.set({
-        short_name: req.body.short_name,
         sub_service_name: req.body.sub_service_name,
         description: req.body.description,
         price: req.body.price

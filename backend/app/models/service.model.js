@@ -17,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         description_3: {
             type: Sequelize.STRING
+        },
+        image: {
+            type: Sequelize.STRING
         }
     });
   

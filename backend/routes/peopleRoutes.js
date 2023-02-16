@@ -49,7 +49,8 @@ router.post("/", async(req, res) => {
         profile: req.body.profile,
         description: req.body.description,
         image: req.body.image,
-        website: req.body.website
+        website: req.body.website,
+        is_independent: req.body.is_independent
     }
 
     People.create(newItem)
@@ -93,7 +94,8 @@ router.patch("/", async(req, res) => {
         profile: req.body.profile,
         description: req.body.description,
         image: req.body.image,
-        website: req.body.website
+        website: req.body.website, 
+        is_independent: req.body.is_independent
     });
 
     await patchItem

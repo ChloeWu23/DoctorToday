@@ -30,6 +30,7 @@ router.post("/", async (req, res) => {
     description_1: req.body.description_1,
     description_2: req.body.description_2,
     description_3: req.body.description_3,
+    image: req.body.image
   };
 
   ServiceOverviews.create(serviceItem)
@@ -69,6 +70,7 @@ router.patch("/", async (req, res) => {
     description_1: req.body.description_1,
     description_2: req.body.description_2,
     description_3: req.body.description_3,
+    image: req.body.image
   });
 
   await patchItem
