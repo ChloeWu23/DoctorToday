@@ -9,6 +9,7 @@ const router = require("express").Router();
 
 const db = require("../app/models");
 const ServiceOverviews = db.ServiceOverviews;
+const SubService = db.SubService;
 const Op = db.Sequelize.Op;
 
 router.post("/", async (req, res) => {
@@ -114,7 +115,7 @@ router.post("/deleteService", async (req, res) => {
   });
 
   // for service_cat_id = [target+1 : count-1], primary_key--
-  for (var i = req.body.service_cat_id + 1; i <= count; i++) {
+  for (var i = req.body.service_cat_id + 1; i < count; i++) {
     // console.log("-- delete row " + i);
     await ServiceOverviews.update(
       { service_cat_id: i - 1 },
@@ -127,6 +128,21 @@ router.post("/deleteService", async (req, res) => {
   }
 
   // delete all subService
+  console.log("--- bind_id: " + bind_id);
+  await SubService.destroy({
+    where: {
+      cat_id: bind_id
+    }
+  })
+  .then( data => {
+    console.log("--- delete subservice " + data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occured while deleSubServiceting ",
+    });
+  })
 
 
   res.status(204).json({

@@ -117,7 +117,7 @@ router.delete("/", async (req, res) => {
       },
     });
 
-    for (var i = req.body.faq_id + 1; i <= count; i++) {
+    for (var i = req.body.faq_id + 1; i < count; i++) {
         // console.log("-- delete row " + i);
         await FAQ.update(
           { faq_id: i - 1 },

@@ -31,7 +31,7 @@ router.post("", async(req, res) => {
         return;
     }
 
-    var id_max = await News.max("news_id")
+    var count = await News.count("news_id")
     .catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred when get max(news_id)"
@@ -39,7 +39,7 @@ router.post("", async(req, res) => {
     });
 
     var newItem = {
-        news_id: id_max + 1,
+        news_id: count,
         title: req.body.title,
         content: req.body.content
     }
@@ -83,7 +83,7 @@ router.post("/delete", async (req, res) => {
 
     // console.log("DELETE " + count + ", " + req.body.news_id);
 
-    for (var i = req.body.news_id + 1; i <= count ; i++) {
+    for (var i = req.body.news_id + 1; i < count ; i++) {
         await News.update(
             { news_id: i - 1 },
             {
