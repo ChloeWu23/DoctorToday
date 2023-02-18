@@ -32,34 +32,26 @@ app.use(express.static(`${__dirname}/public`));
 const serviceRouter = require('./routes/serviceRoutes');
 const adminServiceRouter = require('./routes/adminServiceRoutes');
 const adminSubServiceRouter = require('./routes/adminSubServiceRoutes');
-const adminDisableTimeRouter = require('./routes/appointmentRoutes');
 const emailServiceRouter = require('./routes/emailServiceRoutes');
-
 const registerEmailRouter = require('./routes/registerEmailRoutes');
 
-const openingHoursRouter = require('./routes/openingHoursRoutes');
 const faqRouter = require('./routes/faqRoutes');
 const travelRouter = require('./routes/travelRoutes');
 const otherInfoRouter = require('./routes/otherInfoRoutes');
 const peopleRouter = require('./routes/peopleRoutes');
-
-// middleware
-const userMiddleware = require('./middleware/user.js');
+const newsRouter = require('./routes/newsRoutes');
 
 // app.use('/', serviceRouter);
 app.use('/service', serviceRouter); 
 app.use('/admin/service', adminServiceRouter) ;
 app.use('/admin/sub-service', adminSubServiceRouter);
 app.use('/sendEmail', emailServiceRouter)
-
 app.use('/sendRegisterEmail', registerEmailRouter)
-
-app.use('/disable-time-slot', adminDisableTimeRouter);
-app.use('/opening-hours', openingHoursRouter);
 app.use('/faq', faqRouter);
 app.use('/travel', travelRouter);
 app.use('/other-info', otherInfoRouter);
 app.use('/people', peopleRouter);
+app.use('/news', newsRouter);
 
 
 const port = process.env.PORT || 3000;

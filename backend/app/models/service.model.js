@@ -4,6 +4,9 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
+        bind_id: {
+            type: Sequelize.INTEGER
+        },
         service_cat_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -16,6 +19,12 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         description_3: {
+            type: Sequelize.STRING
+        },
+        image: {
+            type: Sequelize.STRING
+        },
+        appointment_iframe: {
             type: Sequelize.STRING
         }
     });

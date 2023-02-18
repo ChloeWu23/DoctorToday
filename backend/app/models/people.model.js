@@ -19,10 +19,14 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.TEXT('medium') // VARCHAR(16777216)
         }, 
         image: {
-            type: Sequelize.BLOB('long')
+            type: Sequelize.STRING
         }, 
         website: {
             type: Sequelize.STRING
+        },
+        is_independent: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: false
         }
     })
 
