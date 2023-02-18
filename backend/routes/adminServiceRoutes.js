@@ -23,14 +23,17 @@ router.post("/", async (req, res) => {
   }
 
   var count = await ServiceOverviews.count({ col: "serviceName" });
+  var bind_max = await ServiceOverviews.max("bind_id");
 
   var serviceItem = {
     serviceName: req.body.serviceName,
+    bind_id: bind_max + 1,
     service_cat_id: count,
     description_1: req.body.description_1,
     description_2: req.body.description_2,
     description_3: req.body.description_3,
-    image: req.body.image
+    image: req.body.image,
+    appointment_iframe: req.body.appointment_iframe
   };
 
   ServiceOverviews.create(serviceItem)
@@ -70,7 +73,8 @@ router.patch("/", async (req, res) => {
     description_1: req.body.description_1,
     description_2: req.body.description_2,
     description_3: req.body.description_3,
-    image: req.body.image
+    image: req.body.image,
+    appointment_iframe: req.body.appointment_iframe
   });
 
   await patchItem

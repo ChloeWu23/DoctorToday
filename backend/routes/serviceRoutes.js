@@ -27,7 +27,6 @@ router.get('/', (req, res) => {
         err.message || "Some error occurred while retriving service data"
     });
   });
-  
 });
 
 router.get('/:cat_id', (req, res) => {
