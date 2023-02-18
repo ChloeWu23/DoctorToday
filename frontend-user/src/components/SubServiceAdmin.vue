@@ -10,7 +10,7 @@
                 </select>
             </div>
 
-            <button type="button" @click="handlerDialog" 
+            <button type="button" @click="subServiceVisible = true" 
                 class="text-white w-50 bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 
                 <svg fill="none" class="w-5 h-5 mr-2 -ml-1" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
@@ -24,17 +24,16 @@
 
         <div class="flex m-6 text-black">
             {{ selected }}
+            {{ subServiceVisible }}
+            {{ subServiceList.length }}
         </div>
         
 
         <div class="flex">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div class="overflow-x-auto shadow-md sm:rounded-lg w-full">
+                <table class="w-full bg-blue-200 text-sm text-left text-gray-700 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Short Name
-                            </th>
                             <th scope="col" class="px-6 py-3">
                                 Sub-service Name
                             </th>
@@ -49,21 +48,29 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="h-6 bg-black overflow-y-scroll">
+                        <!-- <tr v-for="subService in subServiceList"
+                            class="border-b hover:bg-gray-50 h-10">
+                            <td class="px-6 py-4" v-html="subService.description"></td>
+                        </tr> -->
+                        
                         <tr v-for="subService in subServiceList"
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ subService.short_name }}
-                            </th>
+                            class="bg-white h-6 border-b hover:bg-gray-50">
+                            
+                            <!-- <th scope="row" class="px-6 py-4  font-medium text-gray-900 whitespace-nowrap">
+                                {{ subService.sub_service_name }}
+                            </th> -->
                             <td class="px-6 py-4">
                                 {{ subService.sub_service_name }}
                             </td>
-                            <td class="px-6 py-4">
-                                {{ subService.description }}
+
+                            <td class="px-6 py-4" v-html="subService.description">
                             </td>
+                            
                             <td class="px-6 py-4">
                                 {{ subService.price }}
                             </td>
+                            
                             <td class="flex items-center px-6 py-4 space-x-3">
                                 <button @click="deleteSubService(subService.cat_id, subService.sub_service_id)"
                                     class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
@@ -77,6 +84,9 @@
                 </table>
 
             </div>
+
+            <SubServiceDialog v-model="subServiceVisible" v-if="subServiceVisible" :bind_id = "selected" @update:modelValue="refreshServiceView"></SubServiceDialog>
+        
         </div>
         
        
@@ -88,18 +98,21 @@
 import DataSubService from '../dataRoutes/DataSubService'
 import DataService from '../dataRoutes/DataService';
 
+import SubServiceDialog from './SubServiceDialog.vue'; 
 import SideBar from './SideBar.vue'
 import { reactive, ref } from "vue";
 
 export default {
     components:{
-        SideBar
+        SideBar,
+        SubServiceDialog
     },
     data() {
         return {
             subServiceList: "",
             selected: null,
-            options: ""
+            options: "",
+            subServiceVisible: false
         }
     },
     
@@ -129,6 +142,7 @@ export default {
         },
 
         refreshServiceView() {
+            console.log("refresh the data");
             DataSubService.get(this.selected)
                 .then(response => {
                     console.log(response.data);
@@ -142,7 +156,7 @@ export default {
             var data = {
                 sub_service_id: sub_service_id
             };
-            DataSubService.delete(this.selected, data)
+            DataSubService.delete(cat_id, data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();
@@ -152,11 +166,17 @@ export default {
                 });
         },
         swapSubServiceDown(cat_id, sub_service_id) {
+            // check is not the last row
+            if (sub_service_id + 1 === this.subServiceList.length) {
+                console.log("Invalid: you want to swap down the last row")
+                return;
+            }
+
             var data = {
                 id_1: sub_service_id,
                 id_2: sub_service_id + 1
             };
-            DataSubService.swap(this.selected, data)
+            DataSubService.swap(cat_id, data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();
@@ -166,11 +186,17 @@ export default {
                 });
         },
         swapSubServiceUp(cat_id, sub_service_id) {
+            // check is not the first row
+            if (sub_service_id === 0) {
+                console.log("Invalid: you want to swap up the first row")
+                return;
+            }
+
             var data = {
                 id_1: sub_service_id,
                 id_2: sub_service_id - 1
             };
-            DataSubService.swap(this.selected,data)
+            DataSubService.swap(cat_id,data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();
@@ -183,3 +209,11 @@ export default {
 
 }
 </script>
+
+<style>
+.tbody-with-max-height {
+  max-height: 30px;
+  overflow-y: auto;
+  /* set a maximum height for the table body */
+}
+</style>
