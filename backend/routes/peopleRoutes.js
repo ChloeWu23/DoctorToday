@@ -136,7 +136,7 @@ router.post("/delete", async (req, res) => {
         });
     });
 
-    for (var i = req.body.staff_id + 1; i < count ; i++) {
+    for (var i = req.body.staff_id + 1; i <= count ; i++) {
         await People.update(
             { staff_id: i - 1 },
             {

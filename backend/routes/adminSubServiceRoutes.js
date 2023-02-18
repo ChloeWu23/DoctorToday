@@ -125,7 +125,7 @@ router.post("/:cat_id/delete", async (req, res) => {
           });
       });
 
-    for (var i = req.body.sub_service_id + 1; i < count ; i++) {
+    for (var i = req.body.sub_service_id + 1; i <= count ; i++) {
         await SubService.update(
             { sub_service_id: i - 1 },
             {

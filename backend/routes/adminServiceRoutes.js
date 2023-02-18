@@ -114,7 +114,7 @@ router.post("/deleteService", async (req, res) => {
   });
 
   // for service_cat_id = [target+1 : count-1], primary_key--
-  for (var i = req.body.service_cat_id + 1; i < count; i++) {
+  for (var i = req.body.service_cat_id + 1; i <= count; i++) {
     // console.log("-- delete row " + i);
     await ServiceOverviews.update(
       { service_cat_id: i - 1 },
