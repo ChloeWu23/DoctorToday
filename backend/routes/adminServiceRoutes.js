@@ -61,7 +61,7 @@ router.patch("/", async (req, res) => {
     return;
   }
 
-  const patchItem = await ServiceOverviews.findByPk(req.body.service_cat_id);
+  const patchItem = await ServiceOverviews.findOne(req.body.service_cat_id);
   if (patchItem === null) {
     res.status(400).send({
       message: "invalid service_cat_id! ",
@@ -106,8 +106,22 @@ router.post("/deleteService", async (req, res) => {
   var count = await ServiceOverviews.count({ col: "service_cat_id" });
 
   // console.log("original rows size: " + count);
-  const bind_id = ServiceOverviews.findByPk(req.body.service_cat_id).bind_id;
-
+  var bind_id;
+  const item = ServiceOverviews.findOne({
+    attributes: ["bind_id"],
+    where: {
+      service_cat_id: req.body.service_cat_id
+    }
+  })
+  .then( data => {
+    bind_id = data.bind_id;
+    console.log("--- find " + data.bind_id);
+    
+  })
+  .catch( err => {
+    res.status(501).send(err.message);
+  })
+  
   await ServiceOverviews.destroy({
     where: {
       service_cat_id: req.body.service_cat_id,
@@ -135,7 +149,7 @@ router.post("/deleteService", async (req, res) => {
     }
   })
   .then( data => {
-    console.log("--- delete subservice " + data);
+    console.log("--- delete subservice size: " + data);
   })
   .catch(err => {
     res.status(500).send({
