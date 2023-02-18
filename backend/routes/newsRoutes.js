@@ -67,6 +67,8 @@ router.post("/delete", async (req, res) => {
         return;
     }
 
+    var count = await News.count();
+
     await News.destroy({
         where: {
           news_id: req.body.news_id
@@ -78,6 +80,24 @@ router.post("/delete", async (req, res) => {
               err.message || "Some error occured while deleting News",
           });
       });
+
+    // console.log("DELETE " + count + ", " + req.body.news_id);
+
+    for (var i = req.body.news_id + 1; i <= count ; i++) {
+        await News.update(
+            { news_id: i - 1 },
+            {
+                where: {
+                    news_id: i
+                },
+            }
+        )
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "ERROR in deleting subsequent news"
+            })
+        });
+    }
 
     res.status(204).json({
         status: "delete success",

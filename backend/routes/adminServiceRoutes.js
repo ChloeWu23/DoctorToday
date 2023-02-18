@@ -105,6 +105,7 @@ router.post("/deleteService", async (req, res) => {
   var count = await ServiceOverviews.count({ col: "service_cat_id" });
 
   // console.log("original rows size: " + count);
+  const bind_id = ServiceOverviews.findByPk(req.body.service_cat_id).bind_id;
 
   await ServiceOverviews.destroy({
     where: {
@@ -124,6 +125,9 @@ router.post("/deleteService", async (req, res) => {
       }
     );
   }
+
+  // delete all subService
+
 
   res.status(204).json({
     status: "success",
