@@ -30,8 +30,8 @@
         
 
         <div class="flex">
-            <div class="overflow-x-auto shadow-md sm:rounded-lg w-full">
-                <table class="w-full bg-blue-200 text-sm text-left text-gray-700 dark:text-gray-400">
+            <div class="shadow-md sm:rounded-lg w-full">
+                <table class="table-auto w-full bg-blue-200 text-sm text-left text-gray-700 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class="px-6 py-3">
@@ -48,7 +48,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="h-6 bg-black overflow-y-scroll">
+                    <tbody class="h-6 bg-black">
                         <!-- <tr v-for="subService in subServiceList"
                             class="border-b hover:bg-gray-50 h-10">
                             <td class="px-6 py-4" v-html="subService.description"></td>
@@ -60,11 +60,13 @@
                             <!-- <th scope="row" class="px-6 py-4  font-medium text-gray-900 whitespace-nowrap">
                                 {{ subService.sub_service_name }}
                             </th> -->
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 font-bold">
                                 {{ subService.sub_service_name }}
                             </td>
 
-                            <td class="px-6 py-4" v-html="subService.description">
+                            <td>
+                                <div v-truncate-html="subService.description" class="px-6 py-4">
+                                </div>
                             </td>
                             
                             <td class="px-6 py-4">
@@ -73,11 +75,15 @@
                             
                             <td class="flex items-center px-6 py-4 space-x-3">
                                 <button @click="deleteSubService(subService.cat_id, subService.sub_service_id)"
-                                    class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                                <button @click="swapSubServiceDown(subService.cat_id, subService.sub_service_id)"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">Down</button>
+                                    class="font-medium text-red-600 dark:text-red-500 hover:underline w-7 hover:bg-gray-200 rounded">
+                                    <img src="@/assets/icon-delete.svg" alt="Icon" class="mr-2" />
+                                </button>
+                                <!-- <button @click="swapSubServiceDown(subService.cat_id, subService.sub_service_id)"
+                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">Down</button> -->
                                 <button @click="swapSubServiceUp(subService.cat_id, subService.sub_service_id)"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Up</button>
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
+                                    <img src="@/assets/icon-up-arrow.svg" alt="Icon" class="mr-2" />
+                                </button>
                             </td>
                         </tr>
                     </tbody>
@@ -99,8 +105,9 @@ import DataSubService from '../dataRoutes/DataSubService'
 import DataService from '../dataRoutes/DataService';
 
 import SubServiceDialog from './SubServiceDialog.vue'; 
-import SideBar from './SideBar.vue'
+import SideBar from './SideBar.vue';
 import { reactive, ref } from "vue";
+
 
 export default {
     components:{
@@ -208,12 +215,19 @@ export default {
     }
 
 }
+
 </script>
 
 <style>
 .tbody-with-max-height {
   max-height: 30px;
-  overflow-y: auto;
+  overflow-y: hidden;
   /* set a maximum height for the table body */
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
