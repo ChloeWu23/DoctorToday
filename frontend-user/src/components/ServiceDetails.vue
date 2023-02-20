@@ -36,7 +36,7 @@ export default {
             .then(response => {
                 for (let i = 0; i < response.data.length; i++) {
                     if (response.data[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.serviceName) {
-                        serviceId.value = response.data[i].service_cat_id
+                        serviceId.value = response.data[i].bind_id
                         break;
                     }
                 }
