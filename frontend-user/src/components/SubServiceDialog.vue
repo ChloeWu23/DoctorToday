@@ -2,24 +2,25 @@
     <el-dialog :model-value="subServiceVisible" title="Add sub-service" :show-close="false"
         :close-on-click-modal="false">
         <el-form>
-            <el-form-item label="Short name">
-                <el-input v-model="newSubService.short_name" autocomplete="off">{{ newSubService.short_name }}</el-input>
-            </el-form-item>
-
-            <el-form-item label="Sub-service name" prop="desc">
+            <div class="el-form-item"> Sub-service name </div>
+            <el-form-item prop="desc" >
                 <el-input v-model="newSubService.sub_service_name" type="textarea">{{ newSubService.sub_service_name }}</el-input>
             </el-form-item>
-
-            <el-form-item label="Description" prop="desc">
-                <el-input v-model="newSubService.description" type="textarea">{{ newSubService.description }}</el-input>
-            </el-form-item>
-
-            <el-form-item label="Price" prop="desc">
+            
+            <div class="el-form-item"> Description </div>
+            <QuillEditor  class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html" :content-style="contentStyle" v-model:content="newSubService.description" >
+            </QuillEditor>
+            
+            <div class="el-form-item mt-6"> Price (Optional) </div>
+            <el-form-item prop="desc">
                 <el-input v-model="newSubService.price" type="textarea">{{ newSubService.price }}</el-input>
             </el-form-item>
 
         </el-form>
         <template #footer>
+            <div class="flex bg-blue-100">
+                {{ bind_id }}
+            </div>
             <span class="dialog-footer">
                 <button type="button"
                     class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -36,18 +37,29 @@
 <script>
 import { reactive, ref } from "vue";
 import DataService from '@/dataRoutes/DataSubService';
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
+
 
 export default {
-    props: ['service_cat_id'],
+    props: {
+        bind_id: {
+            type: Number,
+            default: 0,
+        }
+    },
+    components: { QuillEditor },
     data() {
         return {
             newSubService: {
-                short_name: "",
                 sub_service_name: "",
                 description: "",
                 price: ""
             },
-            submitted: false
+            submitted: false,
+            contentStyle: {
+                fontFamily: 'Lato, sans-serif'
+            }
         };
     },
     setup(props, { emit }) {
@@ -64,16 +76,14 @@ export default {
     methods: {
         addSubService() {
             var data = {
-                short_name: this.newSubService.short_name,
                 sub_service_name: this.newSubService.sub_service_name,
                 description: this.newSubService.description,
                 price: this.newSubService.price
             };
 
-            console.log(data)
-
-            console.log(this.service_cat_id)
-            DataService.create(this.service_cat_id, data)
+            console.log(data);
+            console.log(this.bind_id);
+            DataService.create(this.bind_id, data)
                 .then(res => {
                     this.submitted = true;
                     this.$emit('update:modelValue', false)
