@@ -71,6 +71,12 @@ router.post('/', (req, res) => {
         });
         return;
       }
+    if (!req.body.firstName) {
+        res.status(400).send({
+          message: "First Name can not be empty!",
+        });
+        return;
+      }
     //console.log(req.body.email);
     sendRegisterEmail(req.body)
     .then(data => {

@@ -10,7 +10,7 @@
 
     <div class="text-gray-700">
         <h1 class="text-gray-700 m-6 md:m-10 font-bold">New Patient Registration Form</h1>
-        <form class="m-10 min-w-fit max-w-sm md:max-w-lg">
+        <form class="m-10 min-w-fit max-w-fit md:max-w-fit">
             <div class="grid md:grid-cols-2 gap-10">
                 <label class="block">
                     <span>First name</span>
@@ -72,22 +72,50 @@
                     <input type="text" class="w-full border-0 border-b-2 border-sky-700 focus:ring-0 focus:border-black"
                         v-model="register.fax" placeholder="" autocomplete="off">
                 </label>
-                <label class="block">
+                <!-- <label class="block">
                     <div>How did you hear about us?</div>
                     <div class="grid md:grid-cols-2 xl:grid-cols-4">
                         <span v-for="medium in register.media">
                             <input type="checkbox" class="my-2 border-sky-700 border-2 focus:ring-sky-700"
-                                v-model="medium.flag"><span class="mx-2">{{ medium.medium }}</span>
-                        </span>
+                                v-model="medium.flag"><span class="mx-2"><span>{{ medium.medium }}</span></span></span>
+                    </div>
+                </label> -->
+                <label class="block">
+                    <div>How did you hear about us?</div>
+                    <div class="grid md:grid-cols-2 xl:grid-cols-4">
+                        <label v-for="medium in register.media" class="flex items-center">
+                            <input type="checkbox" class="my-2 border-sky-700 border-2 focus:ring-sky-700" 
+                            v-model="medium.flag"><span class="mx-2">{{ medium.medium }}</span>
+                         </label>
                     </div>
                 </label>
-                <label class="block">
+
+                <!-- <label class="block">
                     <div>How would you like to receive your results?</div>
                     <div class="grid grid-cols-4">
                         <span v-for="comm in register.comms">
                             <input type="checkbox" class="my-2 border-sky-700 border-2 focus:ring-sky-700"
                                 v-model="comm.flag"><span class="mx-2">{{ comm.comm }}</span>
                         </span>
+                    </div>
+                </label> -->
+                <label class="block">
+                    <div>How would you like to receive your results?</div>
+                    <div class="grid md:grid-cols-2 xl:grid-cols-4">
+                        <label v-for="comm in register.comms" class="flex items-center">
+                            <input type="checkbox" class="my-2 border-sky-700 border-2 focus:ring-sky-700"
+                            v-model="comm.flag"><span class="mx-2">{{ comm.comm }}</span>
+                        </label>
+                    </div>
+                </label>
+
+                <label class="block mb-8">
+                    <div class="flex items-center">
+                        <span>
+                            <input type="checkbox" class="my-2 border-sky-700 border-2 focus:ring-sky-700"
+                            required v-model="register.gdpr" autocomplete="off"><span class="mx-2"></span>
+                        </span>
+                    <div>By ticking the box you consent your data will be used by DoctorToday for the purpose of your own medical treatment</div>
                     </div>
                 </label>
             </div>
@@ -123,7 +151,8 @@ export default {
                 fax: '',
                 media: [{ medium: "Google", flag: 'false' }, { medium: "Yahoo", flag: 'false' }, { medium: "Other Search Engines", flag: 'false' }, { medium: "Word of Mouth", flag: 'false' }, { medium: "Walked By", flag: 'false' }, { medium: "Other", flag: 'false' }],
                 comms: [{ comm: "Phone", flag: 'false' }, { comm: "Email", flag: 'false' }, { comm: "Fax", flag: 'false' }, { comm: "Post", flag: 'false' }],
-                notes: ''
+                notes: '',
+                gdpr: ''
             },
             isSending: false
         }
@@ -134,6 +163,11 @@ export default {
                 email: this.register.email,
                 firstName: this.register.firstName,
                 lastName: this.register.lastName,
+                dob: this.register.dob,
+                address1: this.register.address1,
+                postcode: this.register.postcode,
+                mobile: this.register.mobile,
+                gdpr: this.register.gdpr
             };
             console.log(DataService.sendRegisterEmail(data));
         }
