@@ -40,11 +40,13 @@ frontend_deploy:
   only:
     - master
     - anyan_adminSubService
+  tags:
+    - webpack-vue-cicd
   script:
     - cd ./frontend-user
     - apt-get update -qy
     - apt-get install -y ruby-dev git
     - gem install dpl
-    - dpl --provider=heroku --app=$HEROKU_APP_NAME_FRONT --api-key=$HEROKU_KEY_YC
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME_FRONT --api-key=$HEROKU_KEY_YC  --skip-cleanup
 
   
