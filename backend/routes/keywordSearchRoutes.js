@@ -6,15 +6,20 @@ const puppeteer = require("puppeteer");
 router.get('/', (req, res) => {
     console.log("get request triggered");
     urls = [
-        { id: 0, url: "https://doctor-today-front.herokuapp.com/#/bookingAppointment" },
-        { id: 1, url: "https://doctor-today-front.herokuapp.com/#/findUs" },
-        { id: 2, url: "https://doctor-today-front.herokuapp.com/#/people" },
-        { id: 3, url: "https://doctor-today-front.herokuapp.com/#/travelGuides" },
-        { id: 4, url: "https://doctor-today-front.herokuapp.com/#/services" },
-        { id: 5, url: "https://doctor-today-front.herokuapp.com/#/services/gp-consultations" },
-        { id: 6, url: "https://doctor-today-front.herokuapp.com/#/services/occupational-health" },
-        { id: 7, url: "https://doctor-today-front.herokuapp.com/#/sexual-health" },
-        { id: 8, url: "https://doctor-today-front.herokuapp.com/#/specific-health-tests" }
+        { id: 0, url: "https://doctor-today-front.herokuapp.com/#/bookingAppointment", title: "Appointments" },
+        { id: 1, url: "https://doctor-today-front.herokuapp.com/#/findUs", title: "Find Us" },
+        { id: 2, url: "https://doctor-today-front.herokuapp.com/#/people", title: "People" },
+        { id: 3, url: "https://doctor-today-front.herokuapp.com/#/travelGuides", title: "Travel Guides" },
+        { id: 4, url: "https://doctor-today-front.herokuapp.com/#/services", title: "Services" },
+        { id: 5, url: "https://doctor-today-front.herokuapp.com/#/services/gp-consultations", title: "GP Consultations" },
+        { id: 6, url: "https://doctor-today-front.herokuapp.com/#/services/occupational-health", title: "Occupational Health" },
+        { id: 7, url: "https://doctor-today-front.herokuapp.com/#/sexual-health", title: "Sexual Health" },
+        { id: 8, url: "https://doctor-today-front.herokuapp.com/#/specific-health-tests", title: "Specific Health Tests" },
+        { id: 9, url: "https://doctor-today-front.herokuapp.com/#/general-health-screens", title: "General Health Screens" },
+        { id: 10, url: "https://doctor-today-front.herokuapp.com/#/vaccinations", title: "Vaccinations" },
+        { id: 11, url: "https://doctor-today-front.herokuapp.com/#/travel-medication", title: "Travel Medication" },
+        { id: 12, url: "https://doctor-today-front.herokuapp.com/#/aesthetics-&-skincare", title: "Aesthetics & Skincare" },
+        { id: 13, url: "https://doctor-today-front.herokuapp.com/#/wound-care", title: "Wound Care" },
     ]
     search(urls).then(data => {
         res.set('Access-Control-Allow-Origin', '*');
@@ -77,7 +82,7 @@ async function search(urls) {
                 //then close the page
                 await page.close();
                 //save index, url and page content into an object
-                return { id: i, url: urls[i].url, content: pageHtml };
+                return { id: i, url: urls[i].url, title: urls[i].title, content: pageHtml };
             })))
         //close browser
         await browser.close();
