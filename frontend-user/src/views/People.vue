@@ -2,14 +2,14 @@
     <div class="flex justify-center items-center">
         <div class="bg-center w-full items-center md:py-40 md:pt-120 bg-[url('@/assets/doctor_today.jpg')] bg-no-repeat">
             <div class = "flex justify-center items-center">
-                <h1 class = "text-5xl text-white text-center p-8 font-extrabold
-                            bg-[#143B71] rounded-3xl bg-opacity-80">
+                <h1 class = "text-5xl text-sky-700 text-center p-8 font-extrabold
+                            bg-[] rounded-3xl bg-opacity-80">
                             Meet Our Team
                 </h1>
             </div>
         </div>
     </div>
-
+    
     <div class="p-10">
         <ul class="grid md:grid-cols-12 md:gap-10 content-center">
             <li class="py-3 px-10 md:px-0 max-w-md md:max-w-none min-h-max
@@ -42,8 +42,8 @@
                             </div>
                         </div>
 
-                        <div class="h-[60px] pb-3 px-8 w-full text-left">
-                            <p class="text-xs" v-if="item.staff_id === 4 || item.staff_id === 5">Independent Service Provider</p>
+                        <div class="h-[65px] pb-3 px-8 w-full text-left">
+                            <p class="text-l font-bold mt-0 " v-if="item.is_independent">Independent Service Provider</p>
                             <p class="py-1 text-xs">{{ item.title }}</p>
                             <p class="italic text-xs">{{ item.profile }}</p>
                         </div>
@@ -57,6 +57,7 @@
                 </li>
                 
         </ul>
+        
     </div>
 
 </template>
