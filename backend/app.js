@@ -38,7 +38,7 @@ app.use('/people', peopleRouter);
 app.use('/news', newsRouter);
 
 app.get('/', (req, res) => res.status(200).send({
-    message: 'Welcome to our the backend app',
+    message: 'Welcome to our the backend 2.0 app',
 }));
 
 const port = process.env.PORT || 3000;
