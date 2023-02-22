@@ -54,7 +54,7 @@ export default {
 
       KeywordSearch.get().then(
         res => {
-          // console.log(res)
+          console.log(res)
           res.data.map(element => {
             const parsedText = this.stripTags(element.value.content);
             this.fetchedContents.push({
