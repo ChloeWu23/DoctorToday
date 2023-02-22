@@ -20,5 +20,8 @@
     "nodemailer": "^6.9.1",
     "sequelize": "^6.28.0",
     "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "jest": "^29.4.3"
   }
 }
