@@ -1,5 +1,10 @@
 image: node:8.10.0
 
+cache:
+  paths:
+    - ./backend/node_modules/
+    - ./frontend/node_modules/
+
 stages:          # List of stages for jobs, and their order of execution
   # - build
   - test
