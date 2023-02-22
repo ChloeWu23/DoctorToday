@@ -21,7 +21,7 @@
                         <div class="w-full py-3">
                             <div class="h-full shadow-md w-full flex items-center justify-center overflow-hidden">
                                 <img
-                                class="pb-3 drop-shadow-xl w-[200px] h-[280px] object-none" v-bind:src='item.image' :alt="item.name"/>
+                                class="pb-3 drop-shadow-xl w-[200px] h-[280px] object-none" v-bind:src="item.image" :alt="item.name"/>
                             </div>
                         </div>
 
@@ -80,7 +80,7 @@ export default {
             // load image url
             for (let i = 0; i < this.peopleList.length; i++) {
                 this.visible[i] = false;
-                this.peopleList[i].image = require('../assets/people/' + i + '.png');
+                this.peopleList[i].image = require('@/assets/' + this.peopleList[i].image);
             }
         })
         .catch(err => {

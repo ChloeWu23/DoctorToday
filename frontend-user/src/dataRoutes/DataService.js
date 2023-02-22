@@ -7,7 +7,7 @@ class DataService {
 
     create(data) {
         // data.serviceName, description_1, description_2, description_3
-        return http.post("/admin/service", data,data, {
+        return http.post("/admin/service", data, {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
     }

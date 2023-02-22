@@ -30,8 +30,6 @@
     <el-upload action="" list-type="picture" :auto-upload="false"
           :on-remove="handleRemove"
       :on-change="upldchange" :limit="1" :on-exceed="handleExceed" ref="upload">
-      <!-- <img v-if="imageUrl" :src="imageUrl" class="avatar">
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i> -->
       <el-button>Add image</el-button>
       
 
@@ -41,11 +39,6 @@
       <img w-full :src="dialogImageUrl" alt="Preview Image" />
     </el-dialog>
 
-
-    <!-- <button type="button" @click="uploadImage"
-      class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-      UPLOAD
-    </button> -->
 
 
     <template #footer>
@@ -69,13 +62,9 @@
 <script>
 import { reactive, ref } from "vue";
 import DataService from "@/dataRoutes/DataService";
-import { Plus} from "@element-plus/icons-vue";
 import UploadService from '../dataRoutes/DataUpload';
 
 export default {
-  components: {
-    Plus
-  },
   data() {
     return {
       newService: {
@@ -86,9 +75,9 @@ export default {
         dialogImageUrl: '',
         dialogVisible: false,
         baseurl: '',
-        imageUrl: '', // 预览图片地址
-        files: [], // 复刻文件数据
-        url: '', // 因为auto-upload元素，action设置为空
+        imageUrl: '', // image preview url
+        files: [], // uploaded files
+        url: '', // auto-upload = false, so set to null
       },
       submitted: false,
     };
@@ -135,10 +124,7 @@ export default {
         return;
       }
 
-      //this.uploadImage()
-
       if (this.files.length !== 0) {
-        // 赋值给formData
         let formData = new FormData()
         formData.append('file', this.files)
         formData.append('serviceName',this.newService.name)
@@ -146,9 +132,6 @@ export default {
         formData.append('description_2', this.newService.desc2)
         formData.append('description_3', this.newService.desc3)
 
-        // POST接口请求
-        // UploadService.upload(formData)
-        // this.$refs.upload.clearFiles()
         DataService.create(formData)
         .then((res) => {
           this.submitted = true;
@@ -159,26 +142,13 @@ export default {
           console.log(err);
         });
 
-
       } else {
-        // 没有预览图片文件处理
         this.$message({
           message: 'Image can not be null!',
           type: 'error',
           duration: 1500
         })
       }
-
-
-      // DataService.create(data)
-      //   .then((res) => {
-      //     this.submitted = true;
-      //     this.$emit("update:modelValue", false);
-      //     this.$emit("refresh-callback");
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
 
       console.log("after parent emit");
     },
@@ -195,18 +165,14 @@ export default {
       this.dialogVisible = true;
     },
     uploadImage() {
-      // 判断是否存在预览图片信息,才执行post请求
       if (this.files.length !== 0) {
-        // 赋值给formData
         let formData = new FormData()
         formData.append('file', this.files)
 
-        // POST接口请求
         UploadService.upload(formData)
         this.$refs.upload.clearFiles()
 
       } else {
-        // 没有预览图片文件处理
         this.$message({
           message: 'Image can not be null!',
           type: 'error',
@@ -215,7 +181,6 @@ export default {
       }
     },
     upldchange(file) {
-      // 文件格式大小判断处理
       //   const isJPG = file.raw.type === 'image/jpeg'
       //   const isLt2M = file.raw.size / 1024 / 1024 < 2
 
@@ -228,25 +193,17 @@ export default {
       //     return
       //   }
 
-      // 格式无误后，预览文件处理
       this.imgSaveToUrl(file)
-      // 复刻文件信息
       this.files = file.raw
       console.log(this.files)
     },
     imgSaveToUrl(file) {
-      // 获取上传图片的本地URL，用于上传前的本地预览，转换后的地址为 blob:http://xxx/7bf54338-74bb-47b9-9a7f-7a7093c716b5
       this.imageUrl = URL.createObjectURL(file.raw)
       console.log('Image preview url: ', this.imageUrl)
     },
     handleExceed(files, fileList) {
       this.$message.warning(`You can only upload one image`);
     },
-
-    // handlePictureCardPreview(file) {
-    //   this.dialogImageUrl = file.url;
-    //   this.dialogVisible = true;
-    // },
   },
 };
 </script>
