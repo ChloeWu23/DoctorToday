@@ -3,7 +3,7 @@ image: node:8.10.0
 
 stages:
   - test
-  - deploy_production
+  - production
 
 before_script:
   - rm -rf node_modules     # Clean up the node_modules directory before running any job in the pipeline
@@ -18,11 +18,9 @@ Test:
 
 # Job 2:
 # Deploy to staging
-Production:
-  stage: deploy_production
+Heroku_deploy:
+  stage: production
   script:
     - cd ./backend
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_APP_NAME_BACK --api-key=$HEROKU_KEY_YC
