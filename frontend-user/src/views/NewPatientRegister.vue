@@ -159,6 +159,31 @@ export default {
     },
     methods: {
         sendRegisterEmail() {
+            if(!this.register.gdpr){
+                alert("Please check the GDPR checkbox before submitting.");
+                return;
+            }
+            if(!this.register.email){
+                alert("Please enter your Email Address before submitting.");
+                return;
+            }
+            if(!this.register.firstName){
+                alert("Please enter your First Name before submitting.");
+                return;
+            }
+            if(!this.register.lastName){
+                alert("Please enter your last name before submitting.");
+                return;
+            }
+            if(!this.register.dob){
+                alert("Please enter your Date of Birth before submitting.");
+                return;
+            }
+            if(!this.register.postcode){
+                alert("Please enter your Postcode before submitting.");
+                return;
+            }
+
             var data = {
                 email: this.register.email,
                 firstName: this.register.firstName,
