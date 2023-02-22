@@ -5,20 +5,24 @@ stages:
   - test
   - production
 
-before_script:
-  - rm -rf node_modules     # Clean up the node_modules directory before running any job in the pipeline
-
 # Job 1:
-Test:
+backend_test:
   stage: test
   script:
     - cd ./backend
     - npm install
     # - npm run test // TODO: test
 
+frontend_test:
+  stage: test
+  script:
+    - cd ./frontend-user
+    - npm install
+    # - npm run test // TODO: test
+
 # Job 2:
 # Deploy to staging
-Heroku_deploy:
+backend_deploy:
   stage: production
   image: ruby:latest
   script:
@@ -27,3 +31,14 @@ Heroku_deploy:
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_APP_NAME_BACK --api-key=$HEROKU_KEY_YC
+
+frontend_deploy:
+  stage: production
+  script:
+    - cd ./frontend-user
+    - apt-get update -qy
+    - apt-get install -y ruby-dev git
+    - gem install dpl
+    - dpl --provider=heroku --app=HEROKU_APP_NAME_BACK --api-key=$HEROKU_KEY_YC
+
+  
