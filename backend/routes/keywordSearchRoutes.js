@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const puppeteer = require("puppeteer");
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+// const jsdom = require("jsdom");
+// const { JSDOM } = jsdom;
 
 router.get('/', (req, res) => {
     console.log("get request triggered");
