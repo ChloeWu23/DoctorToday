@@ -29,7 +29,7 @@ frontend-deploy:
   stage: deploy
   environment: production
   script:
-    - cd frontend-user
+    - cd ./frontend-user
     - npm install
     - npm run build
     - apt-get update -qq && apt-get install -y -qq ruby-dev rubygems build-essential
@@ -39,9 +39,10 @@ frontend-deploy:
 backend-deploy:
   stage: deploy
   environment: production
-  script:
-    - cd backend
+  script:    
+    - cd ./backend
     - npm install
-    - apt-get update -qq && apt-get install -y -qq ruby-dev rubygems build-essential
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
     - gem install dpl
-    - dpl --provider=heroku --app=$HEROKU_APP_NAME_BACK --api-key=$HEROKU_KEY_YC
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME_BACK --api-key=$HEROKU_API_KEY
