@@ -24,6 +24,7 @@ Production:
   only:
     - master
   stage: deploy_production
+  needs: test
   script:
     - cd ./backend
     - apt-get update -qy
