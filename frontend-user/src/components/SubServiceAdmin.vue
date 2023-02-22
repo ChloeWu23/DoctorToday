@@ -65,7 +65,7 @@
                             </td>
 
                             <td>
-                                <div v-truncate-html="subService.description" class="px-6 py-4">
+                                <div v-html="subService.description_truncate" class="px-6 py-4">
                                 </div>
                             </td>
                             
@@ -147,6 +147,17 @@ export default {
                     console.log(err);
                 });
         },
+        truncatedHtml(data) {
+            const maxLength = 300;
+            const html = data.description;
+            // const html = this.description; // replace with the name of your variable containing the HTML
+            if (html.length > maxLength) {
+                data.description_truncate = html.slice(0, maxLength) + '...';
+                return data;
+            } else {
+                return data;
+            }
+        },
 
         refreshServiceView() {
             console.log("refresh the data");
@@ -154,6 +165,7 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     this.subServiceList = response.data;
+                    this.subServiceList.map(data => this.truncatedHtml(data))
                 })
                 .catch(err => {
                     console.log(err);

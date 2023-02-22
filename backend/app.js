@@ -1,23 +1,7 @@
 const express = require("express");
-const cors = require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
+
 
 const app = express();
-
-
-// app.use(require('cors'));
-// var corsOptions = {
-//     // origin: "http://localhost:8081/"
-//     origin: "*"
-//   };
-// app.use(cors(corsOptions));
-
-
-app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
 app.use(express.json());
@@ -56,6 +40,9 @@ app.use('/people', peopleRouter);
 app.use('/news', newsRouter);
 app.use('/keywordSearch', keywordSearchRouter);
 
+app.get('/', (req, res) => res.status(200).send({
+    message: 'Welcome to our the backend 2.0 app',
+}));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
