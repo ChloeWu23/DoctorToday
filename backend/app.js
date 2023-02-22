@@ -25,7 +25,7 @@ const otherInfoRouter = require('./routes/otherInfoRoutes');
 const peopleRouter = require('./routes/peopleRoutes');
 const newsRouter = require('./routes/newsRoutes');
 
-app.use('/', serviceRouter);
+// app.use('/', serviceRouter);
 app.use('/service', serviceRouter); 
 app.use('/admin/service', adminServiceRouter) ;
 app.use('/admin/sub-service', adminSubServiceRouter);
@@ -37,6 +37,9 @@ app.use('/other-info', otherInfoRouter);
 app.use('/people', peopleRouter);
 app.use('/news', newsRouter);
 
+app.get('/', (req, res) => res.status(200).send({
+    message: 'Welcome to our the backend app',
+}));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
