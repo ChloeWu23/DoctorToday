@@ -30,6 +30,7 @@ export default {
     },
     setup() {
         const route = useRoute()
+        
         let serviceId = ref()
         let ServiceDetails = ref([])
         DataService.get()
