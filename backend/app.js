@@ -41,8 +41,6 @@ const otherInfoRouter = require('./routes/otherInfoRoutes');
 const peopleRouter = require('./routes/peopleRoutes');
 const newsRouter = require('./routes/newsRoutes');
 
-const uploadRouter = require('./routes/uploadRoutes');
-
 // app.use('/', serviceRouter);
 app.use('/service', serviceRouter); 
 app.use('/admin/service', adminServiceRouter) ;
@@ -54,7 +52,6 @@ app.use('/travel', travelRouter);
 app.use('/other-info', otherInfoRouter);
 app.use('/people', peopleRouter);
 app.use('/news', newsRouter);
-app.use('/upload', uploadRouter);
 
 app.use('/readupload', express.static('upload'))
 

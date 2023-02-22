@@ -13,20 +13,6 @@
             Add Service
         </button>
 
-        <el-upload action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" list-type="picture-card"
-            :auto-upload="false" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="upldchange"
-            ref="upload">
-            <el-icon>
-                <Plus />
-            </el-icon>
-        </el-upload>
-
-        <el-dialog v-model="dialogVisible">
-            <img w-full :src="dialogImageUrl" alt="Preview Image" />
-        </el-dialog>
-
-        <el-button type="primary" @click="uploadImage">UP</el-button>
-
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -92,19 +78,16 @@
 
 <script>
 import DataService from '../dataRoutes/DataService';
-import UploadService from '../dataRoutes/DataUpload';
 import test from './dialog.vue'
 import SubServiceDialog from './SubServiceDialog.vue';
 import SideBar from './SideBar.vue'
 import { reactive, ref } from "vue";
-import { Plus } from "@element-plus/icons-vue";
 
 export default {
     components: {
         test,
         SubServiceDialog,
         SideBar,
-        Plus
     },
 
     data() {
@@ -113,12 +96,6 @@ export default {
             dialogFormVisible: false,
             subServiceVisible: false,
             service_cat_id: 0,
-            dialogImageUrl: '',
-            dialogVisible: false,
-            baseurl: '',
-            imageUrl: '', // 预览图片地址
-            files: [], // 复刻文件数据
-            url: '' // 因为auto-upload元素，action设置为空
         }
     },
 
@@ -215,84 +192,6 @@ export default {
             this.service_cat_id = service_cat_id
             this.subServiceVisible = true;
         },
-        handleRemove(file, fileList) {
-            console.log(file, fileList);
-        },
-
-        handlePictureCardPreview(file) {
-            this.dialogImageUrl = file.url;
-            this.dialogVisible = true;
-        },
-        uploadImage() {
-            // 判断是否存在预览图片信息,才执行post请求
-            if (this.files.length !== 0) {
-                // 赋值给formData
-                let formData = new FormData()
-                formData.append('file', this.files)
-                // var data = {
-                //     files: this.files
-                // };
-                // POST接口请求
-                UploadService.upload(formData);
-            } else {
-                // 没有预览图片文件处理
-                this.$message({
-                    message: 'Image can not be null!',
-                    type: 'error',
-                    duration: 1500
-                })
-            }
-            // if (this.files.length !== 0) {
-            //     // 赋值给formData
-            //     let formData = new FormData()
-            //     formData.append('file', this.files)
-            //     // POST接口请求
-            //     axios.post('/api/upload', formData, {
-            //         headers: { 'Content-Type': 'multipart/form-data' }
-            //     })
-            //         .then((res) => {
-            //             console.log('success')
-            //             console.log(res)
-            //             this.baseurl = res.data.filename
-            //         })
-            //         .catch((error) => {
-            //             console.log('false')
-            //             console.log(error)
-            //         })
-            // } else {
-            //     // 没有预览图片文件处理
-            //     this.$message({
-            //         message: 'Please upload image!',
-            //         type: 'error',
-            //         duration: 1500
-            //     })
-            // }
-        },
-        upldchange(file) {
-            // 文件格式大小判断处理
-            //   const isJPG = file.raw.type === 'image/jpeg'
-            //   const isLt2M = file.raw.size / 1024 / 1024 < 2
-
-            //   if (!isJPG) {
-            //     this.$message.error('上传头像图片只能是 JPG 格式!')
-            //     return
-            //   }
-            //   if (!isLt2M) {
-            //     this.$message.error('上传头像图片大小不能超过 2MB!')
-            //     return
-            //   }
-
-            // 格式无误后，预览文件处理
-            this.imgSaveToUrl(file)
-            // 复刻文件信息
-            this.files = file.raw
-            console.log(this.files)
-        },
-        imgSaveToUrl(file) {
-            // 获取上传图片的本地URL，用于上传前的本地预览，转换后的地址为 blob:http://xxx/7bf54338-74bb-47b9-9a7f-7a7093c716b5
-            this.imageUrl = URL.createObjectURL(file.raw)
-            console.log('Image preview url: ', this.imageUrl)
-        }
 
     }
 
