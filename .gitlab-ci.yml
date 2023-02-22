@@ -6,7 +6,7 @@ stages:
   - deploy_production
 
 before_script:
-  - rm -rf node_modules
+  - rm -rf node_modules     # Clean up the node_modules directory before running any job in the pipeline
 
 # Job 1:
 Test:
