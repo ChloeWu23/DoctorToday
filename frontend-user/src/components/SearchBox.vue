@@ -1,6 +1,6 @@
 <template>
   <div class="md:m-0">
-    {{ searchResults }}
+    <div v-if="searchResults.length > 0">{{ searchResults }}</div>
     <div class="
               bg-black
               flex
