@@ -1,5 +1,6 @@
 # Node docker image on which this would be run
-image: node:8.10.0
+image: node:latest
+image: ruby:latest
 
 stages:
   - test
@@ -22,5 +23,7 @@ Heroku_deploy:
   stage: production
   script:
     - cd ./backend
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_APP_NAME_BACK --api-key=$HEROKU_KEY_YC
