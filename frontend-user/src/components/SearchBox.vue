@@ -54,7 +54,7 @@ export default {
 
       KeywordSearch.get().then(
         res => {
-          console.log(res)
+          // console.log(res)
           res.data.map(element => {
             const parsedText = this.stripTags(element.value.content);
             this.fetchedContents.push({
@@ -66,7 +66,7 @@ export default {
         }).
         then(data => {
           const keywordFilter = this.searchQuery.toLowerCase();
-          console.log("result is being filtered");
+          // console.log("result is being filtered");
           this.searchResults = this.fetchedContents.filter(result => 
             result.content.toLowerCase().includes(keywordFilter)
           )        

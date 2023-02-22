@@ -17,7 +17,12 @@ router.get('/', (req, res) => {
 
 async function search(urls) {
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        });
         const htmls = (await Promise.allSettled(
             //loop through all urls
             [...Array(urls.length)].map(async (_, i) => {
