@@ -5,6 +5,9 @@ stages:
   - test
   - deploy_production
 
+before_script:
+  - rm -rf node_modules
+
 # Job 1:
 Test:
   stage: test
