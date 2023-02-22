@@ -25,6 +25,9 @@ frontend_test:
 backend_deploy:
   stage: production
   image: ruby:latest
+  only:
+    - master
+    - anyan_adminSubService
   script:
     - cd ./backend
     - apt-get update -qy
@@ -34,11 +37,14 @@ backend_deploy:
 
 frontend_deploy:
   stage: production
+  only:
+    - master
+    - anyan_adminSubService
   script:
     - cd ./frontend-user
     - apt-get update -qy
     - apt-get install -y ruby-dev git
     - gem install dpl
-    - dpl --provider=heroku --app=HEROKU_APP_NAME_BACK --api-key=$HEROKU_KEY_YC
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME_FRONT --api-key=$HEROKU_KEY_YC
 
   
