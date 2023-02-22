@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: "127.0.0.1",
-    USER: "root",
-    PASSWORD: "123mysql",
-    DB: "vue",
+    HOST: "x8autxobia7sgh74.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    USER: "tf6kkpgbe7x0affn",
+    PASSWORD: "yhelqy7km6mpndhg",
+    DB: "myew0er98414ccnd",
       port:3306,
     dialect: "mysql",
     pool: {

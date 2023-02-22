@@ -1,23 +1,7 @@
 const express = require("express");
-const cors = require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
+
 
 const app = express();
-
-
-// app.use(require('cors'));
-// var corsOptions = {
-//     // origin: "http://localhost:8081/"
-//     origin: "*"
-//   };
-// app.use(cors(corsOptions));
-
-
-app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
 app.use(express.json());
@@ -41,7 +25,7 @@ const otherInfoRouter = require('./routes/otherInfoRoutes');
 const peopleRouter = require('./routes/peopleRoutes');
 const newsRouter = require('./routes/newsRoutes');
 
-// app.use('/', serviceRouter);
+app.use('/', serviceRouter);
 app.use('/service', serviceRouter); 
 app.use('/admin/service', adminServiceRouter) ;
 app.use('/admin/sub-service', adminSubServiceRouter);
