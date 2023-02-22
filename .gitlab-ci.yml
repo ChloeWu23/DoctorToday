@@ -28,6 +28,7 @@ backend_deploy:
   only:
     - master
     - anyan_adminSubService
+    - yc/search
   script:
     - cd ./backend
     - apt-get update -qy
