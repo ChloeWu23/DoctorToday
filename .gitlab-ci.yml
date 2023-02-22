@@ -1,4 +1,4 @@
-image: node:14.17.6
+image: node:8.0.0
 
 stages:          # List of stages for jobs, and their order of execution
   - build
