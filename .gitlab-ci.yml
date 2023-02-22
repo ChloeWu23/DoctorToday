@@ -21,8 +21,6 @@ Test:
 # Deploy to staging
 Production:
   image: ruby:latest
-  only:
-    - master
   stage: deploy_production
   script:
     - cd ./backend
