@@ -20,7 +20,6 @@ Test:
 # Job 2:
 # Deploy to staging
 Production:
-  needs: Test
   image: ruby:latest
   only:
     - master
