@@ -20,7 +20,7 @@
                             Name
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Title 
+                            Title
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Profile
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="people in peopleList" :key="people.staff_id"
+                    <tr v-for="people in peopleList" :key="people.staff_id" 
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ people.name }}
@@ -45,18 +45,10 @@
                         <td class="px-6 py-4">
                             {{ people.profile }}
                         </td>
-                        <!-- <td class="px-6 py-4">
-                            <div v-html="subService.description_truncate" class="px-6 py-4">
-                                </div>
-                            {{ people.description }}
-                        </td> -->
 
-                        <td class="px-6 py-4">
-                            <p>
-                            <div v-html="people.description_truncate">
-                                </div>
-                            </p>
-                            <!-- {{ people.description }} -->
+                        <td>
+                            <div v-truncate-html="people.description" class="px-6 py-4">
+                            </div>
                         </td>
 
 
@@ -75,8 +67,10 @@
 
         </div>
 
-        <AddPeopleDialog v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView"/><AddPeopleDialog />        
+        <AddPeopleDialog v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
+        <AddPeopleDialog />
     </div>
+    
 </template>
 
 
@@ -95,17 +89,18 @@ export default {
     data() {
         return {
             peopleList: "",
-            dialogFormVisible: false
+            dialogFormVisible: false,
+            peopleDescription:""
         }
     },
-    
+
     async created() {
         console.log(this.$store.getters.isLoggedIn);
         if (!this.$store.getters.isLoggedIn) {
             this.$router.push('/login');
         }
     },
-    
+
     setup() {
         const dialogFormVisible = ref(false);
 
@@ -121,14 +116,14 @@ export default {
 
     mounted() {
         DataPeople.get()
-        .then(res => {
-            this.peopleList = res.data;
-            console.log("print out this.peopleList")
-            console.log(this.peopleList)
-        })
-        .catch(err => {
-            console.log("Error: cannot retrieve people data");
-        })
+            .then(res => {
+                this.peopleList = res.data;
+                console.log("print out this.peopleList")
+                console.log(this.peopleList)
+            })
+            .catch(err => {
+                console.log("Error: cannot retrieve people data");
+            })
     },
     methods: {
         refreshServiceView() {
@@ -136,7 +131,6 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     this.peopleList = response.data;
-                    this.peopleList.map(data => this.truncatedHtml(data))
                 })
                 .catch(err => {
                     console.log(err);
@@ -185,31 +179,7 @@ export default {
                     console.log(err);
                 });
         },
-        truncatedHtml(data) {
-            const maxLength = 300;
-            const html = data.description;
-            // const html = this.description; // replace with the name of your variable containing the HTML
-            if (html.length > maxLength) {
-                data.description_truncate = html.slice(0, maxLength) + '...';
-                return data;
-            } else {
-                return data;
-            }
-        },
     }
 
 }
 </script>
-<style>
-.tbody-with-max-height {
-  max-height: 30px;
-  overflow-y: hidden;
-  /* set a maximum height for the table body */
-}
-
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-</style>
