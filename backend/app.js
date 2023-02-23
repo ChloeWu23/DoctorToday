@@ -1,32 +1,20 @@
 const express = require("express");
-const cors = require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
+const cors = require('cors');
 
 const app = express();
-
-
-// app.use(require('cors'));
-// var corsOptions = {
-//     // origin: "http://localhost:8081/"
-//     origin: "*"
-//   };
-// app.use(cors(corsOptions));
-
-
-app.use(cors(corsOptions)) // Use this after the variable declaration
-
 
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
-// app.use((req, res, next) => {
-//     console.log('Hello from the middleware');
-//     next();
-// })
+
+const corsOptions ={
+    origin: ['http://localhost:8080', 'https://doctor-today-front.herokuapp.com/', 'https://doctor-today-front-2.herokuapp.com/'],
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+};
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
+
 
 
 const serviceRouter = require('./routes/serviceRoutes');
@@ -41,6 +29,8 @@ const otherInfoRouter = require('./routes/otherInfoRoutes');
 const peopleRouter = require('./routes/peopleRoutes');
 const newsRouter = require('./routes/newsRoutes');
 
+const keywordSearchRouter = require('./routes/keywordSearchRoutes');
+
 // app.use('/', serviceRouter);
 app.use('/service', serviceRouter); 
 app.use('/admin/service', adminServiceRouter) ;
@@ -52,7 +42,11 @@ app.use('/travel', travelRouter);
 app.use('/other-info', otherInfoRouter);
 app.use('/people', peopleRouter);
 app.use('/news', newsRouter);
+app.use('/keywordSearch', keywordSearchRouter);
 
+app.get('/', (req, res) => res.status(200).send({
+    message: 'Welcome to our the backend 2.0 app',
+}));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
