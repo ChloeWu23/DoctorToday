@@ -35,6 +35,7 @@ describe('FAQs', () => {
     it('display answers when the question is clicked', async () => {
 
         const details = wrapper.find('details')
+        
         const summary = wrapper.find('details').find('summary')
         await summary.trigger('click')
 
