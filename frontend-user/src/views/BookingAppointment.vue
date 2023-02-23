@@ -3,7 +3,7 @@
         <div class="py-8 grid grid-cols-10">
             <div class="pb-10 col-span-10 md:col-span-2">
                 <div class="flex justify-center">
-                    <img class="w-36" src="@/assets/booking.png"/>
+                    <img class="w-36" src="@/assets/booking/booking.png"/>
                 </div>
             </div>
             <div class="px-3 col-span-10 md:col-start-3 md:col-span-7">
@@ -30,7 +30,7 @@
         <div class="py-8 grid grid-cols-10">
             <div class="pb-10 col-span-10 md:col-span-2">
                 <div class="flex justify-center">
-                    <img class="w-36" src="@/assets/register.png"/>
+                    <img class="w-36" src="@/assets/booking/register.png"/>
                 </div>
             </div>
             <div class="px-3 col-span-10 md:col-start-3 md:col-span-7">
@@ -46,7 +46,7 @@
         <div class="py-8 grid grid-cols-10">
             <div class="pb-10 col-span-10 md:col-span-2">
                 <div class="flex justify-center">
-                    <img class="w-36" src="@/assets/family.png"/>
+                    <img class="w-36" src="@/assets/booking/family.png"/>
                 </div>
             </div>
             <div class="px-3 col-span-10 md:col-start-3 md:col-span-7">
@@ -65,7 +65,7 @@
         <div class="py-8 grid grid-cols-10">
             <div class="pb-10 col-span-10 md:col-span-2">
                 <div class="flex justify-center">
-                    <img class="w-36" src="@/assets/children.png"/>
+                    <img class="w-36" src="@/assets/booking/children.png"/>
                 </div>
             </div>
 
