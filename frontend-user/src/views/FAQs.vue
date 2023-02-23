@@ -15,7 +15,7 @@
     <div class="pb-10 ">
         <div class = "w-full h-full shadow-md backdrop-blur-sm bg-white bg-opacity-50">
             <div class="">
-                <details class="open:bg-gray-200" v-for="(item,index) in QuestionList" :key="index">
+                <details class="open:bg-gray-200" v-for="(item,index) in questionList" :key="index">
                     <summary style="outline: none;" 
                                 class="px-2 py-3 text-lg cursor-pointer hover:bg-gray-200 
                                 border-t-2 flex justify-between items-center w-full text-sm md:text-base">
@@ -37,15 +37,15 @@ import DataFAQ from '../dataRoutes/DataFAQ'
 export default {
     data () {
         return {
-            QuestionList:[],
+            questionList:[],
         }
     },
     mounted() {
         DataFAQ.get()
         .then(res => {
-            this.QuestionList = res.data;
-            for (let i = 0; i < this.QuestionList.length; i++) {
-                this.QuestionList[i].answer = this.QuestionList[i].answer.replace(/&pound/g, "£");
+            this.questionList = res.data;
+            for (let i = 0; i < this.questionList.length; i++) {
+                this.questionList[i].answer = this.questionList[i].answer.replace(/&pound/g, "£");
             }
         })
         .catch(err =>{

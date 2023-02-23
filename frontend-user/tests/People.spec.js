@@ -3,9 +3,9 @@ import People from '../src/views/People.vue'
 import {mount} from '@vue/test-utils'
 
 describe('People', () => {
-    const wrapper = mount(People)
     
     it('render People.vue', () => {
+        const wrapper = mount(People)
         expect(wrapper.text()).toContain("Meet Our Team")
     });
 
@@ -15,7 +15,7 @@ describe('People', () => {
     }]
 
     it('render proper texts', () => {
-        const wrapper2 = mount(People, {
+        const wrapper = mount(People, {
             data () {
                 return {
                     peopleList: testPeopleList,
@@ -23,7 +23,7 @@ describe('People', () => {
             }
         })
 
-        expect(wrapper2.text()).toContain(testPeopleList[0].name)
-        expect(wrapper2.text()).toContain(testPeopleList[0].title)
+        expect(wrapper.text()).toContain(testPeopleList[0].name)
+        expect(wrapper.text()).toContain(testPeopleList[0].title)
     })
 })
