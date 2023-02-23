@@ -191,52 +191,11 @@ export default {
           title: "",
           description: ""
         }],
-      news: [{
-        title: "Health Assessments",
-        description: "We are pleased to launch a new range of Health Assessments, including Cardiovascular Health Assessments, Key Health Assessments, Well Man Medicals and Well Woman Medicals. Click for more informations.",
-        link: "services/general-health-screens",
-        pics: ""
-      },
-      {
-        title: "Antenatal Care Package",
-        description: "We are pleased to announce that we now offer an antenatal package for women who want to be looked after privately.",
-        link: "services/general-health-screens",
-        pics: ""
-      },
-      {
-        title: "Home Visits",
-        description: "One of our experienced doctors can come and see you in the comfort of your home.",
-        link: "",
-        pics: ""
-      },
+      news: [
       {
         title: "Online Appointment Request",
         description: "Patients wishing to request an appointment can now do so using our online request form.",
         link: "",
-        pics: ""
-      },
-      {
-        title: "Flu vaccine",
-        description: "Flu vaccines currently in stock. We only offer the flu injection. This is offered to all adults and in children from 6 months of age.",
-        link: "",
-        pics: ""
-      },
-      {
-        title: "Visa Medicals",
-        description: "We are pleased to offer Chinese Visa Medicals and Saudi Visa Medicals. Click picture above for more information",
-        link: "",
-        pics: ""
-      },
-      {
-        title: "Travel vaccines and anti-malarials",
-        description: "Going Travelling? Click to use our interactive travel guide to find non-vaccine specific health related travel information for the country you intend to visit.",
-        link: "services/general-health-screens",
-        pics: ""
-      },
-      {
-        title: "Non-surgical Cosmetic Procedures",
-        description: "Doctor Today now offers wrinkle reduction treatment and dermal fillers. Click for more information.",
-        link: "services/general-health-screens",
         pics: ""
       }]
     };
