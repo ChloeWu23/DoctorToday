@@ -6,6 +6,7 @@ describe('FAQs', () => {
     it('render FAQs.vue', () => {
         const wrapper = mount(FAQs)
         expect(wrapper.html()).toContain("Frequently Asked")
+        expect(wrapper.html()).toContain("Questions")
     });
     
 
@@ -14,7 +15,7 @@ describe('FAQs', () => {
         answer: "Test Answer"
     }]
 
-    it('render proper questionList', () => {
+    it('render proper question and answer', () => {
         const wrapper = mount(FAQs, {
             data () {
                 return {
