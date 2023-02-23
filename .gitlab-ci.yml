@@ -50,8 +50,6 @@ frontend_deploy:
   only:
     - master
     - anyan_adminSubService
-  tags:
-    - webpack-vue-cicd
   script:
     - cd ./frontend-user
     - apt-get update -qy
