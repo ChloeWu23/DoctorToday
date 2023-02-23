@@ -40,16 +40,19 @@ describe('FAQs', () => {
         const wrapper = mount(FAQs,{
             data () {
                 return {
-                    questionList: testQuestionList,
+                    questionList: testQuestionList
                 }
             }
         })
-      const details = wrapper.find('details'); 
-      expect(details.isVisible()).toBe(false); 
-      const summary = details.find('summary');
-      await summary.trigger('click');
-      expect(details.isVisible()).toBe(false); 
-      const answerDetails = details.find('.faqDetails'); 
-      expect(answerDetails.text()).toContain(testQuestionList[0].answer);
-    });
+
+        const details = wrapper.find('details') 
+        expect(details.isVisible()).toBe(false)
+
+        const summary = details.find('summary')
+        await summary.trigger('click')
+        expect(details.isVisible()).toBe(false) 
+        
+        const answerDetails = details.find('.faqDetails')
+        expect(answerDetails.text()).toContain(testQuestionList[0].answer)
+    })
 })
