@@ -47,7 +47,7 @@
                         </td>
 
                         <td>
-                            <div v-truncate-html="people.description" class="px-6 py-4">
+                            <div v-html="people.description" class="px-6 py-4">
                             </div>
                         </td>
 
