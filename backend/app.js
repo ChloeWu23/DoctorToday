@@ -1,9 +1,20 @@
 const express = require("express");
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
+
+
+const corsOptions ={
+    origin: ['http://localhost:8080', 'https://doctor-today-front.herokuapp.com/', 'https://doctor-today-front-2.herokuapp.com/'],
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+};
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
+
 
 
 const serviceRouter = require('./routes/serviceRoutes');

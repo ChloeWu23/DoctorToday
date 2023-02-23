@@ -28,6 +28,7 @@ backend_deploy:
   only:
     - master
     - anyan_adminSubService
+    - yc/search
   before_script:
     - apt-get update
     - apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2
