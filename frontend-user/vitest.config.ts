@@ -5,5 +5,7 @@ export default defineConfig({
   plugins: [Vue()],
   test: {
     globals: true,
+    environment: "jsdom",
+    root: ".", //Define the root
   },
 });
