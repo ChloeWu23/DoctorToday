@@ -14,8 +14,7 @@ const corsOptions ={
 };
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
-
-
+app.options('*', cors())
 
 const serviceRouter = require('./routes/serviceRoutes');
 const adminServiceRouter = require('./routes/adminServiceRoutes');

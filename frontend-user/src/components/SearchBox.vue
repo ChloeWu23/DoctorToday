@@ -2,7 +2,8 @@
   <div v-if="searchResults.length > 0">
     <div class="fixed z-10 top-0 left-0 h-screen w-screen bg-gray-200/50 grid md:grid-cols-4 lg:grid-cols-6">
       <div></div>
-      <div class="md:col-span-2 lg:col-span-4 mt-20 m-4 md:min-h-2/3 max-h-screen md:h-[70vh] bg-sky-600/80 rounded-lg overflow-y-scroll">
+      <div
+        class="md:col-span-2 lg:col-span-4 mt-20 m-4 md:min-h-2/3 max-h-screen md:h-[70vh] bg-sky-600/80 rounded-lg overflow-y-scroll">
         <div class="flex justify-end">
           <button class="p-2" @click="handleClose">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -14,8 +15,10 @@
           </button>
         </div>
         <div v-for="item in searchResults" class="p-2">
-          <RouterLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="m-4 font-semibold underline">Title to be updated</RouterLink>
-          <p class="p-4 bg-gray-200/50">...{{ item.content.substring(Math.max(item.content.indexOf(searchQuery)-50, 0), item.content.indexOf(searchQuery)+300) 
+          <RouterLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="m-4 font-semibold underline">Title to be
+            updated</RouterLink>
+          <p class="p-4 bg-gray-200/50">...{{ item.content.substring(Math.max(item.content.indexOf(searchQuery) - 50, 0),
+            item.content.indexOf(searchQuery) + 300)
           }}...</p>
           <!-- <p class="m-4">{{ item.content }}</p> -->
         </div>
