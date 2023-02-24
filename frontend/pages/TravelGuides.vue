@@ -41,8 +41,7 @@
 
                             <ul v-if="searchCountries.length"
                                 class="rounded border border-gray-300 bg-slate-100 px-4 py-2 space-y-1 absolute z-10">
-                                <li v-for="country in searchCountries" :key="country.name"
-                                    @click="openRedirection(country)"
+                                <li v-for="country in searchCountries" :key="country.name" @click="openRedirection(country)"
                                     class="cursor-pointer hover:bg-sky-700/80 hover:text-white p-1">
                                     {{ country.name }}
                                 </li>
@@ -101,23 +100,14 @@
                         <div class="flex items-center justify-center w-10 h-10 border rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-sky-700" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
     </div>
-
 </template>
 
 <script>
