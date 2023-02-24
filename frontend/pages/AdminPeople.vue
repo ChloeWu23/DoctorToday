@@ -78,6 +78,10 @@
 import DataPeople from '../dataRoutes/DataPeople'
 import { reactive, ref } from "vue";
 
+definePageMeta({
+  layout: "adminPortal",
+});
+
 export default {
     data() {
         return {

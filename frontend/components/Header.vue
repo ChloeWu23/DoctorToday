@@ -1,12 +1,13 @@
 <template>
     <ContactButton />
     <SembleButton />
+
     <body class="bg-gray-100">
         <div class="container items-center mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
-            <div class="flex items-start justify-between">
-                <RouterLink :to="'/'">
+            <div class="flex justify-between">
+                <NuxtLink :to="'/'">
                     <img class="h-[120px] object-cover mx-[40px] xl:mx-[140px] mt-[20px]" src="../assets/logo.png" alt="" />
-                </RouterLink>
+                </NuxtLink>
                 <div
                     class="flex flex-row md:flex-col relative right-0 bg-transparant text-xs md:text-sm text-sky-700 mx-5 md:mx-11 break-all md:break-normal mt-8">
                     <div class="w-1/2 pb-2 md:p-1 hover:text-amber-500 hover:font-bold">
@@ -38,16 +39,17 @@
                         </a>
                     </div>
                 </div>
-                <div class="flex flex-col">
-                    <div class="w-full flex flex-col items-center">
-                        <nav class="flex h-full fex-wrap p-6 gap-6 justify-center w-full">
-                            <div class="items-center w-full">
-                                <NavBar></NavBar>
-                            </div>
-                        </nav>
-                    </div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-full flex flex-col items-center">
+                    <nav class="flex h-full fex-wrap p-6 gap-6 justify-center w-full">
+                        <div class="items-center w-full">
+                            <NavBar></NavBar>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
+
     </body>
 </template>

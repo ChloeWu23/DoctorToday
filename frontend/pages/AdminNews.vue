@@ -61,8 +61,11 @@
 
 <script>
 import DataNews from '../dataRoutes/DataNews'
-import AddNewsDialog from './AddNewsDialog.vue'
 import { reactive, ref } from "vue";
+
+definePageMeta({
+  layout: "adminPortal",
+});
 
 export default {
     components: {

@@ -80,6 +80,10 @@
 import DataService from '../dataRoutes/DataService';
 import test from './Dialog.vue'
 
+definePageMeta({
+  layout: "adminPortal",
+});
+
 import { reactive, ref } from "vue";
 
 export default {

@@ -6,7 +6,7 @@
             <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-5"></a>
             <ul class="space-y-2">
                 <li>
-                    <RouterLink to="/AdminServiceSummary"
+                    <NuxtLink to="/AdminServiceSummary"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                         <svg aria-hidden="true"
                             class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -15,10 +15,10 @@
                             <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                         </svg>
                         <span class="ml-3">Services</span>
-                    </RouterLink>
+                    </NuxtLink>
                 </li>
                 <li>
-                    <RouterLink to="/AdminPeople"
+                    <NuxtLink to="/AdminPeople"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                         <svg aria-hidden="true"
                             class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -28,10 +28,10 @@
                             </path>
                         </svg>
                         <span class="flex-1 ml-3 whitespace-nowrap">People</span>
-                    </RouterLink>
+                    </NuxtLink>
                 </li>
                 <li>
-                    <RouterLink to="/AdminServiceDetails"
+                    <NuxtLink to="/AdminServiceDetails"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                         <svg aria-hidden="true"
                             class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -44,11 +44,11 @@
                             </path>
                         </svg>
                         <span class="flex-1 ml-3 whitespace-nowrap">Sub-Servieces</span>
-                    </RouterLink>
+                    </NuxtLink>
                 </li>
 
                 <li>
-                    <RouterLink to="/AdminNews">
+                    <NuxtLink to="/AdminNews">
                         <a href="#"
                             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                             <svg aria-hidden="true"
@@ -60,12 +60,12 @@
                             </svg>
                             <span class="flex-1 ml-3 whitespace-nowrap">News</span>
                         </a>
-                    </RouterLink>
+                    </NuxtLink>
                 </li>
 
 
                 <li>
-                    <RouterLink to="/AdminFaq">
+                    <NuxtLink to="/AdminFaq">
                         <a href="#"
                             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                             <svg aria-hidden="true"
@@ -77,7 +77,7 @@
                             </svg>
                             <span class="flex-1 ml-3 whitespace-nowrap">FAQ</span>
                         </a>
-                    </RouterLink>
+                    </NuxtLink>
                 </li>
 
 

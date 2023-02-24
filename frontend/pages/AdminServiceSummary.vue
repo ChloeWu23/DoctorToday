@@ -77,8 +77,11 @@
 <script>
 import DataService from '../dataRoutes/DataService';
 import test from './dialog.vue'
-import SubServiceDialog from './SubServiceDialog.vue'; 
 import { reactive, ref } from "vue";
+
+definePageMeta({
+  layout: "adminPortal",
+});
 
 export default {
     components: {

@@ -17,7 +17,7 @@
                 class="w-full lg:col-span-2 bg-[url('assets/home.jpg')] bg-no-repeat bg-right bg-cover grid lg:grid-cols-3 items-center">
                 <div class="w-full p-10 text-white lg:col-span-2">
                     <button class="bg-[#143B71] text-white rounded px-4 py-2 mb-8">
-                        <RouterLink to="AboutPeople">Meet Our Team</RouterLink>
+                        <NuxtLink to="AboutPeople">Meet Our Team</NuxtLink>
                     </button>
                     <p class="">Doctor Today is a London-based private medical clinic that aims to provide
                         high-quality

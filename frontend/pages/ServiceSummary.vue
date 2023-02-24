@@ -10,7 +10,7 @@
         <div v-for="service in fullServices" :key="service.serviceName.replace(/\s+/g, '-').toLowerCase()">
             <div class="hover:bg-[#143B71] delay-100 text-[#143B71] hover:text-white bg-contain bg-no-repeat bg-right-bottom bg-[#143B71]/10 p-4 shadow-md h-full border-t-4 border-[#143B71]"
                 :style="imgUrl(service.image)">
-                <RouterLink :to="'services/' + service.serviceName.replace(/\s+/g, '-').toLowerCase()">
+                <NuxtLink :to="'services/' + service.serviceName.replace(/\s+/g, '-').toLowerCase()">
                     <p class="font-bold">
                         {{ service.serviceName }}
                     </p>
@@ -20,7 +20,7 @@
                         <div>{{ service.description_2 }}</div>
                         <div>{{ service.description_3 }}</div>
                     </div>
-                </RouterLink>
+                </NuxtLink>
             </div>
         </div>
     </div>

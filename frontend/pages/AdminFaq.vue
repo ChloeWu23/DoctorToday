@@ -65,6 +65,10 @@
 import DataFAQ from '../dataRoutes/DataFAQ'
 import { reactive, ref } from "vue";
 
+definePageMeta({
+  layout: "adminPortal",
+});
+
 export default {
     data() {
         return {

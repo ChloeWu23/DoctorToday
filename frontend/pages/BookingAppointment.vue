@@ -9,7 +9,7 @@
             <div class="px-3 col-span-10 md:col-start-3 md:col-span-7">
                 <h1 class = "text-gray-700 font-bold text-2xl font-sans">Booking Requests</h1>
                 <div><br></div>
-                <p class = "text-base leading-7">Appointments can be requested online via our <RouterLink class = "text-sky-700 font-bold hover:underline hover:underline-offset-4" to="Appointment"> online booking system.</RouterLink> 
+                <p class = "text-base leading-7">Appointments can be requested online via our <NuxtLink class = "text-sky-700 font-bold hover:underline hover:underline-offset-4" to="Appointment"> online booking system.</NuxtLink> 
                 You will need to wait for one of our friendly staff to email you back with a confimation before your appointment is booked.
                 <span class = "text-base font-semibold">Please check your junk mail for confirmation emails.</span> </p>
                 <div><br></div>
@@ -37,7 +37,7 @@
                 <h1 class = "py-2 text-gray-700  font-bold text-2xl font-sans">Register Online</h1>
                 <div><br></div>
                 <p class = "text-base leading-7">You can save time at your appointment by filling out this
-                <RouterLink class = "text-sky-700 font-extrabold hover:underline hover:underline-offset-4" to="NewPatientRegister">online patient registration</RouterLink> 
+                <NuxtLink class = "text-sky-700 font-extrabold hover:underline hover:underline-offset-4" to="NewPatientRegister">online patient registration</NuxtLink> 
                 form prior to your arrival.
                 </p>
             </div>

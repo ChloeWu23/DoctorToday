@@ -15,8 +15,8 @@
           </button>
         </div>
         <div v-for="item in searchResults" class="p-2">
-          <RouterLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="m-4 font-semibold underline">Title to be
-            updated</RouterLink>
+          <NuxtLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="m-4 font-semibold underline">Title to be
+            updated</NuxtLink>
           <p class="p-4 bg-gray-200/50">...{{ item.content.substring(Math.max(item.content.indexOf(searchQuery) - 50, 0),
             item.content.indexOf(searchQuery) + 300)
           }}...</p>
