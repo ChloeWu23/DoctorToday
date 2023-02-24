@@ -99,6 +99,11 @@ const routes = [
     name: "newsAdmin",
     component: () => import("../components/NewsAdmin")
   },
+  {
+    path: "/faqAdmin",
+    name: "faqAdmin",
+    component: () => import("../components/FAQAdmin")
+  },
 
 ]
 
