@@ -44,6 +44,8 @@ app.use('/people', peopleRouter);
 app.use('/news', newsRouter);
 app.use('/keywordSearch', keywordSearchRouter);
 
+app.use('/readupload', express.static('upload'))
+
 app.get('/', (req, res) => res.status(200).send({
     message: 'Welcome to our the backend 2.0 app',
 }));
@@ -56,3 +58,5 @@ app.listen(port, () => {
 // connect the database
 const db = require("./app/models");
 db.sequelize.sync();
+
+

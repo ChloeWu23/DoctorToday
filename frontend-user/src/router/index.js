@@ -94,6 +94,16 @@ const routes = [
     name: "subServiceAdmin",
     component: () => import("../components/SubServiceAdmin")
   },
+  {
+    path: "/newsAdmin",
+    name: "newsAdmin",
+    component: () => import("../components/NewsAdmin")
+  },
+  {
+    path: "/faqAdmin",
+    name: "faqAdmin",
+    component: () => import("../components/FAQAdmin")
+  },
 
 ]
 
