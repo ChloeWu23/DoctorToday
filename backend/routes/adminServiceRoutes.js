@@ -1,4 +1,6 @@
+const multer = require('multer')
 const router = require("express").Router();
+const path = require('path');
 
 /*
     post("/")  : add new service, need serviceName
@@ -12,42 +14,72 @@ const ServiceOverviews = db.ServiceOverviews;
 const SubService = db.SubService;
 const Op = db.Sequelize.Op;
 
-router.post("/", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
 
-  if (req.body.serviceName === null || req.body.serviceName === undefined) {
-    res.status(400).send({
-      message: "Content can not be empty!",
-    });
-    console.log(req.body);
-    return;
+/** 
+ * POST
+ * /upload
+ * */
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../frontend-user/src/assets/services')
+    console.log('in destination')
+  },
+  filename: function (req, file, cb) {
+    //use current time to set name of files
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
   }
+})
 
-  var count = await ServiceOverviews.count({ col: "serviceName" });
-  var bind_max = await ServiceOverviews.max("bind_id");
+var upload = multer({
+  storage: storage
+})
 
-  var serviceItem = {
-    serviceName: req.body.serviceName,
-    bind_id: bind_max + 1,
-    service_cat_id: count,
-    description_1: req.body.description_1,
-    description_2: req.body.description_2,
-    description_3: req.body.description_3,
-    image: req.body.image,
-    appointment_iframe: req.body.appointment_iframe
-  };
 
-  ServiceOverviews.create(serviceItem)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Service",
+router.post("/", upload.single('file'),
+  async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+
+    var file = req.file
+    console.log("in uploadRoutes")
+    console.log(file)
+    console.log(file.destination)
+    //res.send(file)
+
+    if (req.body.serviceName === null || req.body.serviceName === undefined) {
+      res.status(400).send({
+        message: "Content can not be empty!",
       });
-    });
-});
+      console.log(req.body);
+      return;
+    }
+
+    var count = await ServiceOverviews.count({ col: "serviceName" });
+    var bind_max = await ServiceOverviews.max("bind_id");
+    var pathToRead = 'services/'+file.filename
+    console.log('path to read:')
+    console.log(pathToRead)
+    var serviceItem = {
+      serviceName: req.body.serviceName,
+      bind_id: bind_max + 1,
+      service_cat_id: count,
+      description_1: req.body.description_1,
+      description_2: req.body.description_2,
+      description_3: req.body.description_3,
+      image: pathToRead,
+      appointment_iframe: req.body.appointment_iframe
+    };
+
+    ServiceOverviews.create(serviceItem)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the Service",
+        });
+      });
+  });
 
 // found the service by service_cat_id
 router.patch("/", async (req, res) => {
@@ -113,15 +145,15 @@ router.post("/deleteService", async (req, res) => {
       service_cat_id: req.body.service_cat_id
     }
   })
-  .then( data => {
-    bind_id = data.bind_id;
-    console.log("--- find " + data.bind_id);
-    
-  })
-  .catch( err => {
-    res.status(501).send(err.message);
-  })
-  
+    .then(data => {
+      bind_id = data.bind_id;
+      console.log("--- find " + data.bind_id);
+
+    })
+    .catch(err => {
+      res.status(501).send(err.message);
+    })
+
   await ServiceOverviews.destroy({
     where: {
       service_cat_id: req.body.service_cat_id,
@@ -148,15 +180,15 @@ router.post("/deleteService", async (req, res) => {
       cat_id: bind_id
     }
   })
-  .then( data => {
-    console.log("--- delete subservice size: " + data);
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "Some error occured while deleSubServiceting ",
-    });
-  })
+    .then(data => {
+      console.log("--- delete subservice size: " + data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occured while deleSubServiceting ",
+      });
+    })
 
 
   res.status(204).json({

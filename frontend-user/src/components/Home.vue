@@ -1,8 +1,7 @@
 <template>
-
   <head> <!-- TrustBox script -->
-    <component :is="'script'" type="text/javascript"
-      src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></component>
+    <component :is="'script'" type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+      async></component>
     <!-- End TrustBox script -->
   </head>
 
@@ -43,7 +42,9 @@
       <div class="divide-y divide-dashed md:text-sm">
         <div class="w-full p-4" v-for="item in news">
           <div class="font-semibold text-[#143B71] pb-2">{{ item.title }}</div>
-          <div class="">{{ item.description }}</div>
+          <!-- <div class="">{{ item.content }}</div> -->
+          <div v-html="item.content">
+          </div>
         </div>
       </div>
 
@@ -123,16 +124,15 @@
       </div>
       <div>
         <div class="my-2">
-          <p class="text-sm font-semibold">{{ getHealthMonth(month()).title}}</p>
+          <p class="text-sm font-semibold">{{ getHealthMonth(month()).title }}</p>
         </div>
         <div>
-          <p class="text-sm">{{ getHealthMonth(month()).description}}</p>
+          <p class="text-sm">{{ getHealthMonth(month()).description }}</p>
         </div>
       </div>
     </div>
   </div>
   <div class="m-4"></div>
-
 </template>
 
 <script>
@@ -140,6 +140,7 @@ import RequestAppointmentModal from './RequestAppointmentModal.vue';
 import NewPatientButton from './NewPatientButton.vue';
 import SearchBox from './SearchBox.vue';
 import MapIcon from './MapIcon.vue'
+import DataService from '../dataRoutes/DataNews'
 
 
 export default {
@@ -191,17 +192,20 @@ export default {
           title: "",
           description: ""
         }],
-      news: [
-      {
-        title: "Online Appointment Request",
-        description: "Patients wishing to request an appointment can now do so using our online request form.",
-        link: "",
-        pics: ""
-      }]
+      news: []
     };
   },
   components: {
     RequestAppointmentModal, NewPatientButton, MapIcon, SearchBox
+  },
+  mounted() {
+    DataService.get()
+      .then(res => {
+        this.news = res.data;
+      })
+      .catch(err => {
+        console.log("Error: cannot retrieve news data");
+      });
   },
   methods:
   {
