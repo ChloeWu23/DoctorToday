@@ -8,12 +8,16 @@ app.use(express.static(`${__dirname}/public`));
 
 
 const corsOptions ={
-    origin: ['http://localhost:8080', 'https://doctor-today-front.herokuapp.com/', 'https://doctor-today-front-2.herokuapp.com/'],
+    // origin: ['http://localhost:8080', 'https://doctor-today-front.herokuapp.com/', 'https://doctor-today-front-2.herokuapp.com/'],
+    origin: '*',
    credentials:true,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 };
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
+app.options('*', cors())
+
+// app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
 
