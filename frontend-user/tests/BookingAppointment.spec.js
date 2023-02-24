@@ -2,7 +2,7 @@ import {describe, it, expect} from 'vitest'
 import BookingAppointment from '../src/views/BookingAppointment.vue'
 import {mount} from '@vue/test-utils'
 
-/*
+
 describe('BookingAppointment', () => {
     const wrapper = mount(BookingAppointment)
     
@@ -11,8 +11,8 @@ describe('BookingAppointment', () => {
     });
     
 })
-*/
 
+/*
 test('renders image properly', async () => {
     const wrapper = mount(BookingAppointment)
   
@@ -27,3 +27,4 @@ test('renders image properly', async () => {
     expect(img.exists()).toBe(true)
     expect(img.attributes('src')).toBe('@/assets/booking/booking.png')
   })
+  */
