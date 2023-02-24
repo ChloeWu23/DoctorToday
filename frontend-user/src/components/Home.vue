@@ -1,8 +1,7 @@
 <template>
-
   <head> <!-- TrustBox script -->
-    <component :is="'script'" type="text/javascript"
-      src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></component>
+    <component :is="'script'" type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+      async></component>
     <!-- End TrustBox script -->
   </head>
 
@@ -43,7 +42,9 @@
       <div class="divide-y divide-dashed md:text-sm">
         <div class="w-full p-4" v-for="item in news">
           <div class="font-semibold text-[#143B71] pb-2">{{ item.title }}</div>
-          <div class="">{{ item.description }}</div>
+          <!-- <div class="">{{ item.content }}</div> -->
+          <div v-html="item.content">
+          </div>
         </div>
       </div>
 
@@ -123,16 +124,15 @@
       </div>
       <div>
         <div class="my-2">
-          <p class="text-sm font-semibold">{{ getHealthMonth(month()).title}}</p>
+          <p class="text-sm font-semibold">{{ getHealthMonth(month()).title }}</p>
         </div>
         <div>
-          <p class="text-sm">{{ getHealthMonth(month()).description}}</p>
+          <p class="text-sm">{{ getHealthMonth(month()).description }}</p>
         </div>
       </div>
     </div>
   </div>
   <div class="m-4"></div>
-
 </template>
 
 <script>
@@ -140,6 +140,7 @@ import RequestAppointmentModal from './RequestAppointmentModal.vue';
 import NewPatientButton from './NewPatientButton.vue';
 import SearchBox from './SearchBox.vue';
 import MapIcon from './MapIcon.vue'
+import DataService from '../dataRoutes/DataNews'
 
 
 export default {
@@ -191,58 +192,20 @@ export default {
           title: "",
           description: ""
         }],
-      news: [{
-        title: "Health Assessments",
-        description: "We are pleased to launch a new range of Health Assessments, including Cardiovascular Health Assessments, Key Health Assessments, Well Man Medicals and Well Woman Medicals. Click for more informations.",
-        link: "services/general-health-screens",
-        pics: ""
-      },
-      {
-        title: "Antenatal Care Package",
-        description: "We are pleased to announce that we now offer an antenatal package for women who want to be looked after privately.",
-        link: "services/general-health-screens",
-        pics: ""
-      },
-      {
-        title: "Home Visits",
-        description: "One of our experienced doctors can come and see you in the comfort of your home.",
-        link: "",
-        pics: ""
-      },
-      {
-        title: "Online Appointment Request",
-        description: "Patients wishing to request an appointment can now do so using our online request form.",
-        link: "",
-        pics: ""
-      },
-      {
-        title: "Flu vaccine",
-        description: "Flu vaccines currently in stock. We only offer the flu injection. This is offered to all adults and in children from 6 months of age.",
-        link: "",
-        pics: ""
-      },
-      {
-        title: "Visa Medicals",
-        description: "We are pleased to offer Chinese Visa Medicals and Saudi Visa Medicals. Click picture above for more information",
-        link: "",
-        pics: ""
-      },
-      {
-        title: "Travel vaccines and anti-malarials",
-        description: "Going Travelling? Click to use our interactive travel guide to find non-vaccine specific health related travel information for the country you intend to visit.",
-        link: "services/general-health-screens",
-        pics: ""
-      },
-      {
-        title: "Non-surgical Cosmetic Procedures",
-        description: "Doctor Today now offers wrinkle reduction treatment and dermal fillers. Click for more information.",
-        link: "services/general-health-screens",
-        pics: ""
-      }]
+      news: []
     };
   },
   components: {
     RequestAppointmentModal, NewPatientButton, MapIcon, SearchBox
+  },
+  mounted() {
+    DataService.get()
+      .then(res => {
+        this.news = res.data;
+      })
+      .catch(err => {
+        console.log("Error: cannot retrieve news data");
+      });
   },
   methods:
   {
