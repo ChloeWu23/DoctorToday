@@ -24,7 +24,7 @@ export default {
         180: '32rem'
       },
       backgroundImage: {
-        'hero': "url('assets/homepage-bg-5-combo.png')",
+        'hero': "url('assets/logo-bg.png')",
       }
     },
   }

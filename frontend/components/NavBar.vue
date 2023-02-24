@@ -48,7 +48,7 @@ export default {
                     children: []
                 },
                 {
-                    path: "/services",
+                    path: "/serviceSummary",
                     name: "services",
                     label: "Services & Prices",
                     children: []
@@ -72,7 +72,7 @@ export default {
                     children: []
                 },
                 {
-                    path: "/AboutFaq",
+                    path: "/aboutFaq",
                     name: "FAQs",
                     label: "FAQs",
                     children: []

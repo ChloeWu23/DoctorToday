@@ -2,7 +2,7 @@
     <ContactButton />
     <SembleButton />
     <body class="bg-gray-100">
-        <div class="container items-center mx-auto bg-hero bg-[length:1920px_260px]  border-b-2 drop-shadow-md mb-6">
+        <div class="container items-center mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
             <div class="flex items-start justify-between">
                 <RouterLink :to="'/'">
                     <img class="h-[120px] object-cover mx-[40px] xl:mx-[140px] mt-[20px]" src="../assets/logo.png" alt="" />
