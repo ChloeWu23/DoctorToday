@@ -3,12 +3,13 @@
     <div v-if="control" id="whatsapp-chat">
       <div class="whatsapp-chat-header">
         <div class="whatsapp-chat-avatar">
-          <img
-            v-if="companyLogo"
-            :src="companyLogo"
-            :alt="companyName + ' ' + 'Logo'"
-          />
-          <div v-else class="companyLogo"></div>
+        
+            <img
+            src="@/assets/WhasApp.png"
+            alt="companyName + ' ' + 'Logo'"
+          />  
+          
+        
         </div>
         <p class="whatsapp-chat-name-block">
           <span class="whatsapp-chat-name">{{ companyName }}</span
