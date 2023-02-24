@@ -68,11 +68,6 @@ definePageMeta({
 });
 
 export default {
-    components: {
-        AddNewsDialog,
-        SideBar
-    },
-
     data() {
         return {
             newsList: "",

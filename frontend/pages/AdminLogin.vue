@@ -36,6 +36,9 @@
 <script>
 import DataOtherInfo from '../dataRoutes/DataOtherInfo';
 
+definePageMeta({
+  layout: "adminPortal",
+});
 
 export default {
     data() {
