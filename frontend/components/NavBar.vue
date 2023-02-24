@@ -13,10 +13,6 @@
                             <div class="border-2 border-blueDark bg-gray-200 py-1 px-2 rounded text-gray-500">{{ tab.label
                             }}</div>
                         </span>
-                        <span class="span md:hidden" v-else-if="tab.name === 'tel'">
-                            <div class="">Tel:020 7433 1444</div>
-                            <div class="">enquiries@doctortoday.co.uk</div>
-                        </span>
                         <span @click="showMenu = !showMenu" v-else>
                             <!-- todo: @click="showMenu = false" -->
                             <NuxtLink :to="tab.path" class="">
@@ -90,11 +86,6 @@ export default {
                     path: "/search",
                     name: "search",
                     label: "Search", // TODO
-                    children: []
-                },
-                {
-                    name: "tel",
-                    label: "Tel 020 7433 1444", // TODO
                     children: []
                 }
             ]

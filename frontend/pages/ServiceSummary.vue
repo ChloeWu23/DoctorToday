@@ -48,9 +48,9 @@ export default {
     methods: {
         imgUrl(name) {
             try {
-                return { 'background-image': 'url(' + require('@/assets/' + name) + ')' }
+                return { 'background-image': 'url(' + name + ')' }
             } catch (error) {
-                return { 'background-image': 'url(' + require('@/assets/services/gp-consultations.png') + ')' }
+                return { 'background-image': 'url(assets/services/gp-consultations.png)' }
             }
         }
     }
