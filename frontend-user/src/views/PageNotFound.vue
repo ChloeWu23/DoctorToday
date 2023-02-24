@@ -4,6 +4,7 @@
     <p>This page no longer exists or was moved to another location.</p>
     <TextEditorVue />
     <SearchBox />
+    <SembleButton/>
     
   </div>
   
@@ -12,10 +13,11 @@
 
 <script>
 import TextEditorVue from "../components/TextEditor.vue";
+import SembleButton from "@/components/SembleButton.vue";
 import SearchBox from "../components/SearchBox.vue";
 
 
 export default {
-  components: { TextEditorVue, SearchBox }
+  components: { TextEditorVue, SearchBox, SembleButton }
 };
 </script>
