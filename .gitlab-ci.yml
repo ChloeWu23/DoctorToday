@@ -49,7 +49,6 @@ frontend_deploy:
   only:
     - master
     - anyan_adminSubService
-    - yc/search
   script:
     - cd ./frontend-user
     - apt-get update -qy
