@@ -3,5 +3,6 @@ export default defineNuxtConfig({
     app: { head: {
         title: "Doctor Today"
     } },
-    modules: ['@nuxtjs/tailwindcss']
+    css: ['~/assets/css/tailwind.css'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode']
 })

@@ -3,7 +3,7 @@
         <div class="bg-center w-full items-center md:py-40 md:pt-120 bg-[url('@/assets/doctor_today.jpg')] bg-no-repeat">
             <div class="flex justify-center items-center">
                 <h1 class="text-5xl text-sky-700 text-center p-8 font-extrabold
-                                bg-[] rounded-3xl bg-opacity-80">
+                                    bg-[] rounded-3xl bg-opacity-80">
                     Meet Our Team
                 </h1>
             </div>
@@ -13,7 +13,7 @@
     <div class="p-10">
         <ul class="grid md:grid-cols-12 md:gap-10 content-center">
             <li class="py-3 px-10 md:px-0 max-w-md md:max-w-none min-h-max
-                           md:col-span-6 lg:col-span-4" v-for="(item, index) in peopleList" :key="item.id">
+                               md:col-span-6 lg:col-span-4" v-for="(item, index) in peopleList" :key="item.id">
 
                 <div class="border-2 border-sky-700 rounded-xl">
                     <button class="flex flex-wrap" @click="showDescription(item.staff_id)">
@@ -125,4 +125,5 @@ export default {
         opacity: 1;
         margin-top: 0px
     }
-}</style>
+}
+</style>
