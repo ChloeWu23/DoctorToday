@@ -142,7 +142,7 @@
                 </div>
                 <div class="grid grid-cols-5 py-4">
                     <span class="hidden lg:block">By car</span>
-                    <span class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                    <span class="block lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                             height="24">
                             <path fill="none" d="M0 0h24v24H0z" />
                             <path
