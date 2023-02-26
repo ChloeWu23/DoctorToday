@@ -1,0 +1,1457 @@
+[
+    {
+        "name": "Afghanistan",
+        "path": "afghanistan",
+        "id": 1
+    },
+    {
+        "name": "Antigua and Barbuda",
+        "path": "antigua-and-barbuda",
+        "id": 10
+    },
+    {
+        "name": "Haiti",
+        "path": "haiti",
+        "id": 100
+    },
+    {
+        "name": "Honduras",
+        "path": "honduras",
+        "id": 101
+    },
+    {
+        "name": "China (Hong Kong)",
+        "path": "china-hong-kong",
+        "id": 102
+    },
+    {
+        "name": "Hong Kong (China)",
+        "path": "hong-kong-china",
+        "id": 102
+    },
+    {
+        "name": "Hungary",
+        "path": "hungary",
+        "id": 103
+    },
+    {
+        "name": "Iceland",
+        "path": "iceland",
+        "id": 104
+    },
+    {
+        "name": "India",
+        "path": "india",
+        "id": 105
+    },
+    {
+        "name": "Bali (Indonesia)",
+        "path": "bali-indonesia",
+        "id": 106
+    },
+    {
+        "name": "Indonesia",
+        "path": "indonesia",
+        "id": 106
+    },
+    {
+        "name": "Java (Indonesia)",
+        "path": "java-indonesia",
+        "id": 106
+    },
+    {
+        "name": "Komodo (Indonesia)",
+        "path": "komodo-indonesia",
+        "id": 106
+    },
+    {
+        "name": "Lombok (Indonesia)",
+        "path": "lombok-indonesia",
+        "id": 106
+    },
+    {
+        "name": "Sumatra (Indonesia)",
+        "path": "sumatra-indonesia",
+        "id": 106
+    },
+    {
+        "name": "Iran",
+        "path": "iran",
+        "id": 107
+    },
+    {
+        "name": "Iraq",
+        "path": "iraq",
+        "id": 108
+    },
+    {
+        "name": "Ireland",
+        "path": "ireland",
+        "id": 109
+    },
+    {
+        "name": "Argentina",
+        "path": "argentina",
+        "id": 11
+    },
+    {
+        "name": "Israel",
+        "path": "israel",
+        "id": 110
+    },
+    {
+        "name": "Italy",
+        "path": "italy",
+        "id": 111
+    },
+    {
+        "name": "Sardinia (Italy)",
+        "path": "sardinia-italy",
+        "id": 111
+    },
+    {
+        "name": "Sicily (Italy)",
+        "path": "sicily-italy",
+        "id": 111
+    },
+    {
+        "name": "Côte d'Ivoire (Ivory Coast)",
+        "path": "cte-divoire-ivory-coast",
+        "id": 112
+    },
+    {
+        "name": "Ivory Coast (Côte d`Ivoire)",
+        "path": "ivory-coast-cte-divoire",
+        "id": 112
+    },
+    {
+        "name": "Jamaica",
+        "path": "jamaica",
+        "id": 113
+    },
+    {
+        "name": "Japan",
+        "path": "japan",
+        "id": 114
+    },
+    {
+        "name": "Jordan",
+        "path": "jordan",
+        "id": 115
+    },
+    {
+        "name": "Kazakhstan",
+        "path": "kazakhstan",
+        "id": 116
+    },
+    {
+        "name": "Kenya",
+        "path": "kenya",
+        "id": 117
+    },
+    {
+        "name": "Kiribati",
+        "path": "kiribati",
+        "id": 118
+    },
+    {
+        "name": "Korea, North",
+        "path": "korea-north",
+        "id": 119
+    },
+    {
+        "name": "North Korea",
+        "path": "north-korea",
+        "id": 119
+    },
+    {
+        "name": "Armenia",
+        "path": "armenia",
+        "id": 12
+    },
+    {
+        "name": "Korea, South",
+        "path": "korea-south",
+        "id": 120
+    },
+    {
+        "name": "South Korea",
+        "path": "south-korea",
+        "id": 120
+    },
+    {
+        "name": "Kosovo",
+        "path": "kosovo",
+        "id": 121
+    },
+    {
+        "name": "Kuwait",
+        "path": "kuwait",
+        "id": 122
+    },
+    {
+        "name": "Kyrgyzstan",
+        "path": "kyrgyzstan",
+        "id": 123
+    },
+    {
+        "name": "Laos",
+        "path": "laos",
+        "id": 124
+    },
+    {
+        "name": "Latvia",
+        "path": "latvia",
+        "id": 125
+    },
+    {
+        "name": "Lebanon",
+        "path": "lebanon",
+        "id": 126
+    },
+    {
+        "name": "Lesotho",
+        "path": "lesotho",
+        "id": 127
+    },
+    {
+        "name": "Liberia",
+        "path": "liberia",
+        "id": 128
+    },
+    {
+        "name": "Libya",
+        "path": "libya",
+        "id": 129
+    },
+    {
+        "name": "Liechtenstein",
+        "path": "liechtenstein",
+        "id": 130
+    },
+    {
+        "name": "Lithuania",
+        "path": "lithuania",
+        "id": 131
+    },
+    {
+        "name": "Luxembourg",
+        "path": "luxembourg",
+        "id": 132
+    },
+    {
+        "name": "Macedonia",
+        "path": "macedonia",
+        "id": 133
+    },
+    {
+        "name": "North Macedonia",
+        "path": "north-macedonia",
+        "id": 133
+    },
+    {
+        "name": "Madagascar",
+        "path": "madagascar",
+        "id": 134
+    },
+    {
+        "name": "Madeira (Portugal)",
+        "path": "madeira-portugal",
+        "id": 135
+    },
+    {
+        "name": "Portugal (Madeira)",
+        "path": "portugal-madeira",
+        "id": 135
+    },
+    {
+        "name": "Malawi",
+        "path": "malawi",
+        "id": 136
+    },
+    {
+        "name": "Malaysia",
+        "path": "malaysia",
+        "id": 137
+    },
+    {
+        "name": "Borneo (Malaysia)",
+        "path": "borneo-malaysia",
+        "id": 138
+    },
+    {
+        "name": "Malaysia (Borneo)",
+        "path": "malaysia-borneo",
+        "id": 138
+    },
+    {
+        "name": "Maldives",
+        "path": "maldives",
+        "id": 139
+    },
+    {
+        "name": "Ascension, St Helena, Tristan da Cunha",
+        "path": "ascension-st-helena-tristan-da-cunha",
+        "id": 14
+    },
+    {
+        "name": "St Helena, Ascension, Tristan da Cunha",
+        "path": "st-helena-ascension-tristan-da-cunha",
+        "id": 14
+    },
+    {
+        "name": "Tristan da Cunha, Ascension, St Helena",
+        "path": "tristan-da-cunha-ascension-st-helena",
+        "id": 14
+    },
+    {
+        "name": "Mali",
+        "path": "mali",
+        "id": 140
+    },
+    {
+        "name": "Gozo (Malta)",
+        "path": "gozo-malta",
+        "id": 141
+    },
+    {
+        "name": "Malta",
+        "path": "malta",
+        "id": 141
+    },
+    {
+        "name": "Marshall Islands",
+        "path": "marshall-islands",
+        "id": 142
+    },
+    {
+        "name": "Martinique",
+        "path": "martinique",
+        "id": 143
+    },
+    {
+        "name": "Mauritania",
+        "path": "mauritania",
+        "id": 144
+    },
+    {
+        "name": "Mauritius",
+        "path": "mauritius",
+        "id": 145
+    },
+    {
+        "name": "Mayotte",
+        "path": "mayotte",
+        "id": 146
+    },
+    {
+        "name": "Mexico",
+        "path": "mexico",
+        "id": 147
+    },
+    {
+        "name": "Micronesia",
+        "path": "micronesia",
+        "id": 148
+    },
+    {
+        "name": "Moldova",
+        "path": "moldova",
+        "id": 149
+    },
+    {
+        "name": "Australia",
+        "path": "australia",
+        "id": 15
+    },
+    {
+        "name": "Monaco",
+        "path": "monaco",
+        "id": 150
+    },
+    {
+        "name": "Mongolia",
+        "path": "mongolia",
+        "id": 151
+    },
+    {
+        "name": "Montenegro",
+        "path": "montenegro",
+        "id": 152
+    },
+    {
+        "name": "Montserrat",
+        "path": "montserrat",
+        "id": 153
+    },
+    {
+        "name": "Morocco",
+        "path": "morocco",
+        "id": 154
+    },
+    {
+        "name": "Mozambique",
+        "path": "mozambique",
+        "id": 155
+    },
+    {
+        "name": "Burma (Myanmar)",
+        "path": "burma-myanmar",
+        "id": 156
+    },
+    {
+        "name": "Myanmar (Burma)",
+        "path": "myanmar-burma",
+        "id": 156
+    },
+    {
+        "name": "Namibia",
+        "path": "namibia",
+        "id": 157
+    },
+    {
+        "name": "Nauru",
+        "path": "nauru",
+        "id": 158
+    },
+    {
+        "name": "Nepal",
+        "path": "nepal",
+        "id": 159
+    },
+    {
+        "name": "Austria",
+        "path": "austria",
+        "id": 16
+    },
+    {
+        "name": "Netherlands",
+        "path": "netherlands",
+        "id": 160
+    },
+    {
+        "name": "New Caledonia",
+        "path": "new-caledonia",
+        "id": 161
+    },
+    {
+        "name": "New Zealand",
+        "path": "new-zealand",
+        "id": 162
+    },
+    {
+        "name": "Nicaragua",
+        "path": "nicaragua",
+        "id": 163
+    },
+    {
+        "name": "Niger",
+        "path": "niger",
+        "id": 164
+    },
+    {
+        "name": "Nigeria",
+        "path": "nigeria",
+        "id": 165
+    },
+    {
+        "name": "Norway",
+        "path": "norway",
+        "id": 168
+    },
+    {
+        "name": "Norway (Svalbard and Jan Mayen)",
+        "path": "norway-svalbard-and-jan-mayen",
+        "id": 169
+    },
+    {
+        "name": "Svalbard and Jan Mayen (Norway)",
+        "path": "svalbard-and-jan-mayen-norway",
+        "id": 169
+    },
+    {
+        "name": "Azerbaijan",
+        "path": "azerbaijan",
+        "id": 17
+    },
+    {
+        "name": "Oman",
+        "path": "oman",
+        "id": 170
+    },
+    {
+        "name": "Pakistan",
+        "path": "pakistan",
+        "id": 171
+    },
+    {
+        "name": "Palau",
+        "path": "palau",
+        "id": 172
+    },
+    {
+        "name": "Palestinian Territories",
+        "path": "palestinian-territories",
+        "id": 173
+    },
+    {
+        "name": "Panama",
+        "path": "panama",
+        "id": 174
+    },
+    {
+        "name": "Papua New Guinea",
+        "path": "papua-new-guinea",
+        "id": 175
+    },
+    {
+        "name": "Paraguay",
+        "path": "paraguay",
+        "id": 176
+    },
+    {
+        "name": "Peru",
+        "path": "peru",
+        "id": 177
+    },
+    {
+        "name": "Philippines",
+        "path": "philippines",
+        "id": 178
+    },
+    {
+        "name": "Pitcairn Islands",
+        "path": "pitcairn-islands",
+        "id": 179
+    },
+    {
+        "name": "Azores (Portugal)",
+        "path": "azores-portugal",
+        "id": 18
+    },
+    {
+        "name": "Portugal (Azores)",
+        "path": "portugal-azores",
+        "id": 18
+    },
+    {
+        "name": "Poland",
+        "path": "poland",
+        "id": 180
+    },
+    {
+        "name": "Portugal",
+        "path": "portugal",
+        "id": 181
+    },
+    {
+        "name": "Puerto Rico",
+        "path": "puerto-rico",
+        "id": 182
+    },
+    {
+        "name": "Qatar",
+        "path": "qatar",
+        "id": 183
+    },
+    {
+        "name": "Reunion",
+        "path": "reunion",
+        "id": 184
+    },
+    {
+        "name": "Romania",
+        "path": "romania",
+        "id": 185
+    },
+    {
+        "name": "Russia",
+        "path": "russia",
+        "id": 186
+    },
+    {
+        "name": "Rwanda",
+        "path": "rwanda",
+        "id": 187
+    },
+    {
+        "name": "Samoa",
+        "path": "samoa",
+        "id": 188
+    },
+    {
+        "name": "San Marino",
+        "path": "san-marino",
+        "id": 189
+    },
+    {
+        "name": "Bahamas",
+        "path": "bahamas",
+        "id": 19
+    },
+    {
+        "name": "Sao Tome and Principe",
+        "path": "sao-tome-and-principe",
+        "id": 190
+    },
+    {
+        "name": "Saudi Arabia",
+        "path": "saudi-arabia",
+        "id": 191
+    },
+    {
+        "name": "Senegal",
+        "path": "senegal",
+        "id": 192
+    },
+    {
+        "name": "Serbia",
+        "path": "serbia",
+        "id": 193
+    },
+    {
+        "name": "Seychelles",
+        "path": "seychelles",
+        "id": 194
+    },
+    {
+        "name": "Sierra Leone",
+        "path": "sierra-leone",
+        "id": 195
+    },
+    {
+        "name": "Singapore",
+        "path": "singapore",
+        "id": 196
+    },
+    {
+        "name": "Slovakia",
+        "path": "slovakia",
+        "id": 197
+    },
+    {
+        "name": "Slovenia",
+        "path": "slovenia",
+        "id": 198
+    },
+    {
+        "name": "Solomon Islands",
+        "path": "solomon-islands",
+        "id": 199
+    },
+    {
+        "name": "Albania",
+        "path": "albania",
+        "id": 2
+    },
+    {
+        "name": "Bahrain",
+        "path": "bahrain",
+        "id": 20
+    },
+    {
+        "name": "Somalia",
+        "path": "somalia",
+        "id": 200
+    },
+    {
+        "name": "South Africa",
+        "path": "south-africa",
+        "id": 201
+    },
+    {
+        "name": "South Sudan",
+        "path": "south-sudan",
+        "id": 202
+    },
+    {
+        "name": "Balearic Islands (Spain)",
+        "path": "balearic-islands-spain",
+        "id": 203
+    },
+    {
+        "name": "Canary Islands (Spain)",
+        "path": "canary-islands-spain",
+        "id": 203
+    },
+    {
+        "name": "Spain",
+        "path": "spain",
+        "id": 203
+    },
+    {
+        "name": "Sri Lanka",
+        "path": "sri-lanka",
+        "id": 204
+    },
+    {
+        "name": "St Kitts and Nevis",
+        "path": "st-kitts-and-nevis",
+        "id": 207
+    },
+    {
+        "name": "St Lucia",
+        "path": "st-lucia",
+        "id": 208
+    },
+    {
+        "name": "St Pierre and Miquelon",
+        "path": "st-pierre-and-miquelon",
+        "id": 210
+    },
+    {
+        "name": "St Vincent and the Grenadines",
+        "path": "st-vincent-and-the-grenadines",
+        "id": 211
+    },
+    {
+        "name": "Sudan",
+        "path": "sudan",
+        "id": 212
+    },
+    {
+        "name": "Suriname",
+        "path": "suriname",
+        "id": 213
+    },
+    {
+        "name": "Eswatini",
+        "path": "eswatini",
+        "id": 214
+    },
+    {
+        "name": "Swaziland (Eswatini)",
+        "path": "swaziland-eswatini",
+        "id": 214
+    },
+    {
+        "name": "Sweden",
+        "path": "sweden",
+        "id": 215
+    },
+    {
+        "name": "Switzerland",
+        "path": "switzerland",
+        "id": 216
+    },
+    {
+        "name": "Syria",
+        "path": "syria",
+        "id": 217
+    },
+    {
+        "name": "Taiwan",
+        "path": "taiwan",
+        "id": 218
+    },
+    {
+        "name": "Tajikistan",
+        "path": "tajikistan",
+        "id": 219
+    },
+    {
+        "name": "Bangladesh",
+        "path": "bangladesh",
+        "id": 22
+    },
+    {
+        "name": "Tanzania",
+        "path": "tanzania",
+        "id": 220
+    },
+    {
+        "name": "Zanzibar (Tanzania)",
+        "path": "zanzibar-tanzania",
+        "id": 220
+    },
+    {
+        "name": "Thailand",
+        "path": "thailand",
+        "id": 221
+    },
+    {
+        "name": "Togo",
+        "path": "togo",
+        "id": 222
+    },
+    {
+        "name": "Tonga",
+        "path": "tonga",
+        "id": 224
+    },
+    {
+        "name": "Trinidad and Tobago",
+        "path": "trinidad-and-tobago",
+        "id": 225
+    },
+    {
+        "name": "Tunisia",
+        "path": "tunisia",
+        "id": 226
+    },
+    {
+        "name": "Turkey",
+        "path": "turkey",
+        "id": 227
+    },
+    {
+        "name": "Turkmenistan",
+        "path": "turkmenistan",
+        "id": 228
+    },
+    {
+        "name": "Turks and Caicos Islands",
+        "path": "turks-and-caicos-islands",
+        "id": 229
+    },
+    {
+        "name": "Barbados",
+        "path": "barbados",
+        "id": 23
+    },
+    {
+        "name": "Tuvalu",
+        "path": "tuvalu",
+        "id": 230
+    },
+    {
+        "name": "Uganda",
+        "path": "uganda",
+        "id": 231
+    },
+    {
+        "name": "Ukraine",
+        "path": "ukraine",
+        "id": 232
+    },
+    {
+        "name": "United Arab Emirates",
+        "path": "united-arab-emirates",
+        "id": 233
+    },
+    {
+        "name": "United Kingdom",
+        "path": "united-kingdom",
+        "id": 234
+    },
+    {
+        "name": "United States",
+        "path": "united-states",
+        "id": 235
+    },
+    {
+        "name": "Uruguay",
+        "path": "uruguay",
+        "id": 236
+    },
+    {
+        "name": "Uzbekistan",
+        "path": "uzbekistan",
+        "id": 237
+    },
+    {
+        "name": "Vanuatu",
+        "path": "vanuatu",
+        "id": 238
+    },
+    {
+        "name": "Margarita Island (Venezuela)",
+        "path": "margarita-island-venezuela",
+        "id": 239
+    },
+    {
+        "name": "Venezuela",
+        "path": "venezuela",
+        "id": 239
+    },
+    {
+        "name": "Belarus",
+        "path": "belarus",
+        "id": 24
+    },
+    {
+        "name": "Vietnam",
+        "path": "vietnam",
+        "id": 240
+    },
+    {
+        "name": "British Virgin Islands",
+        "path": "british-virgin-islands",
+        "id": 241
+    },
+    {
+        "name": "Virgin Islands (British)",
+        "path": "virgin-islands-british",
+        "id": 241
+    },
+    {
+        "name": "USA Virgin Islands",
+        "path": "usa-virgin-islands",
+        "id": 242
+    },
+    {
+        "name": "Virgin Islands (USA)",
+        "path": "virgin-islands-usa",
+        "id": 242
+    },
+    {
+        "name": "Wake Island",
+        "path": "wake-island",
+        "id": 243
+    },
+    {
+        "name": "Wallis and Futuna Islands",
+        "path": "wallis-and-futuna-islands",
+        "id": 244
+    },
+    {
+        "name": "Western Sahara",
+        "path": "western-sahara",
+        "id": 245
+    },
+    {
+        "name": "Yemen",
+        "path": "yemen",
+        "id": 246
+    },
+    {
+        "name": "Zambia",
+        "path": "zambia",
+        "id": 247
+    },
+    {
+        "name": "Zimbabwe",
+        "path": "zimbabwe",
+        "id": 248
+    },
+    {
+        "name": "Belgium",
+        "path": "belgium",
+        "id": 25
+    },
+    {
+        "name": "Belize",
+        "path": "belize",
+        "id": 26
+    },
+    {
+        "name": "Caribbean Islands (France)",
+        "path": "caribbean-islands-france",
+        "id": 262
+    },
+    {
+        "name": "French Caribbean Islands",
+        "path": "french-caribbean-islands",
+        "id": 262
+    },
+    {
+        "name": "Guadeloupe- Caribbean Islands (France)",
+        "path": "guadeloupe-caribbean-islands-france",
+        "id": 262
+    },
+    {
+        "name": "St Barthélemy- Caribbean Islands (France)",
+        "path": "st-barthlemy-caribbean-islands-france",
+        "id": 262
+    },
+    {
+        "name": "St Martin- Caribbean Islands (France)",
+        "path": "st-martin-caribbean-islands-france",
+        "id": 262
+    },
+    {
+        "name": "American Samoa, Guam, Northern Mariana Islands",
+        "path": "american-samoa-guam-northern-mariana-islands",
+        "id": 263
+    },
+    {
+        "name": "Guam, American Samoa, Northern Mariana Islands",
+        "path": "guam-american-samoa-northern-mariana-islands",
+        "id": 263
+    },
+    {
+        "name": "Northern Mariana Islands, American Samoa, Guam",
+        "path": "northern-mariana-islands-american-samoa-guam",
+        "id": 263
+    },
+    {
+        "name": "Cook Islands, Niue, Tokelau",
+        "path": "cook-islands-niue-tokelau",
+        "id": 264
+    },
+    {
+        "name": "Niue, Cook Islands, Tokelau",
+        "path": "niue-cook-islands-tokelau",
+        "id": 264
+    },
+    {
+        "name": "Tokelau, Cook Islands, Niue",
+        "path": "tokelau-cook-islands-niue",
+        "id": 264
+    },
+    {
+        "name": "Benin",
+        "path": "benin",
+        "id": 27
+    },
+    {
+        "name": "Bermuda",
+        "path": "bermuda",
+        "id": 28
+    },
+    {
+        "name": "Bhutan",
+        "path": "bhutan",
+        "id": 29
+    },
+    {
+        "name": "Algeria",
+        "path": "algeria",
+        "id": 3
+    },
+    {
+        "name": "Bolivia",
+        "path": "bolivia",
+        "id": 30
+    },
+    {
+        "name": "Borneo (Indonesia)",
+        "path": "borneo-indonesia",
+        "id": 31
+    },
+    {
+        "name": "Indonesia (Borneo)",
+        "path": "indonesia-borneo",
+        "id": 31
+    },
+    {
+        "name": "Bosnia and Herzegovina",
+        "path": "bosnia-and-herzegovina",
+        "id": 32
+    },
+    {
+        "name": "Botswana",
+        "path": "botswana",
+        "id": 33
+    },
+    {
+        "name": "Brazil",
+        "path": "brazil",
+        "id": 34
+    },
+    {
+        "name": "Brunei",
+        "path": "brunei",
+        "id": 35
+    },
+    {
+        "name": "Bulgaria",
+        "path": "bulgaria",
+        "id": 36
+    },
+    {
+        "name": "Burkina Faso",
+        "path": "burkina-faso",
+        "id": 37
+    },
+    {
+        "name": "Burundi",
+        "path": "burundi",
+        "id": 38
+    },
+    {
+        "name": "Cambodia",
+        "path": "cambodia",
+        "id": 39
+    },
+    {
+        "name": "Cameroon",
+        "path": "cameroon",
+        "id": 40
+    },
+    {
+        "name": "Canada",
+        "path": "canada",
+        "id": 41
+    },
+    {
+        "name": "Cape Verde",
+        "path": "cape-verde",
+        "id": 43
+    },
+    {
+        "name": "Aruba- Caribbean Islands (Netherlands)",
+        "path": "aruba-caribbean-islands-netherlands",
+        "id": 44
+    },
+    {
+        "name": "Bonaire- Caribbean Islands (Netherlands)",
+        "path": "bonaire-caribbean-islands-netherlands",
+        "id": 44
+    },
+    {
+        "name": "Caribbean Islands (Netherlands)",
+        "path": "caribbean-islands-netherlands",
+        "id": 44
+    },
+    {
+        "name": "Curaçao- Caribbean Islands (Netherlands)",
+        "path": "curaao-caribbean-islands-netherlands",
+        "id": 44
+    },
+    {
+        "name": "Netherlands (Caribbean Islands)",
+        "path": "netherlands-caribbean-islands",
+        "id": 44
+    },
+    {
+        "name": "Saba- Caribbean Islands (Netherlands)",
+        "path": "saba-caribbean-islands-netherlands",
+        "id": 44
+    },
+    {
+        "name": "Sint Eustatius- Caribbean Islands (Netherlands)",
+        "path": "sint-eustatius-caribbean-islands-netherlands",
+        "id": 44
+    },
+    {
+        "name": "Sint Maarten- Caribbean Islands (Netherlands)",
+        "path": "sint-maarten-caribbean-islands-netherlands",
+        "id": 44
+    },
+    {
+        "name": "Cayman Islands",
+        "path": "cayman-islands",
+        "id": 45
+    },
+    {
+        "name": "Central African Republic",
+        "path": "central-african-republic",
+        "id": 46
+    },
+    {
+        "name": "Chad",
+        "path": "chad",
+        "id": 47
+    },
+    {
+        "name": "Chile",
+        "path": "chile",
+        "id": 48
+    },
+    {
+        "name": "China",
+        "path": "china",
+        "id": 49
+    },
+    {
+        "name": "Andaman and Nicobar Islands (India)",
+        "path": "andaman-and-nicobar-islands-india",
+        "id": 5
+    },
+    {
+        "name": "India (Andaman and Nicobar Islands)",
+        "path": "india-andaman-and-nicobar-islands",
+        "id": 5
+    },
+    {
+        "name": "China (Macao)",
+        "path": "china-macao",
+        "id": 50
+    },
+    {
+        "name": "Macao (China)",
+        "path": "macao-china",
+        "id": 50
+    },
+    {
+        "name": "China (Tibet)",
+        "path": "china-tibet",
+        "id": 51
+    },
+    {
+        "name": "Tibet (China)",
+        "path": "tibet-china",
+        "id": 51
+    },
+    {
+        "name": "Australia (Christmas Island)",
+        "path": "australia-christmas-island",
+        "id": 52
+    },
+    {
+        "name": "Christmas Island (Australia)",
+        "path": "christmas-island-australia",
+        "id": 52
+    },
+    {
+        "name": "Colombia",
+        "path": "colombia",
+        "id": 53
+    },
+    {
+        "name": "Comoros",
+        "path": "comoros",
+        "id": 54
+    },
+    {
+        "name": "Congo",
+        "path": "congo",
+        "id": 55
+    },
+    {
+        "name": "Costa Rica",
+        "path": "costa-rica",
+        "id": 58
+    },
+    {
+        "name": "Croatia",
+        "path": "croatia",
+        "id": 59
+    },
+    {
+        "name": "Andorra",
+        "path": "andorra",
+        "id": 6
+    },
+    {
+        "name": "Cuba",
+        "path": "cuba",
+        "id": 60
+    },
+    {
+        "name": "Cyprus",
+        "path": "cyprus",
+        "id": 61
+    },
+    {
+        "name": "Czech Republic",
+        "path": "czech-republic",
+        "id": 62
+    },
+    {
+        "name": "Democratic Republic of the Congo",
+        "path": "democratic-republic-of-the-congo",
+        "id": 63
+    },
+    {
+        "name": "Denmark",
+        "path": "denmark",
+        "id": 64
+    },
+    {
+        "name": "Djibouti",
+        "path": "djibouti",
+        "id": 65
+    },
+    {
+        "name": "Dominica",
+        "path": "dominica",
+        "id": 66
+    },
+    {
+        "name": "Dominican Republic",
+        "path": "dominican-republic",
+        "id": 67
+    },
+    {
+        "name": "East Timor (Timor-Leste)",
+        "path": "east-timor-timor-leste",
+        "id": 68
+    },
+    {
+        "name": "Timor-Leste",
+        "path": "timor-leste",
+        "id": 68
+    },
+    {
+        "name": "Chile (Easter Island)",
+        "path": "chile-easter-island",
+        "id": 69
+    },
+    {
+        "name": "Easter Island (Chile)",
+        "path": "easter-island-chile",
+        "id": 69
+    },
+    {
+        "name": "Angola",
+        "path": "angola",
+        "id": 7
+    },
+    {
+        "name": "Ecuador",
+        "path": "ecuador",
+        "id": 70
+    },
+    {
+        "name": "Egypt",
+        "path": "egypt",
+        "id": 71
+    },
+    {
+        "name": "El Salvador",
+        "path": "el-salvador",
+        "id": 72
+    },
+    {
+        "name": "Equatorial Guinea",
+        "path": "equatorial-guinea",
+        "id": 73
+    },
+    {
+        "name": "Eritrea",
+        "path": "eritrea",
+        "id": 74
+    },
+    {
+        "name": "Estonia",
+        "path": "estonia",
+        "id": 75
+    },
+    {
+        "name": "Ethiopia",
+        "path": "ethiopia",
+        "id": 76
+    },
+    {
+        "name": "Falkland Islands",
+        "path": "falkland-islands",
+        "id": 77
+    },
+    {
+        "name": "Denmark (Faroe Islands)",
+        "path": "denmark-faroe-islands",
+        "id": 78
+    },
+    {
+        "name": "Faroe Islands (Denmark)",
+        "path": "faroe-islands-denmark",
+        "id": 78
+    },
+    {
+        "name": "Fiji",
+        "path": "fiji",
+        "id": 79
+    },
+    {
+        "name": "Anguilla",
+        "path": "anguilla",
+        "id": 8
+    },
+    {
+        "name": "Finland",
+        "path": "finland",
+        "id": 80
+    },
+    {
+        "name": "Corsica (France)",
+        "path": "corsica-france",
+        "id": 81
+    },
+    {
+        "name": "France",
+        "path": "france",
+        "id": 81
+    },
+    {
+        "name": "French Guiana",
+        "path": "french-guiana",
+        "id": 82
+    },
+    {
+        "name": "French Polynesia",
+        "path": "french-polynesia",
+        "id": 83
+    },
+    {
+        "name": "Tahiti (French Polynesia)",
+        "path": "tahiti-french-polynesia",
+        "id": 83
+    },
+    {
+        "name": "Gabon",
+        "path": "gabon",
+        "id": 84
+    },
+    {
+        "name": "Ecuador (Galapagos)",
+        "path": "ecuador-galapagos",
+        "id": 85
+    },
+    {
+        "name": "Galapagos (Ecuador)",
+        "path": "galapagos-ecuador",
+        "id": 85
+    },
+    {
+        "name": "Gambia",
+        "path": "gambia",
+        "id": 86
+    },
+    {
+        "name": "The Gambia",
+        "path": "the-gambia",
+        "id": 86
+    },
+    {
+        "name": "Georgia",
+        "path": "georgia",
+        "id": 87
+    },
+    {
+        "name": "Germany",
+        "path": "germany",
+        "id": 88
+    },
+    {
+        "name": "Ghana",
+        "path": "ghana",
+        "id": 89
+    },
+    {
+        "name": "Antarctica",
+        "path": "antarctica",
+        "id": 9
+    },
+    {
+        "name": "Gibraltar",
+        "path": "gibraltar",
+        "id": 90
+    },
+    {
+        "name": "Greece",
+        "path": "greece",
+        "id": 91
+    },
+    {
+        "name": "Greenland",
+        "path": "greenland",
+        "id": 92
+    },
+    {
+        "name": "Grenada",
+        "path": "grenada",
+        "id": 93
+    },
+    {
+        "name": "Guatemala",
+        "path": "guatemala",
+        "id": 96
+    },
+    {
+        "name": "Guinea",
+        "path": "guinea",
+        "id": 97
+    },
+    {
+        "name": "Guinea-Bissau",
+        "path": "guinea-bissau",
+        "id": 98
+    },
+    {
+        "name": "Guyana",
+        "path": "guyana",
+        "id": 99
+    }
+]
