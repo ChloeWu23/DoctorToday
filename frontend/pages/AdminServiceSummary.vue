@@ -93,9 +93,9 @@ export default {
     },
 
     async created() {
-        console.log(this.$store.getters.isLoggedIn);
-        if (!this.$store.getters.isLoggedIn) {
-            this.$router.push('/login');
+        // console.log("org: " + localStorage.getItem('userID'));
+        if (!localStorage.getItem('userID')) {
+            this.$router.push('/AdminLogin');
         }
     },
 

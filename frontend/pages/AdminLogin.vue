@@ -57,11 +57,12 @@ export default {
                 };
                 const response = await DataOtherInfo.login(credentials);
                 this.msg = response.data.msg;
-                // const token = response.data.token;
-                const user = response.data.user;
-                const token = "token0";
-                this.$store.dispatch('login', { token, user });
-                this.$router.push('/showServices');
+
+                // console.log("org: " + localStorage.getItem('userID'));
+                localStorage.setItem("userID", this.username);
+                // console.log("after: " + localStorage.getItem('userID'));
+                
+                this.$router.push('/AdminServiceSummary');
             } catch (error) {
                 // this.msg = error.response.data.msg;
                 this.msg = error;
