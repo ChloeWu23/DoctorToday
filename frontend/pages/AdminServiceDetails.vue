@@ -66,8 +66,8 @@
 
         </div>
 
-        <test v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
-        <test />
+        <Dialog v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
+        <Dialog />
 
         <ServiceDetailsDialog v-model="subServiceVisible" v-if="subServiceVisible" :service_cat_id=this.service_cat_id>
         </ServiceDetailsDialog>
@@ -78,7 +78,6 @@
 
 <script>
 import DataService from '../dataRoutes/DataService';
-import test from './Dialog.vue'
 
 definePageMeta({
   layout: "adminPortal",
@@ -87,12 +86,6 @@ definePageMeta({
 import { reactive, ref } from "vue";
 
 export default {
-    components: {
-        test,
-        SubServiceDialog,
-        SideBar,
-    },
-
     data() {
         return {
             servicesInfo: "",
