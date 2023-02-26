@@ -1,6 +1,6 @@
 <template>
-    <div class="pt-20-10 md:p-20 md:pt-56 bg-[url('assets/interior.png')] bg-no-repeat">
-        <div class="border rounded-3xl backdrop-blur-lg bg-white p-10">
+    <div class="pt-20 p-8 md:p-20 md:pt-56 bg-[url('assets/interior.png')] bg-no-repeat bg-top xl:max-w-screen-xl mx-auto">
+        <div class="border border-0 rounded-3xl backdrop-blur-lg bg-white p-10">
             <div class="grid grid-cols-3">
                 <div class="border-0 border-b border-sky-700 w-full"></div>
                 <div class="text-2xl text-sky-700 text-center align-middle row-span-2">Contact Us</div>
