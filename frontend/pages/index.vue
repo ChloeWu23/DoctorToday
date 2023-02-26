@@ -5,14 +5,14 @@
         <!-- End TrustBox script -->
     </head>
 
-    <body class="h-full xl:max-w-screen-xl justify-center md:m-4">
+    <body class="h-full xl:max-w-screen-xl place-self-center md:p-4 mx-auto">
         <transition name="modal" v-if="showModal">
             <!-- <div class="modal-mask" > -->
             <RequestAppointmentModal @close="closeModal" />
             <!-- </div> -->
         </transition>
         <!-- Upper: Brand & News -->
-        <div class="w-full grid lg:grid-cols-3 lg:gap-6 md:h-96 ">
+        <div class="w-full grid lg:grid-cols-3 lg:gap-6 md:h-96 justify-self-center">
             <div
                 class="w-full lg:col-span-2 bg-[url('assets/home.jpg')] bg-no-repeat bg-right bg-cover grid lg:grid-cols-3 items-center">
                 <div class="w-full p-10 text-white lg:col-span-2">
@@ -50,10 +50,10 @@
             </div>
         </div>
 
-        <div class="m-4"></div>
+        <div class="m-4 justify-self-center"></div>
 
         <!-- Lower: search, appointment, reviews -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 min-h-[16rem] ">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 min-h-[16rem] justify-self-center">
             <div class="w-full flex items-center border-t-8 border-[#5BB57B] py-8 shadow-lg px-4">
                 <div class="pr-2 scale-125">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -88,7 +88,7 @@
                             fill="#8E603F" />
                     </svg></div>
                 <div class="w-full">
-                    <div class="my-2 sticky top-2">Find A Slot
+                    <div class="my-2 sticky top-2">Request Appointment
                     </div>
                     <div class="flex w-5/6">
                         <button class="border border-2 border-[#8E603F] p-2 text-sm" @click="showModal = true">Check
