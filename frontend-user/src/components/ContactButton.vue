@@ -3,13 +3,12 @@
     <div v-if="control" id="whatsapp-chat">
       <div class="whatsapp-chat-header">
         <div class="whatsapp-chat-avatar">
-        
+
             <img
             src="@/assets/WhasApp.png"
             alt="companyName + ' ' + 'Logo'"
-          />  
+            />  
           
-        
         </div>
         <p class="whatsapp-chat-name-block">
           <span class="whatsapp-chat-name">{{ companyName }}</span
@@ -27,20 +26,7 @@
         </div>
 
         <div class="blanter-msg">
-          <!--
-            <textarea
-            id="chat-input"
-            placeholder="Write a response"
-            maxlength="120"
-            row="1"
-            v-model="text"
-          ></textarea>
-          -->
-          
           <button id="send-it" style = "width:500px; font-size: 15px;" @click="openLink">
-            <!--<svg viewBox="0 0 480 480">
-              <path d="M.213 32L0 181.333 320 224 0 266.667.213 416 448 224z" />
-            </svg>-->
             Chat to us on WhatsApp
           </button>
         </div>
@@ -109,18 +95,6 @@ export default {
   },
   methods: {
     openLink() {
-      /*
-      let url = "https://web.whatsapp.com/send";
-      if (
-        /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        url = "whatsapp://send";
-      }
-      const all = url + "?phone=" + this.phoneNumber + `&text=${this.text}`;
-      //window.open(all, "_blank");
-      */
       window.open("https://wa.me/447879635767");
     },
   },
@@ -168,8 +142,6 @@ h1 {
   transform: scale(1);
 }
 button.blantershow-chat {
-  /* background: #009688;
-	 */
   background: #fff;
   color: #404040;
   position: fixed;
@@ -351,12 +323,14 @@ a.close-chat {
     font-size: 80%;
   }
 }
+/*
 .hidden {
   display: block;
   animation-duration: 0.5s;
   transform: scale(1);
   opacity: 1;
 }
+
 .show {
   display: block;
   animation-name: showhidden;
@@ -364,6 +338,7 @@ a.close-chat {
   transform: scale(1);
   opacity: 1;
 }
+*/
 .whatsapp-chat-body {
   padding: 20px 20px 20px 10px;
   background-color: #e6ddd4;
