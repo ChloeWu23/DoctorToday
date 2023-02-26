@@ -365,7 +365,7 @@ a.close-chat {
   }
 }
 
-.hidden {
+/* .hidden {
   display: block;
   animation-duration: 0.5s;
   transform: scale(1);
@@ -378,7 +378,7 @@ a.close-chat {
   animation-duration: 0.5s;
   transform: scale(1);
   opacity: 1;
-}
+} */
 
 .whatsapp-chat-body {
   padding: 20px 20px 20px 10px;
