@@ -160,7 +160,7 @@
 
 <script>
 import DataService from '../dataRoutes/DataService';
-import servicesData from '../assets/config.json';
+import servicesData from '../assets/countries.json';
 
 
 
