@@ -23,3 +23,9 @@ This is the repository for group project.
   - Start migration to live platform, e.g. Heroku
   - etc....
 
+  Sprint 4: Feb 25 - Mar 10
+  - Migrate to Nuxt
+  - Import correct data to db
+  - Stand up front and backend on heroku
+  - Report and Presentation scripts write up
+
