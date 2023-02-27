@@ -6,11 +6,7 @@ export default defineNuxtConfig({
         }
     },
     css: [
-        '~/assets/css/tailwind.css',
-        "quill/dist/quill.snow.css",
-        "quill/dist/quill.bubble.css",
-        "quill/dist/quill.core.css"
+        '~/assets/css/tailwind.css'
     ],
-    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
-    plugins: [ { src: 'plugins/quill.client.js', ssr: false }]
+    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode']
 })
