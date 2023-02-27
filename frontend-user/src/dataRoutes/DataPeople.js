@@ -6,7 +6,9 @@ class DataPeople {
     }
 
     create(data) {
-        return http.post("/people", data);
+        return http.post("/people", data, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        });
     }
 
     update(data) {

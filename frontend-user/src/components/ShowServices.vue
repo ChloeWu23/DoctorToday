@@ -57,7 +57,8 @@
                             <button @click="swapServicesUp(serviceInfo.service_cat_id)"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Up</button>
                             <button @click="openSubServiceDialog"
-                                class="font-medium text-pink-600 dark:text-blue-500 hover:underline">Add sub-service</button>
+                                class="font-medium text-pink-600 dark:text-blue-500 hover:underline">Add
+                                sub-service</button>
                         </td>
                     </tr>
                 </tbody>
@@ -68,8 +69,9 @@
         <test v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
         <test />
 
-        <SubServiceDialog v-model="subServiceVisible" v-if="subServiceVisible" :service_cat_id = this.service_cat_id></SubServiceDialog>
-        
+        <SubServiceDialog v-model="subServiceVisible" v-if="subServiceVisible" :service_cat_id=this.service_cat_id>
+        </SubServiceDialog>
+
     </div>
 </template>
 
@@ -77,7 +79,7 @@
 <script>
 import DataService from '../dataRoutes/DataService';
 import test from './dialog.vue'
-import SubServiceDialog from './SubServiceDialog.vue'; 
+import SubServiceDialog from './SubServiceDialog.vue';
 import SideBar from './SideBar.vue'
 import { reactive, ref } from "vue";
 
@@ -85,7 +87,7 @@ export default {
     components: {
         test,
         SubServiceDialog,
-        SideBar
+        SideBar,
     },
 
     data() {
@@ -93,7 +95,7 @@ export default {
             servicesInfo: "",
             dialogFormVisible: false,
             subServiceVisible: false,
-            service_cat_id: 0
+            service_cat_id: 0,
         }
     },
 
@@ -120,7 +122,7 @@ export default {
             subServiceVisible,
             handlerDialog,
             openSubServiceDialog,
-            
+
         };
     },
 
@@ -186,10 +188,11 @@ export default {
                     console.log(err);
                 });
         },
-        addSubService(service_cat_id){
+        addSubService(service_cat_id) {
             this.service_cat_id = service_cat_id
             this.subServiceVisible = true;
-        }
+        },
+
     }
 
 }

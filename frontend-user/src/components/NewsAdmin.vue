@@ -9,7 +9,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z">
                 </path>
             </svg>
-            Add People
+            Add News
         </button>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -17,16 +17,10 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Title
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Profile
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Description
+                            Content
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Action
@@ -34,31 +28,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="people in peopleList" :key="people.staff_id"
+                    <tr v-for="news in newsList" :key="news.title" 
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ people.name }}
+                            {{ news.title }}
                         </th>
-                        <td class="px-6 py-4">
-                            {{ people.title }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ people.profile }}
-                        </td>
-
                         <td>
-                            <div v-html="people.description" class="px-6 py-4">
+                            <div v-html="news.content" class="px-6 py-4">
                             </div>
                         </td>
 
-
                         <td class="flex items-center px-6 py-4 space-x-3">
                             <!-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> -->
-                            <button @click="deletePeople(people.staff_id)"
+                            <button @click="deleteNews(news.news_id)"
                                 class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                            <button @click="swapPeopleDown(people.staff_id)"
+                            <button @click="swapNewsDown(news.news_id)"
                                 class="font-medium text-green-600 dark:text-green-500 hover:underline">Down</button>
-                            <button @click="swapPeopleUp(people.staff_id)"
+                            <button @click="swapNewsUp(news.news_id)"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Up</button>
                         </td>
                     </tr>
@@ -67,33 +53,36 @@
 
         </div>
 
-        <AddPeopleDialog v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
-        <AddPeopleDialog />
+        <AddNewsDialog v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
+        <AddNewsDialog />
     </div>
+    
 </template>
 
 
 <script>
-
-import DataPeople from '../dataRoutes/DataPeople'
+import DataNews from '../dataRoutes/DataNews'
+import AddNewsDialog from './AddNewsDialog.vue'
+import SideBar from './SideBar.vue'
 import { reactive, ref } from "vue";
 
-definePageMeta({
-  layout: "adminPortal",
-});
-
 export default {
+    components: {
+        AddNewsDialog,
+        SideBar
+    },
+
     data() {
         return {
-            peopleList: "",
+            newsList: "",
             dialogFormVisible: false,
-            peopleDescription: ""
         }
     },
 
     async created() {
-        if (!localStorage.getItem('userID')) {
-            this.$router.push('/AdminLogin');
+        console.log(this.$store.getters.isLoggedIn);
+        if (!this.$store.getters.isLoggedIn) {
+            this.$router.push('/login');
         }
     },
 
@@ -111,11 +100,9 @@ export default {
     },
 
     mounted() {
-        DataPeople.get()
+        DataNews.get()
             .then(res => {
-                this.peopleList = res.data;
-                console.log("print out this.peopleList")
-                console.log(this.peopleList)
+                this.newsList = res.data;
             })
             .catch(err => {
                 console.log("Error: cannot retrieve people data");
@@ -123,22 +110,22 @@ export default {
     },
     methods: {
         refreshServiceView() {
-            DataPeople.get()
+            DataNews.get()
                 .then(response => {
                     console.log(response.data);
-                    this.peopleList = response.data;
+                    this.newsList = response.data;
                 })
                 .catch(err => {
                     console.log(err);
                 });
         },
-        deletePeople(staff_id) {
+        deleteNews(news_id) {
             //console.log("here" + serviceId)
             var data = {
-                staff_id: staff_id
+                news_id: news_id
             };
             //console.log("in vue: " + data.service_cat_id)
-            DataPeople.delete(data)
+            DataNews.delete(data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();
@@ -147,12 +134,12 @@ export default {
                     console.log(err);
                 });
         },
-        swapPeopleDown(staff_id) {
+        swapNewsDown(news_id) {
             var data = {
-                id_1: staff_id,
-                id_2: staff_id + 1
+                id_1: news_id,
+                id_2: news_id + 1
             };
-            DataPeople.swap(data)
+            DataNews.swap(data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();
@@ -161,12 +148,12 @@ export default {
                     console.log(err);
                 });
         },
-        swapPeopleUp(staff_id) {
+        swapNewsUp(news_id) {
             var data = {
-                id_1: staff_id,
-                id_2: staff_id - 1
+                id_1: news_id,
+                id_2: news_id - 1
             };
-            DataPeople.swap(data)
+            DataNews.swap(data)
                 .then(res => {
                     console.log(res.data);
                     this.refreshServiceView();

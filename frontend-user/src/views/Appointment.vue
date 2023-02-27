@@ -160,16 +160,11 @@
 
 <script>
 import DataService from '../dataRoutes/DataService';
-import servicesData from '../assets/config.json';
-import AvailabilityPicker from '../components/AvailabilityPicker.vue';
+import servicesData from '../assets/countries.json';
 
 
 
 export default {
-  components: {
-    AvailabilityPicker,
-  
-},
   data() {
     return {
       request: {

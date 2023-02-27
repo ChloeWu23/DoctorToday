@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 const corsOptions = {
-    origin: ["http://localhost:8080", "https://doctor-today-front.herokuapp.com"],
+    origin: ["http://localhost:3005", "http://localhost:3000","https://doctor-today-app.herokuapp.com"],
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 };
@@ -42,11 +42,13 @@ app.use('/people', peopleRouter);
 app.use('/news', newsRouter);
 app.use('/keywordSearch', keywordSearchRouter);
 
+app.use('/readupload', express.static('upload'))
+
 app.get('/', (req, res) => res.status(200).send({
     message: 'Welcome to our the backend 2.0 app',
 }));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3005;
 app.listen(port, () => {
     console.log(`App running on port ${port}...`)
 });

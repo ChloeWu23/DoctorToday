@@ -25,20 +25,44 @@ async function sendRegisterEmail(data){
         // console.log(slotSelect1)
         // console.log(typeof(slotSelect1))
         // console.log(slotSelect1.end)
-        const plainText = "Hi " + data.firstName + "," + "\n\n"
+        // const plainText = "Hi " + data.firstName + "," + "\n\n"
         // + "These are the slots you have chosen:" + "\n\n"
         // + slotSelect1.start + " - " + slotSelect1.end + " on " + slotSelect1.day + "\n"
         // + slotSelect2.start + " - " + slotSelect2.end + " on " + slotSelect2.day + "\n"
         // + slotSelect3.start + " - " + slotSelect3.end + " on " + slotSelect3.day + "\n\n"
         // + "We will get back to you as soon as possible for the final arrangement of your visit."
-        + "Thank you for registering with DoctorToday!"
+        // + "Thank you for registering with DoctorToday!"
 
         let mailOptions = {
             from: "tiankgt@hotmail.com",
             to: data.email,
-            subject: "Automatic reply",
-            text: plainText
-            // html: "<b>Dear <b>" + <b>this.request.name,</b> + "<b></b>"
+            subject: "Automatic reply: Registration Email",
+            // text: plainText
+            html: `
+            <html>
+            <head>
+              <title>Registration Confirmation</title>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            </head>
+            <body style="font-family: Arial, sans-serif;">
+              <table style="max-width: 600px; margin: 0 auto; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 20px; background-color: #FFFFFF;">
+                    <img src=http://localhost:3000/frontend-user/src/assets/doctor_today.jpg alt="Clinic Logo" style="max-width: 100%; height: auto;">
+                    <h1 style="font-size: 24px; margin-bottom: 20px;">Registration Confirmation</h1>
+                    <p>Dear ${data.firstName},</p>
+                    <p>Thank you for registering with DoctorToday. Your registration is confirmed.</p>
+                    <p>If you have any questions or need assistance, please contact us at enquiries@doctortoday.co.uk or 020 7433 1444
+          </p>
+                    <p>Thank you,</p>
+                    <p>DoctorToday</p>
+                  </td>
+                </tr>
+              </table>
+            </body>
+          </html>
+            `
         };
 
         let info = await transporter.sendMail(mailOptions);
