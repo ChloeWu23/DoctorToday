@@ -1,4 +1,5 @@
 <template>
+<div class = "xl:max-w-screen-xl mx-auto">
     <div class="px-5 md:pl-20 md:bg-top md:pt-40 bg-[url('@/assets/faq.jpg')] bg-no-repeat">
         <div class="grid justify-items-stretch pt-20 md:pt-0 md:pb-20">
             <div class="bg-center text-2xl md:text-4xl font-bold text-sky-700
@@ -27,6 +28,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <script>

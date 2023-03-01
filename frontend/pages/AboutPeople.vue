@@ -1,5 +1,6 @@
 <template>
-    <div class="flex justify-center items-center">
+    <div class="xl:max-w-screen-xl mx-auto">
+    <div>
         <div class="bg-center w-full items-center md:py-40 md:pt-120 bg-[url('@/assets/doctor_today.jpg')] bg-no-repeat">
             <div class="flex justify-center items-center">
                 <h1 class="text-5xl text-sky-700 text-center p-8 font-extrabold
@@ -10,7 +11,7 @@
         </div>
     </div>
 
-    <div class="p-10">
+    <div class="p-5 xl:max-w-screen-xl mx-auto">
         <ul class="grid md:grid-cols-12 md:gap-10 content-center">
             <li class="py-3 px-10 md:px-0 max-w-md md:max-w-none min-h-max
                                md:col-span-6 lg:col-span-4" v-for="(item, index) in peopleList" :key="item.id">
@@ -56,6 +57,7 @@
             </li>
         </ul>
     </div>
+</div>
 </template>
 
 <script>
