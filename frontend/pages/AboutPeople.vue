@@ -24,7 +24,7 @@
 
                         <div class="px-8 w-full content-center">
                             <div class="w-5/6 float-left text-left">
-                                <div class="py-1 text-base font-bold">{{ item.name }}</div>
+                                <div class="py-1 md:text-lg text-base font-bold">{{ item.name }}</div>
                             </div>
 
                             <div class="h-full items-center float-right">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
 
-                        <div class="h-[110px] pb-3 px-8 w-full text-left">
+                        <div class="md:h-[100px] h-[100px] pb-3 px-8 w-full text-left">
                             <p class="md:text-lg text-base font-bold mt-0 " v-if="item.is_independent">(Independent Service Provider)</p>
                             <p class="pt-2 pb-1 text-xs">{{ item.title }}</p>
                             <p class="italic py-2 text-xs">{{ item.profile }}</p>
