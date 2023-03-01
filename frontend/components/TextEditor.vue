@@ -1,8 +1,8 @@
 <template>
   <div>
     <ClientOnly fallback-tag="span" fallback="Loading text editor...">
-      <div v-if="editor" class="h-48">
-        <div class="editor-menu flex w-full grid grid-cols-12 gap-2" :tippy-options="{ duration: 100 }" :editor="editor">
+      <div v-if="editor" class="h-full flex flex-col">
+        <div class="editor-menu flex w-full grid grid-cols-12 gap-2 grow-0" :tippy-options="{ duration: 100 }" :editor="editor">
           <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
             <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
               <path fill="none" d="M0 0h24v24H0z" />
@@ -69,6 +69,12 @@
                 fill="#1663A9" />
             </svg>
           </button>
+          <button @click="editor.chain().focus().setHorizontalRule().run()">
+            <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M2 11h2v2H2v-2zm4 0h12v2H6v-2zm14 0h2v2h-2v-2z" fill="#1663A9" />
+            </svg>
+          </button>
           <button @click="addUrl" :class="{ 'is-active': editor.isActive('link') }">
             <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
               <path fill="none" d="M0 0h24v24H0z" />
@@ -94,17 +100,15 @@
             </svg>
           </button>
         </div>
-
-        <EditorContent :editor="editor" id="textEditor" contentType="html" v-model:content="textContent"
-          class="w-64" />
-        <button class="bg-sky-600 text-white p-2 rounded" @click="sendToParent">Save</button>
+        <EditorContent :editor="editor" id="textEditor" contentType="html" v-model:content="textContent" class="h-auto w-full grow" />
+        <button class="bg-sky-600 text-white p-2 rounded grow-0 w-16 m-4" @click="sendToParent">Save</button>
       </div>
     </ClientOnly>
   </div>
 </template>
 
 <script>
-import { BubbleMenu, Editor, EditorContent } from '@tiptap/vue-3'
+import { Editor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 
@@ -116,7 +120,7 @@ export default {
     };
   },
   components: {
-    EditorContent, BubbleMenu
+    EditorContent
   },
   mounted() {
     this.editor = new Editor({
@@ -127,9 +131,13 @@ export default {
           openOnClick: false,
         }),
       ],
+      editorProps: {
+        attributes: {
+          class: 'focus:outline-none border border-2 h-full prose-lg',
+        },
+      },
     })
   },
-
   beforeDestroy() {
     this.editor.destroy()
   },
@@ -163,9 +171,10 @@ export default {
         .run()
     },
     sendToParent() {
-      console.log(this.editor.getHTML())
-      this.$emit(this.editor.getHTML())
-      //save html data to the table specified in dataBaseTable, which should be a parameter passed from parent component
+      //send HTML content to parent component
+      const contentHTML = this.editor.getHTML();
+      console.log(contentHTML);
+      this.$emit('editorUpdated', contentHTML);
       return true;
     }
   },
