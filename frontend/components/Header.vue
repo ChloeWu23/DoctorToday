@@ -2,15 +2,18 @@
     <ContactButton />
     <SembleButton />
 
-    <body class="bg-gray-100">
-        <div class="container items-center mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
-            <div class="flex justify-between">
-                <NuxtLink :to="'/'">
-                    <img class="h-[120px] object-cover mx-[40px] xl:mx-[140px] mt-[20px]" src="../assets/logo.png" alt="" />
-                </NuxtLink>
+    <body class="bg-gray-100 xl:max-w-screen-xl mx-auto">
+        <div class="container mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
+            <div class="flex flex-col sm:flex-row justify-between">
+               <div self-start>
+                    <NuxtLink :to="'/'">
+                        <img class="md:h-[150px] md:w-[500px]  h-[100px] w-2/3 mx-5 lg:mx-[140px] mt-[20px]" src="../assets/logo.png" alt="" style="object-fit: contain;" />
+                    </NuxtLink>
+                </div>
+
                 <div
-                    class="flex flex-row md:flex-col relative right-0 bg-transparant text-xs md:text-sm text-sky-700 mx-5 md:mx-11 break-all md:break-normal mt-8">
-                    <div class="w-1/2 pb-2 md:p-1 hover:text-amber-500 hover:font-bold">
+                    class="self-start flex flex-row sm:flex-col relative right-0 bg-transparant text-[10px] sm:text-sm text-sky-700  md:mx-20 break-all md:break-normal md:mt-10 mt-0 mx-5">
+                    <div class="pb-2 sm:p-1 hover:text-amber-500 hover:font-bold">
                         <a href="mailto:enquiries@doctortoday.co.uk" class="flex items-center">
                             <span class="mr-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22" height="22">
@@ -25,7 +28,7 @@
                         </a>
                     </div>
 
-                    <div class="pl-2 md:p-1 hover:text-amber-500 hover:font-bold">
+                    <div class="pl-2 sm:p-1 hover:text-amber-500 hover:font-bold">
                         <a href="tel:02074331444" class="flex items-center">
                             <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22"
                                     height="22">
