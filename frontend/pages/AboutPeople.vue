@@ -1,18 +1,16 @@
 <template>
+<div class="xl:max-w-screen-xl mx-auto">
     <div class="flex justify-center items-center">
-        <div class="bg-center w-full items-center md:py-40 md:pt-120 bg-[url('@/assets/doctor_today.jpg')] bg-no-repeat">
-            <div class="flex justify-center items-center">
-                <h1 class="text-5xl text-sky-700 text-center p-8 font-extrabold
-                                    bg-[] rounded-3xl bg-opacity-80">
-                    Meet Our Team
-                </h1>
+        <div class="bg-center w-full items-center md:py-40 py-20 bg-[url('@/assets/doctor_today.jpg')] bg-no-repeat">
+            <div class="flex justify-center md:text-[60px] text-3xl text-sky-700 font-extrabold rounded-3xl bg-opacity-80 md:py-20 py-10">
+                    Meet Our Team             
             </div>
         </div>
     </div>
 
-    <div class="p-10">
+    <div class="bg-gray-300 md:py-10 px-10 pb-10 pt-3">
         <ul class="grid md:grid-cols-12 md:gap-10 content-center">
-            <li class="py-3 px-10 md:px-0 max-w-md md:max-w-none min-h-max
+            <li class="md:py-2 py-10 px-10 pb-0 md:px-0 max-w-md md:max-w-none h-auto
                                md:col-span-6 lg:col-span-4" v-for="(item, index) in peopleList" :key="item.id">
 
                 <div class="border-2 border-sky-700 rounded-xl">
@@ -42,10 +40,10 @@
                             </div>
                         </div>
 
-                        <div class="h-[65px] pb-3 px-8 w-full text-left">
-                            <p class="text-l font-bold mt-0 " v-if="item.is_independent">Independent Service Provider</p>
-                            <p class="py-1 text-xs">{{ item.title }}</p>
-                            <p class="italic text-xs">{{ item.profile }}</p>
+                        <div class="h-[110px] pb-3 px-8 w-full text-left">
+                            <p class="md:text-lg text-base font-bold mt-0 " v-if="item.is_independent">(Independent Service Provider)</p>
+                            <p class="pt-2 pb-1 text-xs">{{ item.title }}</p>
+                            <p class="italic py-2 text-xs">{{ item.profile }}</p>
                         </div>
                     </button>
 
@@ -56,6 +54,8 @@
             </li>
         </ul>
     </div>
+
+</div>
 </template>
 
 <script>
