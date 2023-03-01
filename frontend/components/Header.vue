@@ -13,7 +13,7 @@
 
                 <div
                     class="self-start flex flex-row sm:flex-col relative right-0 bg-transparant text-[10px] sm:text-sm text-sky-700 md:mx-20 mx-[40px] break-all md:break-normal md:mt-10 mt-0">
-                    <div class="pb-2 sm:p-1 hover:text-amber-500 hover:font-bold md:h-[20px] h-[15px]">
+                    <div class="pb-2 sm:p-1 hover:text-amber-500">
                         <a href="mailto:enquiries@doctortoday.co.uk" class="flex items-center">
                             <span class="mr-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22" height="22">
@@ -24,11 +24,11 @@
                                 </svg>
                             </span>
                             <span class="hidden lg:block w-12">Email: </span>
-                            <span>enquiries@doctortoday.co.uk</span>
+                            <span >enquiries@doctortoday.co.uk</span>
                         </a>
                     </div>
 
-                    <div class="pl-2 sm:p-1 hover:text-amber-500 hover:font-bold md:h-[20px] h-[15px]">
+                    <div class="pl-2 sm:p-1 hover:text-amber-500 ">
                         <a href="tel:02074331444" class="flex items-center">
                             <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22"
                                     height="22">
