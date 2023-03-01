@@ -1,5 +1,5 @@
 <template>
-    <div class="px-5 md:pl-20 md:bg-top md:pt-40 bg-[url('@/assets/faq.jpg')] bg-no-repeat">
+    <div class="container mx-auto px-5 md:pl-20 md:bg-top md:pt-40 xl:max-w-screen-xl mx-auto bg-[url('@/assets/faq.jpg')] bg-no-repeat">
         <div class="grid justify-items-stretch pt-20 md:pt-0 md:pb-20">
             <div class="bg-center text-2xl md:text-4xl font-bold text-sky-700
                             leading-relaxed md:leading-relaxed
@@ -10,8 +10,8 @@
         <div class="pt-10 md:pt-20"><br></div>
     </div>
 
-    <div class="pb-10 ">
-        <div class="w-full h-full shadow-md backdrop-blur-sm bg-white bg-opacity-50">
+    <div class="pb-10 flex justify-center">
+        <div class="w-full h-full md:w-3/4 shadow-md backdrop-blur-sm bg-white bg-opacity-50">
             <div class="">
                 <details class="open:bg-gray-200" v-for="(item, index) in questionList" :key="index">
                     <summary style="outline: none;" class="px-2 py-3 text-lg cursor-pointer hover:bg-gray-200 
