@@ -49,10 +49,12 @@ app.get('/', (req, res) => res.status(200).send({
 }));
 
 const port = process.env.PORT || 3005;
-app.listen(port, () => {
+var server = app.listen(port, () => {
     console.log(`App running on port ${port}...`)
 });
 
 // connect the database
 const db = require("./app/models");
 db.sequelize.sync();
+
+module.exports = server;
