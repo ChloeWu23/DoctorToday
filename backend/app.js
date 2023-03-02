@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 const corsOptions = {
-    origin: ["http://localhost:3000", "https://doctor-today-front.herokuapp.com"],
+    origin: ["http://localhost:3005", "http://localhost:3000","https://doctor-today-front.herokuapp.com"],
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 };
