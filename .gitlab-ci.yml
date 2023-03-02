@@ -48,9 +48,9 @@ frontend_deploy:
   stage: production
   only:
     - master
-    - anyan_adminSubService
+    - yc/migrate_to_nuxt
   script:
-    - cd ./frontend-user
+    - cd ./frontend
     - apt-get update -qy
     - apt-get install -y ruby-dev git
     - gem install dpl

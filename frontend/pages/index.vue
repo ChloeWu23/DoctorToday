@@ -154,8 +154,8 @@ export default {
                     description: "February is Heart Disease Awareness Month. Learn more at the British Heart Foundation website, or come and see us for one of our general health screens to make sure you're as healthy as can be!"
                 },
                 {
-                    title: "",
-                    description: ""
+                    title: "Ovarian Cancer Awareness Month",
+                    description: "March is Ovarian Cancer Awareness month. Learn more at the Ovarian Cancer Action website  or come and see us for one of our general health screens to make sure you're as healthy as can be!"
                 },
                 {
                     title: "",
