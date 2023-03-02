@@ -57,6 +57,10 @@ async function sendRegisterEmail(data){
           </p>
                     <p>Thank you,</p>
                     <p>DoctorToday</p>
+                    <p>182 Finchley Rd</p>
+                    <p>Hampstead</p>
+                    <p>London</p>
+                    <p>NW3 6BP</p>
                   </td>
                 </tr>
               </table>
