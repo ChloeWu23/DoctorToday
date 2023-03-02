@@ -1,6 +1,5 @@
 <template>
     <ContactButton />
-    <SembleButton />
 
     <body class="bg-gray-100">
         <div class="container items-center mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
