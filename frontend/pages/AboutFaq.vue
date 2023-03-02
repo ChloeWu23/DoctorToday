@@ -1,10 +1,9 @@
 <template>
 <div class = "xl:max-w-screen-xl mx-auto">
-    <div class="container mx-auto px-5 md:pl-20 md:bg-top md:pt-40 xl:max-w-screen-xl mx-auto bg-[url('@/assets/faq.jpg')] bg-no-repeat">
-        <div class="grid justify-items-stretch pt-20 md:pt-0 md:pb-20">
-            <div class="bg-center text-2xl md:text-4xl font-bold text-sky-700
-                            leading-relaxed md:leading-relaxed
-                            flex items-center md:justify-self-left">
+    <div class="container mx-auto h-[155px] md:h-auto 2xl:h-[600px] px-5 md:pl-20 md:bg-top md:pt-40 xl:max-w-screen-xl bg-[url('@/assets/faq.jpg')] bg-no-repeat bg-cover">
+        <div class="justify-left pt-[50px] md:pt-0 md:pb-20">
+            <div class="text-lg md:text-4xl font-bold text-sky-700
+                        leading-relaxed md:leading-relaxed md:justify-self-left">
                 Frequently Asked<br>Questions
             </div>
         </div>
