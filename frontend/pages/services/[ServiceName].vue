@@ -20,7 +20,6 @@
 <script>
 import DataService from '../../dataRoutes/DataService';
 import DataSubService from '../../dataRoutes/DataSubService';
-import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 
 export default {
@@ -30,6 +29,7 @@ export default {
     },
     setup() {
         const route = useRoute()
+        console.log(route.params)
         
         let serviceId = ref()
         let ServiceDetails = ref([])
