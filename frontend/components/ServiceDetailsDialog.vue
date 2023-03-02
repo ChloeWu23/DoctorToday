@@ -8,8 +8,8 @@
             </el-form-item>
             
             <div class="el-form-item"> Description </div>
-            <!-- <QuillEditor  class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html" :content-style="contentStyle" v-model:content="newSubService.description" > -->
-            <!-- </QuillEditor> -->
+            <!-- <QuillEditor  class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html" :content-style="contentStyle" v-model:content="newSubService.description" >
+            </QuillEditor> -->
             
             <div class="el-form-item mt-6"> Price (Optional) </div>
             <el-form-item prop="desc">
