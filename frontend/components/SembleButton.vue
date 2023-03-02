@@ -2,14 +2,17 @@
     <div class="fixed bottom-6 right-24 z-10">
         <transition name="modal" v-if="showModal">
             <!-- <div class="modal-mask" > -->
-            <RequestAppointmentModal @close="closeModal" />
+            <RequestAppointmentModal @close="closeModal" :sembleForm = sembleForm />
             <!-- </div> -->
         </transition>
-        <button class="rounded-full bg-white h-16 w-16 flex place-content-center shadow-2xl" @click="showModal = !showModal">
+        
+        <button class="rounded-full bg-white h-16 w-16 flex place-content-center shadow-2xl"
+            @click="showModal = !showModal">
             <svg class="self-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path fill="none" d="M0 0h24v24H0z" />
+                <path fill="none" d="M0 0H24V24H0z" />
                 <path
-                    d="M8 20v-6h8v6h3V4H5v16h3zm2 0h4v-4h-4v4zm11 0h2v2H1v-2h2V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v17zM11 8V6h2v2h2v2h-2v2h-2v-2H9V8h2z" />
+                    d="M12 15c4.08 0 7.446 3.054 7.938 7H4.062c.492-3.946 3.858-7 7.938-7zm-1.813 2.28C8.753 17.734 7.546 18.713 6.8 20H12l-1.813-2.72zm3.627 0L12 20h5.199c-.745-1.287-1.952-2.266-3.385-2.72zM18 2v6c0 3.314-2.686 6-6 6s-6-2.686-6-6V2h12zM8 8c0 2.21 1.79 4 4 4s4-1.79 4-4H8zm8-4H8v2h8V4z"
+                    fill="#1663A9" />
             </svg>
         </button>
         <div v-if="control" id="whatsapp-chat">
@@ -26,6 +29,12 @@ import RequestAppointmentModal from './RequestAppointmentModal.vue';
 
 export default {
     components: { RequestAppointmentModal },
+    props: {
+        sembleForm:{
+            type: String,
+            required: true
+        }
+    },
     data() {
         return {
             control: false,

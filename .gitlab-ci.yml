@@ -11,7 +11,7 @@ backend_test:
   script:
     - cd ./backend
     - npm install
-    # - npm run test // TODO: test
+    # - npm run test  //TODO: test
 
 frontend_test:
   stage: test
@@ -48,9 +48,9 @@ frontend_deploy:
   stage: production
   only:
     - master
-    - anyan_adminSubService
+    - yc/migrate_to_nuxt
   script:
-    - cd ./frontend-user
+    - cd ./frontend
     - apt-get update -qy
     - apt-get install -y ruby-dev git
     - gem install dpl

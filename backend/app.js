@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 const corsOptions = {
-    origin: ["http://localhost:3005", "http://localhost:3000","https://doctor-today-front.herokuapp.com"],
+    origin: ["http://localhost:3005", "http://localhost:3000","https://doctor-today-app.herokuapp.com"],
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 };
@@ -49,10 +49,12 @@ app.get('/', (req, res) => res.status(200).send({
 }));
 
 const port = process.env.PORT || 3005;
-app.listen(port, () => {
+var server = app.listen(port, () => {
     console.log(`App running on port ${port}...`)
 });
 
 // connect the database
 const db = require("./app/models");
 db.sequelize.sync();
+
+module.exports = server;

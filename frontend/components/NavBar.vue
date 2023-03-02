@@ -4,7 +4,7 @@
             <navButton></navButton>
         </div>
         <div class="w-full block md:flex md:items-center md:w-auto " :class="showMenu ? 'flex' : 'hidden'">
-            <ul class="md:flex md:items-center w-full ">
+            <ul class="md:flex md:items-center w-full list-none">
                 <div class="text-sm md:text-base lg:flex-grow md:mx-2 lg:mx-3 xl:mx-4" v-for="tab in navTabs"
                     :key="tab.name">
                     <li class="md:my-0 my-6 text-black hover:text-blueLight relative">

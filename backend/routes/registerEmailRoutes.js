@@ -49,7 +49,6 @@ async function sendRegisterEmail(data){
               <table style="max-width: 600px; margin: 0 auto; border-collapse: collapse;">
                 <tr>
                   <td style="padding: 20px; background-color: #FFFFFF;">
-                    <img src=http://localhost:3000/frontend-user/src/assets/doctor_today.jpg alt="Clinic Logo" style="max-width: 100%; height: auto;">
                     <h1 style="font-size: 24px; margin-bottom: 20px;">Registration Confirmation</h1>
                     <p>Dear ${data.firstName},</p>
                     <p>Thank you for registering with DoctorToday. Your registration is confirmed.</p>
@@ -63,6 +62,7 @@ async function sendRegisterEmail(data){
             </body>
           </html>
             `
+           //<img src=http://localhost:3000/frontend-user/src/assets/doctor_today.jpg alt="Clinic Logo" style="max-width: 100%; height: auto;">
         };
 
         let info = await transporter.sendMail(mailOptions);

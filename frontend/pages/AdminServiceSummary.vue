@@ -93,8 +93,14 @@ export default {
     },
 
     async created() {
-        // console.log("org: " + localStorage.getItem('userID'));
-        if (!localStorage.getItem('userID')) {
+        if (process.client) {
+            const userID = localStorage.getItem('userID');
+            if (userID) {
+                console.log("pass admin authentication")
+            }
+        } else {
+            // This code runs on the server-side
+            console.log("Not pass the admin authentication! ");
             this.$router.push('/AdminLogin');
         }
     },
