@@ -64,7 +64,7 @@
 <script>
 import DataPeople from '../dataRoutes/DataPeople'
 
-//<img class="pb-3 drop-shadow-xl w-[200px] h-[280px] object-none" v-bind:src='item.image' :alt="item.name" />
+// <img class="pb-3 drop-shadow-xl w-[200px] h-[280px] object-none" v-bind:src='item.image' :alt="item.name" />
 export default {
     data() {
         return {
