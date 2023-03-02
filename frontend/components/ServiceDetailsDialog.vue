@@ -8,8 +8,8 @@
             </el-form-item>
             
             <div class="el-form-item"> Description </div>
-            <QuillEditor  class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html" :content-style="contentStyle" v-model:content="newSubService.description" >
-            </QuillEditor>
+            <!-- <QuillEditor  class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html" :content-style="contentStyle" v-model:content="newSubService.description" > -->
+            <!-- </QuillEditor> -->
             
             <div class="el-form-item mt-6"> Price (Optional) </div>
             <el-form-item prop="desc">
@@ -37,8 +37,8 @@
 <script>
 import { reactive, ref } from "vue";
 import DataService from '@/dataRoutes/DataSubService';
-import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
+// import { QuillEditor } from "@vueup/vue-quill";
+// import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
 
 export default {
@@ -48,7 +48,7 @@ export default {
             default: 0,
         }
     },
-    components: { QuillEditor },
+    // components: { QuillEditor },
     data() {
         return {
             newSubService: {

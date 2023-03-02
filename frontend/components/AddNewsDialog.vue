@@ -8,9 +8,9 @@
             <el-form-item label="Content" prop="desc">
                 <!-- <el-input v-model="newPeople.description" type="textarea">{{ newPeople.description }}</el-input> -->
             </el-form-item>
-            <QuillEditor class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html"
+            <!-- <QuillEditor class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html"
                 :content-style="contentStyle" v-model:content="news.content">
-            </QuillEditor>
+            </QuillEditor> -->
 
         </el-form>
 
@@ -32,10 +32,10 @@
 <script>
 import { reactive, ref } from "vue";
 import DataService from '@/dataRoutes/DataNews';
-import { QuillEditor } from "@vueup/vue-quill";
+// import { QuillEditor } from "@vueup/vue-quill";
 
 export default {
-    components: { QuillEditor },
+    // components: { QuillEditor },
     data() {
         return {
             news: {
