@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md m-4 md:m-8">
+    <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md mx-auto lg:max-screen-lg">
         <div class="w-full">
             <details class="open:bg-gray-100 duration-300 w-full" v-for="item in this.ServiceDetails">
                 <summary
@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import DataService from '../dataRoutes/DataService';
-import DataSubService from '../dataRoutes/DataSubService';
+import DataService from '../../dataRoutes/DataService';
+import DataSubService from '../../dataRoutes/DataSubService';
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 
@@ -36,7 +36,7 @@ export default {
         DataService.get()
             .then(response => {
                 for (let i = 0; i < response.data.length; i++) {
-                    if (response.data[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.serviceName) {
+                    if (response.data[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName) {
                         serviceId.value = response.data[i].bind_id
                         break;
                     }
