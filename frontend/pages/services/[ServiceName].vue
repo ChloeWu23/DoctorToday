@@ -1,5 +1,6 @@
 <template>
     <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md mx-auto lg:max-screen-lg">
+        <SembleButton v-if=sembleFormCode :sembleForm = sembleFormCode />
         <div class="w-full">
             <details class="open:bg-gray-100 duration-300 w-full" v-for="item in this.ServiceDetails">
                 <summary
@@ -25,11 +26,11 @@ import { ref } from 'vue'
 export default {
     data() {
         return {
+            sembleFormCode:'<iframe src="https://online-booking.semble.io/?token=59df46c901c3c1673ec018b4eec76f70ce63838c" class="h-full w-full border-0" frameborder="0" scrolling="auto"></iframe>'
         }
     },
     setup() {
         const route = useRoute()
-        console.log(route.params)
         
         let serviceId = ref()
         let ServiceDetails = ref([])
@@ -38,6 +39,7 @@ export default {
                 for (let i = 0; i < response.data.length; i++) {
                     if (response.data[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName) {
                         serviceId.value = response.data[i].bind_id
+                        console.log(response.data[i].appointment_iframe)
                         break;
                     }
                 }
