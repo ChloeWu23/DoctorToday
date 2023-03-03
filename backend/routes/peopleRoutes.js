@@ -7,9 +7,20 @@ const db = require("../app/models");
 const People = db.People;
 const Op = db.Sequelize.Op;
 
+
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3({
+  accessKeyId: "AKIARXAT7U35FUQT3NUL",
+  secretAccessKey: "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"
+});
+
+const S3_BUCKET_NAME = 'upload-image-for-admin';
+
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../frontend-user/src/assets/people')
+        cb(null, '')//../../frontend/assets/people
         console.log('in destination')
     },
     filename: function (req, file, cb) {
@@ -17,6 +28,7 @@ var storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 })
+
 
 var upload = multer({
     storage: storage
@@ -50,6 +62,22 @@ router.post("/", upload.single('file'),
         console.log(file.destination)
         //res.send(file)
 
+        const params = {
+            Bucket: S3_BUCKET_NAME,
+            Key: file.filename,
+            Body: file.buffer
+        };
+
+        s3.putObject(params, function(err, data) {
+            console.log("in s3 putObject")
+            if (err) {
+              console.error(err);
+              return res.status(500).send('Error uploading file');
+            }
+        
+            res.send('File uploaded successfully');
+          });
+
         if (req.body.name === null || req.body.name === undefined) {
             res.status(500).send({
                 message: "req should include staff name"
@@ -66,9 +94,9 @@ router.post("/", upload.single('file'),
                 })
             });
 
-        var pathToRead = 'people/' + file.filename
-        console.log('path to read:')
-        console.log(pathToRead)
+        // var pathToRead = 'people/' + file.filename
+        // console.log('path to read:')
+        // console.log(pathToRead)
 
         var newItem = {
             staff_id: count,
@@ -76,7 +104,7 @@ router.post("/", upload.single('file'),
             title: req.body.title,
             profile: req.body.profile,
             description: req.body.description,
-            image: pathToRead,
+            image: "",//pathToRead,
             website: req.body.website,
             is_independent: req.body.is_independent
         }

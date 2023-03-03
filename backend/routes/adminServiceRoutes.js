@@ -40,9 +40,9 @@ router.post("/", upload.single('file'),
     res.set("Access-Control-Allow-Origin", "*");
 
     var file = req.file
-    console.log("in uploadRoutes")
-    console.log(file)
-    console.log(file.destination)
+    // console.log("in uploadRoutes")
+    // console.log(file)
+    // console.log(file.destination)
     //res.send(file)
 
     if (req.body.serviceName === null || req.body.serviceName === undefined) {
@@ -55,9 +55,9 @@ router.post("/", upload.single('file'),
 
     var count = await ServiceOverviews.count({ col: "serviceName" });
     var bind_max = await ServiceOverviews.max("bind_id");
-    var pathToRead = 'services/'+file.filename
+    // var pathToRead = 'services/'+file.filename
     console.log('path to read:')
-    console.log(pathToRead)
+    // console.log(pathToRead)
     var serviceItem = {
       serviceName: req.body.serviceName,
       bind_id: bind_max + 1,
@@ -65,7 +65,7 @@ router.post("/", upload.single('file'),
       description_1: req.body.description_1,
       description_2: req.body.description_2,
       description_3: req.body.description_3,
-      image: pathToRead,
+      image: null,
       appointment_iframe: req.body.appointment_iframe
     };
 
