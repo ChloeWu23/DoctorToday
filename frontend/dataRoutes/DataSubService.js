@@ -10,7 +10,7 @@ class DataSubService {
     }
 
     update(cat_id, data) {
-        return http.patch(`/admin/sub-service/${cat_id}`, data);
+        return http.post(`/admin/sub-service/${cat_id}/edit`, data);
     }
 
     delete(cat_id, data) {
