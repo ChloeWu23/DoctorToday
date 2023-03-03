@@ -12,7 +12,7 @@
     </div>
 
     <div class="md:py-10 px-10 pb-10 md:pt-3 flex justify-center">
-        <ul class="grid md:grid-cols-12 md:gap-10 content-center">
+        <ul class="grid md:grid-cols-12 md:gap-10 content-center list-none">
             <li class="md:py-2 py-10 px-2 sm:px-10 pb-0 md:px-0 max-w-md md:max-w-none h-auto
                                md:col-span-6 lg:col-span-4" v-for="(item, index) in peopleList" :key="item.id">
 
