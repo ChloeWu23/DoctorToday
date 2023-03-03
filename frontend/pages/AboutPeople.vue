@@ -104,20 +104,6 @@ export default {
 </script>
 
 <style>
-.rotate {
-    transform: rotate(45deg);
-    transition: all 0.4s ease-in-out;
-}
-
-.rotated {
-    transform: rotate(0deg);
-
-}
-
-.description {
-    animation: height .4s ease-in-out;
-}
-
 @keyframes height {
     0% {
         opacity: 0;
