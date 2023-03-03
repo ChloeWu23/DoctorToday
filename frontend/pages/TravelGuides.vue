@@ -28,7 +28,7 @@
                     </div>
                     <div class="w-px h-full bg-gray-300"></div>
                 </div>
-                <div class="m-2 mt-6 p-5 bg-white bg-opacity-50 backdrop-blur-md md:max-w-none lg:w-[350px] max-w-xs">
+                <div class="z-20 m-2 mt-6 p-5 bg-white bg-opacity-50 backdrop-blur-md md:max-w-none lg:w-[350px] max-w-xs">
                     <div class="text-sky-700 font-bold text-xl mb-2">Step 1</div>
                     <p class="text-base">Select below for your travel destination. This will allow you to
                         consult the relevant section of the NHS Fit for travel website.
@@ -40,7 +40,7 @@
                                 class="p-2 w-full border border-sky-700 rounded bg-slate-50/30">
 
                             <ul v-if="searchCountries.length"
-                                class="rounded border border-gray-300 bg-slate-100 px-4 py-2 space-y-1 absolute z-10">
+                                class="list-none rounded border border-gray-300 bg-slate-100 px-4 py-2 space-y-1 absolute z-10">
                                 <li v-for="country in searchCountries" :key="country.name" @click="openRedirection(country)"
                                     class="cursor-pointer hover:bg-sky-700/80 hover:text-white p-1">
                                     {{ country.name }}
@@ -89,7 +89,9 @@
                     <p class="text-base">Fill in our <a class="text-sky-700 underline" href="#/appointment">online
                             appointment request form</a> to discuss your
                         specific needs or email us at <a class="text-sky-700 underline"
-                            href="mailto:enquiries@doctortoday.co.uk">enquiries@doctortoday.co.uk</a>.
+                            href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;">
+                            <span>&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;</span>
+                        </a>.
                     </p>
                 </div>
             </div>

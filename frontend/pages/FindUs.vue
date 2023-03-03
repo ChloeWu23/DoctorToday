@@ -20,7 +20,7 @@
                                         fill="rgba(3,105,161,1)" />
                                 </svg></span>
                             <span class="hidden lg:block">Email: </span>
-                            <span>enquiries@doctortoday.co.uk</span>
+                            <span>&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;</span>
                         </a>
                     </div>
                     <div class="justify-items-center align-middle m-2">
