@@ -10,7 +10,7 @@
                 </select>
             </div>
 
-            <button type="button" @click="subServiceVisible = true" 
+            <button type="button" @click="emitAddDialogue" 
                 class="text-white w-50 bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 
                 <svg fill="none" class="w-5 h-5 mr-2 -ml-1" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
@@ -20,13 +20,18 @@
                 </svg>
                 Add Service Detail
             </button>
+
+            <button @click="refreshServiceView"
+                class="hover:bg-gray-200 rounded  w-10 h-10 mx-4 ">
+                <img src="../assets/admin_portal/icon-refresh.svg" alt="Icon" class="" />
+            </button>
         </div>
 
-        <div class="flex m-6 text-black">
+        <!-- <div class="flex m-6 text-black">
             {{ selected }}
             {{ subServiceVisible }}
             {{ subServiceList.length }}
-        </div>
+        </div> -->
         
 
         <div class="flex">
@@ -84,6 +89,12 @@
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
                                     <img src="../assets/admin_portal/icon-up-arrow.svg" alt="Icon" class="mr-2" />
                                 </button>
+
+                                <button @click="emitEditDialogue(subService)"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
+                                    <img src="../assets/admin_portal/icon-edit.svg" alt="Icon" class="mr-2" />
+                                </button>
+
                             </td>
                         </tr>
                     </tbody>
@@ -91,8 +102,16 @@
 
             </div>
 
-            <ServiceDetailsDialog v-model="subServiceVisible" v-if="subServiceVisible" :bind_id = "selected" @update:modelValue="refreshServiceView"></ServiceDetailsDialog>
-        
+            <ServiceDetailsDialog 
+            v-model="subServiceVisible" 
+            v-if="subServiceVisible" 
+            :bind_id = "selected" 
+            :isEdit = "isEdit" 
+            :data_sub_service_name = "data_sub_service_name"
+            :data_description = "data_description"
+            :data_price = "data_price"
+            :data_sub_service_id = "data_sub_service_id"
+            ></ServiceDetailsDialog>
         </div>
         
        
@@ -115,7 +134,14 @@ export default {
             subServiceList: "",
             selected: 0,
             options: "",
-            subServiceVisible: false
+            subServiceVisible: false,
+
+            isEdit: false,
+
+            data_sub_service_id: "",
+            data_sub_service_name: "",
+            data_description: "",
+            data_price: ""
         }
     },
     
@@ -129,6 +155,12 @@ export default {
             // This code runs on the server-side
             console.log("Not pass the admin authentication! ");
             this.$router.push('/AdminLogin');
+        }
+    },
+
+    watch: {
+        subServiceVisible(newValue, oldValue) {
+            this.refreshServiceView();
         }
     },
 
@@ -172,6 +204,25 @@ export default {
                 .catch(err => {
                     console.log(err);
                 });
+        },
+        emitEditDialogue(subService) {
+            this.isEdit = true;
+            this.data_sub_service_id = subService.sub_service_id;
+            this.data_sub_service_name = subService.sub_service_name,
+            this.data_description = subService.description,
+            this.data_price = subService.price
+
+            this.subServiceVisible = true;
+        },
+        emitAddDialogue() {
+            this.isEdit = false;
+
+            this.data_sub_service_id = null;
+            this.data_sub_service_name = "",
+            this.data_description = "",
+            this.data_price = ""
+
+            this.subServiceVisible = true;
         },
         deleteSubService(cat_id, sub_service_id) {
             var data = {
