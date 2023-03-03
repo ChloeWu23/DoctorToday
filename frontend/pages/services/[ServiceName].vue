@@ -21,7 +21,6 @@
 <script>
 import DataService from '../../dataRoutes/DataService';
 import DataSubService from '../../dataRoutes/DataSubService';
-import { ref } from 'vue'
 
 export default {
     data() {
@@ -32,8 +31,6 @@ export default {
     setup() {
         const route = useRoute()
         
-        let serviceId = ref()
-        let ServiceDetails = ref([])
         DataService.get()
             .then(response => {
                 for (let i = 0; i < response.data.length; i++) {

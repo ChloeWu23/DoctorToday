@@ -18,9 +18,9 @@
                         </p>
                         <p class="w-full border border-[#143B71]/50 my-2"></p>
                         <div class="divide-y divide-dashed text-sm xl:text-base py-2">
-                            <div>{{ service.description_1 }}</div>
-                            <div>{{ service.description_2 }}</div>
-                            <div>{{ service.description_3 }}</div>
+                            <div v-if="service.description_1">{{ service.description_1 }}</div>
+                            <div v-if="service.description_2">{{ service.description_2 }}</div>
+                            <div v-if="service.description_3">{{ service.description_3 }}</div>
                         </div>
                     </NuxtLink>
                 </div>
@@ -32,8 +32,6 @@
 
 
 <script>
-import DataService from '../dataRoutes/DataService';
-
 export default {
     data() {
         return {
