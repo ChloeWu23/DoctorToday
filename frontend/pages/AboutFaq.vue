@@ -1,17 +1,17 @@
 <template>
-    <div class="px-5 md:pl-20 md:bg-top md:pt-40 bg-[url('@/assets/faq.jpg')] bg-no-repeat">
-        <div class="grid justify-items-stretch pt-20 md:pt-0 md:pb-20">
-            <div class="bg-center text-2xl md:text-4xl font-bold text-sky-700
-                            leading-relaxed md:leading-relaxed
-                            flex items-center md:justify-self-left">
+<div class = "xl:max-w-screen-xl mx-auto">
+    <div class="container mx-auto h-[155px] md:h-auto 2xl:h-[600px] px-5 md:pl-20 md:bg-top md:pt-40 xl:max-w-screen-xl bg-[url('@/assets/faq.jpg')] bg-no-repeat bg-cover">
+        <div class="justify-left pt-[50px] md:pt-0 md:pb-20">
+            <div class="text-lg md:text-4xl font-bold text-sky-700
+                        leading-relaxed md:leading-relaxed md:justify-self-left">
                 Frequently Asked<br>Questions
             </div>
         </div>
         <div class="pt-10 md:pt-20"><br></div>
     </div>
 
-    <div class="pb-10 ">
-        <div class="w-full h-full shadow-md backdrop-blur-sm bg-white bg-opacity-50">
+    <div class="pb-10 flex justify-center">
+        <div class="w-full h-full md:w-3/4 shadow-md backdrop-blur-sm bg-white bg-opacity-50">
             <div class="">
                 <details class="open:bg-gray-200" v-for="(item, index) in questionList" :key="index">
                     <summary style="outline: none;" class="px-2 py-3 text-lg cursor-pointer hover:bg-gray-200 
@@ -27,6 +27,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -52,3 +53,36 @@ export default {
     }
 }
 </script>
+
+<style>
+details>summary {
+    list-style: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary::after {
+    content: url("@/assets/plus.png");
+    font-size: 2em;
+    color: #708090;
+    transition: transform 0.5s ease-in-out;
+}
+
+details[open] summary::after {
+    content: url("@/assets/plus.png");
+    transform: rotate(-45deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+details{
+	transition: all 0.5s ease-in-out;
+	max-height: 100px;
+	overflow: hidden;
+}
+
+details[open] {
+	max-height: 500px;
+}
+</style>
