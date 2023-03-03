@@ -30,10 +30,6 @@
                 {{ bind_id }}
                 <div class="flex" v-if="isEdit"> Edit </div>
                 <div class="flex" v-else> Add </div>
-
-                {{ data_sub_service_name }}
-
-                {{ newSubService.sub_service_name }}
             </div>
             <span class="dialog-footer">
                 <button type="button"

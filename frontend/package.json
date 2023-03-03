@@ -20,6 +20,7 @@
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.5",
     "core-js": "^3.8.3",
+    "element-plus": "^2.2.33",
     "fortawesome": "^0.0.1-security",
     "moment": "^2.29.4",
     "postcss": "^8.4.21",
@@ -36,6 +37,7 @@
     "vuex": "^4.1.0"
   },
   "devDependencies": {
+    "@element-plus/nuxt": "^1.0.3",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/tailwindcss": "^6.4.1",
     "nuxt": "^3.2.2"
