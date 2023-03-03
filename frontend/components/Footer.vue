@@ -1,5 +1,5 @@
 <template>
-    <div class="justify-between w-screen min-w-full block lg:flex lg:grid-cols-2 text-white text-xs lg:my-0 bg-sky-700">
+    <div class="container justify-between w-screen min-w-full block lg:flex lg:grid-cols-2 text-white text-xs lg:my-0 bg-sky-700">
         <div class="justify-self-start items-left mx-6">
             <p>Fast track independent health care services for individuals, families and companies</p>
             <p>© {{ year() }} Doctor Today Ltd. All rights reserved. The Doctor Today logo is a registered UK
