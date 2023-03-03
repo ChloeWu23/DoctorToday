@@ -51,7 +51,7 @@ router.post("/:cat_id", async (req, res) => {
 
 });
 
-router.post("/:cat_id/edit", async(req, res) => {
+router.patch("/:cat_id", async(req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
     if (req.body.sub_service_id === null || req.body.sub_service_id === undefined ) {
