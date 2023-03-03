@@ -65,19 +65,19 @@ export default {
                     children: []
                 },
                 {
-                    path: "/aboutFaq",
+                    path: "/about/FAQs",
                     name: "FAQs",
                     label: "FAQs",
                     children: []
                 },
                 {
-                    path: "/aboutPeople",
+                    path: "/about/People",
                     name: "people",
                     label: "People",
                     children: []
                 },
                 {
-                    path: "/findUs",
+                    path: "/about/FindUs",
                     name: "findUs",
                     label: "Find Us",
                     children: []
