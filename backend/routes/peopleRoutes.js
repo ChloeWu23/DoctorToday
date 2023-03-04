@@ -26,7 +26,7 @@ const upload = multer({
       bucket: S3_BUCKET_NAME,
       acl: 'public-read',
       key: function (req, file, cb) {
-        cb(null, 'people/' + Date.now().toString() + '-' + file.originalname);
+        cb(null, 'peopleImage/' + Date.now().toString() + '-' + file.originalname);
       }
     })
   });
