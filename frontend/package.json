@@ -30,7 +30,6 @@
     "vitest": "^0.28.5",
     "vue": "^3.2.13",
     "vue-cli": "^1.2.0",
-    "vue-quill-editor": "^3.0.6",
     "vue-router": "^4.0.3",
     "vue-whatsapp-widget": "^1.0.0",
     "vuex": "^4.1.0"
