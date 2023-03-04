@@ -7,11 +7,11 @@
                 & O.E.</p>
         </div>
         <div class="lg:justify-self-end lg:text-right mx-6">
-            <p><a href="">Registered by the Care Quality Commission</a></p>
+            <p><a href="https://www.cqc.org.uk/location/1-117106339?referer=widget4">Registered by the Care Quality Commission</a></p>
             <!-- links to be added -->
             <p><a href="">Site Developers</a> |
                 <a href="">Terms and Conditions</a> |
-                <a href="">Privacy Policy</a>
+                <a href="https://doctor-today-app.herokuapp.com/about/FAQs">Privacy Policy</a>
             </p>
 
         </div>

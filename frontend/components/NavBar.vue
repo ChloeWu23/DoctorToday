@@ -41,7 +41,7 @@ export default {
                     children: []
                 },
                 {
-                    path: "/serviceSummary",
+                    path: "/services",
                     name: "services",
                     label: "Services & Prices",
                     children: []

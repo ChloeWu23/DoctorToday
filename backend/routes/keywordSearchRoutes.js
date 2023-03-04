@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
         // { id: 2, url: "http://localhost:3000/about/People", title: "People" },
         { id: 3, url: "http://localhost:3000/about/FAQs", title: "FAQs" },
         // { id: 4, url: "http://localhost:3000/travelGuides", title: "Travel Guides" },
-        { id: 5, url: "http://localhost:3000/serviceSummary", title: "Service & Prices" }
+        { id: 5, url: "http://localhost:3000/services", title: "Service & Prices" }
         // { id: 0, url: "https://doctor-today-app.herokuapp.com/bookingAppointment", title: "Appointments" },
         // { id: 1, url: "https://doctor-today-app.herokuapp.com/about/FindUs", title: "Find Us" },
         // { id: 2, url: "https://doctor-today-app.herokuapp.com/about/People", title: "People" },
