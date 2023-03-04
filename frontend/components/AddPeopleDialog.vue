@@ -19,6 +19,7 @@
             <!-- <QuillEditor class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html"
                 :content-style="contentStyle" v-model:content="newPeople.description">
             </QuillEditor> -->
+            <TextEditor @editorUpdated="updateContent" class="h-60"/>
 
         </el-form>
 
