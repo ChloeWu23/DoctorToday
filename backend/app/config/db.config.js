@@ -7,7 +7,7 @@ module.exports = {
     // USER: "root",
     // PASSWORD: "981125nn",
     // DB: "vue",
-      port:3306,
+    //   port:3306,
     dialect: "mysql",
     pool: {
       max: 5,

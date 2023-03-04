@@ -13,13 +13,21 @@
                 <el-input v-model="newPeople.profile" type="textarea">{{ newPeople.profile }}</el-input>
             </el-form-item>
 
+            <el-form-item label="Independent:" prop="is_independent">
+            <el-radio-group v-model="newPeople.independent">
+                <el-radio :label="true">Yes</el-radio>
+                <el-radio :label="false">No</el-radio>
+            </el-radio-group>
+        </el-form-item>
+            
+
             <el-form-item label="Description" prop="desc">
                 <!-- <el-input v-model="newPeople.description" type="textarea">{{ newPeople.description }}</el-input> -->
             </el-form-item>
             <!-- <QuillEditor class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html"
                 :content-style="contentStyle" v-model:content="newPeople.description">
             </QuillEditor> -->
-            <TextEditor @editorUpdated="updateContent" class="h-60"/>
+            <TextEditor @editorUpdated="updateContent" class="h-60" />
 
         </el-form>
 
@@ -65,6 +73,7 @@ export default {
                 description: "",
                 dialogImageUrl: '',
                 dialogVisible: false,
+                independent: false,
                 baseurl: '',
                 imageUrl: '', // image preview url
                 files: [], // uploaded files
@@ -75,6 +84,7 @@ export default {
     },
     setup(props, { emit }) {
         const dialogFormVisible = ref(false)
+        const independent = ref(false)
 
         const handleClose = () => {
             emit('update:modelValue', false)
@@ -82,6 +92,7 @@ export default {
         return {
             handleClose,
             dialogFormVisible,
+            independent
         };
     },
     methods: {
@@ -90,7 +101,8 @@ export default {
                 name: this.newPeople.name,
                 title: this.newPeople.title,
                 profile: this.newPeople.profile,
-                description: this.newPeople.description
+                description: this.newPeople.description,
+                is_independent: this.newPeople.independent
             };
 
             console.log(data)
@@ -107,31 +119,31 @@ export default {
                 return;
             }
 
-            if (this.files.length !== 0) {
-                let formData = new FormData()
-                formData.append('file', this.files)
-                formData.append('name', this.newPeople.name)
-                formData.append('title', this.newPeople.title)
-                formData.append('profile', this.newPeople.profile)
-                formData.append('description', this.newPeople.description)
+            // if (this.files.length !== 0) {
+            //     let formData = new FormData()
+            //     formData.append('file', this.files)
+            //     formData.append('name', this.newPeople.name)
+            //     formData.append('title', this.newPeople.title)
+            //     formData.append('profile', this.newPeople.profile)
+            //     formData.append('description', this.newPeople.description)
 
-                DataService.create(formData)
-                    .then((res) => {
-                        this.submitted = true;
-                        this.$emit("update:modelValue", false);
-                        this.$emit("refresh-callback");
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-
-            } else {
-                this.$message({
-                    message: 'Image can not be null!',
-                    type: 'error',
-                    duration: 1500
+            DataService.create(data)
+                .then((res) => {
+                    this.submitted = true;
+                    this.$emit("update:modelValue", false);
+                    this.$emit("refresh-callback");
                 })
-            }
+                .catch((err) => {
+                    console.log(err);
+                });
+
+            // } else {
+            //     this.$message({
+            //         message: 'Image can not be null!',
+            //         type: 'error',
+            //         duration: 1500
+            //     })
+            // }
 
         },
         upldchange(file) {
