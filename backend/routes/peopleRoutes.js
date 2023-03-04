@@ -8,6 +8,7 @@ const db = require("../app/models");
 const People = db.People;
 const Op = db.Sequelize.Op;
 
+//remove aws
 // const aws = require('aws-sdk');
 
 // aws.config.update({
