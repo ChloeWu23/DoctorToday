@@ -28,7 +28,7 @@
             </div>
             <div id="news"
                 class="m-4 lg:m-0 shadow-lg lg:w-full overflow-y-scroll h-48 md:h-5/6 lg:h-full scrollbar-thin scrollbar-thumb-[#2A4359] scrollbar-track-[#8896AB]">
-                <div class="flex my-2 w-full sticky top-0 bg-gray-100 p-2">
+                <div class="flex my-2 w-full hover:sticky top-0 p-2 z-0">
                     <span class="md:mr-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                             <path fill="none" d="M0 0h24v24H0z" />
