@@ -7,7 +7,8 @@
             <p class="m-4">Please <span class="text-[#143B71] font-semibold">click a category name</span> to skip directly
                 to detailed service and pricing information</p>
         </div>
-        <div class="justify-self-center grid gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 divide-x grid-auto-flow: column">
+        <div
+            class="justify-self-center grid gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 divide-x grid-auto-flow: column">
             <div v-for="service in fullServices" :key="service.serviceName.replace(/\s+/g, '-').toLowerCase()" class="mx-4">
                 <div class="hover:bg-[#143B71] delay-100 text-[#143B71] hover:text-white bg-contain bg-no-repeat bg-right-bottom bg-[#143B71]/10 p-4 shadow-md h-full border-t-4 border-[#143B71]"
                     :style="imgUrl(service.image)">
@@ -17,9 +18,9 @@
                         </p>
                         <p class="w-full border border-[#143B71]/50 my-2"></p>
                         <div class="divide-y divide-dashed text-sm xl:text-base py-2">
-                            <div>{{ service.description_1 }}</div>
-                            <div>{{ service.description_2 }}</div>
-                            <div>{{ service.description_3 }}</div>
+                            <div v-if="service.description_1">{{ service.description_1 }}</div>
+                            <div v-if="service.description_2">{{ service.description_2 }}</div>
+                            <div v-if="service.description_3">{{ service.description_3 }}</div>
                         </div>
                     </NuxtLink>
                 </div>
@@ -28,24 +29,20 @@
     </div>
 </template>
 
-<script>
-import DataService from '../dataRoutes/DataService';
 
+
+<script>
 export default {
     data() {
         return {
             fullServices: '',
         }
     },
-    mounted() {
-        DataService.get()
-            .then(response => {
-                console.log(response.data);
-                this.fullServices = response.data;
-            })
-            .catch(err => {
-                console.log(err);
-            });
+    async setup() {
+        const { data: fullServices, pending, error, refresh } = await useAsyncData(
+            () => $fetch("https://doctor-today-back.herokuapp.com/service")
+        )
+        return { fullServices };
     },
     methods: {
         imgUrl(name) {

@@ -24,7 +24,7 @@ const registerEmailRouter = require('./routes/registerEmailRoutes');
 const faqRouter = require('./routes/faqRoutes');
 const travelRouter = require('./routes/travelRoutes');
 const otherInfoRouter = require('./routes/otherInfoRoutes');
-const peopleRouter = require('./routes/peopleRoutes');
+// const peopleRouter = require('./routes/peopleRoutes');
 const newsRouter = require('./routes/newsRoutes');
 
 const keywordSearchRouter = require('./routes/keywordSearchRoutes');
@@ -38,7 +38,7 @@ app.use('/sendRegisterEmail', registerEmailRouter)
 app.use('/faq', faqRouter);
 app.use('/travel', travelRouter);
 app.use('/other-info', otherInfoRouter);
-app.use('/people', peopleRouter);
+// app.use('/people', peopleRouter);
 app.use('/news', newsRouter);
 app.use('/keywordSearch', keywordSearchRouter);
 
