@@ -11,7 +11,7 @@
             <div class="grid md:grid-cols-2">
                 <div class="text-sm mt-4">
                     <div class="justify-items-centeralign-middle m-2">
-                        <a href="mailto:enquiries@doctortoday.co.uk" class="flex">
+                        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;" class="flex">
                             <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                                     height="24">
                                     <path fill="none" d="M0 0h24v24H0z" />
