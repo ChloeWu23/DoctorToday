@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import DataPeople from '../dataRoutes/DataPeople'
+import DataPeople from '../../dataRoutes/DataPeople'
 
 //<img class="pb-3 drop-shadow-xl w-[200px] h-[280px] object-none" v-bind:src='item.image' :alt="item.name" />
 export default {
@@ -104,20 +104,6 @@ export default {
 </script>
 
 <style>
-.rotate {
-    transform: rotate(45deg);
-    transition: all 0.4s ease-in-out;
-}
-
-.rotated {
-    transform: rotate(0deg);
-
-}
-
-.description {
-    animation: height .4s ease-in-out;
-}
-
 @keyframes height {
     0% {
         opacity: 0;

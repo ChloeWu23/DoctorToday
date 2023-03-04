@@ -31,58 +31,20 @@
 </template>
 
 <script>
-import DataFAQ from '../dataRoutes/DataFAQ'
-
 export default {
     data() {
         return {
-            questionList: [],
         }
     },
-    mounted() {
-        DataFAQ.get()
-            .then(res => {
-                this.questionList = res.data;
-                for (let i = 0; i < this.questionList.length; i++) {
-                    this.questionList[i].answer = this.questionList[i].answer.replace(/&pound/g, "£");
-                }
-            })
-            .catch(err => {
-                console.log("Error: can not retrieve FAQs data")
-            })
+    async setup() {
+        const {data: questionList, pending, error, refresh } = await useAsyncData(
+            () => $fetch("https://doctor-today-back.herokuapp.com/faq")
+        )
+        return { questionList };
     }
 }
 </script>
 
 <style>
-details>summary {
-    list-style: none;
-}
 
-details summary::-webkit-details-marker {
-    display: none;
-}
-
-details summary::after {
-    content: url("@/assets/plus.png");
-    font-size: 2em;
-    color: #708090;
-    transition: transform 0.5s ease-in-out;
-}
-
-details[open] summary::after {
-    content: url("@/assets/plus.png");
-    transform: rotate(-45deg);
-    transition: transform 0.5s ease-in-out;
-}
-
-details{
-	transition: all 0.5s ease-in-out;
-	max-height: 100px;
-	overflow: hidden;
-}
-
-details[open] {
-	max-height: 500px;
-}
 </style>
