@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const multer = require('multer')
+const multerS3 = require('multer-s3');
 const path = require('path');
 
 const { Sequelize } = require("../app/models");
@@ -7,32 +8,46 @@ const db = require("../app/models");
 const People = db.People;
 const Op = db.Sequelize.Op;
 
+const aws = require('aws-sdk');
 
-const AWS = require('aws-sdk');
+aws.config.update({
+    accessKeyId: 'AKIARXAT7U35FUQT3NUL',
+    secretAccessKey: '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',
+    region: 'eu-west-2',
+  });
 
-const s3 = new AWS.S3({
-  accessKeyId: "AKIARXAT7U35FUQT3NUL",
-  secretAccessKey: "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"
-});
-
+const s3 = new aws.S3();
 const S3_BUCKET_NAME = 'upload-image-for-admin';
 
+// Set up Multer S3 middleware for image upload
+const upload = multer({
+    storage: multerS3({
+      s3: s3,
+      bucket: S3_BUCKET_NAME,
+      acl: 'public-read',
+      key: function (req, file, cb) {
+        cb(null, 'people/' + Date.now().toString() + '-' + file.originalname);
+      }
+    })
+  });
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, '')//../../frontend/assets/people
-        console.log('in destination')
-    },
-    filename: function (req, file, cb) {
-        //use current time to set name of files
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-})
 
 
-var upload = multer({
-    storage: storage
-})
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, '')//../../frontend/assets/people
+//         console.log('in destination')
+//     },
+//     filename: function (req, file, cb) {
+//         //use current time to set name of files
+//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+//     }
+// })
+
+
+// var upload = multer({
+//     storage: storage
+// })
 
 router.get("/", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
@@ -62,21 +77,6 @@ router.post("/", upload.single('file'),
         console.log(file.destination)
         //res.send(file)
 
-        const params = {
-            Bucket: S3_BUCKET_NAME,
-            Key: file.filename,
-            Body: file.buffer
-        };
-
-        s3.putObject(params, function(err, data) {
-            console.log("in s3 putObject")
-            if (err) {
-              console.error(err);
-              return res.status(500).send('Error uploading file');
-            }
-        
-            res.send('File uploaded successfully');
-          });
 
         if (req.body.name === null || req.body.name === undefined) {
             res.status(500).send({
