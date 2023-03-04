@@ -1,6 +1,6 @@
-const multer = require('multer')
+const multer = require("multer");
 const router = require("express").Router();
-const path = require('path');
+const path = require("path");
 
 /*
     post("/")  : add new service, need serviceName
@@ -14,78 +14,83 @@ const ServiceOverviews = db.ServiceOverviews;
 const SubService = db.SubService;
 const Op = db.Sequelize.Op;
 
-
-/** 
+/**
  * POST
  * /upload
  * */
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../frontend-user/src/assets/services')
-    console.log('in destination')
+    cb(null, "../frontend-user/src/assets/services");
+    console.log("in destination");
   },
   filename: function (req, file, cb) {
     //use current time to set name of files
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-})
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
 
 var upload = multer({
-  storage: storage
-})
+  storage: storage,
+});
 
+//upload.single('file'),
 
-router.post("/", upload.single('file'),
-  async (req, res) => {
-    res.set("Access-Control-Allow-Origin", "*");
+router.post("/", async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
 
-    var file = req.file
-    console.log("in uploadRoutes")
-    console.log(file)
-    console.log(file.destination)
-    //res.send(file)
+  var file = req.file;
+  // console.log("in uploadRoutes")
+  // console.log(file)
+  // console.log(file.destination)
+  //res.send(file)
 
-    if (req.body.serviceName === null || req.body.serviceName === undefined) {
-      res.status(400).send({
-        message: "Content can not be empty!",
+  if (req.body.serviceName === null || req.body.serviceName === undefined) {
+    res.status(400).send({
+      message: "Content can not be empty!",
+    });
+    console.log(req.body);
+    return;
+  }
+
+  var count = await ServiceOverviews.count({ col: "serviceName" });
+  var bind_max = await ServiceOverviews.max("bind_id");
+  // var pathToRead = 'services/'+file.filename
+  console.log("path to read:");
+  // console.log(pathToRead)
+  var serviceItem = {
+    serviceName: req.body.serviceName,
+    bind_id: bind_max + 1,
+    service_cat_id: count,
+    description_1: req.body.description_1,
+    description_2: req.body.description_2,
+    description_3: req.body.description_3,
+    image: null,
+    appointment_iframe: req.body.appointment_iframe,
+  };
+
+  ServiceOverviews.create(serviceItem)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Service",
       });
-      console.log(req.body);
-      return;
-    }
-
-    var count = await ServiceOverviews.count({ col: "serviceName" });
-    var bind_max = await ServiceOverviews.max("bind_id");
-    var pathToRead = 'services/'+file.filename
-    console.log('path to read:')
-    console.log(pathToRead)
-    var serviceItem = {
-      serviceName: req.body.serviceName,
-      bind_id: bind_max + 1,
-      service_cat_id: count,
-      description_1: req.body.description_1,
-      description_2: req.body.description_2,
-      description_3: req.body.description_3,
-      image: pathToRead,
-      appointment_iframe: req.body.appointment_iframe
-    };
-
-    ServiceOverviews.create(serviceItem)
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Service",
-        });
-      });
-  });
+    });
+});
 
 // found the service by service_cat_id
 router.patch("/", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
-  if (req.body.service_cat_id === null || req.body.service_cat_id === undefined) {
+  if (
+    req.body.service_cat_id === null ||
+    req.body.service_cat_id === undefined
+  ) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
@@ -107,7 +112,7 @@ router.patch("/", async (req, res) => {
     description_2: req.body.description_2,
     description_3: req.body.description_3,
     image: req.body.image,
-    appointment_iframe: req.body.appointment_iframe
+    appointment_iframe: req.body.appointment_iframe,
   });
 
   await patchItem
@@ -127,7 +132,10 @@ router.patch("/", async (req, res) => {
 router.post("/deleteService", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
-  if (req.body.service_cat_id === null || req.body.service_cat_id === undefined) {
+  if (
+    req.body.service_cat_id === null ||
+    req.body.service_cat_id === undefined
+  ) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
@@ -138,26 +146,30 @@ router.post("/deleteService", async (req, res) => {
   var count = await ServiceOverviews.count({ col: "service_cat_id" });
 
   // console.log("original rows size: " + count);
-  var bind_id;
-  const item = ServiceOverviews.findOne({
-    attributes: ["bind_id"],
-    where: {
-      service_cat_id: req.body.service_cat_id
-    }
-  })
-    .then(data => {
-      bind_id = data.bind_id;
-      console.log("--- find " + data.bind_id);
+  // var bind_id;
+  // const item = ServiceOverviews.findOne({
+  //   attributes: ["bind_id"],
+  //   where: {
+  //     service_cat_id: req.body.service_cat_id
+  //   }
+  // })
+  //   .then(data => {
+  //     bind_id = data.bind_id;
+  //     console.log("--- find " + data.bind_id);
 
-    })
-    .catch(err => {
-      res.status(501).send(err.message);
-    })
+  //   })
+  //   .catch(err => {
+  //     res.status(501).send(err.message);
+  //   })
 
   await ServiceOverviews.destroy({
     where: {
       service_cat_id: req.body.service_cat_id,
     },
+  }).catch((err) => {
+    res.status(500).send({
+      message: err.message || "Some error occured while deleting Service",
+    });
   });
 
   // for service_cat_id = [target+1 : count-1], primary_key--
@@ -170,26 +182,29 @@ router.post("/deleteService", async (req, res) => {
           service_cat_id: i,
         },
       }
-    );
+    ).catch((err) => {
+      res.status(500).send({
+        message: err.message || "ERROR in deleting subsequent news",
+      });
+    });
   }
 
   // delete all subService
-  console.log("--- bind_id: " + bind_id);
-  await SubService.destroy({
-    where: {
-      cat_id: bind_id
-    }
-  })
-    .then(data => {
-      console.log("--- delete subservice size: " + data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occured while deleSubServiceting ",
-      });
-    })
-
+  // console.log("--- bind_id: " + bind_id);
+  // await SubService.destroy({
+  //   where: {
+  //     cat_id: bind_id
+  //   }
+  // })
+  //   .then(data => {
+  //     console.log("--- delete subservice size: " + data);
+  //   })
+  //   .catch(err => {
+  //     res.status(500).send({
+  //       message:
+  //         err.message || "Some error occured while deleSubServiceting ",
+  //     });
+  //   })
 
   res.status(204).json({
     status: "success",
@@ -202,7 +217,12 @@ router.patch("/swap", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
   // console.log(req.body);
 
-  if (req.body.id_1 === undefined || req.body.id_2 === undefined || req.body.id_1 === null || req.body.id_2 === null) {
+  if (
+    req.body.id_1 === undefined ||
+    req.body.id_2 === undefined ||
+    req.body.id_1 === null ||
+    req.body.id_2 === null
+  ) {
     res.status(400).send({
       message: "Content can not be empty!",
     });

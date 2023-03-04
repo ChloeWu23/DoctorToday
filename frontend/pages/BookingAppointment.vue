@@ -12,7 +12,7 @@
             </div>
             
             <div class="pl-3 md:w-3/4">
-                <h1 class = "text-gray-700 font-bold text-base md:text-xl lg:text-2xl font-sans">Booking Requests</h1>
+                <h1 class = "text-gray-700 font-bold text-base md:text-xl lg:text-2xl ">Booking Requests</h1>
                 <div><br></div>
                 <div class = "text-sm md:text-base leading-7">
                     <p>Appointments can be requested online via our <RouterLink class = "text-sky-700 font-bold hover:underline hover:underline-offset-4" to="Appointment"> online booking system.</RouterLink> 
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="pl-3 md:w-3/4">
-                <h1 class = "text-gray-700 font-bold text-base md:text-xl lg:text-2xl font-sans">Register Online</h1>
+                <h1 class = "text-gray-700 font-bold text-base md:text-xl lg:text-2xl ">Register Online</h1>
                 <div><br></div>
                 <p class = "text-base leading-7">You can save time at your appointment by filling out this
                 <RouterLink class = "text-sky-700 font-extrabold hover:underline hover:underline-offset-4" to="NewPatientRegister">online patient registration</RouterLink> 
@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="pl-3 md:w-3/4">
-                <h1 class = "text-gray-700 font-bold text-base md:text-xl lg:text-2xl font-sans">Family members, friends and chaperones</h1>
+                <h1 class = "text-gray-700 font-bold text-base md:text-xl lg:text-2xl ">Family members, friends and chaperones</h1>
                 <div><br></div>
                 <p class="text-sm md:text-base leading-7">Patients are welcome to attend with a family member or friend. At your specific request, 
                     they may sit in on the consultation. For females undergoing intimate examinations or tests 
@@ -90,7 +90,7 @@
             </div>
 
             <div class="pl-3 md:w-3/4">
-                <h1 class = "text-gray-700 font-bold text-base md:text-xl lg:text-2xl font-sans">Children</h1>
+                <h1 class = "text-gray-700 font-bold text-base md:text-xl lg:text-2xl ">Children</h1>
                 <div><br></div>
                 <p class = "text-sm md:text-base leading-7">Please note that children under 16 years of age will not be seen unless accompanied by a 
                 parent or other person with parental responsibility. However, with consent of both parties, 
