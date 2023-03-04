@@ -13,7 +13,7 @@ router.get("/", async(req, res) => {
         })
         .then(data => {
             console.log(req.body);
-            res.status(401).json(data);
+            res.status(200).json(data);
         })
         .catch(err => {
             res.status(500).send({
