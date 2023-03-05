@@ -105,7 +105,9 @@ router.patch("/", async (req, res) => {
     return;
   }
 
-  const patchItem = await ServiceOverviews.findOne(req.body.service_cat_id);
+  const patchItem = await ServiceOverviews.findOne(
+    { where: { service_cat_id: req.body.service_cat_id } }
+  );
   if (patchItem === null) {
     res.status(400).send({
       message: "invalid service_cat_id! ",
