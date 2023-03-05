@@ -1,7 +1,7 @@
 <template>
     <ContactButton/>
-    <div class = "xl:max-w-screen-xl mx-auto container">
-        <label for="color-mode" >Select Color Mode:</label>
+    <div class = "xl:max-w-screen-xl md:text-lg text-base mx-auto container">
+        <label for="color-mode" >Select Color Mode</label>
         <select v-model="$colorMode.preference" id="color-mode">
             <option value="system">System</option>
             <option value="light">Light</option>
@@ -65,17 +65,11 @@
 
 </template>
 
-<script>
-/*
-const colorMode = useColorMode()
- console.log(colorMode.value)
-*/
-</script>
 
 <style>
 .dark-mode body {
   background-color: #091a28;
-  color: #ebf4f1;
+  color: aliceblue;
 }
 .sepia-mode body {
   background-color: #f1e7d0;
