@@ -165,6 +165,12 @@ export default {
                 });
         },
         swapFAQUp(faq_id) {
+            // check is not the first row
+            if (faq_id === 0) {
+                console.log("Invalid: you want to swap up the first row")
+                return;
+            }
+
             var data = {
                 id_1: faq_id,
                 id_2: faq_id - 1

@@ -140,21 +140,13 @@ export default {
                     console.log(err);
                 });
         },
-        swapNewsDown(news_id) {
-            var data = {
-                id_1: news_id,
-                id_2: news_id + 1
-            };
-            DataNews.swap(data)
-                .then(res => {
-                    console.log(res.data);
-                    this.refreshServiceView();
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        },
         swapNewsUp(news_id) {
+            // check is not the first row
+            if (news_id === 0) {
+                console.log("Invalid: you want to swap up the first row")
+                return;
+            }
+
             var data = {
                 id_1: news_id,
                 id_2: news_id - 1

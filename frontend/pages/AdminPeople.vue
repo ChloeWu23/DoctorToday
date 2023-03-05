@@ -209,21 +209,13 @@ export default {
                     console.log(err);
                 });
         },
-        swapPeopleDown(staff_id) {
-            var data = {
-                id_1: staff_id,
-                id_2: staff_id + 1
-            };
-            DataPeople.swap(data)
-                .then(res => {
-                    console.log(res.data);
-                    this.refreshServiceView();
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        },
         swapPeopleUp(staff_id) {
+            // check is not the first row
+            if (staff_id === 0) {
+                console.log("Invalid: you want to swap up the first row")
+                return;
+            }
+
             var data = {
                 id_1: staff_id,
                 id_2: staff_id - 1

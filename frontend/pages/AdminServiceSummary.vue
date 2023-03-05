@@ -173,6 +173,12 @@ export default {
                 });
         },
         swapServicesUp(serviceId) {
+            // check is not the first row
+            if (serviceId === 0) {
+                console.log("Invalid: you want to swap up the first row")
+                return;
+            }
+
             var data = {
                 id_1: serviceId,
                 id_2: serviceId - 1
