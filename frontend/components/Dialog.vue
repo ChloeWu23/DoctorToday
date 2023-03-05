@@ -38,6 +38,14 @@ import { reactive, ref } from "vue";
 import DataService from '@/dataRoutes/DataService';
 
 export default {
+    props: {
+        isEdit: Boolean,
+
+        data_serviceName: String,
+        data_description_1: String,
+        data_description_2: String, 
+        data_description_3: String
+    },
     data() {
         return {
             newService: {
@@ -67,6 +75,13 @@ export default {
         };
     },
     methods: {
+        handleDialogue() {
+            if (this.isEdit) {
+                this.editService();
+            } else {
+                this.addService();
+            }
+        },
         addService() {
             var data = {
                 serviceName: this.newService.name,
@@ -74,7 +89,6 @@ export default {
                 description_2: this.newService.desc2,
                 description_3: this.newService.desc3
             };
-
 
             console.log(data)
 
@@ -103,6 +117,10 @@ export default {
 
             console.log("after parent emit")
         },
+        
+        editService() {
+
+        }
     }
 
 }

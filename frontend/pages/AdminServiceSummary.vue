@@ -2,7 +2,7 @@
     <SideBar></SideBar>
 
     <div class="p-4 sm:ml-64 ">
-        <button type="button" @click="handlerDialog"
+        <button type="button" @click="emitAddDialog"
             class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 
             <svg fill="none" class="w-5 h-5 mr-2 -ml-1" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
@@ -50,14 +50,21 @@
                             {{ serviceInfo.description_3 }}
                         </td>
                         <td class="flex items-center px-6 py-4 space-x-3">
-                            <button @click="deleteService(serviceInfo.service_cat_id)"
-                                class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                            <button @click="swapServicesDown(serviceInfo.service_cat_id)"
-                                class="font-medium text-green-600 dark:text-green-500 hover:underline">Down</button>
+                            <button @click="emitEditDialogue(serviceInfo)"
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
+                                <img src="../assets/admin_portal/icon-edit.svg" alt="Icon" class="mr-2" />
+                            </button>
+                            
                             <button @click="swapServicesUp(serviceInfo.service_cat_id)"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Up</button>
-                            <button @click="openSubServiceDialog"
-                                class="font-medium text-pink-600 dark:text-blue-500 hover:underline">Add sub-service</button>
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
+                                <img src="../assets/admin_portal/icon-up-arrow.svg" alt="Icon" class="mr-2" />
+                            </button>
+
+                            <button @click="deleteService(serviceInfo.service_cat_id)"
+                                class="font-medium text-red-600 dark:text-red-500 hover:underline w-7 hover:bg-gray-200 rounded">
+                                <img src="../assets/admin_portal/icon-delete.svg" alt="Icon" class="mr-2" />
+                            </button>
+
                         </td>
                     </tr>
                 </tbody>
@@ -65,11 +72,16 @@
 
         </div>
 
-        <Dialog v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
-        <Dialog />
+        <Dialog 
+            v-model="dialogFormVisible"
+            v-if="dialogFormVisible" 
+            :isEdit = "isEdit"
+            data_serviceName = "data_serviceName"
+            data_description_1 = "data_description_1"
+            data_description_2 = "data_description_2" 
+            data_description_3 = "data_description_3"
+        ></Dialog>
 
-        <SubServiceDialog v-model="subServiceVisible" v-if="subServiceVisible" :service_cat_id = this.service_cat_id></SubServiceDialog>
-        
     </div>
 </template>
 
@@ -87,8 +99,14 @@ export default {
         return {
             servicesInfo: "",
             dialogFormVisible: false,
-            subServiceVisible: false,
-            service_cat_id: 0
+            service_cat_id: 0,
+
+            isEdit: false,
+
+            data_serviceName: "",
+            data_description_1: "",
+            data_description_2: "", 
+            data_description_3: ""
         }
     },
 
@@ -105,35 +123,24 @@ export default {
         }
     },
 
+    watch: {
+        dialogFormVisible(newValue, oldValue) {
+            this.refreshServiceView();
+        }
+    },
+
     setup() {
         const dialogFormVisible = ref(false);
-        const subServiceVisible = ref(false);
 
-        const handlerDialog = () => {
-            dialogFormVisible.value = true;
-        };
-        const openSubServiceDialog = () => {
-            subServiceVisible.value = true;
-        };
+        
 
         return {
             dialogFormVisible,
-            subServiceVisible,
-            handlerDialog,
-            openSubServiceDialog,
-            
         };
     },
 
     mounted() {
-        DataService.get()
-            .then(response => {
-                console.log(response.data);
-                this.servicesInfo = response.data;
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        this.refreshServiceView();
     },
     methods: {
         refreshServiceView() {
@@ -159,20 +166,6 @@ export default {
                     console.log(err);
                 });
         },
-        swapServicesDown(serviceId) {
-            var data = {
-                id_1: serviceId,
-                id_2: serviceId + 1
-            };
-            DataService.swap(data)
-                .then(res => {
-                    console.log(res.data);
-                    this.refreshServiceView();
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        },
         swapServicesUp(serviceId) {
             var data = {
                 id_1: serviceId,
@@ -187,10 +180,28 @@ export default {
                     console.log(err);
                 });
         },
-        addSubService(service_cat_id){
-            this.service_cat_id = service_cat_id
-            this.subServiceVisible = true;
-        }
+        emitAddDialog() {
+            this.isEdit = false;
+
+            this.data_serviceName = "";
+            this.data_description_1 = "";
+            this.data_description_2 = "";
+            this.data_description_3 = "";
+
+            this.dialogFormVisible = true;
+        },
+
+        emitEditDialog(serviceInfo) {
+            this.isEdit = true;
+
+            this.data_serviceName = serviceInfo.serviceName;
+            this.data_description_1 = serviceInfo.description_1;
+            this.data_description_2 = serviceInfo.description_2;
+            this.data_description_3 = serviceInfo.description_3;
+
+            this.dialogFormVisible = true;
+        },
+
     }
 
 }
