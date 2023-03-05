@@ -14,7 +14,7 @@ class DataFAQ {
     }
 
     delete(data) {
-        return http.delete("/faq", data);
+        return http.post("/faq/delete", data);
     }
 
     swap(data) {

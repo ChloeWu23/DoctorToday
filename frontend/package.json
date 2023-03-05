@@ -21,6 +21,7 @@
     "aws-sdk": "^2.1328.0",
     "axios": "^1.2.5",
     "core-js": "^3.8.3",
+    "element-plus": "^2.2.33",
     "fortawesome": "^0.0.1-security",
     "moment": "^2.29.4",
     "postcss": "^8.4.21",
