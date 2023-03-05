@@ -1,7 +1,7 @@
 <template>
     <SideBar></SideBar>
     <div class="p-4 sm:ml-64 ">
-        <button type="button" @click="handlerDialog"
+        <button type="button" @click="emitAddDialog"
             class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 
             <svg fill="none" class="w-5 h-5 mr-2 -ml-1" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
@@ -11,6 +11,9 @@
             </svg>
             Add People
         </button>
+
+        <div v-if="dialogFormVisible">True</div>
+        <div v-else>False</div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -30,6 +33,9 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Independent
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Website
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Action
@@ -56,17 +62,29 @@
 
                         <td class="px-6 py-4">
                             {{ people.is_independent }}
+                            <!-- TODO: display as svg icon  -->
                         </td>
 
+                        <td class="px-6 py-4">
+                            {{ people.website }}
+                            <!-- TODO: display the link -->
+                        </td>
 
                         <td class="flex items-center px-6 py-4 space-x-3">
-                            <!-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> -->
-                            <button @click="deletePeople(people.staff_id)"
-                                class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                            <button @click="swapPeopleDown(people.staff_id)"
-                                class="font-medium text-green-600 dark:text-green-500 hover:underline">Down</button>
+                            <button @click="emitEditDialog(people)"
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
+                                <img src="../assets/admin_portal/icon-edit.svg" alt="Icon" class="mr-2" />
+                            </button>
+                            
                             <button @click="swapPeopleUp(people.staff_id)"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Up</button>
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
+                                <img src="../assets/admin_portal/icon-up-arrow.svg" alt="Icon" class="mr-2" />
+                            </button>
+
+                            <button @click="deletePeople(people.staff_id)"
+                                class="font-medium text-red-600 dark:text-red-500 hover:underline w-7 hover:bg-gray-200 rounded">
+                                <img src="../assets/admin_portal/icon-delete.svg" alt="Icon" class="mr-2" />
+                            </button>                        
                         </td>
                     </tr>
                 </tbody>
@@ -74,8 +92,19 @@
 
         </div>
 
-        <AddPeopleDialog v-model="dialogFormVisible" v-if="dialogFormVisible" @refresh-callback="refreshServiceView" />
-        <AddPeopleDialog />
+        <AddPeopleDialog 
+            v-model="dialogFormVisible" 
+            v-if="dialogFormVisible" 
+            :isEdit = "isEdit"
+            :data_staff_id = "EditItem.staff_id"
+            :data_name = "EditItem.name"
+            :data_title = "EditItem.title"
+            :data_profile = "EditItem.profile"
+            :data_description = "EditItem.description"
+            :data_image = "EditItem.image"
+            :data_website = "EditItem.website"
+            :data_is_independent = "EditItem.is_independent"
+        ></AddPeopleDialog>
     </div>
 </template>
 
@@ -94,7 +123,20 @@ export default {
         return {
             peopleList: "",
             dialogFormVisible: false,
-            peopleDescription: ""
+            peopleDescription: "",
+
+            isEdit: false,
+
+            EditItem : {
+                staff_id: "",
+                name: "",
+                title: "",
+                profile: "",
+                description: "",
+                image: "",
+                website: "",
+                is_independent: "",
+            }
         }
     },
 
@@ -108,6 +150,12 @@ export default {
             // This code runs on the server-side
             console.log("Not pass the admin authentication! ");
             this.$router.push('/AdminLogin');
+        }
+    },
+
+    watch: {
+        dialogFormVisible(newValue, oldValue) {
+            this.refreshServiceView();
         }
     },
 
@@ -161,21 +209,13 @@ export default {
                     console.log(err);
                 });
         },
-        swapPeopleDown(staff_id) {
-            var data = {
-                id_1: staff_id,
-                id_2: staff_id + 1
-            };
-            DataPeople.swap(data)
-                .then(res => {
-                    console.log(res.data);
-                    this.refreshServiceView();
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        },
         swapPeopleUp(staff_id) {
+            // check is not the first row
+            if (staff_id === 0) {
+                console.log("Invalid: you want to swap up the first row")
+                return;
+            }
+
             var data = {
                 id_1: staff_id,
                 id_2: staff_id - 1
@@ -188,6 +228,29 @@ export default {
                 .catch(err => {
                     console.log(err);
                 });
+        },
+        emitAddDialog() {
+            this.isEdit = false;
+
+            this.EditItem = {
+                staff_id: "",
+                name: "",
+                title: "",
+                profile: "",
+                description: "",
+                image: "",
+                website: "",
+                is_independent: "",
+            };
+
+            this.dialogFormVisible = true;
+        },
+        emitEditDialog(people) {
+            this.isEdit = true;
+
+            this.EditItem = people;
+
+            this.dialogFormVisible = true;
         },
     }
 

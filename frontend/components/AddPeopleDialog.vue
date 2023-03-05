@@ -22,12 +22,10 @@
             
 
             <el-form-item label="Description" prop="desc">
-                <!-- <el-input v-model="newPeople.description" type="textarea">{{ newPeople.description }}</el-input> -->
+                <el-input v-model="newPeople.description" type="textarea">{{ newPeople.description }}</el-input>
             </el-form-item>
-            <!-- <QuillEditor class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html"
-                :content-style="contentStyle" v-model:content="newPeople.description">
-            </QuillEditor> -->
-            <TextEditor @editorUpdated="updateContent" class="h-60" />
+            <!-- <TextEditor @editorUpdated="updateContent" class="h-60" /> -->
+            <!-- FIXME: Text editor -->
 
         </el-form>
 
@@ -48,7 +46,7 @@
                     @click="handleClose">Cancel</button>
                 <button type="button"
                     class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    @click="addPeople">Confirm</button>
+                    @click="handleDialogue">Confirm</button>
             </span>
         </template>
     </el-dialog>
@@ -62,16 +60,29 @@ import DataService from '@/dataRoutes/DataPeople';
 
 export default {
     // components: { QuillEditor },
+    props: {
+        isEdit: Boolean,
+
+        data_staff_id: Number,
+        data_name: String,
+        data_title: String,
+        data_profile: String,
+        data_description: String, 
+        data_image: String,
+        data_website: String,
+        data_is_independent: Boolean
+    },
     data() {
         return {
             newPeople: {
-                name: "",
-                title: "",
-                profile: "",
-                description: "",
-                dialogImageUrl: '',
+                name: this.data_name,
+                title: this.data_title,
+                profile: this.data_profile,
+                description: this.data_description,
+                dialogImageUrl: '',  // FIXME: this.data_image
                 dialogVisible: false,
-                independent: false,
+                independent: this.data_is_independent,
+                website: this.data_website,
                 baseurl: '',
                 imageUrl: '', // image preview url
                 files: [], // uploaded files
@@ -94,12 +105,20 @@ export default {
         };
     },
     methods: {
+        handleDialogue() {
+            if (this.isEdit) {
+                this.editPeople();
+            } else {
+                this.addPeople();
+            }
+        },
         addPeople() {
             var data = {
                 name: this.newPeople.name,
                 title: this.newPeople.title,
                 profile: this.newPeople.profile,
                 description: this.newPeople.description,
+                website: this.newPeople.website,
                 is_independent: this.newPeople.independent
             };
 
@@ -124,7 +143,9 @@ export default {
                 formData.append('title', this.newPeople.title)
                 formData.append('profile', this.newPeople.profile)
                 formData.append('description', this.newPeople.description)
-
+                formData.append('website', this.newPeople.website)
+                formData.append('is_independent', this.newPeople.independent)
+                
             DataService.create(formData)
                 .then((res) => {
                     this.submitted = true;
@@ -143,6 +164,42 @@ export default {
                 })
             }
 
+        },
+        editPeople() {
+            var data = {
+                staff_id: this.data_staff_id,
+                name: this.newPeople.name,
+                title: this.newPeople.title,
+                profile: this.newPeople.profile,
+                description: this.newPeople.description,
+                website: this.newPeople.website,
+                is_independent: this.newPeople.independent, 
+                image: this.data_image // FIXME: change to new image url
+            };
+
+            console.log(data)
+
+            if (data.name == undefined || data.name == '') {
+                console.log('please input name')
+                alert('please input name')
+                return;
+            }
+
+            if (data.title == undefined || data.title == '') {
+                console.log('please input the title')
+                alert('please input the title')
+                return;
+            }
+
+            DataService.update(data)
+                .then((res) => {
+                    this.submitted = true;
+                    this.$emit("update:modelValue", false);
+                    this.$emit("refresh-callback");
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
         upldchange(file) {
             //   const isJPG = file.raw.type === 'image/jpeg'
