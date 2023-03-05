@@ -46,7 +46,7 @@ export default defineNuxtConfig({
                         gui_options: {
                             consent_modal: {
                                 layout: 'cloud',               // box/cloud/bar
-                                position: 'bottom left',     // bottom/middle/top + left/right/center
+                                position: 'bottom center',     // bottom/middle/top + left/right/center
                                 transition: 'slide',           // zoom/slide
                                 swap_buttons: false            // enable to invert buttons
                             },
@@ -55,7 +55,23 @@ export default defineNuxtConfig({
                                 // position: 'left',           // left/right
                                 transition: 'slide'            // zoom/slide
                             }
-                        }
+                        },
+                        styles: {
+                            dark: {
+                                enabledByDefault: true,
+                                bg: 'black',
+                                text: 'white',
+                                btnPrimaryBg: 'white',
+                                btnPrimaryText: 'black',
+                            },
+                            bg: 'orange',
+                            text: 'black',
+                            btnPrimaryBg: 'white',
+                            btnPrimaryText: 'black',
+                            btnPrimaryHoverBg: 'lightgray',
+                            btnSecondaryBg: 'lightgray',
+                            btnSecondaryText: 'black',
+                        },
                     });
                 });
                 `}
