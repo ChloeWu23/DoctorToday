@@ -1,18 +1,15 @@
 <template>
     <ContactButton/>
-<!--  
- <div>
-        <button>Color</button>
-        <h1>Color mode: {{ $colorMode.value }}</h1>
-        <select v-model="$colorMode.preference">
-      <option value="system">System</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="sepia">Sepia</option>
-    </select>
+    <div class = "xl:max-w-screen-xl mx-auto container">
+        <label for="color-mode" >Select Color Mode:</label>
+        <select v-model="$colorMode.preference" id="color-mode">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="sepia">Sepia</option>
+        </select>
     </div>
 
--->
    
     <body class="bg-gray-100 xl:max-w-screen-xl mx-auto container">
         <div class="container mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
@@ -69,10 +66,10 @@
 </template>
 
 <script>
- const colorMode = useColorMode()
+/*
+const colorMode = useColorMode()
  console.log(colorMode.value)
-
-
+*/
 </script>
 
 <style>
