@@ -1,7 +1,7 @@
 <template>
     <el-dialog :model-value="dialogFormVisible" title="Adding New Service" :show-close="false"
         :close-on-click-modal="false">
-        <el-form :model="form">
+        <el-form>
             <el-form-item label="Service Category Name">
                 <el-input v-model="newService.name" autocomplete="off">{{ newService.name }}</el-input>
             </el-form-item>
@@ -19,6 +19,16 @@
             </el-form-item>
 
         </el-form>
+
+        <el-upload action="" list-type="picture" :auto-upload="false" :on-remove="handleRemove" :on-change="upldchange"
+            :limit="1" :on-exceed="handleExceed" ref="upload">
+            <el-button>Add image</el-button>
+        </el-upload>
+
+        <el-dialog v-model="dialogVisible">
+            <img w-full :src="dialogImageUrl" alt="Preview Image" />
+        </el-dialog>
+
         <template #footer>
             <span class="dialog-footer">
                 <button type="button"
@@ -44,19 +54,20 @@ export default {
                 name: "",
                 desc1: "",
                 desc2: "",
-                desc3: ""
+                desc3: "",
+                dialogImageUrl: '',
+                dialogVisible: false,
+                independent: false,
+                baseurl: '',
+                imageUrl: '', // image preview url
+                files: [], // uploaded files
+                url: '', // auto-upload = false, so set to null
             },
             submitted: false
         };
     },
     setup(props, { emit }) {
         const dialogFormVisible = ref(false)
-        const form = reactive({
-            name: '',
-            desc1: '',
-            desc2: '',
-            desc3: '',
-        })
 
         const handleClose = () => {
             emit('update:modelValue', false)
@@ -78,30 +89,70 @@ export default {
 
             console.log(data)
 
-            if(data.serviceName == undefined || data.serviceName == ''){
+            if (data.serviceName == undefined || data.serviceName == '') {
                 console.log('please input a service name')
                 alert('please input a service name')
                 return;
             }
 
-            if(data.description_1 == undefined || data.description_1 == ''){
+            if (data.description_1 == undefined || data.description_1 == '') {
                 console.log('please input at least one description')
                 alert('please input at least one description')
                 return;
             }
 
-            DataService.create(data)
-                .then(res => {
-                    this.submitted = true;
-                    this.$emit('update:modelValue', false)
-                    this.$emit('refresh-callback')
+            if (this.files.length !== 0) {
+                let formData = new FormData()
+                formData.append('file', this.files)
+                formData.append('serviceName', this.newService.name)
+                formData.append('description_1', this.newService.desc1)
+                formData.append('description_2', this.newService.desc2)
+                formData.append('description_3', this.newService.desc3)
+
+                DataService.create(formData)
+                    .then((res) => {
+                        this.submitted = true;
+                        this.$emit("update:modelValue", false);
+                        this.$emit("refresh-callback");
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+
+            } else {
+                this.$message({
+                    message: 'Image can not be null!',
+                    type: 'error',
+                    duration: 1500
                 })
-                .catch(err => {
-                    console.log(err);
-                });
+            }
 
 
-            console.log("after parent emit")
+            // console.log("after parent emit")
+        },
+        upldchange(file) {
+            //   const isJPG = file.raw.type === 'image/jpeg'
+            //   const isLt2M = file.raw.size / 1024 / 1024 < 2
+
+            //   if (!isJPG) {
+            //     this.$message.error('上传头像图片只能是 JPG 格式!')
+            //     return
+            //   }
+            //   if (!isLt2M) {
+            //     this.$message.error('上传头像图片大小不能超过 2MB!')
+            //     return
+            //   }
+
+            this.imgSaveToUrl(file)
+            this.files = file.raw
+            // console.log(this.files)
+        },
+        imgSaveToUrl(file) {
+            this.imageUrl = URL.createObjectURL(file.raw)
+            // console.log('Image preview url: ', this.imageUrl)
+        },
+        handleExceed(files, fileList) {
+            this.$message.warning(`You can only upload one image`);
         },
     }
 

@@ -18,6 +18,7 @@
     "@vue/cli": "^5.0.8",
     "@vue/test-utils": "^2.3.0",
     "autoprefixer": "^10.4.13",
+    "aws-sdk": "^2.1328.0",
     "axios": "^1.2.5",
     "core-js": "^3.8.3",
     "fortawesome": "^0.0.1-security",

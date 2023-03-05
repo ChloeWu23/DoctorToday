@@ -34,8 +34,6 @@
         <el-upload action="" list-type="picture" :auto-upload="false" :on-remove="handleRemove" :on-change="upldchange"
             :limit="1" :on-exceed="handleExceed" ref="upload">
             <el-button>Add image</el-button>
-
-
         </el-upload>
 
         <el-dialog v-model="dialogVisible">
@@ -119,15 +117,15 @@ export default {
                 return;
             }
 
-            // if (this.files.length !== 0) {
-            //     let formData = new FormData()
-            //     formData.append('file', this.files)
-            //     formData.append('name', this.newPeople.name)
-            //     formData.append('title', this.newPeople.title)
-            //     formData.append('profile', this.newPeople.profile)
-            //     formData.append('description', this.newPeople.description)
+            if (this.files.length !== 0) {
+                let formData = new FormData()
+                formData.append('file', this.files)
+                formData.append('name', this.newPeople.name)
+                formData.append('title', this.newPeople.title)
+                formData.append('profile', this.newPeople.profile)
+                formData.append('description', this.newPeople.description)
 
-            DataService.create(data)
+            DataService.create(formData)
                 .then((res) => {
                     this.submitted = true;
                     this.$emit("update:modelValue", false);
@@ -137,13 +135,13 @@ export default {
                     console.log(err);
                 });
 
-            // } else {
-            //     this.$message({
-            //         message: 'Image can not be null!',
-            //         type: 'error',
-            //         duration: 1500
-            //     })
-            // }
+            } else {
+                this.$message({
+                    message: 'Image can not be null!',
+                    type: 'error',
+                    duration: 1500
+                })
+            }
 
         },
         upldchange(file) {
@@ -161,11 +159,11 @@ export default {
 
             this.imgSaveToUrl(file)
             this.files = file.raw
-            console.log(this.files)
+            // console.log(this.files)
         },
         imgSaveToUrl(file) {
             this.imageUrl = URL.createObjectURL(file.raw)
-            console.log('Image preview url: ', this.imageUrl)
+            // console.log('Image preview url: ', this.imageUrl)
         },
         handleExceed(files, fileList) {
             this.$message.warning(`You can only upload one image`);
