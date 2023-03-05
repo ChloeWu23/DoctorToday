@@ -134,6 +134,9 @@
 
 <script>
 import DataService from '../dataRoutes/DataService';
+definePageMeta({
+    title: 'New Patient Register'
+})
 
 export default {
     data() {

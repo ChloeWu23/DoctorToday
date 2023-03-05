@@ -103,6 +103,11 @@
 </template>
 
 <script>
+definePageMeta({
+    title: 'Booking an Appointment'
+})
+
+
 export default {
     data () {
         return {     

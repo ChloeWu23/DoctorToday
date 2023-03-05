@@ -1,6 +1,8 @@
 <template>
-    <div class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl  mx-auto">
-        <div class="md:m-12 m-8 md:p-6 p-4 items-center justify-center bg-white bg-opacity-50 drop-shadow-lg backdrop-blur-md md:w-3/4 w-[280px]">
+    <div
+        class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl  mx-auto">
+        <div
+            class="md:m-12 m-8 md:p-6 p-4 items-center justify-center bg-white bg-opacity-50 drop-shadow-lg backdrop-blur-md md:w-3/4 w-[280px]">
             <div class="text-2xl my-4 text-sky-700">Travel vaccines, medications and advice</div>
             <div class="self-center text-base">
                 <p class="my-2">Our popular fast-track travel clinic at Doctor Today offers you an
@@ -117,7 +119,12 @@
 import countries from '../assets/countries.json'
 import { ref, computed } from 'vue'
 
+definePageMeta({
+    title: 'Travel Vaccine Guides'
+})
+
 export default {
+
     data() {
         return {
         }

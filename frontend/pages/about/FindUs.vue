@@ -171,7 +171,7 @@ export default {
     },
     async setup() {
         const { data: otherInfo, pending, error, refresh } = await useAsyncData(
-            () => $fetch("http://localhost:3005/other-info")
+            () => $fetch("https://doctor-today-back.herokuapp.com/other-info")
         )
 
         console.log(otherInfo.value)
