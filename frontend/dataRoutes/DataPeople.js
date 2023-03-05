@@ -8,8 +8,9 @@ class DataPeople {
     create(data) {
         return http.post("/people", data, {
             headers: { 'Content-Type': 'multipart/form-data' }
-        });
+        }); 
     }
+    
 
     update(data) {
         return http.patch("/people", data);

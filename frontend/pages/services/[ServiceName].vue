@@ -1,8 +1,8 @@
 <template>
     <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md mx-auto lg:max-screen-lg">
-        <SembleButton v-if=sembleFormCode :sembleForm = sembleFormCode />
+        <SembleButton v-if=sembleFormCode :sembleForm=sembleFormCode />
         <div class="w-full">
-            <details class="open:bg-gray-100 duration-300 w-full" v-for="item in this.ServiceDetails">
+            <details class="open:bg-gray-100 duration-300 w-full" v-for="item in this.serviceDetails">
                 <summary
                     class="px-5 py-3 text-lg cursor-pointer hover:bg-gray-100 border border-2 flex justify-between items-center w-full text-sm md:text-base">
                     <div class="p-2 text-sky-700 w-3/4">
@@ -19,45 +19,38 @@
 </template>
 
 <script>
-import DataService from '../../dataRoutes/DataService';
-import DataSubService from '../../dataRoutes/DataSubService';
-import { ref } from 'vue'
 
 export default {
     data() {
         return {
-            sembleFormCode:'<iframe src="https://online-booking.semble.io/?token=59df46c901c3c1673ec018b4eec76f70ce63838c" class="h-full w-full border-0" frameborder="0" scrolling="auto"></iframe>'
+            sembleFormCode: ''
         }
     },
-    setup() {
+    async setup() {
         const route = useRoute()
-        
-        let serviceId = ref()
-        let ServiceDetails = ref([])
-        DataService.get()
-            .then(response => {
-                for (let i = 0; i < response.data.length; i++) {
-                    if (response.data[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName) {
-                        serviceId.value = response.data[i].bind_id
-                        console.log(response.data[i].appointment_iframe)
-                        break;
-                    }
-                }
-            }).
-            then(() => {
-                DataSubService.get(serviceId.value)
-                    .then(response => {
-                        for (let i = 0; i < response.data.length; i++) {
-                            ServiceDetails.value.push(response.data[i])
-                        }
-                        console.log(ServiceDetails.value)
-                    })
-            }
-            ).catch(err => {
-                console.log(err);
-            });
+        const { data: fullServices, pending, error, refresh } = await useAsyncData(
+            () => $fetch("https://doctor-today-back.herokuapp.com/service")
+        )
+        // console.log(fullServices.value)
 
-        return { ServiceDetails }
+        let serviceId = ref()
+        let sembleFormCode = ref()
+        for (let i = 0; i < fullServices.value.length; i++) {
+            if (fullServices.value[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName) {
+                serviceId.value = fullServices.value[i].bind_id
+                sembleFormCode.value = fullServices.value[i].appointment_iframe
+                break;
+            }
+        }
+
+        const { data: serviceDetails } = await useAsyncData(
+            () => $fetch("https://doctor-today-back.herokuapp.com/service/" + serviceId.value, {
+                immediate: false,  // prevent the request from firing immediately
+                watch: [serviceId] // watch reactive sources to auto-refresh
+            })
+        )
+
+        return { serviceDetails, sembleFormCode }
     }
 
 }

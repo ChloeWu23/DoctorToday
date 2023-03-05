@@ -84,30 +84,32 @@ export default {
     },
     methods: {
         addPeople() {
-            var data = {
-                name: this.newPeople.name,
-                title: this.newPeople.title,
-                profile: this.newPeople.profile,
-                description: this.newPeople.description
-            };
+            // var data = {
+            //     name: this.newPeople.name,
+            //     title: this.newPeople.title,
+            //     profile: this.newPeople.profile,
+            //     description: this.newPeople.description
+            // };
 
-            console.log(data)
+            // console.log(data)
 
-            if (data.name == undefined || data.name == '') {
-                console.log('please input name')
-                alert('please input name')
-                return;
-            }
+            // if (data.name == undefined || data.name == '') {
+            //     console.log('please input name')
+            //     alert('please input name')
+            //     return;
+            // }
 
-            if (data.title == undefined || data.title == '') {
-                console.log('please input the title')
-                alert('please input the title')
-                return;
-            }
+            // if (data.title == undefined || data.title == '') {
+            //     console.log('please input the title')
+            //     alert('please input the title')
+            //     return;
+            // }
 
             if (this.files.length !== 0) {
                 let formData = new FormData()
                 formData.append('file', this.files)
+                console.log("in formData")
+                console.log(this.files)
                 formData.append('name', this.newPeople.name)
                 formData.append('title', this.newPeople.title)
                 formData.append('profile', this.newPeople.profile)
@@ -147,11 +149,11 @@ export default {
 
             this.imgSaveToUrl(file)
             this.files = file.raw
-            console.log(this.files)
+            // console.log(this.files)
         },
         imgSaveToUrl(file) {
             this.imageUrl = URL.createObjectURL(file.raw)
-            console.log('Image preview url: ', this.imageUrl)
+            // console.log('Image preview url: ', this.imageUrl)
         },
         handleExceed(files, fileList) {
             this.$message.warning(`You can only upload one image`);

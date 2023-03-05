@@ -12,7 +12,7 @@
 
                 <div class="self-start flex flex-row sm:flex-col relative right-0 bg-transparant text-[10px] text-xs md:text-sm text-sky-700 md:mx-20 mx-[40px] break-all md:break-normal md:mt-10 mt-0">
                     <div class="pb-2 sm:p-1 hover:text-amber-500">
-                        <a href="mailto:enquiries@doctortoday.co.uk" class="flex items-center">
+                        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;" class="flex items-center">
                             <span class="mr-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" class="w-[16px] h-[16px] md:w-[20px] md:h-[20px]">
                                     <path fill="none" d="M0 0h24v24H0z" />

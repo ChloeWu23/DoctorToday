@@ -29,6 +29,9 @@
                             Description
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Independent
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Action
                         </th>
                     </tr>
@@ -49,6 +52,10 @@
                         <td>
                             <div v-html="people.description" class="px-6 py-4">
                             </div>
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ people.is_independent }}
                         </td>
 
 

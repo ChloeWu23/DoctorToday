@@ -4,7 +4,7 @@
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-5"></a>
-            <ul class="space-y-2">
+            <ul class="space-y-2 list-none">
                 <li>
                     <NuxtLink to="/AdminServiceSummary"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">

@@ -17,7 +17,7 @@
                 class="w-full lg:col-span-2 bg-[url('assets/home.jpg')] bg-no-repeat bg-right bg-cover grid lg:grid-cols-3 items-center">
                 <div class="w-full p-10 text-white lg:col-span-2">
                     <button class="bg-[#143B71] text-white rounded px-4 py-2 mb-8">
-                        <NuxtLink to="AboutPeople">Meet Our Team</NuxtLink>
+                        <NuxtLink to="/about/People">Meet Our Team</NuxtLink>
                     </button>
                     <p class="">Doctor Today is a London-based private medical clinic that aims to provide
                         high-quality
@@ -28,7 +28,7 @@
             </div>
             <div id="news"
                 class="m-4 lg:m-0 shadow-lg lg:w-full overflow-y-scroll h-48 md:h-5/6 lg:h-full scrollbar-thin scrollbar-thumb-[#2A4359] scrollbar-track-[#8896AB]">
-                <div class="flex my-2 w-full sticky top-0 bg-gray-100 p-2">
+                <div class="flex my-2 w-full hover:sticky top-0 p-2 z-0">
                     <span class="md:mr-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                             <path fill="none" d="M0 0h24v24H0z" />
@@ -218,4 +218,13 @@ export default {
     }
 }
 </script>
+
+<style>
+:root {
+    --cc-text: white;
+    --cc-bg: #2d4156;
+    --cc-btn-primary-bg: white;
+    --cc-btn-primary-hover-bg: lightgray;
+}
+</style>
   
