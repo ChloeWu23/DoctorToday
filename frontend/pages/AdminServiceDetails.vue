@@ -21,10 +21,10 @@
                 Add Service Detail
             </button>
 
-            <button @click="refreshServiceView"
+            <!-- <button @click="refreshServiceView"
                 class="hover:bg-gray-200 rounded  w-10 h-10 mx-4 ">
                 <img src="../assets/admin_portal/icon-refresh.svg" alt="Icon" class="" />
-            </button>
+            </button> -->
         </div>
 
         <!-- <div class="flex m-6 text-black">
@@ -79,22 +79,20 @@
                             </td>
                             
                             <td class="flex items-center px-6 py-4 space-x-3">
-                                <button @click="deleteSubService(subService.cat_id, subService.sub_service_id)"
-                                    class="font-medium text-red-600 dark:text-red-500 hover:underline w-7 hover:bg-gray-200 rounded">
-                                    <img src="../assets/admin_portal/icon-delete.svg" alt="Icon" class="mr-2" />
+                                <button @click="emitEditDialogue(subService)"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
+                                    <img src="../assets/admin_portal/icon-edit.svg" alt="Icon" class="mr-2" />
                                 </button>
-                                <!-- <button @click="swapSubServiceDown(subService.cat_id, subService.sub_service_id)"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">Down</button> -->
+                                
                                 <button @click="swapSubServiceUp(subService.cat_id, subService.sub_service_id)"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
                                     <img src="../assets/admin_portal/icon-up-arrow.svg" alt="Icon" class="mr-2" />
                                 </button>
 
-                                <button @click="emitEditDialogue(subService)"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
-                                    <img src="../assets/admin_portal/icon-edit.svg" alt="Icon" class="mr-2" />
+                                <button @click="deleteSubService(subService.cat_id, subService.sub_service_id)"
+                                    class="font-medium text-red-600 dark:text-red-500 hover:underline w-7 hover:bg-gray-200 rounded">
+                                    <img src="../assets/admin_portal/icon-delete.svg" alt="Icon" class="mr-2" />
                                 </button>
-
                             </td>
                         </tr>
                     </tbody>
