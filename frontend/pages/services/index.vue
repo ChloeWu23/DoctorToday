@@ -45,9 +45,9 @@ export default {
         return { fullServices };
     },
     methods: {
-        imgUrl(name) {
+        imgUrl(imageUrl) {
             try {
-                return { 'background-image': 'url(' + name + ')' }
+                return { 'background-image': 'url(' + imageUrl + ')' }
             } catch (error) {
                 return { 'background-image': 'url(assets/services/gp-consultations.png)' }
             }

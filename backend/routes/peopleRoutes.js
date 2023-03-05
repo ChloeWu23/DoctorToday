@@ -9,7 +9,7 @@ const People = db.People;
 const Op = db.Sequelize.Op;
 
 
-let s3 = new S3Client({
+let s3 = new S3Client({ 
     region: 'eu-west-2',
     credentials: {
       accessKeyId: "AKIARXAT7U35FUQT3NUL",
@@ -21,9 +21,6 @@ let s3 = new S3Client({
   });
 
 const S3_BUCKET_NAME = "upload-image-for-admin";
-// const prePath = "https://" + S3_BUCKET_NAME + ".s3.eu-west-2.amazonaws.com/"
-// console.log(prePath)
-//https://upload-image-for-admin.s3.eu-west-2.amazonaws.com/people/1677977410177-doctor_today.jpg
 
 // // Set up Multer S3 middleware for image upload
 const upload = multer({
@@ -59,14 +56,12 @@ router.get("/", async (req, res) => {
     });
 });
 
-// upload.single('file'),
 router.post("/", upload.single("file"), async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
   var file = req.file;
-  console.log("in uploadRoutes");
-  console.log(file);
-  //res.send(file)
+//   console.log("in uploadRoutes");
+//   console.log(file);
 
   if (req.body.name === null || req.body.name === undefined) {
     res.status(500).send({
@@ -82,17 +77,13 @@ router.post("/", upload.single("file"), async (req, res) => {
     });
   });
 
-//   var pathToRead = prePath + file.key
-  // console.log('path to read:')
-  // console.log(pathToRead)
-
   var newItem = {
     staff_id: count,
     name: req.body.name,
     title: req.body.title,
     profile: req.body.profile,
     description: req.body.description,
-    image: file.location, //pathToRead,
+    image: file.location,
     website: req.body.website,
     is_independent: req.body.is_independent,
   };

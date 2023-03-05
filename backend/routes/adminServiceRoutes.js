@@ -1,6 +1,8 @@
 const multer = require("multer");
 const router = require("express").Router();
 const path = require("path");
+const multerS3 = require("multer-s3");
+const { S3Client } = require('@aws-sdk/client-s3');
 
 /*
     post("/")  : add new service, need serviceName
@@ -18,34 +20,42 @@ const Op = db.Sequelize.Op;
  * POST
  * /upload
  * */
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "../frontend-user/src/assets/services");
-    console.log("in destination");
+let s3 = new S3Client({
+  region: 'eu-west-2',
+  credentials: {
+    accessKeyId: "AKIARXAT7U35FUQT3NUL",
+    secretAccessKey: "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",
   },
-  filename: function (req, file, cb) {
-    //use current time to set name of files
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
+  sslEnabled: false,
+  s3ForcePathStyle: true,
+  signatureVersion: 'v4',
 });
 
-var upload = multer({
-  storage: storage,
+const S3_BUCKET_NAME = "upload-image-for-admin";
+
+// // Set up Multer S3 middleware for image upload
+const upload = multer({
+storage: multerS3({
+  s3: s3,
+  bucket: S3_BUCKET_NAME,
+  contentType: multerS3.AUTO_CONTENT_TYPE,
+  acl: "public-read",
+  metadata: function (req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
+  key: function (req, file, cb) {
+    cb(null, "service/" + Date.now().toString() + "-" + file.originalname);
+  },
+}),
 });
 
-//upload.single('file'),
-
-router.post("/", async (req, res) => {
+router.post("/", upload.single('file'), async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
   var file = req.file;
-  // console.log("in uploadRoutes")
-  // console.log(file)
-  // console.log(file.destination)
-  //res.send(file)
+  console.log("in uploadServiceRoutes")
+  console.log(file)
+  console.log(file.location)
 
   if (req.body.serviceName === null || req.body.serviceName === undefined) {
     res.status(400).send({
@@ -57,9 +67,6 @@ router.post("/", async (req, res) => {
 
   var count = await ServiceOverviews.count({ col: "serviceName" });
   var bind_max = await ServiceOverviews.max("bind_id");
-  // var pathToRead = 'services/'+file.filename
-  console.log("path to read:");
-  // console.log(pathToRead)
   var serviceItem = {
     serviceName: req.body.serviceName,
     bind_id: bind_max + 1,
@@ -67,7 +74,7 @@ router.post("/", async (req, res) => {
     description_1: req.body.description_1,
     description_2: req.body.description_2,
     description_3: req.body.description_3,
-    image: null,
+    image: file.location,
     appointment_iframe: req.body.appointment_iframe,
   };
 

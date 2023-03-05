@@ -34,8 +34,6 @@
         <el-upload action="" list-type="picture" :auto-upload="false" :on-remove="handleRemove" :on-change="upldchange"
             :limit="1" :on-exceed="handleExceed" ref="upload">
             <el-button>Add image</el-button>
-
-
         </el-upload>
 
         <el-dialog v-model="dialogVisible">
