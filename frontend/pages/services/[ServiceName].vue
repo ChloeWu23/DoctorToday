@@ -28,29 +28,35 @@ export default {
     },
     async setup() {
         const route = useRoute()
-        const { data: fullServices, pending, error, refresh } = await useAsyncData(
-            () => $fetch("https://doctor-today-back.herokuapp.com/service")
-        )
-        // console.log(fullServices.value)
+        console.log(route.params.ServiceName)
+        try {
+            const { data: fullServices, pending, error, refresh } = await useAsyncData(
+                () => $fetch("https://doctor-today-back.herokuapp.com/service")
+            )
+            // console.log(fullServices.value)
 
-        let serviceId = ref()
-        let sembleFormCode = ref()
-        for (let i = 0; i < fullServices.value.length; i++) {
-            if (fullServices.value[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName) {
-                serviceId.value = fullServices.value[i].bind_id
-                sembleFormCode.value = fullServices.value[i].appointment_iframe
-                break;
+            let serviceId = ref()
+            let sembleFormCode = ref()
+            for (let i = 0; i < fullServices.value.length; i++) {
+                if (fullServices.value[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName) {
+                    serviceId.value = fullServices.value[i].bind_id
+                    sembleFormCode.value = fullServices.value[i].appointment_iframe
+                    break;
+                }
             }
+
+            const { data: serviceDetails } = await useAsyncData(
+                () => $fetch("https://doctor-today-back.herokuapp.com/service/" + serviceId.value, {
+                    immediate: false,  // prevent the request from firing immediately
+                    watch: [serviceId] // watch reactive sources to auto-refresh
+                })
+            )
+
+            return { serviceDetails, sembleFormCode }
+        } catch (err) {
+            console.log(err)
+            console.log(route.params.ServiceName)
         }
-
-        const { data: serviceDetails } = await useAsyncData(
-            () => $fetch("https://doctor-today-back.herokuapp.com/service/" + serviceId.value, {
-                immediate: false,  // prevent the request from firing immediately
-                watch: [serviceId] // watch reactive sources to auto-refresh
-            })
-        )
-
-        return { serviceDetails, sembleFormCode }
     }
 
 }
