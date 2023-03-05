@@ -76,10 +76,13 @@
             v-model="dialogFormVisible"
             v-if="dialogFormVisible" 
             :isEdit = "isEdit"
-            data_serviceName = "data_serviceName"
-            data_description_1 = "data_description_1"
-            data_description_2 = "data_description_2" 
-            data_description_3 = "data_description_3"
+            :data_service_cat_id = "data_service_cat_id"
+            :data_serviceName = "data_serviceName"
+            :data_description_1 = "data_description_1"
+            :data_description_2 = "data_description_2" 
+            :data_description_3 = "data_description_3"
+            :data_image = "data_image" 
+            :data_iframe = "data_iframe"
         ></Dialog>
 
     </div>
@@ -103,10 +106,13 @@ export default {
 
             isEdit: false,
 
+            data_service_cat_id: "",
             data_serviceName: "",
             data_description_1: "",
             data_description_2: "", 
-            data_description_3: ""
+            data_description_3: "",
+            data_image: "", 
+            data_iframe: ""
         }
     },
 
@@ -183,21 +189,27 @@ export default {
         emitAddDialog() {
             this.isEdit = false;
 
+            this.data_service_cat_id = "",
             this.data_serviceName = "";
             this.data_description_1 = "";
             this.data_description_2 = "";
             this.data_description_3 = "";
+            this.data_image = "";
+            this.data_iframe = "";
 
             this.dialogFormVisible = true;
         },
 
-        emitEditDialog(serviceInfo) {
+        emitEditDialogue(serviceInfo) {
             this.isEdit = true;
 
+            this.data_service_cat_id = serviceInfo.service_cat_id;
             this.data_serviceName = serviceInfo.serviceName;
             this.data_description_1 = serviceInfo.description_1;
             this.data_description_2 = serviceInfo.description_2;
             this.data_description_3 = serviceInfo.description_3;
+            this.data_image = serviceInfo.image;
+            this.data_iframe = serviceInfo.appointment_iframe;
 
             this.dialogFormVisible = true;
         },

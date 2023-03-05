@@ -1,10 +1,17 @@
 <template>
     <el-dialog :model-value="dialogFormVisible" title="Adding New Service" :show-close="false"
         :close-on-click-modal="false">
+
         <el-form>
+            
             <el-form-item label="Service Category Name">
-                <el-input v-model="newService.name" autocomplete="off">{{ newService.name }}</el-input>
+                <el-input 
+                    v-model="newService.name" 
+                    autocomplete="off">
+                    {{ newService.name }}
+                </el-input>
             </el-form-item>
+
 
             <el-form-item label="Description 1" prop="desc">
                 <el-input v-model="newService.desc1" type="textarea">{{ newService.desc1 }}</el-input>
@@ -18,6 +25,18 @@
                 <el-input v-model="newService.desc3" type="textarea">{{ newService.desc3 }}</el-input>
             </el-form-item>
 
+            <el-form-item label="iframe (Semble)" prop="desc">
+                <el-input v-model="newService.iframe" type="textarea">{{ newService.iframe }}</el-input>
+            </el-form-item>
+                    
+            <!-- <div v-if="isEdit">
+                this is edit
+            </div>
+            
+            <div v-else>
+                this is Add
+            </div> -->
+            
         </el-form>
 
         <el-upload action="" list-type="picture" :auto-upload="false" :on-remove="handleRemove" :on-change="upldchange"
@@ -36,7 +55,7 @@
                     @click="handleClose">Cancel</button>
                 <button type="button"
                     class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    @click="addService">Confirm</button>
+                    @click="handleDialogue">Confirm</button>
             </span>
         </template>
     </el-dialog>
@@ -51,25 +70,33 @@ export default {
     props: {
         isEdit: Boolean,
 
+        data_service_cat_id: {
+            type: Number,
+            default: null
+        },
         data_serviceName: String,
         data_description_1: String,
         data_description_2: String, 
-        data_description_3: String
+        data_description_3: String,
+        data_image: String, // FIXME: 这个data_image是数据库里面的url
+        data_iframe: String
     },
     data() {
         return {
             newService: {
-                name: "",
-                desc1: "",
-                desc2: "",
-                desc3: "",
+                name: this.data_serviceName,
+                desc1: this.data_description_1,
+                desc2: this.data_description_2,
+                desc3: this.data_description_3,
                 dialogImageUrl: '',
+                iframe: this.data_iframe,
                 dialogVisible: false,
-                independent: false,
                 baseurl: '',
                 imageUrl: '', // image preview url
                 files: [], // uploaded files
                 url: '', // auto-upload = false, so set to null
+
+                // FIXME: 不知道default的url应该给哪个变量，这个应该就用来preview？
             },
             submitted: false
         };
@@ -98,7 +125,8 @@ export default {
                 serviceName: this.newService.name,
                 description_1: this.newService.desc1,
                 description_2: this.newService.desc2,
-                description_3: this.newService.desc3
+                description_3: this.newService.desc3,
+                appointment_iframe: this.newService.iframe
             };
 
             console.log(data)
@@ -122,9 +150,12 @@ export default {
                 formData.append('description_1', this.newService.desc1)
                 formData.append('description_2', this.newService.desc2)
                 formData.append('description_3', this.newService.desc3)
+                formData.append('appointment_iframe', this.newService.iframe)
 
                 DataService.create(formData)
                     .then((res) => {
+                        console.log("add successfully!")
+                        console.log(res)
                         this.submitted = true;
                         this.$emit("update:modelValue", false);
                         this.$emit("refresh-callback");
@@ -170,7 +201,30 @@ export default {
         },
         
         editService() {
+            var data = {
+                service_cat_id: this.data_service_cat_id,
+                serviceName: this.newService.name,
+                description_1: this.newService.desc1,
+                description_2: this.newService.desc2,
+                description_3: this.newService.desc3,
+                image: this.data_image, // FIXME: change to new image url
+                appointment_iframe: this.newService.iframe
+            };
 
+            // FIXME: image edit feature
+
+            // FIXME: delete service之后数据库里的图片应该也要被删除
+
+            console.log("Edit data with service_cat_id=" + this.data_service_cat_id);
+            DataService.update(data)
+                .then(res => {
+                    this.submitted = true;
+                    this.$emit("update:modelValue", false);
+                    this.$emit("refresh-callback");
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         }
     }
 
