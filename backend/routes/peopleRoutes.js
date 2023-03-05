@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const multer = require('multer')
-const multerS3 = require('multer-s3');
+// const multerS3 = require('multer-s3');
 const path = require('path');
 
 const { Sequelize } = require("../app/models");
@@ -8,6 +8,7 @@ const db = require("../app/models");
 const People = db.People;
 const Op = db.Sequelize.Op;
 
+//remove aws
 // const aws = require('aws-sdk');
 
 // aws.config.update({
