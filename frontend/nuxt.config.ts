@@ -31,7 +31,7 @@ export default defineNuxtConfig({
                             'en': {
                                 consent_modal: {
                                     title: 'Cookies',
-                                    description: 'This website makes use of browser cookies to provide essential functionality. It also makes use of Google Ads, which in turn makes use of browser cookies to track ad performance and to personalise ads. <a aria-label="Cookie policy" class="cc-link" href="https://www.doctortoday.co.uk/faqs">Learn more</a>',
+                                    description: 'This website makes use of browser cookies to provide essential functionality. It also makes use of Google Ads, which in turn makes use of browser cookies to track ad performance and to personalise ads. <a class="cc-link" href="/about/FAQs">Learn more</a>',
                                     primary_btn: {
                                         text: 'Got it',
                                         role: 'accept_all'              // 'accept_selected' or 'accept_all'
@@ -55,22 +55,6 @@ export default defineNuxtConfig({
                                 // position: 'left',           // left/right
                                 transition: 'slide'            // zoom/slide
                             }
-                        },
-                        styles: {
-                            dark: {
-                                enabledByDefault: true,
-                                bg: 'black',
-                                text: 'white',
-                                btnPrimaryBg: 'white',
-                                btnPrimaryText: 'black',
-                            },
-                            bg: 'orange',
-                            text: 'black',
-                            btnPrimaryBg: 'white',
-                            btnPrimaryText: 'black',
-                            btnPrimaryHoverBg: 'lightgray',
-                            btnSecondaryBg: 'lightgray',
-                            btnSecondaryText: 'black',
                         },
                     });
                 });
