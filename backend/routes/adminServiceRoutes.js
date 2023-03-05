@@ -53,7 +53,7 @@ router.post("/", upload.single('file'), async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
   var file = req.file;
-  console.log("in uploadServiceRoutes")
+  console.log("in uploadServiceRoute")
   console.log(file)
   console.log(file.location)
 
