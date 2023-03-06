@@ -29,25 +29,31 @@ router.get('/', (req, res) => {
 })
 
 async function search(urls) {
-  const htmls = Promise.allSettled(urls.map((urlItem) => axios.get(urlItem.url)))
-    .then((results) => {
-        let htmls = [];
-        for (let i = 0; i < results.length; i++) {
-            if (results[i].status === "fulfilled") {
-                const $ = cheerio.load(results[i].value.data);
-                const $html = $("body").text();
-                htmls.push({
-                    id: urls[i].id,
-                    title: urls[i].title,
-                    url: urls[i].url,
-                    content: $html
-                });
-            } else {
-                console.log("issue with url: " + urls[i].url);
+    const htmls = Promise.allSettled(urls.map((urlItem) => axios.get(urlItem.url)))
+        .then((results) => {
+            let htmls = [];
+            for (let i = 0; i < results.length; i++) {
+                if (results[i].status === "fulfilled") {
+                    const $ = cheerio.load(results[i].value.data);
+                    const $html = $("body").text();
+                    htmls.push({
+                        id: urls[i].id,
+                        title: urls[i].title,
+                        url: urls[i].url,
+                        content: $html
+                    });
+                } else {
+                    console.log("issue with url: " + urls[i].url);
+                    htmls.push({
+                        id: urls[i].id,
+                        title: urls[i].title,
+                        url: urls[i].url,
+                        content: ""
+                    })
+                }
             }
-        }
-        return htmls;
-    });
+            return htmls;
+        });
     return htmls;
 }
 
