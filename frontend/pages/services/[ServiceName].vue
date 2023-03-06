@@ -1,8 +1,8 @@
 <template>
-    <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md mx-auto lg:max-screen-lg">
+    <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md mx-auto lg:max-screen-lg" v-if="serviceDetails" id="pageContent">
         <SembleButton v-if=sembleFormCode :sembleForm=sembleFormCode />
         <div class="w-full">
-            <details class="open:bg-gray-100 duration-300 w-full" v-for="item in this.serviceDetails">
+            <details class="open:bg-gray-100 duration-300 w-full" v-for="item in serviceDetails">
                 <summary
                     class="px-5 py-3 text-lg cursor-pointer hover:bg-gray-100 border border-2 flex justify-between items-center w-full text-sm md:text-base">
                     <div class="p-2 text-sky-700 w-3/4">
@@ -23,34 +23,42 @@
 export default {
     data() {
         return {
-            sembleFormCode: ''
         }
     },
     async setup() {
         const route = useRoute()
-        const { data: fullServices, pending, error, refresh } = await useAsyncData(
-            () => $fetch("https://doctor-today-back.herokuapp.com/service")
-        )
-        // console.log(fullServices.value)
+        console.log(route.params.ServiceName)
 
         let serviceId = ref()
         let sembleFormCode = ref()
-        for (let i = 0; i < fullServices.value.length; i++) {
-            if (fullServices.value[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName) {
-                serviceId.value = fullServices.value[i].bind_id
-                sembleFormCode.value = fullServices.value[i].appointment_iframe
-                break;
-            }
-        }
-
-        const { data: serviceDetails } = await useAsyncData(
-            () => $fetch("https://doctor-today-back.herokuapp.com/service/" + serviceId.value, {
-                immediate: false,  // prevent the request from firing immediately
-                watch: [serviceId] // watch reactive sources to auto-refresh
-            })
+        // let serviceDetails = ref([])
+        const { data: serviceDetails, pending, error, refresh } = await useAsyncData("getServiceDetails", () =>
+            $fetch("https://doctor-today-back.herokuapp.com/service")
+                .then((res) => {
+                    // console.log(res)
+                    if (res.length) {
+                        const isService = (item) => item.serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName
+                        const service = res.find(isService)
+                        if (service) {
+                            serviceId.value = service.bind_id
+                            sembleFormCode.value = service.appointment_iframe
+                        }
+                    }
+                    else {
+                        console.log("Error with fetching service summary, fallback to gp consultation & iframe code of all appointments")
+                        serviceId.value = 0
+                        sembleFormCode.value = '<iframe src="https://online-booking.semble.io/?token=59df46c901c3c1673ec018b4eec76f70ce63838c" frameborder="0" scrolling="auto"></iframe>'
+                    }
+                    return serviceId
+                })
+                .then((id) => {
+                    return $fetch("https://doctor-today-back.herokuapp.com/service/" + id.value)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         )
-
-        return { serviceDetails, sembleFormCode }
+        return { sembleFormCode, serviceId, serviceDetails };
     }
 
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="xl:max-w-screen-xl mx-auto">
+    <div class="xl:max-w-screen-xl mx-auto" id="pageContent">
         <div class="flex justify-center items-center">
             <div
                 class="bg-center w-full items-center md:py-40 py-20 bg-[url('@/assets/doctor_today.jpg')] bg-no-repeat bg-cover ">

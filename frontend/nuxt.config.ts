@@ -4,8 +4,9 @@ export default defineNuxtConfig({
         head: {
             title: "Doctor Today",
             script: [
-                { src: 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.9/dist/cookieconsent.js'},
-                { innerHTML: `
+                { src: 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.9/dist/cookieconsent.js' },
+                {
+                    innerHTML: `
                 window.addEventListener('load', function(){
 
                     var cc = initCookieConsent();
@@ -61,8 +62,8 @@ export default defineNuxtConfig({
                 `}
             ],
             link: [
-                { rel: 'stylesheet', href:'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.9/dist/cookieconsent.css'},
-            ]         
+                { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.9/dist/cookieconsent.css' },
+            ]
         }
     },
     css: [
@@ -77,8 +78,8 @@ export default defineNuxtConfig({
         classPrefix: '',
         classSuffix: '-mode',
         storageKey: 'nuxt-color-mode'
-      },
+    },
 
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@element-plus/nuxt'],
-    
+
 })

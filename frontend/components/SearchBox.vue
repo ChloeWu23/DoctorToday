@@ -1,5 +1,5 @@
 <template>
-  <div v-if="searchResults.length > 0">
+  <div v-if="(searchPerformed)">
     <div class="fixed z-10 top-0 left-0 h-screen w-full bg-gray-200/50 grid md:grid-cols-5 lg:grid-cols-6">
       <div></div>
       <div
@@ -16,21 +16,29 @@
           </button>
         </div>
         <div class="grid gap-2 md:gap-3 lg:gap-4">
-          <div v-for="item in searchResults" class="mx-auto border-b-2 border-dashed border-gray-100 w-5/6">
-            <NuxtLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="text-sky-700 my-2">{{
-              item.title
-            }}</NuxtLink>
-            <p class="w-full text-sm md:text-base">...{{ item.content.substring(Math.max(item.content.indexOf(searchQuery) - 50, 0),
-              item.content.indexOf(searchQuery) + 300)
-            }}...</p>
-        </div>
+          <div v-if="searchResults.length > 0">
+            <div v-for="item in searchResults" class="mx-auto border-b-2 border-dashed border-gray-100 w-5/6">
+              <NuxtLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="text-sky-700 my-2">{{
+                item.title
+              }}</NuxtLink>
+              <p class="w-full text-sm md:text-base">...{{
+                item.content.substring(Math.max(item.content.indexOf(searchQuery)
+                  - 50, 0),
+                  item.content.indexOf(searchQuery) + 300)
+              }}...</p>
+            </div>
+          </div>
+          <div v-else>
+            <div class="mx-auto w-5/6">No result found</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="bg-gray-300 flex items-center w-28 lg:w-40 h-8 rounded">
-    <input class="bg-gray-300 h-full w-full border-0 rounded text-sm text-gray-700 pr-2 focus:outline-none focus:ring-2 focus:ring-sky-700" type="text" id="search"
-      placeholder="  Search..." v-model="searchQuery" />
+    <input
+      class="bg-gray-300 h-full w-full border-0 rounded text-sm text-gray-700 pr-2 focus:outline-none focus:ring-2 focus:ring-sky-700"
+      type="text" id="search" placeholder="  Search..." v-model="searchQuery" />
     <div class="grid place-items-center rounded h-full w-10 text-white bg-sky-700">
       <button @click="search()"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
@@ -42,24 +50,18 @@
 </template>
 
 <script>
-import fetchedContents from "../assets/fetchedContents.json"
-
-
 export default {
   data() {
     return {
       searchQuery: "",
+      searchPerformed: false,
       searchResults: []
     };
   },
   methods: {
     handleClose() {
-      this.searchResults = []
-    },
-    ParseTags(content) {
-      const removeHeader = content.indexOf("</nav>") + 6
-      const remoteFooter = content.indexOf("Fast track independent health")
-      return content.substring(removeHeader, remoteFooter).replace(/<\/?[^>]+>/ig, " ");
+      this.searchResults = [];
+      this.searchPerformed = false;
     },
     search() {
       if (this.searchQuery === "") {
@@ -67,27 +69,13 @@ export default {
       }
       const keywordFilter = this.searchQuery.toLowerCase();
       // console.log("result is being filtered");
-      this.searchResults = fetchedContents.filter(result =>
-        result.content.toLowerCase().includes(keywordFilter)
-      )
-      // KeywordSearch.get().then(
-      //   res => {
-      //     console.log(res)
-      //     res.data.map(element => {
-      //       const parsedText = this.ParseTags(element.value.content);
-      //       this.fetchedContents.push({
-      //         id: element.value.id,
-      //         url: element.value.url,
-      //         content: parsedText
-      //       });
-      //     })
-      //   }).then(data => {
-      //     const keywordFilter = this.searchQuery.toLowerCase();
-      //     // console.log("result is being filtered");
-      //     this.searchResults = this.fetchedContents.filter(result =>
-      //       result.content.toLowerCase().includes(keywordFilter)
-      //     )
-      //   })
+      const { data: fetchedContents } = useFetch("https://doctor-today-back.herokuapp.com/keywordSearch")
+      if (fetchedContents.value) {
+        this.searchResults = fetchedContents.value.filter(result =>
+          result.content.toLowerCase().includes(keywordFilter)
+        )
+      }
+      this.searchPerformed = true
     }
   }
 };
