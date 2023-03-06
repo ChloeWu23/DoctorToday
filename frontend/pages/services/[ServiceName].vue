@@ -25,28 +25,33 @@ export default {
         return {
         }
     },
-    setup() {
+    async setup() {
         const route = useRoute()
         console.log(route.params.ServiceName)
-        try {
-            let serviceId = ref()
-            let sembleFormCode = ref()
-            let serviceDetails = ref([])
-            const { data: fullServices } = useFetch(
-                "https://doctor-today-back.herokuapp.com/service")
+
+        let serviceId = ref()
+        let sembleFormCode = ref()
+        let serviceDetails = ref([])
+        const { data, pending, error, refresh } = await useAsyncData("getServiceDetails", () =>
+            $fetch("https://doctor-today-back.herokuapp.com/service")
                 .then((res) => {
-                    // console.log(res.data.value)
-                    for (let i = 0; i < res.data.value.length; i++) {
-                        if (res.data.value[i].serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName) {
-                            console.log(res.data.value[i].bind_id)
-                            serviceId.value = res.data.value[i].bind_id
-                            sembleFormCode.value = res.data.value[i].appointment_iframe
-                            break;
+                    // console.log(res)
+                    if (res.length) {
+                        const isService = (item) => item.serviceName.replace(/\s+/g, '-').toLowerCase() === route.params.ServiceName
+                        const service = res.find(isService)
+                        if (service) {
+                            serviceId.value = service.bind_id
+                            sembleFormCode.value = service.appointment_iframe
                         }
                     }
+                    else {
+                        console.log("Error with fetching service summary, fallback to gp consultation & iframe code of all appointments")
+                        serviceId.value = 0
+                        sembleFormCode.value = '<iframe src="https://online-booking.semble.io/?token=59df46c901c3c1673ec018b4eec76f70ce63838c" frameborder="0" scrolling="auto"></iframe>'
+                    }
                     return serviceId
-                }).then((id) => {
-                    // console.log(id)
+                })
+                .then((id) => {
                     $fetch("https://doctor-today-back.herokuapp.com/service/" + id.value)
                         .then((res) => {
                             res.forEach((item) => {
@@ -54,12 +59,15 @@ export default {
                                 serviceDetails.value.push(item)
                             })
                         })
+                        .catch(error => {
+                            console.log(error)
+                        })
                 })
-            return { sembleFormCode, serviceId, serviceDetails }
-        } catch (err) {
-            console.log(err)
-            console.log(route.params.ServiceName)
-        }
+                .catch(error => {
+                    console.log(error)
+                })
+        )
+        return { sembleFormCode, serviceId, serviceDetails }
     }
 
 }
