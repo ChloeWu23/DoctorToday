@@ -25,10 +25,8 @@
 </template>
   
 <script>
-import RequestAppointmentModal from './RequestAppointmentModal.vue';
 
 export default {
-    components: { RequestAppointmentModal },
     props: {
         sembleForm:{
             type: String,

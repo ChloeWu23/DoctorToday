@@ -5,7 +5,7 @@
         <!-- End TrustBox script -->
     </head>
 
-    <body class="h-full xl:max-w-screen-xl place-self-center md:p-4 mx-auto">
+    <body class="h-full xl:max-w-screen-xl place-self-center md:p-4 mx-auto" id="pageContent">
         <transition name="modal" v-if="showModal">
             <!-- <div class="modal-mask" > -->
             <RequestAppointmentModal @close="closeModal" />

@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full xl:max-w-screen-xl place-self-center md:p-4 mx-auto">
+    <div class="h-full xl:max-w-screen-xl place-self-center md:p-4 mx-auto" id="pageContent">
         <div class="w-full"></div>
         <div class="min-w-fit max-w-screen-sm md:max-w-screen-lg">
             <p class="m-4">At Doctor Today we offer a wide range of medical services, the most frequently requested of which
@@ -35,7 +35,6 @@
 export default {
     data() {
         return {
-            fullServices: '',
         }
     },
     async setup() {
