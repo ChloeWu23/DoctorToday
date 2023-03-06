@@ -46,7 +46,7 @@ app.use('/keywordSearch', keywordSearchRouter);
 
 app.use('/readupload', express.static('upload'))
 
-app.use('page-index', pageIndexRouter);
+app.use('/page-index', pageIndexRouter);
 
 app.get('/', (req, res) => res.status(200).send({
     message: 'Welcome to our the backend 2.0 app',
