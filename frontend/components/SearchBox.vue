@@ -66,18 +66,13 @@ export default {
       this.searchResults = [];
       this.searchPerformed = false;
     },
-    ParseTags(content) {
-      const removeHeader = content.indexOf("</nav>") + 6
-      const remoteFooter = content.indexOf("Fast track independent health")
-      return content.substring(removeHeader, remoteFooter).replace(/<\/?[^>]+>/ig, " ");
-    },
     search() {
       if (this.searchQuery === "") {
         return [];
       }
       const keywordFilter = this.searchQuery.toLowerCase();
       // console.log("result is being filtered");
-      const { data: fetchedContents } = useFetch("http://localhost:3005/keywordSearch")
+      const { data: fetchedContents } = useFetch("http://doctor-today-back.herokuapp.com/keywordSearch")
       if (fetchedContents.value) {
         this.searchResults = fetchedContents.value.filter(result =>
           result.content.toLowerCase().includes(keywordFilter)
