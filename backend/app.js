@@ -28,6 +28,8 @@ const peopleRouter = require('./routes/peopleRoutes');
 const newsRouter = require('./routes/newsRoutes');
 
 const keywordSearchRouter = require('./routes/keywordSearchRoutes');
+const pageIndexRouter = require('./routes/pageIndexRoutes');
+
 
 // app.use('/', serviceRouter);
 app.use('/service', serviceRouter);
@@ -43,6 +45,8 @@ app.use('/news', newsRouter);
 app.use('/keywordSearch', keywordSearchRouter);
 
 app.use('/readupload', express.static('upload'))
+
+app.use('page-index', pageIndexRouter);
 
 app.get('/', (req, res) => res.status(200).send({
     message: 'Welcome to our the backend 2.0 app',
