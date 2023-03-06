@@ -1,5 +1,5 @@
 <template>
-  <div v-if="(searchPerformed)">
+  <div v-if="searchResults.length > 0">
     <div class="fixed z-10 top-0 left-0 h-screen w-full bg-gray-200/50 grid md:grid-cols-5 lg:grid-cols-6">
       <div></div>
       <div
@@ -16,20 +16,15 @@
           </button>
         </div>
         <div class="grid gap-2 md:gap-3 lg:gap-4">
-          <div v-if="searchResults.length > 0">
-            <div v-for="item in searchResults" class="mx-auto border-b-2 border-dashed border-gray-100 w-5/6">
-              <NuxtLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="text-sky-700 my-2">{{
-                item.title
-              }}</NuxtLink>
-              <p class="w-full text-sm md:text-base">...{{
-                item.content.substring(Math.max(item.content.indexOf(searchQuery)
-                  - 50, 0),
-                  item.content.indexOf(searchQuery) + 300)
-              }}...</p>
-            </div>
-          </div>
-          <div v-else>
-            <div class="mx-auto w-5/6">No result found</div>
+          <div v-for="item in searchResults" class="mx-auto border-b-2 border-dashed border-gray-100 w-5/6">
+            <NuxtLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="text-sky-700 my-2">{{
+              item.title
+            }}</NuxtLink>
+            <p class="w-full text-sm md:text-base">...{{
+              item.content.substring(Math.max(item.content.indexOf(searchQuery.split(" ")[0])
+                - 50, 0),
+                item.content.indexOf(searchQuery.split(" ")[0]) + 300)
+            }}...</p>
           </div>
         </div>
       </div>
@@ -67,15 +62,15 @@ export default {
       if (this.searchQuery === "") {
         return [];
       }
-      const keywordFilter = this.searchQuery.toLowerCase();
-      // console.log("result is being filtered");
-      const { data: fetchedContents } = useFetch("https://doctor-today-back.herokuapp.com/keywordSearch")
+      const keywordFilter = this.searchQuery.toLowerCase().split(" ").join('-');
+      const { data: fetchedContents, pending } = useFetch("http://localhost:3005/keywordSearch/" + keywordFilter)
+
       if (fetchedContents.value) {
-        this.searchResults = fetchedContents.value.filter(result =>
-          result.content.toLowerCase().includes(keywordFilter)
-        )
+        fetchedContents.value.forEach(item => this.searchResults.push(item))
+        console.log(this.searchResults)
       }
       this.searchPerformed = true
+
     }
   }
 };
