@@ -31,7 +31,6 @@
           <div v-else>
             <div class="mx-auto w-5/6">No result found</div>
           </div>
-
         </div>
       </div>
     </div>
@@ -51,8 +50,6 @@
 </template>
 
 <script>
-import fetchedContents from "../assets/fetchedContents.json"
-
 export default {
   data() {
     return {
@@ -72,7 +69,7 @@ export default {
       }
       const keywordFilter = this.searchQuery.toLowerCase();
       // console.log("result is being filtered");
-      const { data: fetchedContents } = useFetch("http://doctor-today-back.herokuapp.com/keywordSearch")
+      const { data: fetchedContents } = useFetch("https://doctor-today-back.herokuapp.com/keywordSearch")
       if (fetchedContents.value) {
         this.searchResults = fetchedContents.value.filter(result =>
           result.content.toLowerCase().includes(keywordFilter)
