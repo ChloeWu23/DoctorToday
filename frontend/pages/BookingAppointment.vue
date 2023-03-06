@@ -100,13 +100,16 @@
             </div>
         </div>
     </div>
+    <!--
     <div>
         <p>
        Test: Click on the address below to open it in a map application:
       <br>
       <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class = "text-red-500">{{ address }}</a>
     </p>
-    </div>
+    </div>     
+    -->
+    
 </template>
 
 <script>
