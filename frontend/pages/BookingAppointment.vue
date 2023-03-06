@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto text-justify pr-3">
+    <div class="container mx-auto text-justify pr-3" id="pageContent">
         <div class="py-8 flex flex-col md:flex-row md:justify-center">
             <div class="pb-10">
                 <div class="md:w-[150px] flex justify-center md:justify-start">

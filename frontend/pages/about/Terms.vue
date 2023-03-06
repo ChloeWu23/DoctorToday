@@ -1,5 +1,5 @@
 <template>
-    <div class="grid gap-2 md:gap-4 m-4">
+    <div class="grid gap-2 md:gap-4 m-4" id="pageContent">
         <div>
             <h2>Using this web site</h2>
             <ol class="list-outside mx-6">

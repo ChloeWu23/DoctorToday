@@ -35,7 +35,7 @@ async function search(urls) {
             for (let i = 0; i < results.length; i++) {
                 if (results[i].status === "fulfilled") {
                     const $ = cheerio.load(results[i].value.data);
-                    const $html = $("body").text();
+                    const $html = $("#pageContent").text();
                     htmls.push({
                         id: urls[i].id,
                         title: urls[i].title,

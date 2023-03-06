@@ -1,5 +1,5 @@
 <template>
-<div class = "xl:max-w-screen-xl mx-auto">
+<div class = "xl:max-w-screen-xl mx-auto" id="pageContent">
     <div class="container mx-auto h-[155px] md:h-auto 2xl:h-[600px] px-5 md:pl-20 md:bg-top md:pt-40 xl:max-w-screen-xl bg-[url('@/assets/faq.jpg')] bg-no-repeat bg-cover">
         <div class="justify-left pt-[50px] md:pt-0 md:pb-20">
             <div class="text-lg md:text-4xl font-bold text-sky-700
