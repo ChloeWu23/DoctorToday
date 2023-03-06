@@ -100,6 +100,16 @@
             </div>
         </div>
     </div>
+    <!--
+    <div>
+        <p>
+       Test: Click on the address below to open it in a map application:
+      <br>
+      <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class = "text-red-500">{{ address }}</a>
+    </p>
+    </div>     
+    -->
+    
 </template>
 
 <script>
@@ -111,7 +121,18 @@ definePageMeta({
 export default {
     data () {
         return {     
+            address: '182 Finchley Rd, London, UK',
+            latitude: '51.5499794',
+            longitude: '-0.1841192'
         }
+    },
+    computed: {
+        mapUrl() {
+        const iosUrl = `maps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
+        const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
+        const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
+        return `${iosUrl}&${androidUrl}&${fallbackUrl}`;
     }
+  }
 }
 </script>

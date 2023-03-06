@@ -5,15 +5,12 @@
                 <el-input v-model="FAQ.question" autocomplete="off">{{ FAQ.question }}</el-input>
             </el-form-item>
 
-            <el-form-item label="Answer" prop="desc">
-                <!-- <el-input v-model="newPeople.description" type="textarea">{{ newPeople.description }}</el-input> -->
+            <el-form-item label="Answer">
+                <el-input v-model="FAQ.answer" autocomplete="off">{{ FAQ.answer }}</el-input>
             </el-form-item>
-            <!-- <QuillEditor class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html"
-                :content-style="contentStyle" v-model:content="FAQ.answer">
-            </QuillEditor> -->
 
+            <!-- FIXME: change to text editor -->
         </el-form>
-
 
         <template #footer>
             <span class="dialog-footer">
@@ -22,7 +19,7 @@
                     @click="handleClose">Cancel</button>
                 <button type="button"
                     class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    @click="addFAQ">Confirm</button>
+                    @click="handleDialogue">Confirm</button>
             </span>
         </template>
     </el-dialog>
@@ -37,11 +34,22 @@ import DataService from '@/dataRoutes/DataFAQ';
 
 export default {
     // components: { QuillEditor },
+    props: {
+        isEdit: Boolean,
+
+        data_faq_id: {
+            type: Number,
+            default: null
+        },
+        data_question: String,
+        data_answer: String
+    },
+
     data() {
         return {
             FAQ: {
-                question: "",
-                answer: "",
+                question: this.data_question,
+                answer: this.data_answer,
             },
             submitted: false
         };
@@ -58,6 +66,13 @@ export default {
         };
     },
     methods: {
+        handleDialogue() {
+            if (this.isEdit) {
+                this.editFAQ();
+            } else {
+                this.addFAQ();
+            }
+        },
         addFAQ() {
             var data = {
                 question: this.FAQ.question,
@@ -87,6 +102,36 @@ export default {
                 });
 
         },
+        editFAQ() {
+            var data = {
+                faq_id: this.data_faq_id,
+                question: this.FAQ.question,
+                answer: this.FAQ.answer,
+            };
+
+            console.log(data)
+
+            if (data.question == undefined || data.question == '') {
+                alert('please input question')
+                return;
+            }
+
+            if (data.answer == undefined || data.answer == '') {
+                alert('please input the answer')
+                return;
+            }
+
+            DataService.update(data)
+                .then(res => {
+                    this.submitted = true;
+                    this.$emit('update:modelValue', false)
+                    this.$emit("refresh-callback");
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+        
     }
 
 }

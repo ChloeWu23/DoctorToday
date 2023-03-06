@@ -6,12 +6,9 @@
             </el-form-item>
 
             <el-form-item label="Content" prop="desc">
-                <!-- <el-input v-model="newPeople.description" type="textarea">{{ newPeople.description }}</el-input> -->
+                <el-input v-model="news.content" autocomplete="off">{{ news.content }}</el-input>
             </el-form-item>
-            <!-- <QuillEditor class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html"
-                :content-style="contentStyle" v-model:content="news.content">
-            </QuillEditor> -->
-
+            <!-- FIXME: text editor -->
         </el-form>
 
 
