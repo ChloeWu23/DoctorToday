@@ -55,6 +55,9 @@ router.post("/", async(req, res) => {
         })
     });
 
+    if (id_max === null || id_max === undefined) {
+        id_max = -1;
+    }
     
     var newItem = {
         id: id_max + 1,
