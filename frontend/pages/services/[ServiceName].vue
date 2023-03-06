@@ -31,8 +31,8 @@ export default {
 
         let serviceId = ref()
         let sembleFormCode = ref()
-        let serviceDetails = ref([])
-        const { data, pending, error, refresh } = await useAsyncData("getServiceDetails", () =>
+        // let serviceDetails = ref([])
+        const { data: serviceDetails, pending, error, refresh } = await useAsyncData("getServiceDetails", () =>
             $fetch("https://doctor-today-back.herokuapp.com/service")
                 .then((res) => {
                     // console.log(res)
@@ -52,22 +52,13 @@ export default {
                     return serviceId
                 })
                 .then((id) => {
-                    $fetch("https://doctor-today-back.herokuapp.com/service/" + id.value)
-                        .then((res) => {
-                            res.forEach((item) => {
-                                console.log(item)
-                                serviceDetails.value.push(item)
-                            })
-                        })
-                        .catch(error => {
-                            console.log(error)
-                        })
+                    return $fetch("https://doctor-today-back.herokuapp.com/service/" + id.value)
                 })
                 .catch(error => {
                     console.log(error)
                 })
         )
-        return { sembleFormCode, serviceId, serviceDetails }
+        return { sembleFormCode, serviceId, serviceDetails };
     }
 
 }

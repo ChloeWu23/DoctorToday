@@ -35,7 +35,6 @@
 export default {
     data() {
         return {
-            fullServices: '',
         }
     },
     async setup() {
