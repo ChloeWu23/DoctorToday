@@ -1,20 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import axios from 'axios'
-
-const getPostRoutes = async () => {
-
-    const endpoint = 'https://doctor-today-back.herokuapp.com/service'
-    const response = await axios.get(endpoint)
-    let services = response.data;
-
-    let slugs = services.map((each) => {
-        return '/services/' + each.serviceName.replace(/\s+/g, '-').toLowerCase()
-    })
-
-    return slugs
-}
-
-export default defineNuxtConfig({
+\export default defineNuxtConfig({
     app: {
         head: {
             title: "Doctor Today",
