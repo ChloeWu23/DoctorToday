@@ -7,21 +7,21 @@ router.get('/:keyword', (req, res) => {
     const keywords = req.params.keyword.toLowerCase().split('-')
     console.log("Fetching contents with keywords" + keywords);
     urls = [
-        { id: 0, url: "http://localhost:3000/bookingAppointment", title: "Appointments" },
-        { id: 1, url: "http://localhost:3000/about/FindUs", title: "Find Us" },
-        { id: 2, url: "http://localhost:3000/about/People", title: "People" },
-        { id: 3, url: "http://localhost:3000/about/FAQs", title: "FAQs" },
-        { id: 4, url: "http://localhost:3000/travelGuides", title: "Travel Guides" },
-        { id: 5, url: "http://localhost:3000/services", title: "Service & Prices" },
-        { id: 6, url: "http://localhost:3000/services/gp-consultations", title: "GP Consultations" },
-        { id: 7, url: "http://localhost:3000/services/occupational-health", title: "Occupational Health" },
-        { id: 8, url: "http://localhost:3000/services/sexual-health", title: "Sexual Health" },
-        { id: 9, url: "http://localhost:3000/services/specific-health-tests", title: "Specific Health Tests" },
-        { id: 10, url: "http://localhost:3000/services/general-health-screens", title: "General Health Screens" },
-        { id: 11, url: "http://localhost:3000/services/vaccinations", title: "Vaccinations" },
-        { id: 12, url: "http://localhost:3000/services/travel-medication", title: "Travel Medication" },
-        { id: 13, url: "http://localhost:3000/services/aesthetics-&-skincare", title: "Aesthetics & Skincare" },
-        { id: 14, url: "http://localhost:3000/services/wound-care", title: "Wound Care" },
+        { id: 0, url: "https://doctor-today-app.herokuapp.com/bookingAppointment", title: "Appointments" },
+        { id: 1, url: "https://doctor-today-app.herokuapp.com/about/FindUs", title: "Find Us" },
+        { id: 2, url: "https://doctor-today-app.herokuapp.com/about/People", title: "People" },
+        { id: 3, url: "https://doctor-today-app.herokuapp.com/about/FAQs", title: "FAQs" },
+        { id: 4, url: "https://doctor-today-app.herokuapp.com/travelGuides", title: "Travel Guides" },
+        { id: 5, url: "https://doctor-today-app.herokuapp.com/services", title: "Service & Prices" },
+        { id: 6, url: "https://doctor-today-app.herokuapp.com/services/gp-consultations", title: "GP Consultations" },
+        { id: 7, url: "https://doctor-today-app.herokuapp.com/services/occupational-health", title: "Occupational Health" },
+        { id: 8, url: "https://doctor-today-app.herokuapp.com/services/sexual-health", title: "Sexual Health" },
+        { id: 9, url: "https://doctor-today-app.herokuapp.com/services/specific-health-tests", title: "Specific Health Tests" },
+        { id: 10, url: "https://doctor-today-app.herokuapp.com/services/general-health-screens", title: "General Health Screens" },
+        { id: 11, url: "https://doctor-today-app.herokuapp.com/services/vaccinations", title: "Vaccinations" },
+        { id: 12, url: "https://doctor-today-app.herokuapp.com/services/travel-medication", title: "Travel Medication" },
+        { id: 13, url: "https://doctor-today-app.herokuapp.com/services/aesthetics-&-skincare", title: "Aesthetics & Skincare" },
+        { id: 14, url: "https://doctor-today-app.herokuapp.com/services/wound-care", title: "Wound Care" },
     ]
     search(urls)
         .then(unFiltered => {
