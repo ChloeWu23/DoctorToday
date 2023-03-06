@@ -39,7 +39,6 @@ router.get("/:id", async(req, res) => {
 });
 
 router.post("/", async(req, res) => {
-    res.set("Access-Control-Allow-Origin", "*");
 
     if (req.body.page_title === null || req.body.page_title === undefined) {
         res.status(400).send({
@@ -77,8 +76,6 @@ router.post("/", async(req, res) => {
 });
 
 router.post("/delete", async (req, res) => {
-    res.set("Access-Control-Allow-Origin", "*");
-
     if (req.body.id == null || req.body.id == undefined) {
       res.status(400).send({
         message: "Content can not be empty!",
