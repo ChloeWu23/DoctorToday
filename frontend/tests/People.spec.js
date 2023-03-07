@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest'
-import People from '../src/views/People.vue'
+import People from '../pages/People.vue'
 import {mount} from '@vue/test-utils'
 
 describe('People', () => {

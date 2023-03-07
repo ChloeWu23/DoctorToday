@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest'
-import BookingAppointment from '../src/views/BookingAppointment.vue'
+import BookingAppointment from '../pages/BookingAppointment.vue'
 import {mount} from '@vue/test-utils'
 
 /*
