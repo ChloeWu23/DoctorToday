@@ -17,7 +17,7 @@
       <TextEditor
         ref="textEditor"
         @editorUpdated="updateContent"
-        :isEdited = "this.isEdited"
+        :isEdited = "this.isEdit"
         :service_description = "this.data_description"
         
       />
@@ -100,7 +100,6 @@ export default {
         description: this.data_description,
         price: this.data_price,
       },
-      isEdited: this.isEdit
     };
   },
 
@@ -171,9 +170,9 @@ export default {
       this.newSubService.description = html;
       console.log(this.newSubService.description);
     },
-    displayDescription(){
-        this.$refs.textEditor.displayDescription();
-    }
+    // displayDescription(){
+    //     this.$refs.textEditor.displayDescription();
+    // }
   },
 };
 </script>
