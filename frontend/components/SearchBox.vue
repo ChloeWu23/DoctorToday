@@ -20,11 +20,9 @@
             <NuxtLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="text-sky-700 my-2">{{
               item.title
             }}</NuxtLink>
-            <p class="w-full text-sm md:text-base">...{{
-              item.content.substring(Math.max(item.content.indexOf(searchQuery.split(" ")[0])
-                - 50, 0),
-                item.content.indexOf(searchQuery.split(" ")[0]) + 300)
-            }}...</p>
+            <p class="w-full text-sm md:text-base">
+            <div v-html="formatContent(item.content, this.searchQuery)"></div>
+            </p>
           </div>
         </div>
       </div>
@@ -54,6 +52,24 @@ export default {
     };
   },
   methods: {
+    formatContent(text, query) {
+      let index = text.length;
+      const keywords = query.toLowerCase().split(" ")
+      for (const keyword of keywords) {
+        const keywordIndex = text.indexOf(keyword);
+        if (keywordIndex !== -1 && keywordIndex < index) {
+          index = keywordIndex;
+        }
+      }
+      const truncatedText = index < text.length ? text.slice(Math.max(index - 50, 0), index + 300) : text;
+
+      let highlightedText = truncatedText.toLowerCase();
+      for (const keyword of keywords) {
+        console.log(keyword)
+        highlightedText = highlightedText.replaceAll(keyword, '<span class="text-sky-700 font-semibold">' + keyword + '</span>')
+      }
+      return highlightedText;
+    },
     handleClose() {
       this.searchResults = [];
       this.searchPerformed = false;
