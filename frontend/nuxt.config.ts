@@ -80,6 +80,6 @@ export default defineNuxtConfig({
         storageKey: 'nuxt-color-mode'
     },
 
-    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@element-plus/nuxt','@nuxtjs/device'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@element-plus/nuxt','@nuxtjs/device','nuxt-vitest'],
 
 })
