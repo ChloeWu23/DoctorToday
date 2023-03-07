@@ -48,7 +48,7 @@ router.post("/", async(req, res) => {
         return;
     }
 
-    var id_max = await PageIndex.max("id")
+    var id_max = await PageIndex.max()
     .catch((err) => {
         res.status(500).send({
             message:
