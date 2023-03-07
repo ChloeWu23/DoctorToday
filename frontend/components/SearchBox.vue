@@ -1,5 +1,5 @@
 <template>
-  <div v-if="searchResults.length > 0">
+  <div v-if="this.searchPerformed">
     <div class="fixed z-100 top-0 left-0 h-screen w-full bg-gray-200/50 grid md:grid-cols-5 lg:grid-cols-6">
       <div></div>
       <div
@@ -16,12 +16,13 @@
           </button>
         </div>
         <div class="grid gap-2 md:gap-3 lg:gap-4">
+          <div v-if="showNoResult" class="mx-auto w-5/6"><span>No result found</span></div>
           <div v-for="item in searchResults" class="mx-auto border-b-2 border-dashed border-gray-100 w-5/6">
             <NuxtLink :to="item.url.substring(item.url.indexOf('#') + 1)" class="text-sky-700 my-2">{{
               item.title
             }}</NuxtLink>
             <p class="w-full text-sm md:text-base">
-            <span v-html="formatContent(item.content, this.searchQuery)"></span><span>...</span>
+              <span v-html="formatContent(item.content, this.searchQuery)"></span><span>...</span>
             </p>
           </div>
         </div>
@@ -47,8 +48,9 @@ export default {
   data() {
     return {
       searchQuery: "",
-      searchPerformed: false,
-      searchResults: []
+      searchResults: [],
+      showNoResult: false, //to trigger no result found message
+      searchPerformed: false, //to trigger base modal of search result
     };
   },
   methods: {
@@ -57,7 +59,7 @@ export default {
       const keywords = query.toLowerCase().split(" ")
       for (const keyword of keywords) {
         const keywordIndex = text.toLowerCase().indexOf(keyword);
-        console.log(keyword, keywordIndex, text)
+        // console.log(keyword, keywordIndex, text)
         if (keywordIndex !== -1 && keywordIndex < index) {
           index = keywordIndex;
           break;
@@ -73,21 +75,27 @@ export default {
     },
     handleClose() {
       this.searchResults = [];
-      this.searchPerformed = false;
+      this.searchQuery = "";
+      this.showNoResult = false; 
+      this.searchPerformed = false; 
     },
     search() {
       if (this.searchQuery === "") {
         return [];
       }
       const keywordFilter = this.searchQuery.toLowerCase().split(" ").join('-');
-      const { data: fetchedContents, pending } = useFetch("https://doctor-today-back.herokuapp.com/keywordSearch/" + keywordFilter)
-
-      if (fetchedContents.value) {
-        fetchedContents.value.forEach(item => this.searchResults.push(item))
-        // console.log(this.searchResults)
-      }
+      $fetch("https://doctor-today-back.herokuapp.com/keywordSearch/" + keywordFilter)
+        .then(res => {
+          if (res.length) {
+            console.log(res)
+            res.forEach(item => this.searchResults.push(item))
+          }
+          else {
+            console.log("No result found")
+            this.showNoResult = true
+          }
+        })
       this.searchPerformed = true
-
     }
   }
 };
