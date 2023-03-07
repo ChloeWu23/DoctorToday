@@ -12,6 +12,7 @@
             </el-form-item>
             
             <div class="el-form-item"> Description </div>
+            <TextEditor  ref="textEditor" @editorUpdated="updateContent" class="w-96 h-60"/>
             <!-- <QuillEditor  class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html" :content-style="contentStyle" v-model:content="newSubService.description" >
             </QuillEditor> -->
             
@@ -106,7 +107,8 @@ export default {
                 this.addSubService();
             }
         },
-        addSubService() {
+        async addSubService() {
+            await this.updateDescription()
             var data = {
                 sub_service_name: this.newSubService.sub_service_name,
                 description: this.newSubService.description,
@@ -125,7 +127,8 @@ export default {
                 });
         },
 
-        editSubService() {
+        async editSubService() {
+            await this.updateDescription()
             var data = {
                 sub_service_id: this.data_sub_service_id,
                 sub_service_name: this.newSubService.sub_service_name,
@@ -143,6 +146,9 @@ export default {
                 .catch(err => {
                     console.log(err);
                 });
+        },
+        async updateDescription() {
+          this.$refs.textEditor.sendToParent();
         }
     }
 
