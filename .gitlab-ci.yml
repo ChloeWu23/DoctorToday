@@ -11,14 +11,14 @@ backend_test:
   script:
     - cd ./backend
     - npm install
-    # - npm run test  //TODO: test
+    - npm test
 
 frontend_test:
   stage: test
   script:
     - cd ./frontend
     - npm install
-    # - npm run test // TODO: test
+    - npm run test
 
 # Job 2:
 # Deploy to staging

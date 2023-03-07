@@ -11,7 +11,7 @@
     </div>
 
    
-    <div class="bg-gray-100 xl:max-w-screen-xl mx-auto container">
+    <div class="z-40 relative bg-gray-100 xl:max-w-screen-xl mx-auto container">
         <div class="container mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
             <div class="flex flex-col sm:flex-row"> 
                 <div class = "self-start w-2/3 mx-[0px] md:mx-[10px]">

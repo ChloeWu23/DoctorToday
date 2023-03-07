@@ -26,5 +26,6 @@ db.People = require("./people.model.js")(sequelize, Sequelize);
 db.Travel = require("./travel.model.js")(sequelize, Sequelize);
 db.OtherInfo = require("./otherInfo.model")(sequelize, Sequelize);
 db.News = require("./news.model.js")(sequelize, Sequelize);
+db.PageIndex = require("./pageIndex.model")(sequelize, Sequelize);
 
 module.exports = db;
