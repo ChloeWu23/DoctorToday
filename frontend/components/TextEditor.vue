@@ -113,18 +113,27 @@ import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 
 export default {
+  props: {
+    isEdited: Boolean,
+    service_description: {
+      type: String,
+      default: "",
+    }
+  },
   data() {
     return {
       textContent: "",
       editor: null,
+      defaultContent:'<p>Please enter text here🎉</p>',
     };
   },
   components: {
     EditorContent
   },
   mounted() {
+    this.displayDescription()
     this.editor = new Editor({
-      content: '<p>Please enter text here🎉</p>',
+      content: this.defaultContent,
       extensions: [
         StarterKit,
         Link.configure({
@@ -176,7 +185,28 @@ export default {
       console.log(contentHTML);
       this.$emit('editorUpdated', contentHTML);
       return true;
-    }
+    },
+    displayDescription(){
+      if(this.isEdited){
+        console.log("here")
+        // this.editor.setHTML(this.service_description);
+        this.defaultContent = this.service_description;
+        //this.service_description
+        // this.editor.content = this.service_description;
+        // console.log(this.editor.content)
+      }
+    },
+    // truncatedHtml(data) {
+    //         const maxLength = 300;
+    //         const html = data;
+    //         // const html = this.description; // replace with the name of your variable containing the HTML
+    //         if (html.length > maxLength) {
+    //             data = html.slice(0, maxLength) + '...';
+    //             return data;
+    //         } else {
+    //             return data;
+    //         }
+    //     }, 
   },
 
 };
