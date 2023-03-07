@@ -209,8 +209,9 @@ export default {
             this.data_sub_service_name = subService.sub_service_name,
             this.data_description = subService.description,
             this.data_price = subService.price
-
+            // this.$refs.detailsDialog.displayDescription();
             this.subServiceVisible = true;
+            
         },
         emitAddDialogue() {
             this.isEdit = false;
