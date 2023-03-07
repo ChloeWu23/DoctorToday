@@ -24,6 +24,7 @@
     "core-js": "^3.8.3",
     "fortawesome": "^0.0.1-security",
     "moment": "^2.29.4",
+    "nuxt-vitest": "^0.6.6",
     "postcss": "^8.4.21",
     "register-service-worker": "^1.7.2",
     "sass": "^1.58.3",

@@ -56,7 +56,8 @@ export default {
       let index = text.length;
       const keywords = query.toLowerCase().split(" ")
       for (const keyword of keywords) {
-        const keywordIndex = text.indexOf(keyword);
+        const keywordIndex = text.toLowerCase().indexOf(keyword);
+        console.log(keyword, keywordIndex, text)
         if (keywordIndex !== -1 && keywordIndex < index) {
           index = keywordIndex;
           break;
@@ -79,7 +80,7 @@ export default {
         return [];
       }
       const keywordFilter = this.searchQuery.toLowerCase().split(" ").join('-');
-      const { data: fetchedContents, pending } = useFetch("http://localhost:3005/keywordSearch/" + keywordFilter)
+      const { data: fetchedContents, pending } = useFetch("https://doctor-today-back.herokuapp.com/keywordSearch/" + keywordFilter)
 
       if (fetchedContents.value) {
         fetchedContents.value.forEach(item => this.searchResults.push(item))
