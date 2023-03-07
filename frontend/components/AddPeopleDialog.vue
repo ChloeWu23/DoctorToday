@@ -32,9 +32,9 @@
       </el-form-item>
 
       <el-form-item label="Description" prop="desc">
-        <el-input v-model="newPeople.description" type="textarea">{{
+        <!-- <el-input v-model="newPeople.description" type="textarea">{{
           newPeople.description
-        }}</el-input>
+        }}</el-input> -->
       </el-form-item>
       <TextEditor
         ref="textEditor"
