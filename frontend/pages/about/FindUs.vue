@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="text-sm mt-4">
-                    <div class="m-2 flex">
+                    <div class="m-2 flex flex-row">                     
                         <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                                 height="24">
                                 <path fill="none" d="M0 0h24v24H0z" />
@@ -63,19 +63,16 @@
                                     d="M12 20.9l4.95-4.95a7 7 0 1 0-9.9 0L12 20.9zm0 2.828l-6.364-6.364a9 9 0 1 1 12.728 0L12 23.728zM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
                                     fill="rgba(3,105,161,1)" />
                             </svg></span>
-                        <!--
-                        <span @click="openRedirection()">
-                            182 Finchley Rd
-                            <br />
-                            London
-                            <br />
-                            NW3 6BP</span> -->
-                        <span>
-                            <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class="text-red">
-                                <div>{{ address }} </div>
-                                <div> {{ postcode }} </div>
-                            </a>
-                        </span>
+                            
+                             <span>
+                             182 Finchley Rd
+                               <br />London
+                                <br /> NW3 6BP</span> 
+                        
+                            <span class = "flex flex-col">
+                                <a :href="map1Url" target="_blank" rel="noopener noreferrer"> <img src="../../assets/GoogleMap.jpg" class = "lg:h-[40px] h-[35px]  lg:ml-20 ml-7 mb-1 aspect-auto"/> </a>
+                              <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class = "text-red-500"> <img src="../../assets/AppleMap.png" class = "lg:h-[40px] h-[35px] lg:ml-20 ml-7 aspect-auto "/> </a>
+                            </span>
                     </div>
                 </div>
             </div>
@@ -208,37 +205,38 @@ export default {
     },
     computed: {
         mapUrl() {
+        
+        const iosUrl = `maps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
+        const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
+        const fallbackUrl = `https://maps.apple.com/?address=${encodeURIComponent(this.address)}&ll=${this.latitude},${this.longitude}`;
 
-            const iosUrl = `maps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
-            const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
-            const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
-            const device = useDevice();
+        const device = useDevice();
 
-            if (device.isMacOS || device.isIos) {
-                return `${iosUrl}`;
-            } else if (device.isAndroid) {
-                return `${androidUrl}`;
-            }
-            else {
-                return `${fallbackUrl}`;
-            }
-        },
-        /*
-            map1Url() {
-                
-                const iosUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
-                const androidUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
-                const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
-                const device = useDevice();
-                if (device.isIos) {
-                    return `${iosUrl}`;
-                } else if(device.isAndroid){
-                    return `${androidUrl}`;
-                } else {
-                  return `${fallbackUrl}`;
-                }
-              }
-        */
+        if (device.isMacOS ||device.isIos) {
+            return `${iosUrl}`;
+        } else if(device.isAndroid){
+            return `${androidUrl}`;
+        }
+        else {
+          return `${fallbackUrl}`;
+        }     
+    },
+
+    map1Url() {
+        
+        const iosUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
+        const androidUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
+        const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
+        const device = useDevice();
+        if (device.isIos) {
+            return `${iosUrl}`;
+        } else if(device.isAndroid){
+            return `${androidUrl}`;
+        } else {
+          return `${fallbackUrl}`;
+        }
+      }
+
     }
 }
 </script>
