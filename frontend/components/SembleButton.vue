@@ -6,7 +6,7 @@
             <!-- </div> -->
         </transition>
 
-        <button class="rounded-2xl bg-white h-16 w-16 drop-shadow-[0_10px_10px_rgba(0,0,0,0.35)]" @click="showModal = !showModal">
+        <button class="rounded-full bg-white h-16 w-16 drop-shadow-[0_10px_10px_rgba(0,0,0,0.35)]" @click="showModal = !showModal">
             <div class="mx-auto">
                 <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
                     height="20">
