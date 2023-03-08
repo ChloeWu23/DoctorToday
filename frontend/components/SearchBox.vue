@@ -1,6 +1,6 @@
 <template>
   <div v-if="this.searchPerformed">
-    <div class="fixed z-100 top-0 left-0 h-screen w-full bg-gray-200/50 grid md:grid-cols-5 lg:grid-cols-6">
+    <div class="fixed z-30 top-0 left-0 h-screen w-full bg-gray-200/50 grid md:grid-cols-5 lg:grid-cols-6">
       <div></div>
       <div
         class="md:col-span-3 lg:col-span-4 mt-14 md:mt-20 m-4 md:min-h-2/3 max-h-screen md:h-[70vh] bg-white rounded-lg overflow-y-scroll">

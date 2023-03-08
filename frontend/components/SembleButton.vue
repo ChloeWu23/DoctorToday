@@ -1,8 +1,8 @@
 <template>
-    <div class="fixed bottom-6 right-24 z-10">
+    <div class="fixed z-50 bottom-6 right-24 z-10">
         <transition name="modal" v-if="showModal">
             <!-- <div class="modal-mask" > -->
-            <RequestAppointmentModal @close="closeModal" :sembleForm = sembleForm />
+            <RequestAppointmentModal class="z-60" @close="closeModal" :sembleForm = sembleForm />
             <!-- </div> -->
         </transition>
         
