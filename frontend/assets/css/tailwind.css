@@ -36,12 +36,14 @@
 
     ul {
         @apply list-disc list-inside;
+        list-style-type: disc;
     }
 
     ol {
         @apply list-decimal list-inside;
     }
 
+      
     .rotate {
         transform: rotate(45deg);
         transition: all 0.4s ease-in-out;

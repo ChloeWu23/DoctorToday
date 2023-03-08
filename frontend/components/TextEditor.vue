@@ -124,7 +124,7 @@ export default {
     return {
       textContent: "",
       editor: null,
-      defaultContent:'<p>Please enter text here🎉</p>',
+      defaultContent:'<p>Please enter text here</p>',
     };
   },
   components: {
