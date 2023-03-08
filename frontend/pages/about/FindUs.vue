@@ -212,16 +212,16 @@ export default {
 
             const iosUrl = `maps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
             const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
-            const fallbackUrl = `https://maps.apple.com/?address=${encodeURIComponent(this.address)}&ll=${this.latitude},${this.longitude}`;
-
+            //const fallbackUrl = `https://maps.apple.com/?address=${encodeURIComponent(this.address)}&ll=${this.latitude},${this.longitude}`;
+            const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
             const device = useDevice();
 
             if (device.isMacOS || device.isIos) {
-                return `${iosUrl}`;
-            } else if (device.isAndroid) {
+                return `${fallbackUrl}`;
+            } 
+            else if (device.isAndroid) {
                 return `${androidUrl}`;
-            }
-            else {
+            }else {
                 return `${fallbackUrl}`;
             }
         },
@@ -229,7 +229,8 @@ export default {
         map1Url() {
 
             const iosUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
-            const androidUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
+            //const androidUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
+            const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
             const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
             const device = useDevice();
             if (device.isIos) {
