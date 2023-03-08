@@ -44,7 +44,7 @@
                 <div class="divide-y divide-dashed md:text-sm">
                     <div class="w-full p-4" v-for="item in news">
                         <div class="font-semibold text-[#143B71] pb-2">{{ item.title }}</div>
-                        <div class="">{{ item.description }}</div>
+                        <div class="">{{ item.content }}</div>
                     </div>
                 </div>
 
@@ -183,14 +183,18 @@ export default {
                     title: "",
                     description: ""
                 }],
-            news: [
-                {
-                    title: "Online Appointment Request",
-                    description: "Patients wishing to request an appointment can now do so using our online request form.",
-                    link: "",
-                    pics: ""
-                }]
+            news: []
         };
+    },
+    mounted(){
+        $fetch("https://doctor-today-back.herokuapp.com/news")
+        .then(res =>
+         {this.news = res;
+         console.log(res)}
+        )
+        .catch(err => {
+                console.log("Error: cannot retrieve news data");
+            })
     },
     methods:
     {
