@@ -6,33 +6,30 @@ const router = require("express").Router();
 router.get('/:keyword', (req, res) => {
     const keywords = req.params.keyword.toLowerCase().split('-')
     console.log("Fetching contents with keywords" + keywords);
-    urls = [
-        { id: 0, url: "https://doctor-today-app.herokuapp.com/bookingAppointment", title: "Appointments" },
-        { id: 1, url: "https://doctor-today-app.herokuapp.com/about/FindUs", title: "Find Us" },
-        { id: 2, url: "https://doctor-today-app.herokuapp.com/about/People", title: "People" },
-        { id: 3, url: "https://doctor-today-app.herokuapp.com/about/FAQs", title: "FAQs" },
-        { id: 4, url: "https://doctor-today-app.herokuapp.com/travelGuides", title: "Travel Guides" },
-        { id: 5, url: "https://doctor-today-app.herokuapp.com/services", title: "Service & Prices" },
-        { id: 6, url: "https://doctor-today-app.herokuapp.com/services/gp-consultations", title: "GP Consultations" },
-        { id: 7, url: "https://doctor-today-app.herokuapp.com/services/occupational-health", title: "Occupational Health" },
-        { id: 8, url: "https://doctor-today-app.herokuapp.com/services/sexual-health", title: "Sexual Health" },
-        { id: 9, url: "https://doctor-today-app.herokuapp.com/services/specific-health-tests", title: "Specific Health Tests" },
-        { id: 10, url: "https://doctor-today-app.herokuapp.com/services/general-health-screens", title: "General Health Screens" },
-        { id: 11, url: "https://doctor-today-app.herokuapp.com/services/vaccinations", title: "Vaccinations" },
-        { id: 12, url: "https://doctor-today-app.herokuapp.com/services/travel-medication", title: "Travel Medication" },
-        { id: 13, url: "https://doctor-today-app.herokuapp.com/services/aesthetics-&-skincare", title: "Aesthetics & Skincare" },
-        { id: 14, url: "https://doctor-today-app.herokuapp.com/services/wound-care", title: "Wound Care" },
-    ]
-    search(urls)
-        .then(unFiltered => {
-            return unFiltered.filter(
-                item => { 
-                    return keywords.some(keyword => item.content.toLowerCase().includes(keyword)); })
-        })
-        .then(filtered => {
-            console.log(filtered.length)
-            res.set('Access-Control-Allow-Origin', '*');
-            res.status(200).json(filtered);
+    //get all available urls for search
+    axios.get("https://doctor-today-back.herokuapp.com/page-index")
+        .then(
+            urls => {
+                // console.log(urls.data)
+                //fetch contents from each url
+                search(urls.data)
+                    //filter for keywords
+                    .then(unFiltered => {
+                        return unFiltered.filter(
+                            item => {
+                                return keywords.some(keyword => item.content.toLowerCase().includes(keyword));
+                            })
+                    })
+                    //return result
+                    .then(filtered => {
+                        console.log(filtered.length)
+                        res.status(200).json(filtered);
+                    })
+            }
+        )
+        .catch(err => {
+            console.log(err)
+            res.status(200).json();
         })
 })
 
