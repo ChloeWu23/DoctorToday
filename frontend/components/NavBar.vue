@@ -17,7 +17,9 @@
                         </span>
                     </li>
                 </div>
-                <SearchBox></SearchBox>
+                <ClientOnly>
+                    <SearchBox></SearchBox>
+                </ClientOnly>
             </ul>
         </div>
 

@@ -10,6 +10,7 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
+    "@testing-library/vue": "^6.6.1",
     "@tiptap/extension-link": "^2.0.0-beta.220",
     "@tiptap/pm": "^2.0.0-beta.218",
     "@tiptap/starter-kit": "^2.0.0-beta.218",
@@ -24,6 +25,7 @@
     "core-js": "^3.8.3",
     "fortawesome": "^0.0.1-security",
     "moment": "^2.29.4",
+    "nuxt-vitest": "^0.6.6",
     "postcss": "^8.4.21",
     "register-service-worker": "^1.7.2",
     "sass": "^1.58.3",
@@ -41,6 +43,7 @@
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/device": "^3.1.0",
     "@nuxtjs/tailwindcss": "^6.4.1",
+    "jsdom": "^21.1.0",
     "nuxt": "^3.2.2",
     "nuxt-vitest": "^0.6.6"
   }

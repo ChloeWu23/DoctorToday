@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed z-10 top-0 left-0 h-screen w-screen bg-gray-200/50 grid md:grid-cols-4 lg:grid-cols-6">
+    <div class="fixed z-200 top-0 left-0 h-screen w-screen bg-gray-200/50 grid md:grid-cols-4 lg:grid-cols-6">
         <div class="lg:col-span-2"></div>
         <div class="md:col-span-2 mt-8 md:mt-20 md:min-h-2/3 max-h-screen md:h-[70vh] max-h-screen bg-teal-700 rounded-lg m-4">
             <div class="flex justify-between px-4">
@@ -30,7 +30,6 @@ export default {
     },
     data() {
         return {
-           
         }
     },
     methods: {

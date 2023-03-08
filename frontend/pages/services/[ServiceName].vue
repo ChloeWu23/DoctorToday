@@ -1,6 +1,6 @@
 <template>
     <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md mx-auto lg:max-screen-lg" v-if="serviceDetails" id="pageContent">
-        <SembleButton v-if=sembleFormCode :sembleForm=sembleFormCode />
+        <SembleButton v-if="isLoaded && sembleFormCode" :sembleForm=sembleFormCode />
         <div class="w-full">
             <details class="open:bg-gray-100 duration-300 w-full" v-for="item in serviceDetails">
                 <summary
@@ -11,7 +11,7 @@
                     <p class="p-2 pr-10 text-sky-700">{{ item.price }}</p>
                 </summary>
                 <div class="bg-white p-8 text-sm whitespace-pre-line">
-                    <p v-html="item.description"></p>
+                    <p v-if="isLoaded" v-html="item.description"></p>
                 </div>
             </details>
         </div>
@@ -23,6 +23,7 @@
 export default {
     data() {
         return {
+            isLoaded: false
         }
     },
     async setup() {
@@ -59,6 +60,9 @@ export default {
                 })
         )
         return { sembleFormCode, serviceId, serviceDetails };
+    },
+    mounted(){
+        this.isLoaded = true;
     }
 
 }

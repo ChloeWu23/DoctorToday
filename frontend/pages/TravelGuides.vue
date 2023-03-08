@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl  mx-auto"
+    <div class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl  mx-auto z-0"
         id="pageContent">
         <div
             class="md:m-12 m-8 md:p-6 p-4 items-center justify-center bg-white bg-opacity-50 drop-shadow-lg backdrop-blur-md md:w-3/4 w-[280px]">

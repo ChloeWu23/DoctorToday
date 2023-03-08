@@ -10,7 +10,6 @@
         </select>
     </div>
 
-   
     <div class="z-40 relative bg-gray-100 xl:max-w-screen-xl mx-auto container">
         <div class="container mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
             <div class="flex flex-col sm:flex-row"> 
