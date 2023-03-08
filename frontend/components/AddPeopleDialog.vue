@@ -41,6 +41,7 @@
         @editorUpdated="updateContent"
         :isEdited="this.isEdit"
         :service_description="this.data_description"
+        class = "w-96 h-60"
       />
       <!-- FIXME: Text editor -->
     </el-form>
