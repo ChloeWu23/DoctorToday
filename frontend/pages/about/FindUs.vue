@@ -1,7 +1,7 @@
 <template>
     <div class="pt-20 p-8 md:p-20 md:pt-56 bg-[url('assets/interior.png')] bg-no-repeat bg-top xl:max-w-screen-xl mx-auto"
         id="pageContent">
-        <div class="border border-0 rounded-3xl backdrop-blur-lg bg-white p-10">
+        <div class="border drop-shadow-md rounded-3xl backdrop-blur-lg bg-white p-4 md:p-10">
             <div class="grid grid-cols-3">
                 <div class="border-0 border-b border-sky-700 w-full"></div>
                 <div class="text-2xl text-sky-700 text-center align-middle row-span-2">Contact Us</div>
@@ -92,8 +92,8 @@
                     West Hampstead near Finchley Road underground station.
                 </p>
             </div>
-            <div class="divide-y divide-sky-700 p-10">
-                <div class="grid grid-cols-5 py-4">
+            <div class="divide-y divide-sky-700 p-0 md:p-10">
+                <div class="grid grid-cols-7 md:grid-cols-5 py-4">
                     <span class="hidden lg:block">By underground</span>
                     <span class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                             height="24">
@@ -102,7 +102,7 @@
                                 d="M17.2 20l1.8 1.5v.5H5v-.5L6.8 20H5a2 2 0 0 1-2-2V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v11a2 2 0 0 1-2 2h-1.8zM13 5v6h6V7a2 2 0 0 0-2-2h-4zm-2 0H7a2 2 0 0 0-2 2v4h6V5zm8 8H5v5h14v-5zM7.5 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
                                 fill="rgba(3,105,161,1)" />
                         </svg></span>
-                    <div class="col-span-4">We are located 5 minutes walk from <span
+                    <div class="col-span-6 md:col-span-4">We are located 5 minutes walk from <span
                             class="text-sky-700 font-semibold">Finchley Road</span> London underground station,
                         which is served by the
                         <span class="text-sky-700 font-semibold">Jubilee</span> and
@@ -114,7 +114,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-5 py-4">
+                <div class="grid grid-cols-7 md:grid-cols-5 py-4">
                     <span class="hidden lg:block">By rail</span>
                     <span class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                             height="24">
@@ -123,7 +123,7 @@
                                 d="M17.2 20l1.8 1.5v.5H5v-.5L6.8 20H5a2 2 0 0 1-2-2V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v11a2 2 0 0 1-2 2h-1.8zM13 5v6h6V7a2 2 0 0 0-2-2h-4zm-2 0H7a2 2 0 0 0-2 2v4h6V5zm8 8H5v5h14v-5zM7.5 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
                                 fill="rgba(3,105,161,1)" />
                         </svg></span>
-                    <div class="col-span-4">We are 100 yards from
+                    <div class="col-span-6 md:col-span-4">We are 100 yards from
                         <span class="text-sky-700 font-semibold">Finchley Road and Frognal station (Silverlink)</span>,
                         and a short walk or taxi ride from
                         <span class="text-sky-700 font-semibold">
@@ -131,7 +131,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-5 py-4">
+                <div class="grid grid-cols-7 md:grid-cols-5 py-4">
                     <span class="hidden lg:block">By bus</span>
                     <span class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                             height="24">
@@ -140,7 +140,7 @@
                                 d="M17 20H7v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1H3v-8H2V8h1V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3h1v4h-1v8h-1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1zm2-8V5H5v7h14zm0 2H5v4h14v-4zM6 15h4v2H6v-2zm8 0h4v2h-4v-2z"
                                 fill="rgba(3,105,161,1)" />
                         </svg></span>
-                    <div class="col-span-4">Local buses that stop directly outside the practice:
+                    <div class="col-span-6 md:col-span-4">Local buses that stop directly outside the practice:
                         <br />
                         <br />
                         13 (Aldwych - Baker Street - Golders Green)
@@ -150,7 +150,7 @@
                         113 (Oxford Circus - Hendon - Edgware)
                     </div>
                 </div>
-                <div class="grid grid-cols-5 py-4">
+                <div class="grid grid-cols-7 md:grid-cols-5 py-4">
                     <span class="hidden lg:block">By car</span>
                     <span class="block lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                             height="24">
@@ -159,7 +159,7 @@
                                 d="M19 20H5v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V11l2.48-5.788A2 2 0 0 1 6.32 4H17.68a2 2 0 0 1 1.838 1.212L22 11v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1zm1-7H4v5h16v-5zM4.176 11h15.648l-2.143-5H6.32l-2.143 5zM6.5 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm11 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
                                 fill="rgba(3,105,161,1)" />
                         </svg></span>
-                    <div class="col-span-4">We are located on the <span class="text-sky-700 font-semibold">A41 (Finchley
+                    <div class="col-span-6 md:col-span-4">We are located on the <span class="text-sky-700 font-semibold">A41 (Finchley
                             Road)</span> between Finchley Road & Frognal
                         Station
                         and Finchley Road
