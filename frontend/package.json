@@ -10,6 +10,7 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
+    "@testing-library/vue": "^6.6.1",
     "@tiptap/extension-link": "^2.0.0-beta.220",
     "@tiptap/pm": "^2.0.0-beta.218",
     "@tiptap/starter-kit": "^2.0.0-beta.218",

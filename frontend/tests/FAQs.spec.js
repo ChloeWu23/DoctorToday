@@ -1,14 +1,15 @@
 import {describe, it, expect} from 'vitest'
 import FAQs from '../pages/about/FAQs.vue'
 import {mount} from '@vue/test-utils'
+import { waitFor } from '@testing-library/vue'
 
 describe('FAQs', () => {
 
-    it('render FAQs.vue', () => {
+    it('render FAQs.vue', async () => {
         const wrapper = mount(FAQs)
         //expect(wrapper.html()).toMatchInlineSnapshot("Frequently Asked")
         //expect(wrapper.text()).toContain("Frequently Asked")
-        expect(wrapper.html()).toContain("Questions")
+        await waitFor(() => expect(wrapper.html()).toContain("Questions"))
     })
 /*
     const testQuestionList = [{
