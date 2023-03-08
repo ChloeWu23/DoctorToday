@@ -217,7 +217,7 @@ export default {
             const device = useDevice();
 
             if (device.isMacOS || device.isIos) {
-                return `${fallbackUrl}`;
+                return `${iosUrl}`;
             } 
             else if (device.isAndroid) {
                 return `${androidUrl}`;
