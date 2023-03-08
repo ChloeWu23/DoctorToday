@@ -119,7 +119,8 @@
                     </div>
                 </label>
             </div>
-            <div class="g-recaptcha" data-sitekey="6Lc-NnskAAAAAEIXjaR8lUD6m8HKSo2MHAGCPYyw" data-callback="enableButton">
+            <div class="g-recaptcha" data-sitekey="6Lflp-QkAAAAAKQG3R5haTduQf9GwGtGhrZ3wd3M" data-callback="enableButton">
+                <!-- <div class="g-recaptcha" data-sitekey="6Lc-NnskAAAAAEIXjaR8lUD6m8HKSo2MHAGCPYyw" data-callback="enableButton"> -->
             </div>
 
             <!-- <button @click="sendRegisterEmail" id="submitButton" disabled="disabled"
