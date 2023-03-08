@@ -13,15 +13,7 @@
     </div>  
 
     -->
-    <div class = "xl:max-w-screen-xl md:text-lg text-base mx-auto container">
-        <label for="color-mode" >Select Color Mode</label>
-        <select v-model="$colorMode.preference" id="color-mode">
-            <option value="system">System</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="sepia">Sepia</option>
-        </select>
-    </div>
+    
 
     <div class="z-40 relative bg-gray-100 xl:max-w-screen-xl mx-auto container">
         <div class="container mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
