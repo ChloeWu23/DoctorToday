@@ -2,18 +2,21 @@
     <div class="fixed z-50 bottom-6 right-24 z-10">
         <transition name="modal" v-if="showModal">
             <!-- <div class="modal-mask" > -->
-            <RequestAppointmentModal class="z-60" @close="closeModal" :sembleForm = sembleForm />
+            <RequestAppointmentModal class="z-60" @close="closeModal" :sembleForm=sembleForm />
             <!-- </div> -->
         </transition>
-        
-        <button class="rounded-full bg-white h-16 w-16 flex place-content-center shadow-2xl"
-            @click="showModal = !showModal">
-            <svg class="self-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path fill="none" d="M0 0H24V24H0z" />
-                <path
-                    d="M12 15c4.08 0 7.446 3.054 7.938 7H4.062c.492-3.946 3.858-7 7.938-7zm-1.813 2.28C8.753 17.734 7.546 18.713 6.8 20H12l-1.813-2.72zm3.627 0L12 20h5.199c-.745-1.287-1.952-2.266-3.385-2.72zM18 2v6c0 3.314-2.686 6-6 6s-6-2.686-6-6V2h12zM8 8c0 2.21 1.79 4 4 4s4-1.79 4-4H8zm8-4H8v2h8V4z"
-                    fill="#1663A9" />
-            </svg>
+
+        <button class="rounded-2xl bg-white h-16 w-16 drop-shadow-[0_10px_10px_rgba(0,0,0,0.35)]" @click="showModal = !showModal">
+            <div class="mx-auto">
+                <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+                    height="20">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                        d="M9 1v2h6V1h2v2h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4V1h2zm11 9H4v9h16v-9zm-4.964 1.136l1.414 1.414-4.95 4.95-3.536-3.536L9.38 12.55l2.121 2.122 3.536-3.536zM7 5H4v3h16V5h-3v1h-2V5H9v1H7V5z"
+                        fill="#1663A9"/>
+                </svg>
+                <div class="text-sm text-sky-700">Booking</div>
+            </div>
         </button>
         <div v-if="control" id="whatsapp-chat">
             <div class="start-chat">
@@ -28,7 +31,7 @@
 
 export default {
     props: {
-        sembleForm:{
+        sembleForm: {
             type: String,
             required: true
         }
