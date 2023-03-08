@@ -44,7 +44,7 @@
                 <div class="divide-y divide-dashed md:text-sm">
                     <div class="w-full p-4" v-for="item in news">
                         <div class="font-semibold text-[#143B71] pb-2">{{ item.title }}</div>
-                        <div class="">{{ item.content }}</div>
+                        <div v-html="item.content"></div>
                     </div>
                 </div>
 

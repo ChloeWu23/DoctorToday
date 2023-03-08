@@ -1,5 +1,6 @@
 <template>
-    <div class="pt-20 p-8 md:p-20 md:pt-56 bg-[url('assets/interior.png')] bg-no-repeat bg-top xl:max-w-screen-xl mx-auto" id="pageContent">
+    <div class="pt-20 p-8 md:p-20 md:pt-56 bg-[url('assets/interior.png')] bg-no-repeat bg-top xl:max-w-screen-xl mx-auto"
+        id="pageContent">
         <div class="border border-0 rounded-3xl backdrop-blur-lg bg-white p-10">
             <div class="grid grid-cols-3">
                 <div class="border-0 border-b border-sky-700 w-full"></div>
@@ -11,7 +12,8 @@
             <div class="grid md:grid-cols-2">
                 <div class="text-sm mt-4">
                     <div class="justify-items-centeralign-middle m-2">
-                        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;" class="flex">
+                        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;"
+                            class="flex">
                             <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                                     height="24">
                                     <path fill="none" d="M0 0h24v24H0z" />
@@ -61,16 +63,17 @@
                                     d="M12 20.9l4.95-4.95a7 7 0 1 0-9.9 0L12 20.9zm0 2.828l-6.364-6.364a9 9 0 1 1 12.728 0L12 23.728zM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
                                     fill="rgba(3,105,161,1)" />
                             </svg></span>
-                            <!--
+                        <!--
                         <span @click="openRedirection()">
                             182 Finchley Rd
                             <br />
                             London
                             <br />
                             NW3 6BP</span> -->
-                            <span>
-                            <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class = "text-red" >
-                                {{ address }}               
+                        <span>
+                            <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class="text-red">
+                                <div>{{ address }} </div>
+                                <div> {{ postcode }} </div>
                             </a>
                         </span>
                     </div>
@@ -174,6 +177,7 @@ export default {
     data() {
         return {
             address: '182 Finchley Rd, London, UK',
+            postcode: 'NW3 6BP',
             latitude: '51.5499794',
             longitude: '-0.1841192'
         }
@@ -200,41 +204,41 @@ export default {
                 fax.value = otherInfo.value[i].info_content
             }
         }
-        return { phone, email, fax};
+        return { phone, email, fax };
     },
     computed: {
         mapUrl() {
-        
-        const iosUrl = `maps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
-        const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
-        const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
-        const device = useDevice();
 
-        if (device.isMacOS ||device.isIos) {
-            return `${iosUrl}`;
-        } else if(device.isAndroid){
-            return `${androidUrl}`;
-        }
-        else {
-          return `${fallbackUrl}`;
-        }     
-    },
-/*
-    map1Url() {
-        
-        const iosUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
-        const androidUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
-        const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
-        const device = useDevice();
-        if (device.isIos) {
-            return `${iosUrl}`;
-        } else if(device.isAndroid){
-            return `${androidUrl}`;
-        } else {
-          return `${fallbackUrl}`;
-        }
-      }
-*/
+            const iosUrl = `maps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
+            const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
+            const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
+            const device = useDevice();
+
+            if (device.isMacOS || device.isIos) {
+                return `${iosUrl}`;
+            } else if (device.isAndroid) {
+                return `${androidUrl}`;
+            }
+            else {
+                return `${fallbackUrl}`;
+            }
+        },
+        /*
+            map1Url() {
+                
+                const iosUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
+                const androidUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
+                const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
+                const device = useDevice();
+                if (device.isIos) {
+                    return `${iosUrl}`;
+                } else if(device.isAndroid){
+                    return `${androidUrl}`;
+                } else {
+                  return `${fallbackUrl}`;
+                }
+              }
+        */
     }
 }
 </script>
