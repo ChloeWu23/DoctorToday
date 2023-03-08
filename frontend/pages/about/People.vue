@@ -55,7 +55,7 @@
                         </button>
 
                         <div class="description px-8 pb-5 text-sm" v-if="visible[item.staff_id]">
-                            <div class="leading-6">{{ item.description }}</div>
+                            <div class="leading-6" v-html="item.description"></div>
                         </div>
                     </div>
                 </li>
