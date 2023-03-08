@@ -1,5 +1,18 @@
 <template>
     <ContactButton/>
+    <!--
+
+    <div class = "xl:max-w-screen-xl md:text-lg text-base mx-auto container">
+        <label for="color-mode" >Select Color Mode</label>
+        <select v-model="$colorMode.preference" id="color-mode">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="sepia">Sepia</option>
+        </select>
+    </div>  
+
+    -->
     <div class = "xl:max-w-screen-xl md:text-lg text-base mx-auto container">
         <label for="color-mode" >Select Color Mode</label>
         <select v-model="$colorMode.preference" id="color-mode">
@@ -66,6 +79,7 @@
 
 
 <style>
+/*
 .dark-mode body {
   background-color: #091a28;
   color: aliceblue;
@@ -74,5 +88,5 @@
   background-color: #f1e7d0;
   color: #433422;
 }
-
+*/
 </style>
