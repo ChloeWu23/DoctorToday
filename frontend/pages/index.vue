@@ -1,16 +1,17 @@
 <template>
-    <head> <!-- TrustBox script -->
+    <head>
+        <!-- TrustBox script -->
         <component :is="'script'" type="text/javascript"
             src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></component>
         <!-- End TrustBox script -->
     </head>
 
     <body class="h-full xl:max-w-screen-xl place-self-center md:p-4 mx-auto" id="pageContent">
-        <transition name="modal" v-if="showModal">
+        <div id="modal" v-if="showModal" class="z-0">
             <!-- <div class="modal-mask" > -->
-            <RequestAppointmentModal @close="closeModal" />
+            <RequestAppointmentModal @close="closeModal" :semble-form=this.sembleForm class="z-50" />
             <!-- </div> -->
-        </transition>
+        </div>
         <!-- Upper: Brand & News -->
         <div class="w-full grid lg:grid-cols-3 lg:gap-6 md:h-96 justify-self-center">
             <div
@@ -52,8 +53,8 @@
 
         <div class="m-4 justify-self-center"></div>
 
-        <!-- Lower: search, appointment, reviews -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 min-h-[16rem] justify-self-center">
+        <!-- Lower: appointment, reviews, CQC -->
+        <div class="mx-6 md:mx-0 grid md:grid-cols-2 lg:grid-cols-4 gap-10 min-h-[16rem] justify-self-center">
             <div class="w-full flex items-center border-t-8 border-[#5BB57B] py-8 shadow-lg px-4">
                 <div class="pr-2 scale-125">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -99,20 +100,12 @@
                 </div>
             </div>
             <div class="w-full flex items-center border-t-8 border-[#2A4359] py-8 shadow-lg px-4">
-                <div class="pr-2 scale-125">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="none" d="M0 0h24v24H0z" />
-                        <path
-                            d="M3.161 4.469a6.5 6.5 0 0 1 8.84-.328 6.5 6.5 0 0 1 9.178 9.154l-7.765 7.79a2 2 0 0 1-2.719.102l-.11-.101-7.764-7.791a6.5 6.5 0 0 1 .34-8.826zm1.414 1.414a4.5 4.5 0 0 0-.146 6.21l.146.154L12 19.672l5.303-5.304-3.535-3.535-1.06 1.06a3 3 0 1 1-4.244-4.242l2.102-2.103a4.501 4.501 0 0 0-5.837.189l-.154.146zm8.486 2.828a1 1 0 0 1 1.414 0l4.242 4.242.708-.706a4.5 4.5 0 0 0-6.211-6.51l-.153.146-3.182 3.182a1 1 0 0 0-.078 1.327l.078.087a1 1 0 0 0 1.327.078l.087-.078 1.768-1.768z"
-                            fill="#2A4359" />
-                    </svg>
-                </div>
-                <div>
-                    <div class="my-2">Find A Service
-                    </div>
-                    <div class="w-5/6">
-                        <SearchBox />
-                    </div>
+                <div class="w-full">
+                    <!-- CQC Report Plugin -->
+                    <component :is="'script'" type="text/javascript"
+                        src="//www.cqc.org.uk/sites/all/modules/custom/cqc_widget/widget.js?data-id=1-117106339&data-host=www.cqc.org.uk">
+                    </component>
+                    <!-- End CQC Report Plugin -->
                 </div>
             </div>
             <div class="w-full flex items-center border-t-8 border-[#8896AB] py-8 shadow-lg px-4">
@@ -144,6 +137,7 @@ export default {
     data() {
         return {
             showModal: false,
+            sembleForm: '<iframe src="https://online-booking.semble.io/?token=59df46c901c3c1673ec018b4eec76f70ce63838c" class="h-full w-full border-0" frameborder="0" scrolling="auto"></iframe>',
             medicalMonths: [
                 {
                     title: "",

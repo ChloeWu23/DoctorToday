@@ -1,6 +1,6 @@
 <template>
     <div class="h-full md:w-[48rem] lg:w-[60rem] shadow-md mx-auto lg:max-screen-lg" v-if="serviceDetails" id="pageContent">
-        <SembleButton v-if="isLoaded" :sembleForm=sembleFormCode />
+        <SembleButton v-if="isLoaded && sembleFormCode" :sembleForm=sembleFormCode />
         <div class="w-full">
             <details class="open:bg-gray-100 duration-300 w-full" v-for="item in serviceDetails">
                 <summary
