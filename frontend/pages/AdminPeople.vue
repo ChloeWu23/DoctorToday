@@ -31,10 +31,10 @@
                         <th scope="col" class="px-6 py-3">
                             Description
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 w-2">
                             Independent
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 w-2">
                             Website
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -61,13 +61,18 @@
                         </td>
 
                         <td class="px-6 py-4">
-                            {{ people.is_independent }}
-                            <!-- TODO: display as svg icon  -->
+                            <div v-if="people.is_independent">
+                                <img src="../assets/admin_portal/icon-yes.svg" alt="Icon" class="mr-2 e w-8 " />
+                            </div>
+                            <div v-else>
+                                <img src="../assets/admin_portal/icon-no.svg" alt="Icon" class="mr-2 e w-8" />
+                            </div>
                         </td>
 
                         <td class="px-6 py-4">
-                            {{ people.website }}
-                            <!-- TODO: display the link -->
+                            <a v-if="people.website">
+                                <img src="../assets/admin_portal/icon-link.svg" alt="Icon" class="mr-2 e w-8 hover:cursor-pointer" @click="openWebsite(people.website)" />
+                            </a>
                         </td>
 
                         <td class="flex items-center px-6 py-4 space-x-3">
@@ -252,6 +257,9 @@ export default {
 
             this.dialogFormVisible = true;
         },
+        openWebsite(url) {
+            window.open(url);
+        }
     }
 
 }
