@@ -120,7 +120,7 @@
                 </label>
             </div>
             <div class="g-recaptcha" data-sitekey="6Lflp-QkAAAAAKQG3R5haTduQf9GwGtGhrZ3wd3M" data-callback="enableButton">
-                <!-- <div class="g-recaptcha" data-sitekey="6Lc-NnskAAAAAEIXjaR8lUD6m8HKSo2MHAGCPYyw" data-callback="enableButton"> -->
+            <!-- <div class="g-recaptcha" data-sitekey="6Lc-NnskAAAAAEIXjaR8lUD6m8HKSo2MHAGCPYyw" data-callback="enableButton"> -->
             </div>
 
             <!-- <button @click="sendRegisterEmail" id="submitButton" disabled="disabled"
@@ -201,6 +201,7 @@ export default {
                 gdpr: this.register.gdpr
             };
             console.log(DataService.sendRegisterEmail(data));
+            alert("Done! The confirmation will be with you in a few minutes");
         }
     }
 }
