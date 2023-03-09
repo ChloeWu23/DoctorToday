@@ -72,10 +72,10 @@
                         <span class="flex flex-col">
                             <a :href="map1Url" target="_blank" rel="noopener noreferrer"> <img
                                     src="../../assets/GoogleMap.jpg"
-                                    class="lg:h-[40px] h-[35px]  lg:ml-20 ml-7 mb-1 aspect-auto" /> </a>
+                                    class="lg:h-[40px] h-[35px] lg:ml-20 md:ml-7 ml-2 mb-1 aspect-auto" /> </a>
                             <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class="text-red-500"> <img
                                     src="../../assets/AppleMap.png"
-                                    class="lg:h-[40px] h-[35px] lg:ml-20 ml-7 aspect-auto " /> </a>
+                                    class="lg:h-[40px] h-[35px] lg:ml-20 md:ml-7 ml-2 aspect-auto " /> </a>
                         </span>
                     </div>
                 </div>
