@@ -70,10 +70,10 @@
                             <br /> NW3 6BP</span>
 
                         <span class="flex flex-col">
-                            <a :href="map1Url" target="_blank" rel="noopener noreferrer"> <img
+                            <a :href="googleMapsUrl" target="_blank" rel="noopener noreferrer"> <img
                                     src="../../assets/GoogleMap.jpg"
                                     class="lg:h-[40px] h-[35px] lg:ml-20 md:ml-7 ml-2 mb-1 aspect-auto" /> </a>
-                            <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class="text-red-500"> <img
+                            <a :href="appleMapsUrl" target="_blank" rel="noopener noreferrer" class="text-red-500"> <img
                                     src="../../assets/AppleMap.png"
                                     class="lg:h-[40px] h-[35px] lg:ml-20 md:ml-7 ml-2 aspect-auto " /> </a>
                         </span>
@@ -208,7 +208,7 @@ export default {
         return { phone, email, fax };
     },
     computed: {
-        mapUrl() {
+        appleMapsUrl() {
 
             const iosUrl = `maps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
             const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
@@ -226,7 +226,7 @@ export default {
             }
         },
 
-        map1Url() {
+        googleMapsUrl() {
 
             const iosUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
             //const androidUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
