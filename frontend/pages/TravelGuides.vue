@@ -1,6 +1,11 @@
 <template>
     <div class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl  mx-auto z-0"
         id="pageContent">
+        <div id="modal" v-if="showModal" class="z-1">
+            <!-- <div class="modal-mask" > -->
+            <RequestAppointmentModal @close="closeModal" :semble-form=this.sembleForm class="z-50" />
+            <!-- </div> -->
+        </div>
         <div
             class="md:m-12 m-8 md:p-6 p-4 items-center justify-center bg-white bg-opacity-50 drop-shadow-lg backdrop-blur-md md:w-3/4 w-[280px]">
             <div class="text-2xl my-4 text-sky-700">Travel vaccines, medications and advice</div>
@@ -15,7 +20,6 @@
                     to £35 applies. We are a registered Yellow Fever Centre.</p>
             </div>
         </div>
-
         <div class="lg:m-6 m-4 md:m-0 lg:p-6">
             <div class="flex">
                 <div class="flex flex-col items-center mr-4">
@@ -67,8 +71,8 @@
                 </div>
                 <div class="m-2 mt-6 p-5 bg-white bg-opacity-50 backdrop-blur-md md:max-w-none lg:w-[350px] max-w-xs">
                     <div class="text-sky-700 font-bold text-xl mb-2">Step 2</div>
-                    <p class="text-base">Consult our <a class="text-sky-700 underline"
-                            href="#/services/travel-medication">services and prices</a> list to obtain detailed medical
+                    <p class="text-base">Consult our <NuxtLink class="text-sky-700 underline"
+                            href="services/travel-medication">services and prices</NuxtLink> list to obtain detailed medical
                         and pricing information about individual vaccinations or anti-malarials.
                     </p>
                 </div>
@@ -88,7 +92,7 @@
                 </div>
                 <div class="m-2 mt-6 p-5  bg-white bg-opacity-50 backdrop-blur-md md:max-w-none lg:w-[350px] max-w-xs">
                     <div class="text-sky-700 font-bold text-xl mb-2">Step 3:</div>
-                    <p class="text-base">Fill in our <a class="text-sky-700 underline" href="#/appointment">online
+                    <p class="text-base">Fill in our <a class="text-sky-700 underline" @click="showModal = true">online
                             appointment request form</a> to discuss your
                         specific needs or email us at <a class="text-sky-700 underline"
                             href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;">
@@ -127,6 +131,8 @@ export default {
 
     data() {
         return {
+            showModal: false,
+            sembleForm: '<iframe src="https://online-booking.semble.io/?token=59df46c901c3c1673ec018b4eec76f70ce63838c" class="h-full w-full border-0" frameborder="0" scrolling="auto"></iframe>',
         }
     },
     setup() {
@@ -154,6 +160,9 @@ export default {
     methods: {
         openRedirection(country) {
             window.open('https://travelhealthpro.org.uk/country/' + country.id + '/' + country.pathName)
+        },
+        closeModal() {
+            this.showModal = false;
         }
     }
 

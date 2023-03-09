@@ -1,5 +1,7 @@
 <template>
     <ContactButton/>
+    <!--
+
     <div class = "xl:max-w-screen-xl md:text-lg text-base mx-auto container">
         <label for="color-mode" >Select Color Mode</label>
         <select v-model="$colorMode.preference" id="color-mode">
@@ -8,7 +10,10 @@
             <option value="dark">Dark</option>
             <option value="sepia">Sepia</option>
         </select>
-    </div>
+    </div>  
+
+    -->
+    
 
     <div class="z-40 relative bg-gray-100 xl:max-w-screen-xl mx-auto container">
         <div class="container mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
@@ -66,6 +71,7 @@
 
 
 <style>
+/*
 .dark-mode body {
   background-color: #091a28;
   color: aliceblue;
@@ -74,5 +80,5 @@
   background-color: #f1e7d0;
   color: #433422;
 }
-
+*/
 </style>

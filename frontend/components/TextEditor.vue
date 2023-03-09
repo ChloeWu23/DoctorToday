@@ -100,7 +100,7 @@
             </svg>
           </button>
         </div>
-        <EditorContent :editor="editor" id="textEditor" contentType="html" v-model:content="textContent" class="h-auto w-full grow" />
+        <EditorContent :editor="editor" id="textEditor" contentType="html" v-model:content="textContent" class="h-auto w-full grow" style="overflow-y: auto;" />
         <!-- <button class="bg-sky-600 text-white p-2 rounded grow-0 w-16 m-4" @click="sendToParent">Save</button> -->
       </div>
     </ClientOnly>
@@ -124,7 +124,7 @@ export default {
     return {
       textContent: "",
       editor: null,
-      defaultContent:'<p>Please enter text here🎉</p>',
+      defaultContent:'<p>Please enter text here</p>',
     };
   },
   components: {

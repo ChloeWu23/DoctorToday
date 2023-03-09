@@ -43,7 +43,7 @@ async function search(urls) {
                     const $html = $("#pageContent").text();
                     htmls.push({
                         id: urls[i].id,
-                        title: urls[i].title,
+                        title: urls[i].page_title,
                         url: urls[i].url,
                         content: $html
                     });
@@ -51,7 +51,7 @@ async function search(urls) {
                     console.log("issue with url: " + urls[i].url);
                     htmls.push({
                         id: urls[i].id,
-                        title: urls[i].title,
+                        title: urls[i].page_title,
                         url: urls[i].url,
                         content: ""
                     })
