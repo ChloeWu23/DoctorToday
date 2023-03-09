@@ -7,7 +7,7 @@
         </component>
     </head>
 
-    <div class="text-gray-700" id="pageContent">
+    <div class="text-gray-700 xl:max-w-screen-xl mx-auto" id="pageContent">
         <h1 class="text-gray-700 m-6 md:m-10 font-bold">New Patient Registration Form</h1>
         <form @submit.prevent="sendRegisterEmail" class="m-10 min-w-fit max-w-fit md:max-w-fit">
             <div class="grid md:grid-cols-2 gap-10">
