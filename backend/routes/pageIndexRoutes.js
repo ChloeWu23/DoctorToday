@@ -48,7 +48,7 @@ router.post("/", async(req, res) => {
         return;
     }
 
-    var id_max = await PageIndex.max()
+    var id_max = await PageIndex.max("id")
     .catch((err) => {
         res.status(500).send({
             message:
@@ -95,5 +95,27 @@ router.post("/delete", async (req, res) => {
     data: null,
     });
 });
+
+router.post("/deleteService", async (req, res) => {
+    if (req.body.page_title == null || req.body.page_title == undefined) {
+      res.status(400).send({
+        message: "Content can not be empty!",
+      });
+      console.log(req.body);
+      return;
+    }
+  
+    await PageIndex.destroy({
+      where: {
+        page_title: req.body.page_title
+      },
+    });
+
+    res.status(204).json({
+    status: "success",
+    data: null,
+    });
+});
+
 
 module.exports = router;

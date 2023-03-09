@@ -12,6 +12,8 @@
                 </el-input>
             </el-form-item>
 
+            <p class="text-sm ml-8">(should not be same as the previous)</p>
+
 
             <el-form-item label="Description 1" prop="desc">
                 <el-input v-model="newService.desc1" type="textarea">{{ newService.desc1 }}</el-input>

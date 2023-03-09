@@ -141,8 +141,30 @@ router.post("/:cat_id/delete", async (req, res) => {
         status: "delete success",
         data: null
     });
+})
 
+router.post("/:cat_id/deleteAll", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
 
+    await SubService.destroy({
+        where: {
+          cat_id: req.params.cat_id
+        },
+      })
+      .then(data => {
+        res.status(204).json({
+            status: "deleteAll success",
+            data: data
+        });
+      })
+      .catch((err) => {
+        res.status(500).send({
+            message:
+              err.message || "Some error occured while deleting all SubService with cat_id",
+          });
+      });
+
+    
 })
 
 router.patch("/:cat_id/swap", async (req, res) => {

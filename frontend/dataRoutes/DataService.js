@@ -7,6 +7,14 @@ class DataService {
 
     create(data) {
         // data.serviceName, description_1, description_2, description_3
+
+        // create new page-index of service category
+        const data_pageIndex = {
+            "page_title": data.get("serviceName"),
+            "url": "/services/" + data.get("serviceName").replace(/ /g,"-").toLowerCase()
+        }
+        http.post("/page-index", data_pageIndex);
+
         return http.post("/admin/service", data, {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
@@ -20,6 +28,30 @@ class DataService {
 
     delete(data) {
         // data.service_cat_id
+        http.get(`/service/getOne/${data.service_cat_id}`)
+            .then(res => {
+                const service = res.data;
+                console.log(service["bind_id"])
+
+                // delete sub-service in this category (by bind_id)
+                http.post(`/admin/sub-service/${service["bind_id"]}/deleteAll`)
+                    .then(() => {
+                        console.log("delete sub-service with cat " + service["bind_id"] + "successfully!")
+                    });
+        
+                // delete page-index
+                const data_pageIndex = {
+                    "page_title": service["serviceName"]
+                }
+                http.post("/page-index/deleteService", data_pageIndex)
+                    .then(() => {
+                        console.log("delete page index with name " + service["serviceName"] + "successfully!")
+                    });
+            })
+            .catch(err => {
+                console.log(err)
+            });
+
         return http.post("/admin/service/deleteService", data);
     }
 
