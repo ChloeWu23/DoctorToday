@@ -13,13 +13,13 @@
       </el-form-item>
 
       <el-form-item label="Title" prop="desc">
-        <el-input v-model="newPeople.title" type="textarea">{{
+        <el-input v-model="newPeople.title" type="textarea" :rows="1">{{
           newPeople.title
         }}</el-input>
       </el-form-item>
 
       <el-form-item label="Profile" prop="desc">
-        <el-input v-model="newPeople.profile" type="textarea">{{
+        <el-input v-model="newPeople.profile" type="textarea" :rows="1">{{
           newPeople.profile
         }}</el-input>
       </el-form-item>
@@ -29,6 +29,12 @@
           <el-radio :label="true">Yes</el-radio>
           <el-radio :label="false">No</el-radio>
         </el-radio-group>
+      </el-form-item>
+
+      <el-form-item label="Website" prop="desc">
+        <el-input v-model="newPeople.website" type="textarea" :rows="1">{{
+          newPeople.website
+        }}</el-input>
       </el-form-item>
 
       <el-form-item label="Description" prop="desc">
