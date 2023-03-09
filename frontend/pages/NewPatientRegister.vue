@@ -201,7 +201,7 @@ export default {
                 gdpr: this.register.gdpr
             };
             console.log(DataService.sendRegisterEmail(data));
-            alert("Done! The confirmation email will be with you in a few minutes");
+            alert("Done! The confirmation will be with you in a few minutes");
         }
     }
 }
