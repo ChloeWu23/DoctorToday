@@ -9,7 +9,7 @@
 
     <div class="text-gray-700" id="pageContent">
         <h1 class="text-gray-700 m-6 md:m-10 font-bold">New Patient Registration Form</h1>
-        <form @submit.prevent="sendRegisterEmail" class="m-10 min-w-fit max-w-fit md:max-w-fit">
+        <form @submit="sendRegisterEmail" class="m-10 min-w-fit max-w-fit md:max-w-fit">
             <div class="grid md:grid-cols-2 gap-10">
                 <label class="block">
                     <span>First name</span>
@@ -119,8 +119,8 @@
                     </div>
                 </label>
             </div>
-            <div class="g-recaptcha" data-sitekey="6Lflp-QkAAAAAKQG3R5haTduQf9GwGtGhrZ3wd3M" data-callback="enableButton">
-            <!-- <div class="g-recaptcha" data-sitekey="6Lc-NnskAAAAAEIXjaR8lUD6m8HKSo2MHAGCPYyw" data-callback="enableButton"> -->
+            <!-- <div class="g-recaptcha" data-sitekey="6Lflp-QkAAAAAKQG3R5haTduQf9GwGtGhrZ3wd3M" data-callback="enableButton"> -->
+            <div class="g-recaptcha" data-sitekey="6Lc-NnskAAAAAEIXjaR8lUD6m8HKSo2MHAGCPYyw" data-callback="enableButton">
             </div>
 
             <!-- <button @click="sendRegisterEmail" id="submitButton" disabled="disabled"
