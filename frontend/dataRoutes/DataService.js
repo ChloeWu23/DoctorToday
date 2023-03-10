@@ -26,6 +26,12 @@ class DataService {
         return http.patch("/admin/service", data);
     }
 
+    updateAws(data){
+        return http.post("/admin/service/updateAws", data, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        });
+    }
+
     delete(data) {
         // data.service_cat_id
         http.get(`/service/getOne/${data.service_cat_id}`)

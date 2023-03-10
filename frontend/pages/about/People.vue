@@ -19,7 +19,7 @@
                                    md:col-span-6 lg:col-span-4" v-for="(item, index) in peopleList" :key="item.id">
 
                     <div class="w-7/8 md:w-[300px] lg:w-[290px] xl:w-[340px] border-2 border-sky-700 rounded-xl">
-                        <button class="flex flex-wrap" @click="showDescription(item.staff_id)">
+                        <div class="flex flex-wrap">
                             <div class="w-full py-3">
                                 <div class="h-full py-2 shadow-md w-full flex items-center justify-center overflow-hidden">
                                     <img style="object-position: 55% 20%;"
@@ -28,7 +28,7 @@
                                 </div>
                             </div>
 
-                            <div class="px-8 w-full content-center">
+                            <div class="px-8 w-full content-center" @click="showDescription(item.staff_id)">
                                 <div class="w-5/6 float-left text-left">
                                     <div class="py-1 text-sm lg:text-base font-bold mt-0">{{ item.name }}</div>
                                 </div>
@@ -46,13 +46,15 @@
                                 </div>
                             </div>
 
-                            <div class="md:h-[80px] lg:h-[100px] xl:h-[75px] pb-3 px-8 w-full text-left">
+                            <div class="md:h-[80px] lg:h-[120px] xl:h-[75px] pb-3 px-8 w-full text-left">
                                 <p class="text-sm lg:text-base font-bold mt-0" v-if="item.is_independent">(Independent
-                                    Service Provider)</p>
+                                    Service Provider)
+                                    <span class = "text-sm lg:text-base font-bold mt-0 hover:text-amber-500 hover:underline text-sky-700" v-if = "item.website"  @click="openWebsite(item.website)">Book</span>
+                                </p>
                                 <p class="pt-2 pb-1 text-xs">{{ item.title }}</p>
                                 <p class="italic text-xs">{{ item.profile }}</p>
                             </div>
-                        </button>
+                        </div>
 
                         <div class="description px-8 pb-5 text-sm" v-if="visible[item.staff_id]">
                             <div class="leading-6" v-html="item.description"></div>
@@ -104,6 +106,9 @@ export default {
             }
             this.visible[staff_id] = !this.visible[staff_id];
         },
+        openWebsite(url) {
+            window.open(url);
+        }
     }
 }
 </script>
