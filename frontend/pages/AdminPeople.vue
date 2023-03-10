@@ -83,7 +83,7 @@
                                 <img src="../assets/admin_portal/icon-up-arrow.svg" alt="Icon" class="mr-2" />
                             </button>
 
-                            <button @click="deletePeople(people.staff_id)"
+                            <button @click="deletePeople(people.staff_id, people.image)"
                                 class="font-medium text-red-600 dark:text-red-500 hover:underline w-7 hover:bg-gray-200 rounded">
                                 <img src="../assets/admin_portal/icon-delete.svg" alt="Icon" class="mr-2" />
                             </button>                        
@@ -196,10 +196,13 @@ export default {
                     console.log(err);
                 });
         },
-        deletePeople(staff_id) {
+        deletePeople(staff_id, image) {
+            const objectKey = image.substring(image.indexOf('people/'));
+            console.log('in frontend' + objectKey)
             //console.log("here" + serviceId)
             var data = {
-                staff_id: staff_id
+                staff_id: staff_id,
+                objectKey: objectKey
             };
             //console.log("in vue: " + data.service_cat_id)
             DataPeople.delete(data)

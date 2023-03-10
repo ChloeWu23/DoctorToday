@@ -2,23 +2,22 @@ const router = require("express").Router();
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const path = require("path");
-const { S3Client,DeleteObjectCommand } = require('@aws-sdk/client-s3');
+const { S3Client, DeleteObjectCommand } = require("@aws-sdk/client-s3");
 const { Sequelize } = require("../app/models");
 const db = require("../app/models");
 const People = db.People;
 const Op = db.Sequelize.Op;
 
-
-let s3 = new S3Client({ 
-    region: 'eu-west-2',
-    credentials: {
-      accessKeyId: "AKIARXAT7U35FUQT3NUL",
-      secretAccessKey: "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",
-    },
-    sslEnabled: false,
-    s3ForcePathStyle: true,
-    signatureVersion: 'v4',
-  });
+let s3 = new S3Client({
+  region: "eu-west-2",
+  credentials: {
+    accessKeyId: "AKIARXAT7U35FUQT3NUL",
+    secretAccessKey: "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",
+  },
+  sslEnabled: false,
+  s3ForcePathStyle: true,
+  signatureVersion: "v4",
+});
 
 const S3_BUCKET_NAME = "upload-image-for-admin";
 
@@ -30,8 +29,8 @@ const upload = multer({
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: "public-read",
     metadata: function (req, file, cb) {
-        cb(null, { fieldName: file.fieldname });
-      },
+      cb(null, { fieldName: file.fieldname });
+    },
     key: function (req, file, cb) {
       cb(null, "people/" + Date.now().toString() + "-" + file.originalname);
     },
@@ -60,8 +59,8 @@ router.post("/", upload.single("file"), async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
   var file = req.file;
-//   console.log("in uploadRoutes");
-//   console.log(file);
+  //   console.log("in uploadRoutes");
+  //   console.log(file);
 
   if (req.body.name === null || req.body.name === undefined) {
     res.status(500).send({
@@ -144,7 +143,6 @@ router.patch("/", async (req, res) => {
     });
 });
 
-
 //updateAws and database
 router.post("/updateAws", upload.single("file"), async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -154,8 +152,8 @@ router.post("/updateAws", upload.single("file"), async (req, res) => {
   console.log(file);
   console.log(file.location);
 
-  const objectKey = req.body.objectKey
-  console.log('in backend' + objectKey)
+  const objectKey = req.body.objectKey;
+  console.log("in backend" + objectKey);
   const params = {
     Bucket: S3_BUCKET_NAME,
     Key: objectKey,
@@ -212,7 +210,6 @@ router.post("/updateAws", upload.single("file"), async (req, res) => {
   ///
 });
 
-
 router.post("/delete", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
@@ -223,6 +220,13 @@ router.post("/delete", async (req, res) => {
     console.log(req.body);
     return;
   }
+
+  const objectKey = req.body.objectKey;
+  console.log("in backend" + objectKey);
+  const params = {
+    Bucket: S3_BUCKET_NAME,
+    Key: objectKey,
+  };
 
   var count = await People.count();
 
@@ -247,10 +251,20 @@ router.post("/delete", async (req, res) => {
     );
   }
 
-  res.status(204).json({
-    status: "delete success",
-    data: req.body.staff_id,
-  });
+  try {
+    await s3.send(new DeleteObjectCommand(params));
+    console.log(`Objectwas deleted from bucket ${S3_BUCKET_NAME}`);
+    res.status(204).json({
+      status: "delete success",
+      data: req.body.staff_id,
+    });
+  } catch (err) {
+    res.status(500).send({
+      message:
+        err.message || "Some error occured while deleting People from aws",
+    });
+  }
+
 });
 
 router.patch("/swap", async (req, res) => {
