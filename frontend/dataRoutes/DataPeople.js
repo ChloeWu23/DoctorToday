@@ -16,6 +16,12 @@ class DataPeople {
         return http.patch("/people", data);
     }
 
+    updateAws(data){
+        return http.post("/people/updateAws", data, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        });
+    }
+
     delete(data) {
         return http.post("/people/delete", data);
     }

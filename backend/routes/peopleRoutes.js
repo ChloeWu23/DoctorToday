@@ -2,7 +2,7 @@ const router = require("express").Router();
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const path = require("path");
-const { S3Client } = require('@aws-sdk/client-s3');
+const { S3Client,DeleteObjectCommand } = require('@aws-sdk/client-s3');
 const { Sequelize } = require("../app/models");
 const db = require("../app/models");
 const People = db.People;
@@ -143,6 +143,75 @@ router.patch("/", async (req, res) => {
       });
     });
 });
+
+
+//updateAws and database
+router.post("/updateAws", upload.single("file"), async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
+  var file = req.file;
+  console.log("in admin people updateAws");
+  console.log(file);
+  console.log(file.location);
+
+  const objectKey = req.body.objectKey
+  console.log('in backend' + objectKey)
+  const params = {
+    Bucket: S3_BUCKET_NAME,
+    Key: objectKey,
+  };
+
+  if (req.body.staff_id === null || req.body.staff_id === null) {
+    res.status(400).send({
+      message: "Poeple id can not be empty!",
+    });
+    console.log(req.body);
+    return;
+  }
+
+  const patchItem = await People.findOne({
+    where: {
+      staff_id: req.body.staff_id,
+    },
+  });
+  if (patchItem === null) {
+    res.status(400).send({
+      message: "invalid staff_id! ",
+    });
+    return;
+  }
+
+  patchItem.set({
+    name: req.body.name,
+    title: req.body.title,
+    profile: req.body.profile,
+    description: req.body.description,
+    image: file.location,
+    website: req.body.website,
+    is_independent: req.body.is_independent,
+  });
+  await patchItem
+    .save()
+    .then((data) => {
+      s3.send(new DeleteObjectCommand(params))
+        .then(() => {
+          console.log(
+            `Object with key ${OBJECT_KEY} was deleted from bucket ${S3_BUCKET_NAME}`
+          );
+        })
+        .catch((err) => {
+          console.log(`Error deleting object: ${err}`);
+        });
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occured while updating People",
+      });
+    });
+  ///
+});
+
 
 router.post("/delete", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");

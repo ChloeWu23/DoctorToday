@@ -45,11 +45,6 @@
             <el-button>Add image</el-button>
         </el-upload>
 
-
-        <!-- <el-dialog v-model="dialogVisible">
-            <img w-full :src="dialogImageUrl" alt="Preview Image" />
-        </el-dialog> -->
-
         <template #footer>
             <span class="dialog-footer">
                 <button type="button"
@@ -80,7 +75,7 @@ export default {
         data_description_1: String,
         data_description_2: String,
         data_description_3: String,
-        data_image: String, // FIXME: 这个data_image是数据库里面的url
+        data_image: String, 
         data_iframe: String
     },
     data() {
@@ -90,20 +85,13 @@ export default {
                 desc1: this.data_description_1,
                 desc2: this.data_description_2,
                 desc3: this.data_description_3,
-                // dialogImageUrl: '',
                 iframe: this.data_iframe,
                 dialogVisible: false,
-                // baseurl: '',
-                // imageUrl: '', // image preview url
                 files: [], // uploaded files
                 url: '', // auto-upload = false, so set to null
-                // imageList:[]
-
-                // FIXME: 不知道default的url应该给哪个变量，这个应该就用来preview？
             },
             submitted: false,
             imageList: [],
-            files2: [], // uploaded files
         };
     },
     setup(props, { emit }) {
@@ -195,14 +183,9 @@ export default {
             //     this.$message.error('上传头像图片大小不能超过 2MB!')
             //     return
             //   }
-            // this.imgSaveToUrl(file)
             this.files = file.raw
             console.log(this.files)
         },
-        // imgSaveToUrl(file) {
-        //     this.newService.imageUrl = URL.createObjectURL(file.raw)
-        //     console.log('Image preview url: ', this.newService.imageUrl)
-        // },
         handleExceed(files, fileList) {
             alert('You can only upload one image')
         },
@@ -215,13 +198,9 @@ export default {
                 description_1: this.newService.desc1,
                 description_2: this.newService.desc2,
                 description_3: this.newService.desc3,
-                image: this.data_image, // FIXME: change to new image url
+                image: this.data_image, 
                 appointment_iframe: this.newService.iframe
             };
-
-            // FIXME: image edit feature
-
-            // FIXME: delete service之后数据库里的图片应该也要被删除
             console.log("Edit data with service_cat_id=" + this.data_service_cat_id);
             console.log("files.length: ")
 
@@ -260,23 +239,6 @@ export default {
                         console.log(err);
                     });
             }
-
-            // } else {
-            //     this.$message({
-            //         message: 'Image can not be null!',
-            //         type: 'error',
-            //         duration: 1500
-            //     })
-            // }
-            // DataService.update(data)
-            //     .then(res => {
-            //         this.submitted = true;
-            //         this.$emit("update:modelValue", false);
-            //         this.$emit("refresh-callback");
-            //     })
-            //     .catch(err => {
-            //         console.log(err);
-            //     });
         }
     }
 
