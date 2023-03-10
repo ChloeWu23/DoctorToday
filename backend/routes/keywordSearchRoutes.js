@@ -23,6 +23,7 @@ router.get('/:keyword', (req, res) => {
                     //return result
                     .then(filtered => {
                         console.log(filtered.length)
+                        res.set('Access-Control-Allow-Origin', '*');
                         res.status(200).json(filtered);
                     })
             }
