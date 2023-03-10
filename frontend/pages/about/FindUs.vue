@@ -1,7 +1,7 @@
 <template>
     <div class="pt-20 p-8 md:p-20 md:pt-56 bg-[url('assets/interior.png')] bg-no-repeat bg-top xl:max-w-screen-xl mx-auto"
         id="pageContent">
-        <div class="border drop-shadow-md rounded-3xl backdrop-blur-lg bg-white p-4 md:p-10">
+        <div class="border drop-shadow-md rounded-3xl backdrop-blur-lg bg-white p-4 md:p-6 lg:p-10">
             <div class="grid grid-cols-3">
                 <div class="border-0 border-b border-sky-700 w-full"></div>
                 <div class="text-2xl text-sky-700 text-center align-middle row-span-2">Contact Us</div>
@@ -9,9 +9,9 @@
                 <div class="border-0 border-t border-sky-700 w-full"></div>
                 <div class="border-0 border-t border-sky-700 w-full"></div>
             </div>
-            <div class="grid md:grid-cols-2">
-                <div class="text-sm mt-4">
-                    <div class="justify-items-centeralign-middle m-2">
+            <div class="grid md:grid-cols-3 text-base md:text-sm lg:text-base items-center">
+                
+                    <div class="justify-items-centeralign-middle m-2 md:my-8 md:justify-self-center">
                         <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;"
                             class="flex">
                             <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
@@ -25,7 +25,7 @@
                             <span>&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;</span>
                         </a>
                     </div>
-                    <div class="justify-items-center align-middle m-2">
+                    <div class="justify-items-center align-middle m-2 md:justify-self-center">
                         <div><a href="tel:02074331444" class="flex">
                                 <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                                         height="24">
@@ -38,7 +38,7 @@
                                 <span>{{ phone }}</span>
                             </a></div>
                     </div>
-                    <div class="justify-items-center align-middle m-2">
+                    <div class="justify-items-center align-middle m-2 md:justify-self-center">
                         <a href="fax:02077943064" class="flex">
                             <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                                     height="24">
@@ -51,34 +51,7 @@
                             <span class="hidden lg:block">Fax: </span>
                             <span>{{ fax }}</span>
                         </a>
-
-                    </div>
-                </div>
-                <div class="text-sm mt-4">
-                    <div class="m-2 flex flex-row">
-                        <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                height="24">
-                                <path fill="none" d="M0 0h24v24H0z" />
-                                <path
-                                    d="M12 20.9l4.95-4.95a7 7 0 1 0-9.9 0L12 20.9zm0 2.828l-6.364-6.364a9 9 0 1 1 12.728 0L12 23.728zM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
-                                    fill="rgba(3,105,161,1)" />
-                            </svg></span>
-
-                        <span>
-                            182 Finchley Rd
-                            <br />London
-                            <br /> NW3 6BP</span>
-
-                        <span class="flex flex-col">
-                            <a :href="googleMapsUrl" target="_blank" rel="noopener noreferrer"> <img
-                                    src="../../assets/GoogleMap.jpg"
-                                    class="lg:h-[40px] h-[35px] lg:ml-20 md:ml-7 ml-2 mb-1 aspect-auto" /> </a>
-                            <a :href="appleMapsUrl" target="_blank" rel="noopener noreferrer" class="text-red-500"> <img
-                                    src="../../assets/AppleMap.png"
-                                    class="lg:h-[40px] h-[35px] lg:ml-20 md:ml-7 ml-2 aspect-auto " /> </a>
-                        </span>
-                    </div>
-                </div>
+                    </div>  
             </div>
             <div class="grid grid-cols-3">
                 <div class="border-0 border-b border-sky-700 w-full"></div>
@@ -87,49 +60,72 @@
                 <div class="border-0 border-t border-sky-700 w-full"></div>
                 <div class="border-0 border-t border-sky-700 w-full"></div>
             </div>
-            <div class="mt-4">
-                <p class="text-center">The Doctor Today medical centre is located in
-                    West Hampstead near Finchley Road underground station.
-                </p>
-            </div>
-            <div class="divide-y divide-sky-700 p-0 md:p-10">
-                <div class="grid grid-cols-7 md:grid-cols-5 py-4">
-                    <span class="hidden lg:block">By underground</span>
-                    <span class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                            height="24">
-                            <path fill="none" d="M0 0h24v24H0z" />
-                            <path
-                                d="M17.2 20l1.8 1.5v.5H5v-.5L6.8 20H5a2 2 0 0 1-2-2V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v11a2 2 0 0 1-2 2h-1.8zM13 5v6h6V7a2 2 0 0 0-2-2h-4zm-2 0H7a2 2 0 0 0-2 2v4h6V5zm8 8H5v5h14v-5zM7.5 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                                fill="rgba(3,105,161,1)" />
-                        </svg></span>
-                    <div class="col-span-6 md:col-span-4">We are located 5 minutes walk from <span
-                            class="text-sky-700 font-semibold">Finchley Road</span> London underground station,
-                        which is served by the
-                        <span class="text-sky-700 font-semibold">Jubilee</span> and
-                        <span class="text-sky-700 font-semibold">Metropolitan</span> lines. Turn left out of the tube
-                        station, use the underpass to cross Finchley Road and
-                        walk north along Finchley Road keeping the road on your left and shop fronts on your right. You
-                        will pass opposite the O2 centre on
-                        the left. We are approximately 150 yards further up Finchley Road on the right.
-                    </div>
-                </div>
 
-                <div class="grid grid-cols-7 md:grid-cols-5 py-4">
-                    <span class="hidden lg:block">By rail</span>
-                    <span class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                            height="24">
-                            <path fill="none" d="M0 0h24v24H0z" />
-                            <path
-                                d="M17.2 20l1.8 1.5v.5H5v-.5L6.8 20H5a2 2 0 0 1-2-2V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v11a2 2 0 0 1-2 2h-1.8zM13 5v6h6V7a2 2 0 0 0-2-2h-4zm-2 0H7a2 2 0 0 0-2 2v4h6V5zm8 8H5v5h14v-5zM7.5 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                                fill="rgba(3,105,161,1)" />
-                        </svg></span>
-                    <div class="col-span-6 md:col-span-4">We are 100 yards from
-                        <span class="text-sky-700 font-semibold">Finchley Road and Frognal station (Silverlink)</span>,
-                        and a short walk or taxi ride from
-                        <span class="text-sky-700 font-semibold">
-                            West Hampstead Thameslink Station</span>.
+            <div class="mt-6 md:mt-8">
+                <div class="container mx-auto m-2 items-center grid grid-col-1 md:grid-cols-2">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.995614941678!2d-0.18411918425183904!3d51.54997941541006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761a8471c913f1%3A0x673f455ebfbe9165!2sDoctor%20Today%20Private%20Medical%20Centre!5e0!3m2!1sen!2suk!4v1678382525264!5m2!1sen!2suk" 
+                        class="w-full md:w-[250px] lg:w-[300px] xl:w-[350px] xl:h-[230px] md:justify-self-end md:mr-6 lg:mr-10" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div>
+                    <div class="mt-6 md:mt-0">
+                        <p class="w-full text-xl mb-3 font-semibold"> Address</p>
+                        <p> 182 Finchley Rd, West Hampstead, London NW3 6BP</p>
+                    </div>
+                        
+                    <div class="mt-3 md:mt-0 justify-self-center">
+                            <span class="flex flex-col text-base font-medium md:text-lg w-[205px] md:w-[230px]">                     
+                            <a :href="googleMapsUrl" target="_blank" rel="noopener noreferrer" 
+                                class="my-3 md:my-2 px-6 py-4 md:py-2 lg:px-6 lg:my-5 text-white bg-sky-600 rounded hover:bg-sky-700"> View in Google Maps </a>
+                            <a v-if="useDevice().isIos || useDevice().isMacOS" :href="appleMapsUrl" target="_blank" rel="noopener noreferrer" 
+                                class="my-3 md:my-2 px-6 py-4 md:py-2 lg:px-6 lg:my-5 text-white bg-sky-600 rounded hover:bg-sky-700"> View in Apple Maps </a>            
+                        </span>
                     </div>
                 </div>
+                </div>
+            </div>
+        
+            
+        <div>
+            <p class="md:hidden w-full text-xl mt-5 mb-2 md:mx-10 md:mb-0 font-semibold"> Getting Here</p>
+        </div>
+        
+        <div class="divide-y divide-sky-700 p-0 md:p-10">
+            <div class="grid grid-cols-7 md:grid-cols-5 py-4">
+                <span class="hidden lg:block">By underground</span>
+                <span class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                        height="24">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M17.2 20l1.8 1.5v.5H5v-.5L6.8 20H5a2 2 0 0 1-2-2V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v11a2 2 0 0 1-2 2h-1.8zM13 5v6h6V7a2 2 0 0 0-2-2h-4zm-2 0H7a2 2 0 0 0-2 2v4h6V5zm8 8H5v5h14v-5zM7.5 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                            fill="rgba(3,105,161,1)" />
+                    </svg></span>
+                <div class="col-span-6 md:col-span-4">We are located 5 minutes walk from <span
+                        class="text-sky-700 font-semibold">Finchley Road</span> London underground station,
+                    which is served by the
+                    <span class="text-sky-700 font-semibold">Jubilee</span> and
+                    <span class="text-sky-700 font-semibold">Metropolitan</span> lines. Turn left out of the tube
+                    station, use the underpass to cross Finchley Road and
+                    walk north along Finchley Road keeping the road on your left and shop fronts on your right. You
+                    will pass opposite the O2 centre on
+                    the left. We are approximately 150 yards further up Finchley Road on the right.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-7 md:grid-cols-5 py-4">
+                <span class="hidden lg:block">By rail</span>
+                <span class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                        height="24">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M17.2 20l1.8 1.5v.5H5v-.5L6.8 20H5a2 2 0 0 1-2-2V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v11a2 2 0 0 1-2 2h-1.8zM13 5v6h6V7a2 2 0 0 0-2-2h-4zm-2 0H7a2 2 0 0 0-2 2v4h6V5zm8 8H5v5h14v-5zM7.5 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                            fill="rgba(3,105,161,1)" />
+                    </svg></span>
+                <div class="col-span-6 md:col-span-4">We are 100 yards from
+                    <span class="text-sky-700 font-semibold">Finchley Road and Frognal station (Silverlink)</span>,
+                    and a short walk or taxi ride from
+                    <span class="text-sky-700 font-semibold">
+                        West Hampstead Thameslink Station</span>.
+                </div>
+            </div>
 
                 <div class="grid grid-cols-7 md:grid-cols-5 py-4">
                     <span class="hidden lg:block">By bus</span>
@@ -173,7 +169,7 @@
     </div>
 </template>
 
-<script>
+<script> 
 export default {
     data() {
         return {
@@ -212,7 +208,6 @@ export default {
 
             const iosUrl = `maps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
             const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
-            //const fallbackUrl = `https://maps.apple.com/?address=${encodeURIComponent(this.address)}&ll=${this.latitude},${this.longitude}`;
             const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
             const device = useDevice();
 
@@ -229,7 +224,6 @@ export default {
         googleMapsUrl() {
 
             const iosUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}&q=${encodeURIComponent(this.address)}`;
-            //const androidUrl = `comgooglemaps://?ll=${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
             const androidUrl = `geo:${this.latitude},${this.longitude}?q=${encodeURIComponent(this.address)}`;
             const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`;
             const device = useDevice();

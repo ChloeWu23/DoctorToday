@@ -1,11 +1,9 @@
 <template>
-    <div class="container mx-auto text-justify pr-3" id="pageContent">
+    <div class="container mx-auto pr-3" id="pageContent">
         <div id="modal" v-if="showModal" class="z-1">
-            <!-- <div class="modal-mask" > -->
             <RequestAppointmentModal @close="closeModal" :semble-form=this.sembleForm class="z-50" />
-            <!-- </div> -->
         </div>
-        <div class="py-8 flex flex-col md:flex-row md:justify-center">
+        <div class="py-8 px-5 flex flex-col md:flex-row md:justify-center">
             <div class="pb-10">
                 <div class="md:w-[150px] flex justify-center md:justify-start">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -19,9 +17,9 @@
             </div>
 
             <div class="pl-3 md:w-3/4">
-                <h1 class="text-gray-700 font-bold text-base md:text-xl lg:text-2xl ">Booking Requests</h1>
+                <h1 class="text-gray-700 font-bold text-xl lg:text-2xl ">Booking Requests</h1>
                 <div><br></div>
-                <div class="text-sm md:text-base leading-7">
+                <div class="leading-7">
                     <p>Appointments can be requested online via our <a
                             class="text-sky-700 font-bold hover:underline hover:underline-offset-4"
                             @click="showModal = true"> online
@@ -48,7 +46,7 @@
             </div>
         </div>
 
-        <div class="py-8 flex flex-col md:flex-row md:justify-center">
+        <div class="py-8 px-5 flex flex-col md:flex-row md:justify-center">
             <div class="pb-10">
                 <div class="md:w-[150px] flex justify-center md:justify-start">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -61,9 +59,9 @@
                 </div>
             </div>
             <div class="pl-3 md:w-3/4">
-                <h1 class="text-gray-700 font-bold text-base md:text-xl lg:text-2xl ">Register Online</h1>
+                <h1 class="text-gray-700 font-bold text-xl lg:text-2xl ">Register Online</h1>
                 <div><br></div>
-                <p class="text-base leading-7">You can save time at your appointment by filling out this
+                <p class="leading-7">You can save time at your appointment by filling out this
                     <NuxtLink class="text-sky-700 font-extrabold hover:underline hover:underline-offset-4"
                         to="NewPatientRegister">online patient registration</NuxtLink>
                     form prior to your arrival.
@@ -71,7 +69,7 @@
             </div>
         </div>
 
-        <div class="py-8 flex flex-col md:flex-row md:justify-center">
+        <div class="py-8 px-5 flex flex-col md:flex-row md:justify-center">
             <div class="pb-10">
                 <div class="md:w-[150px] flex justify-center md:justify-start">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -84,10 +82,10 @@
                 </div>
             </div>
             <div class="pl-3 md:w-3/4">
-                <h1 class="text-gray-700 font-bold text-base md:text-xl lg:text-2xl ">Family members, friends and chaperones
+                <h1 class="text-gray-700 font-bold text-xl lg:text-2xl ">Family members, friends and chaperones
                 </h1>
                 <div><br></div>
-                <p class="text-sm md:text-base leading-7">Patients are welcome to attend with a family member or friend. At
+                <p class="leading-7">Patients are welcome to attend with a family member or friend. At
                     your specific request,
                     they may sit in on the consultation. For females undergoing intimate examinations or tests
                     by male clinicians, it is our policy that a female chaperone is always present, for your peace
@@ -100,7 +98,7 @@
             </div>
         </div>
 
-        <div class="py-8 flex flex-col md:flex-row md:justify-center">
+        <div class="py-8 px-5 flex flex-col md:flex-row md:justify-center">
             <div class="pb-10">
                 <div class="md:w-[150px] flex justify-center md:justify-start">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -114,9 +112,9 @@
             </div>
 
             <div class="pl-3 md:w-3/4">
-                <h1 class="text-gray-700 font-bold text-base md:text-xl lg:text-2xl ">Children</h1>
+                <h1 class="text-gray-700 font-bold lg:text-2xl ">Children</h1>
                 <div><br></div>
-                <p class="text-sm md:text-base leading-7">Please note that children under 16 years of age will not be seen
+                <p class="leading-7">Please note that children under 16 years of age will not be seen
                     unless accompanied by a
                     parent or other person with parental responsibility. However, with consent of both parties,
                     a child under 16 may be seen privately for non-intimate examinations by a same-sex or
@@ -125,15 +123,6 @@
             </div>
         </div>
     </div>
-    <!--
-    <div>
-        <p>
-       Test: Click on the address below to open it in a map application:
-      <br>
-      <a :href="mapUrl" target="_blank" rel="noopener noreferrer" class = "text-red-500">{{ address }}</a>
-    </p>
-    </div>     
-    -->
 </template>
 
 <script>
