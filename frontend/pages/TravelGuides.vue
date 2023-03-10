@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl  mx-auto z-0"
+    <div class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl mx-auto z-0"
         id="pageContent">
         <div id="modal" v-if="showModal" class="z-1">
             <!-- <div class="modal-mask" > -->

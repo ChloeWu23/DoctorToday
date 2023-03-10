@@ -12,9 +12,9 @@
                     Commission</a></p>
 
             <p><!-- links to be added -->
-                <a href="">Site Developers</a> |
-                <a href="https://doctor-today-app.herokuapp.com/about/Terms">Terms and Conditions</a> |
-                <a href="https://doctor-today-app.herokuapp.com/about/FAQs">Privacy Policy</a>
+                <NuxtLink to="/about/Developers">Site Developers</NuxtLink> |
+                <NuxtLink to="/about/Terms">Terms and Conditions</NuxtLink> |
+                <NuxtLink to="/about/FAQs">Privacy Policy</NuxtLink>
             </p>
         </div>
     </div>
