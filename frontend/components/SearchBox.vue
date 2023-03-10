@@ -58,7 +58,8 @@ export default {
   methods: {
     formatContent(text, query) {
       let index = text.length;
-      const keywords = query.toLowerCase().split(" ")
+      const keywords = query.toLowerCase().trim().split(" ")
+      console.log(keywords)
       for (const keyword of keywords) {
         const keywordIndex = text.toLowerCase().indexOf(keyword);
         // console.log(keyword, keywordIndex, text)
