@@ -2,7 +2,7 @@ const multer = require("multer");
 const router = require("express").Router();
 const path = require("path");
 const multerS3 = require("multer-s3");
-const { S3Client } = require('@aws-sdk/client-s3');
+const { S3Client,DeleteObjectCommand } = require("@aws-sdk/client-s3");
 
 /*
     post("/")  : add new service, need serviceName
@@ -21,41 +21,41 @@ const Op = db.Sequelize.Op;
  * /upload
  * */
 let s3 = new S3Client({
-  region: 'eu-west-2',
+  region: "eu-west-2",
   credentials: {
     accessKeyId: "AKIARXAT7U35FUQT3NUL",
     secretAccessKey: "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",
   },
   sslEnabled: false,
   s3ForcePathStyle: true,
-  signatureVersion: 'v4',
+  signatureVersion: "v4",
 });
 
 const S3_BUCKET_NAME = "upload-image-for-admin";
 
 // // Set up Multer S3 middleware for image upload
 const upload = multer({
-storage: multerS3({
-  s3: s3,
-  bucket: S3_BUCKET_NAME,
-  contentType: multerS3.AUTO_CONTENT_TYPE,
-  acl: "public-read",
-  metadata: function (req, file, cb) {
+  storage: multerS3({
+    s3: s3,
+    bucket: S3_BUCKET_NAME,
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    acl: "public-read",
+    metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
     },
-  key: function (req, file, cb) {
-    cb(null, "service/" + Date.now().toString() + "-" + file.originalname);
-  },
-}),
+    key: function (req, file, cb) {
+      cb(null, "service/" + Date.now().toString() + "-" + file.originalname);
+    },
+  }),
 });
 
-router.post("/", upload.single('file'), async (req, res) => {
+router.post("/", upload.single("file"), async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
   var file = req.file;
-  console.log("in uploadServiceRoute")
-  console.log(file)
-  console.log(file.location)
+  console.log("in uploadServiceRoute");
+  console.log(file);
+  console.log(file.location);
 
   if (req.body.serviceName === null || req.body.serviceName === undefined) {
     res.status(400).send({
@@ -105,9 +105,9 @@ router.patch("/", async (req, res) => {
     return;
   }
 
-  const patchItem = await ServiceOverviews.findOne(
-    { where: { service_cat_id: req.body.service_cat_id } }
-  );
+  const patchItem = await ServiceOverviews.findOne({
+    where: { service_cat_id: req.body.service_cat_id },
+  });
   if (patchItem === null) {
     res.status(400).send({
       message: "invalid service_cat_id! ",
@@ -127,6 +127,76 @@ router.patch("/", async (req, res) => {
   await patchItem
     .save()
     .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occured while updating ServiceOverview",
+      });
+    });
+});
+
+//updateAws and database
+router.post("/updateAws", upload.single("file"), async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
+  var file = req.file;
+  console.log("in adminroutes updateAws");
+  console.log(file);
+  console.log(file.location);
+
+  const objectKey = req.body.objectKey
+  console.log('in backend' + objectKey)
+  const params = {
+    Bucket: S3_BUCKET_NAME,
+    Key: objectKey,
+  };
+
+  if (
+    req.body.service_cat_id === null ||
+    req.body.service_cat_id === undefined
+  ) {
+    res.status(400).send({
+      message: "Content can not be empty!",
+    });
+    console.log(req.body);
+    return;
+  }
+
+  const patchItem = await ServiceOverviews.findOne({
+    where: { service_cat_id: req.body.service_cat_id },
+  });
+  if (patchItem === null) {
+    res.status(400).send({
+      message: "invalid service_cat_id! ",
+    });
+    return;
+  }
+
+  patchItem.set({
+    serviceName: req.body.serviceName,
+    description_1: req.body.description_1,
+    description_2: req.body.description_2,
+    description_3: req.body.description_3,
+    image: file.location,
+    appointment_iframe: req.body.appointment_iframe,
+  });
+
+  await patchItem
+    .save()
+    .then((data) => {
+      //if update database success, then delete from aws
+      s3.send(new DeleteObjectCommand(params))
+        .then(() => {
+          console.log(
+            `Object with key ${OBJECT_KEY} was deleted from bucket ${S3_BUCKET_NAME}`
+          );
+        })
+        .catch((err) => {
+          console.log(`Error deleting object: ${err}`);
+        });
+
       res.send(data);
     })
     .catch((err) => {

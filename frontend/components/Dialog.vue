@@ -3,11 +3,9 @@
         :close-on-click-modal="false">
 
         <el-form>
-            
+
             <el-form-item label="Service Category Name">
-                <el-input 
-                    v-model="newService.name" 
-                    autocomplete="off">
+                <el-input v-model="newService.name" autocomplete="off">
                     {{ newService.name }}
                 </el-input>
             </el-form-item>
@@ -30,7 +28,7 @@
             <el-form-item label="iframe (Semble)" prop="desc">
                 <el-input v-model="newService.iframe" type="textarea">{{ newService.iframe }}</el-input>
             </el-form-item>
-                    
+
             <!-- <div v-if="isEdit">
                 this is edit
             </div>
@@ -38,17 +36,19 @@
             <div v-else>
                 this is Add
             </div> -->
-            
+
         </el-form>
 
-        <el-upload action="" list-type="picture" :auto-upload="false" :on-remove="handleRemove" :on-change="upldchange"
-            :limit="1" :on-exceed="handleExceed" ref="upload">
+
+        <el-upload action="" :file-list="this.imageList" list-type="picture" :auto-upload="false" :on-remove="handleRemove"
+            :on-change="upldchange" :limit="1" :on-exceed="handleExceed" ref="upload">
             <el-button>Add image</el-button>
         </el-upload>
 
-        <el-dialog v-model="dialogVisible">
+
+        <!-- <el-dialog v-model="dialogVisible">
             <img w-full :src="dialogImageUrl" alt="Preview Image" />
-        </el-dialog>
+        </el-dialog> -->
 
         <template #footer>
             <span class="dialog-footer">
@@ -78,7 +78,7 @@ export default {
         },
         data_serviceName: String,
         data_description_1: String,
-        data_description_2: String, 
+        data_description_2: String,
         data_description_3: String,
         data_image: String, // FIXME: 这个data_image是数据库里面的url
         data_iframe: String
@@ -90,17 +90,20 @@ export default {
                 desc1: this.data_description_1,
                 desc2: this.data_description_2,
                 desc3: this.data_description_3,
-                dialogImageUrl: '',
+                // dialogImageUrl: '',
                 iframe: this.data_iframe,
                 dialogVisible: false,
-                baseurl: '',
-                imageUrl: '', // image preview url
+                // baseurl: '',
+                // imageUrl: '', // image preview url
                 files: [], // uploaded files
                 url: '', // auto-upload = false, so set to null
+                // imageList:[]
 
                 // FIXME: 不知道default的url应该给哪个变量，这个应该就用来preview？
             },
-            submitted: false
+            submitted: false,
+            imageList: [],
+            files2: [], // uploaded files
         };
     },
     setup(props, { emit }) {
@@ -113,6 +116,11 @@ export default {
             handleClose,
             dialogFormVisible,
         };
+    },
+    mounted() {
+        if (this.isEdit) {
+            this.imageList.push({ name: 'previous-image', url: `${this.data_image}` })
+        }
     },
     methods: {
         handleDialogue() {
@@ -174,8 +182,6 @@ export default {
                 })
             }
 
-
-            // console.log("after parent emit")
         },
         upldchange(file) {
             //   const isJPG = file.raw.type === 'image/jpeg'
@@ -189,20 +195,20 @@ export default {
             //     this.$message.error('上传头像图片大小不能超过 2MB!')
             //     return
             //   }
-
-            this.imgSaveToUrl(file)
+            // this.imgSaveToUrl(file)
             this.files = file.raw
-            // console.log(this.files)
+            console.log(this.files)
         },
-        imgSaveToUrl(file) {
-            this.imageUrl = URL.createObjectURL(file.raw)
-            // console.log('Image preview url: ', this.imageUrl)
-        },
+        // imgSaveToUrl(file) {
+        //     this.newService.imageUrl = URL.createObjectURL(file.raw)
+        //     console.log('Image preview url: ', this.newService.imageUrl)
+        // },
         handleExceed(files, fileList) {
-            this.$message.warning(`You can only upload one image`);
+            alert('You can only upload one image')
         },
-        
+
         editService() {
+            console.log("in edit")
             var data = {
                 service_cat_id: this.data_service_cat_id,
                 serviceName: this.newService.name,
@@ -216,17 +222,61 @@ export default {
             // FIXME: image edit feature
 
             // FIXME: delete service之后数据库里的图片应该也要被删除
-
             console.log("Edit data with service_cat_id=" + this.data_service_cat_id);
-            DataService.update(data)
-                .then(res => {
-                    this.submitted = true;
-                    this.$emit("update:modelValue", false);
-                    this.$emit("refresh-callback");
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+            console.log("files.length: ")
+
+            if (this.files !== undefined && this.files.length !== 0) {
+                const objectKey = this.data_image.substring(this.data_image.indexOf('service/'));
+                console.log('in frontend' + objectKey)
+                let formData = new FormData()
+                formData.append('file', this.files)
+                formData.append('objectKey', objectKey)
+                formData.append('service_cat_id', this.data_service_cat_id)
+                formData.append('serviceName', this.newService.name)
+                formData.append('description_1', this.newService.desc1)
+                formData.append('description_2', this.newService.desc2)
+                formData.append('description_3', this.newService.desc3)
+                formData.append('appointment_iframe', this.newService.iframe)
+
+                console.log("in dialog updateAws")
+                DataService.updateAws(formData)
+                    .then(res => {
+                        console.log("update service successfully")
+                        this.submitted = true;
+                        this.$emit("update:modelValue", false);
+                        this.$emit("refresh-callback");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            } else {
+                DataService.update(data)
+                    .then(res => {
+                        this.submitted = true;
+                        this.$emit("update:modelValue", false);
+                        this.$emit("refresh-callback");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+
+            // } else {
+            //     this.$message({
+            //         message: 'Image can not be null!',
+            //         type: 'error',
+            //         duration: 1500
+            //     })
+            // }
+            // DataService.update(data)
+            //     .then(res => {
+            //         this.submitted = true;
+            //         this.$emit("update:modelValue", false);
+            //         this.$emit("refresh-callback");
+            //     })
+            //     .catch(err => {
+            //         console.log(err);
+            //     });
         }
     }
 
