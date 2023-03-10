@@ -38,7 +38,7 @@
         }}</el-input> -->
       </el-form-item>
       <TextEditor ref="textEditor" @editorUpdated="updateContent" :isEdited="this.isEdit"
-        :service_description="this.data_description" class="w-96 h-60" />
+        :service_description="this.data_description" class="h-60" />
       <!-- FIXME: Text editor -->
     </el-form>
 
