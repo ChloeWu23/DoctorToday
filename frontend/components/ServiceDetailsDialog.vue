@@ -19,7 +19,7 @@
         @editorUpdated="updateContent"
         :isEdited = "this.isEdit"
         :service_description = "this.data_description"
-        class = "w-96 h-60"
+        class = "h-60"
       />
       <!-- class="w-96 h-60" -->
       <!-- <QuillEditor  class="h-64" id="textEditor" theme="snow" toolbar="essential" contentType="html" :content-style="contentStyle" v-model:content="newSubService.description" >
