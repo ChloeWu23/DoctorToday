@@ -54,13 +54,13 @@
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
                                 <img src="../assets/admin_portal/icon-edit.svg" alt="Icon" class="mr-2" />
                             </button>
-                            
+
                             <button @click="swapServicesUp(serviceInfo.service_cat_id)"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
                                 <img src="../assets/admin_portal/icon-up-arrow.svg" alt="Icon" class="mr-2" />
                             </button>
 
-                            <button @click="deleteService(serviceInfo.service_cat_id)"
+                            <button @click="deleteService(serviceInfo.service_cat_id, serviceInfo.image)"
                                 class="font-medium text-red-600 dark:text-red-500 hover:underline w-7 hover:bg-gray-200 rounded">
                                 <img src="../assets/admin_portal/icon-delete.svg" alt="Icon" class="mr-2" />
                             </button>
@@ -72,18 +72,10 @@
 
         </div>
 
-        <Dialog 
-            v-model="dialogFormVisible"
-            v-if="dialogFormVisible" 
-            :isEdit = "isEdit"
-            :data_service_cat_id = "data_service_cat_id"
-            :data_serviceName = "data_serviceName"
-            :data_description_1 = "data_description_1"
-            :data_description_2 = "data_description_2" 
-            :data_description_3 = "data_description_3"
-            :data_image = "data_image" 
-            :data_iframe = "data_iframe"
-        ></Dialog>
+        <Dialog v-model="dialogFormVisible" v-if="dialogFormVisible" :isEdit="isEdit"
+            :data_service_cat_id="data_service_cat_id" :data_serviceName="data_serviceName"
+            :data_description_1="data_description_1" :data_description_2="data_description_2"
+            :data_description_3="data_description_3" :data_image="data_image" :data_iframe="data_iframe"></Dialog>
 
     </div>
 </template>
@@ -94,7 +86,7 @@ import DataService from '../dataRoutes/DataService';
 import { reactive, ref } from "vue";
 
 definePageMeta({
-  layout: "adminPortal",
+    layout: "adminPortal",
 });
 
 export default {
@@ -109,9 +101,9 @@ export default {
             data_service_cat_id: "",
             data_serviceName: "",
             data_description_1: "",
-            data_description_2: "", 
+            data_description_2: "",
             data_description_3: "",
-            data_image: "", 
+            data_image: "",
             data_iframe: ""
         }
     },
@@ -138,7 +130,7 @@ export default {
     setup() {
         const dialogFormVisible = ref(false);
 
-        
+
 
         return {
             dialogFormVisible,
@@ -159,9 +151,12 @@ export default {
                     console.log(err);
                 });
         },
-        deleteService(serviceId) {
+        deleteService(serviceId, image) {
+            const objectKey = image.substring(image.indexOf('service/'));
+            console.log('in frontend' + objectKey)
             var data = {
-                service_cat_id: serviceId
+                service_cat_id: serviceId,
+                objectKey: objectKey
             };
             DataService.delete(data)
                 .then(res => {
@@ -196,7 +191,7 @@ export default {
             this.isEdit = false;
 
             this.data_service_cat_id = "",
-            this.data_serviceName = "";
+                this.data_serviceName = "";
             this.data_description_1 = "";
             this.data_description_2 = "";
             this.data_description_3 = "";

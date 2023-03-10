@@ -2,7 +2,7 @@ const multer = require("multer");
 const router = require("express").Router();
 const path = require("path");
 const multerS3 = require("multer-s3");
-const { S3Client,DeleteObjectCommand } = require("@aws-sdk/client-s3");
+const { S3Client, DeleteObjectCommand } = require("@aws-sdk/client-s3");
 
 /*
     post("/")  : add new service, need serviceName
@@ -146,8 +146,8 @@ router.post("/updateAws", upload.single("file"), async (req, res) => {
   console.log(file);
   console.log(file.location);
 
-  const objectKey = req.body.objectKey
-  console.log('in backend' + objectKey)
+  const objectKey = req.body.objectKey;
+  console.log("in backend" + objectKey);
   const params = {
     Bucket: S3_BUCKET_NAME,
     Key: objectKey,
@@ -222,6 +222,13 @@ router.post("/deleteService", async (req, res) => {
     return;
   }
 
+  const objectKey = req.body.objectKey;
+  console.log("in backend" + objectKey);
+  const params = {
+    Bucket: S3_BUCKET_NAME,
+    Key: objectKey,
+  };
+
   var count = await ServiceOverviews.count({ col: "service_cat_id" });
 
   // console.log("original rows size: " + count);
@@ -268,6 +275,20 @@ router.post("/deleteService", async (req, res) => {
     });
   }
 
+  try {
+    await s3.send(new DeleteObjectCommand(params));
+    console.log(`Objectwas deleted from bucket ${S3_BUCKET_NAME}`);
+    res.status(204).json({
+      status: "success",
+      data: null,
+    });
+  } catch (err) {
+    res.status(500).send({
+      message:
+        err.message || "Some error occured while deleting service from aws",
+    });
+  }
+
   // delete all subService
   // console.log("--- bind_id: " + bind_id);
   // await SubService.destroy({
@@ -285,10 +306,10 @@ router.post("/deleteService", async (req, res) => {
   //     });
   //   })
 
-  res.status(204).json({
-    status: "success",
-    data: null,
-  });
+  // res.status(204).json({
+  //   status: "success",
+  //   data: null,
+  // });
 });
 
 // found the service by id_1 / id_2
