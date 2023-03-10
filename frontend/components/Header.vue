@@ -3,15 +3,15 @@
    
     <div class="z-40 relative bg-gray-100 xl:max-w-screen-xl mx-auto container">
         <div class="container mx-auto bg-hero bg-[length:1920px_260px] border-b-2 drop-shadow-md mb-6">
-            <div class="flex flex-col sm:flex-row"> 
-                <div class = "self-start w-2/3 mx-[0px] md:mx-[10px]">
+            <div class="flex flex-col sm:flex-row "> 
+                <div class = "self-start w-1/2 mx-[0px] md:mx-[10px]">
                     <NuxtLink :to="'/'">
                         <img class="md:h-[150px] md:w-[500px] h-[100px] mx-5 lg:mx-[60px] xl:mx-[95px] mt-[20px]" src="../assets/logo.png" alt="" style="object-fit: contain;" />
                     </NuxtLink>
                 </div>
 
                 <div class="self-start flex flex-col relative right-0 bg-transparant text-[10px] text-xs md:text-sm text-sky-700 
-                md:mx-8 mx-[28px] break-all md:break-normal md:mt-10 mt-0">
+                xl:ml-[200px] lg:ml-[100px] md:ml-[20px] ml-[28px] break-all md:break-normal md:mt-10 mt-0">
                     <div class="pl-2 sm:p-1 md:mb-1 mb-2 hover:text-amber-500">
                         <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#110;&#113;&#117;&#105;&#114;&#105;&#101;&#115;&#64;&#100;&#111;&#99;&#116;&#111;&#114;&#116;&#111;&#100;&#97;&#121;&#46;&#99;&#111;&#46;&#117;&#107;" class="flex items-center">
                             <span class="mr-2">

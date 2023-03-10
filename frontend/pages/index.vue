@@ -6,7 +6,7 @@
         <!-- End TrustBox script -->
     </head>
 
-    <body class="h-full xl:max-w-screen-xl place-self-center md:p-4 mx-auto" id="pageContent">
+    <body class="h-full xl:max-w-screen-xl place-self-center md:p-4 mx-auto container" id="pageContent">
         <div id="modal" v-if="showModal" class="z-0">
             <!-- <div class="modal-mask" > -->
             <RequestAppointmentModal @close="closeModal" :semble-form=this.sembleForm class="z-50" />

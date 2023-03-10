@@ -102,7 +102,7 @@ export default {
       const all = url + "?phone=" + this.phoneNumber + `&text=${this.text}`;
       //window.open(all, "_blank");
       */
-      window.open("https://wa.me/447879635767");
+      window.open("https://wa.me/447387334056");
     },
   },
 };
