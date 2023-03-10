@@ -47,7 +47,7 @@ export default {
                 {
                     path: "/travelGuides",
                     name: "travelGuides",
-                    label: "Travel Guides",
+                    label: "Travel Clinic",
                     children: []
                 },
                 {
