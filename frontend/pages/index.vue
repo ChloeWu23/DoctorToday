@@ -54,7 +54,7 @@
         <div class="m-4 justify-self-center"></div>
 
         <!-- Lower: appointment, reviews, CQC -->
-        <div class="mx-6 md:mx-0 grid md:grid-cols-2 lg:grid-cols-4 gap-10 min-h-[16rem] justify-self-center">
+        <div class="mx-6 md:mx-0 grid md:grid-cols-2 lg:grid-cols-3 gap-10 min-h-[16rem] justify-self-center">
             <div class="w-full flex items-center border-t-8 border-[#5BB57B] py-8 shadow-lg px-4">
                 <div class="pr-2 scale-125">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -80,26 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full flex items-center border-t-8 border-[#8E603F] py-8 shadow-lg px-4">
-                <div class="pr-2 scale-125"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                        height="24">
-                        <path fill="none" d="M0 0h24v24H0z" />
-                        <path
-                            d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-8h4v2h-6V7h2v5z"
-                            fill="#8E603F" />
-                    </svg></div>
-                <div class="w-full">
-                    <div class="my-2 sticky top-2">Request Appointment
-                    </div>
-                    <div class="flex w-5/6">
-                        <button class="border border-2 border-[#8E603F] p-2 text-sm" @click="showModal = true">Check
-                            Available
-                            Slots</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="w-full flex items-center border-t-8 border-[#2A4359] py-8 shadow-lg px-4">
+            <div class="w-full flex items-center border-t-8 border-[#2A4359] py-8 shadow-lg px-4 md:row-span-2 lg:row-span-1">
                 <div class="w-full">
                     <!-- CQC Report Plugin -->
                     <component :is="'script'" type="text/javascript"
@@ -109,6 +90,25 @@
                 </div>
             </div>
             <div class="w-full flex items-center border-t-8 border-[#8896AB] py-8 shadow-lg px-4">
+                <div class="pr-2 scale-125"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                        height="24">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-8h4v2h-6V7h2v5z"
+                            fill="#8896AB" />
+                    </svg></div>
+                <div class="w-full">
+                    <div class="my-2 sticky top-2">Request Appointment
+                    </div>
+                    <div class="flex w-5/6">
+                        <button class="border border-2 border-[#8896AB] p-2 text-sm" @click="showModal = true">Check
+                            Available
+                            Slots</button>
+
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="w-full flex items-center border-t-8 border-[#8896AB] py-8 shadow-lg px-4">
                 <div class="pr-2 scale-125">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                         <path fill="none" d="M0 0h24v24H0z" />
@@ -125,7 +125,7 @@
                         <p class="text-sm">{{ getHealthMonth(month()).description }}</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="m-4"></div>
     </body>
@@ -186,13 +186,14 @@ export default {
             news: []
         };
     },
-    mounted(){
+    mounted() {
         $fetch("https://doctor-today-back.herokuapp.com/news")
-        .then(res =>
-         {this.news = res;
-         console.log(res)}
-        )
-        .catch(err => {
+            .then(res => {
+                this.news = res;
+                console.log(res)
+            }
+            )
+            .catch(err => {
                 console.log("Error: cannot retrieve news data");
             })
     },

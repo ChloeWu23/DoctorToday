@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl  mx-auto z-0"
+    <div class="bg-[url('assets/map.png')] bg-cover bg-no-repeat bg-center p-6 grid md:grid-cols-2 xl:max-w-screen-xl mx-auto z-0"
         id="pageContent">
         <div id="modal" v-if="showModal" class="z-1">
             <!-- <div class="modal-mask" > -->
@@ -16,8 +16,7 @@
                     and personal medical circumstances. </p>
                 <p class="my-2">The consultation for this service is free if vaccinations and/or anti-malarial
                     medications to the
-                    value of £35 or more are purchased; otherwise an advice fee of up
-                    to £35 applies. We are a registered Yellow Fever Centre.</p>
+                    value of £35 or more are purchased; otherwise an advice fee applies. We are a registered Yellow Fever Centre.</p>
             </div>
         </div>
         <div class="lg:m-6 m-4 md:m-0 lg:p-6">
