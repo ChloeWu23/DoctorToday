@@ -1,7 +1,7 @@
 <template>
     <SideBar></SideBar>
     <div class="p-4 sm:ml-64 ">
-        <button type="button" @click="handlerDialog"
+        <button type="button" @click="emitAddDialog"
             class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 
             <svg fill="none" class="w-5 h-5 mr-2 -ml-1" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
@@ -39,6 +39,12 @@
                         </td>
 
                         <td class="flex items-center px-6 py-4 space-x-3">
+
+                            <button @click="emitEditDialog(news)"
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
+                                <img src="../assets/admin_portal/icon-edit.svg" alt="Icon" class="mr-2" />
+                            </button>
+
                             <button @click="swapNewsUp(news.news_id)"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-6 hover:bg-gray-200 rounded">
                                 <img src="../assets/admin_portal/icon-up-arrow.svg" alt="Icon" class="mr-2" />
@@ -58,7 +64,11 @@
         <AddNewsDialog 
             v-model="dialogFormVisible" 
             v-if="dialogFormVisible" 
-            @refresh-callback="refreshServiceView" />
+            :isEdit = "isEdit"
+            :data_news_id = "data.news_id"
+            :data_title = "data.title"
+            :data_content = "data.content"
+        />
     </div>
 </template>
 
@@ -76,6 +86,14 @@ export default {
         return {
             newsList: "",
             dialogFormVisible: false,
+
+            isEdit: false,
+
+            data: {
+                news_id: "",
+                title: "",
+                content: ""
+            }
         }
     },
 
@@ -89,6 +107,12 @@ export default {
             // This code runs on the server-side
             console.log("Not pass the admin authentication! ");
             this.$router.push('/AdminLogin');
+        }
+    },
+
+    watch: {
+        dialogFormVisible(newValue, oldValue) {
+            this.refreshServiceView();
         }
     },
 
@@ -160,6 +184,24 @@ export default {
                     console.log(err);
                 });
         },
+        emitAddDialog() {
+            this.isEdit = false;
+
+            this.data = {
+                news_id: "",
+                title: "",
+                content: ""
+            };
+
+            this.dialogFormVisible = true;
+        },
+        emitEditDialog(news) {
+            this.isEdit = true;
+
+            this.data = news;
+
+            this.dialogFormVisible = true;
+        }
     }
 
 }
