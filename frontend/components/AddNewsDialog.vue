@@ -19,10 +19,9 @@
         ref="textEditor"
         @editorUpdated="updateContent"
         :isEdited="this.isEdit"
-        :service_description="this.data_description"
+        :service_description="this.data_content"
         class = "w-96 h-60"
       />
-      <!-- FIXME: text editor -->
     </el-form>
 
     <template #footer>
@@ -37,7 +36,7 @@
         <button
           type="button"
           class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          @click="addNews"
+          @click="handleDialog"
         >
           Confirm
         </button>
@@ -53,11 +52,22 @@ import DataService from "@/dataRoutes/DataNews";
 
 export default {
   // components: { QuillEditor },
+  props: {
+    isEdit: Boolean,
+
+    data_news_id: {
+        type: Number,
+        default: null
+    },
+    data_title: String,
+    data_content: String
+  },
+
   data() {
     return {
       news: {
-        title: "",
-        content: "",
+        title: this.data_title,
+        content: this.data_content,
       },
       submitted: false,
     };
@@ -74,6 +84,13 @@ export default {
     };
   },
   methods: {
+    handleDialog() {
+      if (this.isEdit) {
+        this.editNews();
+      } else {
+        this.addNews();
+      }
+    },
     async addNews() {
       await this.updateDescription();
       var data = {
@@ -102,6 +119,35 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    async editNews() {
+      await this.updateDescription();
+      var data = {
+        news_id: this.data_news_id,
+        title: this.news.title,
+        content: this.news.content,
+      };
+      console.log(data)
+
+      if (data.title == undefined || data.title == "") {
+        alert("please input title");
+        return;
+      }
+
+      if (data.content == undefined || data.content == "") {
+        alert("please input the content");
+        return;
+      }
+
+      DataService.update(data)
+        .then((res) => {
+          this.submitted = true;
+          this.$emit("update:modelValue", false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
     },
     async updateDescription() {
       this.$refs.textEditor.sendToParent();

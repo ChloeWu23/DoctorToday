@@ -105,6 +105,43 @@ router.post("/delete", async (req, res) => {
     });
 })
 
+router.patch("/", async(req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+
+    if (req.body.news_id === null || req.body.news_id === undefined ) {
+        res.status(400).send({
+            message: "News Content can not be empty!",
+          });
+        console.log(req.body);
+        return;
+    }
+
+    const patchItem = await News.findByPk(req.body.news_id);
+    if (patchItem === null) {
+        res.status(400).send({
+        message: "invalid news_id! ",
+        });
+        return;
+    }
+
+    patchItem.set({
+        title: req.body.title,
+        content: req.body.content
+    });
+
+    await patchItem
+        .save()
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                  err.message || "Some error occured while updating News",
+              });
+        });
+})
+
 router.patch("/swap", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
