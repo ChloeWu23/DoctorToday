@@ -40,7 +40,7 @@
                         </a>
                     </div>
                     <div class="pl-2 sm:p-1 md:mb-1 mb-2 hover:text-amber-500">
-                        <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}" class="flex items-center ">
+                        <a href="https://goo.gl/maps/gzWrph2G7C6cFzXF8" class="flex items-center ">
                             <span class="mr-2 "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22"
                                 height="22" class="w-[16px] h-[16px] md:w-[20px] md:h-[20px]">
                                 <path fill="none" d="M0 0h24v24H0z" />
