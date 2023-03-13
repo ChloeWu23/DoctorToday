@@ -20,7 +20,7 @@
         @editorUpdated="updateContent"
         :isEdited="this.isEdit"
         :service_description="this.data_content"
-        class = "w-96 h-60"
+        class = "h-60"
       />
     </el-form>
 
